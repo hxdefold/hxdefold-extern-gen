@@ -79,16 +79,18 @@ class Main {
                 sys.FileSystem.deleteFile(path);
             }
         }
-        if (sys.FileSystem.exists(GENERATED_DIR)) {
+        if (sys.FileSystem.exists(GENERATED_DIR))
             deleteRec(GENERATED_DIR);
-        }
-        sys.FileSystem.createDirectory(GENERATED_DIR);
-        sys.FileSystem.createDirectory(GENERATED_DIR + "/defold");
 
         loadManifest(function(manifest) {
             print('Loading API for version ${manifest.version}');
             loadDoc(manifest.sha1, function(data) {
                 var entries = haxe.zip.Reader.readZip(new haxe.io.StringInput(data));
+
+                sys.FileSystem.createDirectory(GENERATED_DIR);
+                sys.FileSystem.createDirectory(GENERATED_DIR + "/defold");
+                sys.io.File.saveContent(GENERATED_DIR + "/version.txt", 'API version ${manifest.version} (${manifest.sha1})');
+
                 for (entry in entries) {
                     var path = new haxe.io.Path(entry.fileName);
                     if (path.ext != "json")
