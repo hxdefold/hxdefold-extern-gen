@@ -8,8 +8,9 @@ package defold;
 		Which particle FX to play is identified by the URL.
 		
 		@param url the particle fx that should start playing (url)
+		@param emitter_state_cb optional callback that will be called when an emitter attached to this particlefx changes state.
 	**/
-	static function play(url:TODO):TODO;
+	static function play(url:TODO, ?emitter_state_cb:TODO):TODO;
 	/**
 		reset a shader constant for a particle FX emitter
 		
@@ -45,4 +46,23 @@ package defold;
 		@param url the particle fx that should stop playing (url)
 	**/
 	static function stop(url:TODO):TODO;
+}
+
+@:native("_G.particlefx") extern class ParticlefxVariables {
+	/**
+		postspawn state
+	**/
+	static var EMITTER_STATE_POSTSPAWN(default, never) : TODO;
+	/**
+		prespawn state
+	**/
+	static var EMITTER_STATE_PRESPAWN(default, never) : TODO;
+	/**
+		sleeping state
+	**/
+	static var EMITTER_STATE_SLEEPING(default, never) : TODO;
+	/**
+		spawning state
+	**/
+	static var EMITTER_STATE_SPAWNING(default, never) : TODO;
 }
