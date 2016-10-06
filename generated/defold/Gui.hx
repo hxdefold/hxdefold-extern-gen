@@ -106,6 +106,12 @@ package defold;
 	**/
 	static function cancel_flipbook(node:TODO):TODO;
 	/**
+		cancel a spine animation
+		
+		@param node spine node that should cancel its animation
+	**/
+	static function cancel_spine(node:TODO):TODO;
+	/**
 		clone a node
 		
 		This does not include its children. Use gui.clone_tree for that purpose.
@@ -343,6 +349,24 @@ package defold;
 	**/
 	static function get_slice9(node:TODO):TODO;
 	/**
+		retrieve the GUI node corresponding to a spine skeleton bone
+		
+		The returned node can be used for parenting and transform queries.
+		This function has complexity O(n), where n is the number of bones in the spine model skeleton.
+		
+		@param node spine node to query for bone node (node)
+		@param bone_id id of the corresponding bone (string|hash)
+	**/
+	static function get_spine_bone(node:TODO, bone_id:TODO):TODO;
+	/**
+		gets the spine scene of a node
+		
+		This is currently only useful for spine nodes. The spine scene must be mapped to the gui scene in the gui editor.
+		
+		@param node node to get texture from (node)
+	**/
+	static function get_spine_scene(node:TODO):TODO;
+	/**
 		gets the node text
 		
 		This is only useful for text nodes.
@@ -452,6 +476,13 @@ package defold;
 	**/
 	static function new_pie_node(pos:TODO, size:TODO):TODO;
 	/**
+		creates a new spine node
+		
+		@param pos node position (vector3|vector4)
+		@param spine_scene spine scene id (string|hash)
+	**/
+	static function new_spine_node(pos:TODO, spine_scene:TODO):TODO;
+	/**
 		creates a new text node
 		
 		@param pos node position (vector3|vector4)
@@ -493,6 +524,16 @@ package defold;
 		@param complete_function function to call when the animation has completed (function)
 	**/
 	static function play_flipbook(node:TODO, animation:TODO, ?complete_function:TODO):TODO;
+	/**
+		play a spine animation
+		
+		@param node spine node that should play the animation (node)
+		@param animation_id id of the animation to play (string|hash)
+		@param playback playback mode (constant)
+		@param blend_duration duration of a linear blend between the current and new animations
+		@param complete_function function to call when the animation has completed (function)
+	**/
+	static function play_spine(node:TODO, animation_id:TODO, playback:TODO, blend_duration:TODO, ?complete_function:TODO):TODO;
 	/**
 		reset on-display keyboard if available
 		
@@ -740,7 +781,7 @@ package defold;
 		@param size_mode size mode to set (constant)
 		<ul>
 		  <li><code>gui.SIZE_MODE_MANUAL</code></li>
-		  <li><code>gui.SIZE_MODE_AUTOMATIC</code></li>
+		  <li><code>gui.SIZE_MODE_AUTO</code></li>
 		</ul>
 	**/
 	static function set_size_mode(node:TODO, size_mode:TODO):TODO;
@@ -751,6 +792,15 @@ package defold;
 		@param params new value (vector4)
 	**/
 	static function set_slice9(node:TODO, params:TODO):TODO;
+	/**
+		sets the spine scene of a node
+		
+		Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.
+		
+		@param node node to set spine scene for (node)
+		@param spine_scene spine scene id (string|hash)
+	**/
+	static function set_spine_scene(node:TODO, spine_scene:TODO):TODO;
 	/**
 		sets the node text
 		
@@ -1301,4 +1351,16 @@ package defold;
 		slice9 property
 	**/
 	static var PROP_SLICE9(default, never) : TODO;
+	/**
+		automatic size mode
+		
+		The size of the node is determined by the currently assigned texture.
+	**/
+	static var SIZE_MODE_AUTO(default, never) : TODO;
+	/**
+		manual size mode
+		
+		The size of the node is determined by the size set in the editor, the constructor or by gui.set_size()
+	**/
+	static var SIZE_MODE_MANUAL(default, never) : TODO;
 }

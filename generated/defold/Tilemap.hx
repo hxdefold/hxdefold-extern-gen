@@ -94,13 +94,12 @@ package defold;
 		
 		Send this message to a tile map component to change the tile in one of its cells.
 		
-		DEPRECATED! Use <code>tilemap.set_tile()</code> instead.
-		
 		@param layer_id id of the layer for which to change a tile
 		@param position the position of the cell for which to change the tile (world space)
 		@param tile index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
 		@param dx horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
 		@param dy vertical offset from the supplied position to the requested cell (grid space, 0 by default)
 	**/
+	@:deprecated("Use <code>tilemap.set_tile()</code> instead.")
 	static var SetTile(default, never) : Message<{ var layer_id : TODO; var position : TODO; var tile : TODO; var dx : TODO; var dy : TODO; }> = new Message("set_tile");
 }

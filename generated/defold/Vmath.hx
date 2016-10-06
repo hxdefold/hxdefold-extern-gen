@@ -288,7 +288,7 @@ package defold;
 	/**
 		creates a new quaternion from its coordinates
 		
-		Creates a new quartenion with the components set
+		Creates a new quaternion with the components set
 		according to the supplied parameter values.
 		
 		@param x x coordinate (number)

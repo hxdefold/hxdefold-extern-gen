@@ -90,11 +90,9 @@ package defold;
 	/**
 		(DEPRECATED) requests the velocity of a collision object
 		
-		<b>DEPRECATED!</b> Post this message to a collision-object-component to retrieve its velocity.
-		
-		Read properties <code>linear_velocity</code> and <code>angular_velocity</code>
-		with <code>go.get()</code> instead.
+		Post this message to a collision-object-component to retrieve its velocity.
 	**/
+	@:deprecated("Read properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.")
 	static var RequestVelocity(default, never) : Message<{ }> = new Message("request_velocity");
 	/**
 		reports interaction (enter/exit) between a trigger collision object and another collision object
@@ -118,16 +116,15 @@ package defold;
 	/**
 		(DEPRECATED) reports the velocity of a collision object
 		
-		<b>DEPRECATED!</b> This message is sent back to the sender of a <code>request_velocity</code> message.
 		See <code>request_velocity</code> for examples on how to use it.
 		
-		Read properties <code>linear_velocity</code> and <code>angular_velocity</code>
-		with <code>go.get()</code> instead.
+		 This message is sent back to the sender of a <code>request_velocity</code> message.
 		
 		@param linear_velocity the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)
 		@param angular_velocity the angular velocity, i.e. rotation, of the collision object in radians/s.
 		The velocity is measured as a rotation around the vector with a speed equivalent to the vector length (vector3)
 	**/
+	@:deprecated("Read properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.")
 	static var VelocityResponse(default, never) : Message<{ var linear_velocity : TODO; var angular_velocity : TODO; }> = new Message("velocity_response");
 }
 
