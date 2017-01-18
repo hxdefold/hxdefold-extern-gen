@@ -29,47 +29,66 @@ package defold;
 	**/
 	static function enable_event_usage():TODO;
 	/**
-		initiate a Facebook login
+		Login to Facebook and request a set of publish permissions
 		
-		This function opens a Facebook login dialog allowing the user to log into Facebook
-		with his/her account. This performs a login requesting read permission for:
+		Login to Facebook and request a set of publish permissions. The user is
+		prompted to authorize the application using the login dialog of the specific
+		platform. Even if the user is already logged in to Facebook this function
+		can still be used to request additional publish permissions.
+		
+		<b>NOTE</b> that this function cannot be used to request read permissions.
+		If the application requires both publish and read permissions, individual
+		calls to both login_with_publish_permissions and login_with_read_permissions
+		has to be made.
+		
+		A comprehensive list of permissions can be found in the <a href="https://developers.facebook.com/docs/facebook-login/permissions">Facebook documentation</a>,
+		as well as a <a href="https://developers.facebook.com/docs/facebook-login/best-practices">guide to best practises for login management</a>.
+		
+		@param permissions (table) Table with the requested publish permission strings.
+		@param audience (constant|number) The audience that should be able to see the publications.
 		<ul>
-		  <li><code>"public_profile"</code></li>
-		  <li><code>"email"</code></li>
-		  <li><code>"user_friends"</code></li>
+		    <li>facebook.AUDIENCE_NONE</li>
+		    <li>facebook.AUDIENCE_ONLYME</li>
+		    <li>facebook.AUDIENCE_FRIENDS</li>
+		    <li>facebook.AUDIENCE_EVERYONE</li>
 		</ul>
-		The actual permission that the user grants can be retrieved with <code>facebook.permissions()</code>.
-		
-		@param callback callback function with parameters (self, status, error), when the login attempt is done. (function)
+		@param callback (function) Callback function that takes the arguments (self, data), the callback is executed when the permission request dialog is closed.
+		<ul>
+		    <li><code>self</code> The context of the calling script
+		    <li><code>data</code> A table that contains the response
+		</ul>
 	**/
-	static function login(callback:TODO):TODO;
+	static function login_with_publish_permissions(permissions:TODO, audience:TODO, callback:TODO):TODO;
+	/**
+		Login to Facebook and request a set of read permissions
+		
+		Login to Facebook and request a set of read permissions. The user is
+		prompted to authorize the application using the login dialog of the specific
+		platform. Even if the user is already logged in to Facebook this function
+		can still be used to request additional read permissions.
+		
+		<b>NOTE</b> that this function cannot be used to request publish permissions.
+		If the application requires both read and publish permissions, individual
+		calls to both login_with_read_permissions and login_with_publish_permissions
+		has to be made.
+		
+		A comprehensive list of permissions can be found in the <a href="https://developers.facebook.com/docs/facebook-login/permissions">Facebook documentation</a>,
+		as well as a <a href="https://developers.facebook.com/docs/facebook-login/best-practices">guide to best practises for login management</a>.
+		
+		@param permissions (table) Table with the requested read permission strings.
+		@param callback (function) Callback function that takes the arguments (self, data), the callback is executed when the permission request dialog is closed.
+		<ul>
+		    <li><code>self</code> The context of the calling script
+		    <li><code>data</code> A table that contains the response
+		</ul>
+	**/
+	static function login_with_read_permissions(permissions:TODO, callback:TODO):TODO;
 	/**
 		logout from Facebook
 		
 		Logout from Facebook.
 	**/
 	static function logout():TODO;
-	/**
-		return a table with "me" user data
-		
-		This function returns a table of user data as requested from the Facebook Graph API
-		"me" path. The user data is fetched during facebook.login().
-		
-		The table contains the following fields:
-		
-		<ul>
-		  <li><code>"name"</code></li>
-		  <li><code>"last_name"</code></li>
-		  <li><code>"first_name"</code></li>
-		  <li><code>"id"</code></li>
-		  <li><code>"email"</code></li>
-		  <li><code>"link"</code></li>
-		  <li><code>"gender"</code></li>
-		  <li><code>"locale"</code></li>
-		  <li><code>"updated_time"</code></li>
-		</ul>
-	**/
-	static function me():TODO;
 	/**
 		get the currently granted permissions
 		
@@ -126,40 +145,6 @@ package defold;
 		</ul>
 	**/
 	static function post_event(event:TODO, value_to_sum:TODO, params:TODO):TODO;
-	/**
-		logs the user in with the requested publish permissions
-		
-		Log in the user on Facebook with the specified publish permissions. Check the permissions the user
-		 actually granted with <code>facebook.permissions()</code>.
-		
-		@param permissions a table with the requested permissions (table)
-		@param audience (constant|number)
-		<ul>
-		    <li>facebook.AUDIENCE_NONE</li>
-		    <li>facebook.AUDIENCE_ONLYME</li>
-		    <li>facebook.AUDIENCE_FRIENDS</li>
-		    <li>facebook.AUDIENCE_EVERYONE</li>
-		</ul>
-		@param callback callback function with parameters (self, error) that is called when the permission request dialog is closed. (function)
-	**/
-	static function request_publish_permissions(permissions:TODO, audience:TODO, callback:TODO):TODO;
-	/**
-		logs the user in with the requested read permissions
-		
-		Log in the user on Facebook with the specified read permissions. Check the permissions the user
-		actually granted with <code>facebook.permissions()</code>.
-		
-		@param permissions a table with the requested permission strings (table)
-		The following strings are valid permission identifiers and are requested by default on login:
-		<ul>
-		  <li><code>"public_profile"</code></li>
-		  <li><code>"email"</code></li>
-		  <li><code>"user_friends"</code></li>
-		</ul>
-		A comprehensive list of permissions can be found at <a href='https://developers.facebook.com/docs/facebook-login/permissions/v2.6'>https://developers.facebook.com/docs/facebook-login/permissions/v2.6</a>
-		@param callback callback function with parameters (self, error) that is called when the permission request dialog is closed. (function)
-	**/
-	static function request_read_permissions(permissions:TODO, callback:TODO):TODO;
 	/**
 		show facebook web dialog
 		

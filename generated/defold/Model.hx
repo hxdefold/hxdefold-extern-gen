@@ -1,0 +1,83 @@
+package defold;
+
+@:native("_G.model") extern class Model {
+	/**
+		cancel all animation on a model
+		
+		@param url the model for which to cancel the animation (url)
+	**/
+	static function cancel(url:TODO):TODO;
+	/**
+		retrieve the game object corresponding to a model skeleton bone
+		
+		The returned game object can be used for parenting and transform queries.
+		This function has complexity O(n), where n is the number of bones in the model skeleton.
+		Game objects corresponding to a model skeleton bone can not be individually deleted.
+		Only available from .script files.
+		
+		@param url the model to query (url)
+		@param bone_id id of the corresponding bone (string|hash)
+	**/
+	static function get_go(url:TODO, bone_id:TODO):TODO;
+	/**
+		play an animation on a model
+		
+		@param url the model for which to play the animation (url)
+		@param anim_id id of the animation to play (string|hash)
+		@param playback playback mode of the animation (constant)
+		<ul>
+		  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
+		  <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
+		  <li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
+		  <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
+		  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
+		  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
+		</ul>
+		@param play_properties optional table with properties (table)
+		<ul>
+		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
+		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
+		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
+		</ul>
+	**/
+	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO):TODO;
+	/**
+		reset a shader constant for a model
+		
+		The constant must be defined in the material assigned to the model.
+		Resetting a constant through this function implies that the value defined in the material will be used.
+		Which model to reset a constant for is identified by the URL.
+		
+		@param url the model that should have a constant reset (url)
+		@param name of the constant (string|hash)
+	**/
+	static function reset_constant(url:TODO, name:TODO):TODO;
+	/**
+		set a shader constant for a model component
+		
+		The constant must be defined in the material assigned to the model.
+		Setting a constant through this function will override the value set for that constant in the material.
+		The value will be overridden until model.reset_constant is called.
+		Which model to set a constant for is identified by the URL.
+		
+		@param url the model that should have a constant set (url)
+		@param name of the constant (string|hash)
+		@param value of the constant (vec4)
+	**/
+	static function set_constant(url:TODO, name:TODO, value:TODO):TODO;
+}
+
+@:publicFields class ModelProperties {
+	/**
+		model cursor (number)
+		
+		The normalized animation cursor. The type of the property is number.
+	**/
+	static var Cursor(default, never) : Property<TODO> = new Property("cursor");
+	/**
+		model playback_rate (number)
+		
+		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
+	**/
+	static var PlaybackRate(default, never) : Property<TODO> = new Property("playback_rate");
+}

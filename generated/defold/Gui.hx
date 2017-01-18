@@ -359,13 +359,37 @@ package defold;
 	**/
 	static function get_spine_bone(node:TODO, bone_id:TODO):TODO;
 	/**
+		gets the normalized cursor of the animation on a spine node
+		
+		This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
+		
+		@param node spine node to set the cursor for (node)
+	**/
+	static function get_spine_cursor(node:TODO):TODO;
+	/**
+		gets the playback rate of the animation on a spine node
+		
+		This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.
+		
+		@param node spine node to set the cursor for (node)
+	**/
+	static function get_spine_playback_rate(node:TODO):TODO;
+	/**
 		gets the spine scene of a node
 		
 		This is currently only useful for spine nodes. The spine scene must be mapped to the gui scene in the gui editor.
 		
-		@param node node to get texture from (node)
+		@param node node to get spine scene from (node)
 	**/
 	static function get_spine_scene(node:TODO):TODO;
+	/**
+		gets the skin of a spine node
+		
+		Gets the spine skin of a spine node
+		
+		@param node node to get spine skin from (node)
+	**/
+	static function get_spine_skin(node:TODO):TODO;
 	/**
 		gets the node text
 		
@@ -504,8 +528,9 @@ package defold;
 		  <li><code>"l"</code> - LUMINANCE</li>
 		</ul>
 		@param buffer texture data (string)
+		@param flip flip texture vertically (boolean)
 	**/
-	static function new_texture(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO):TODO;
+	static function new_texture(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO, flip:TODO):TODO;
 	/**
 		determines if the node is pickable by the supplied coordinates
 		
@@ -530,10 +555,23 @@ package defold;
 		@param node spine node that should play the animation (node)
 		@param animation_id id of the animation to play (string|hash)
 		@param playback playback mode (constant)
-		@param blend_duration duration of a linear blend between the current and new animations
+		<ul>
+		  <li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>
+		  <li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>
+		  <li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>
+		  <li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>
+		  <li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>
+		  <li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>
+		</ul>
+		@param play_properties optional table with properties (table)
+		<ul>
+		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
+		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
+		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
+		</ul>
 		@param complete_function function to call when the animation has completed (function)
 	**/
-	static function play_spine(node:TODO, animation_id:TODO, playback:TODO, blend_duration:TODO, ?complete_function:TODO):TODO;
+	static function play_spine_anim(node:TODO, animation_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):TODO;
 	/**
 		reset on-display keyboard if available
 		
@@ -681,9 +719,9 @@ package defold;
 		sets the pie outer bounds mode
 		
 		@param node node for which to set the outer bounds mode (node)
-		@param BOUNDS_RECTANGLE or BOUNDS_ELLIPSE
+		@param bounds gui.PIEBOUNDS_RECTANGLE or gui.PIEBOUNDS_ELLIPSE
 	**/
-	static function set_outer_bounds(node:TODO, BOUNDS_RECTANGLE:TODO):TODO;
+	static function set_outer_bounds(node:TODO, bounds:TODO):TODO;
 	/**
 		sets the node outline color
 		
@@ -793,6 +831,24 @@ package defold;
 	**/
 	static function set_slice9(node:TODO, params:TODO):TODO;
 	/**
+		sets the normalized cursor of the animation on a spine node
+		
+		This is only useful for spine nodes. The cursor is normalized.
+		
+		@param node spine node to set the cursor for (node)
+		@param cursor cursor value (number)
+	**/
+	static function set_spine_cursor(node:TODO, cursor:TODO):TODO;
+	/**
+		sets the playback rate of the animation on a spine node
+		
+		This is only useful for spine nodes. Sets the playback rate of the animation on a spine node. Must be positive.
+		
+		@param node spine node to set the cursor for (node)
+		@param playback_rate playback rate (number)
+	**/
+	static function set_spine_playback_rate(node:TODO, playback_rate:TODO):TODO;
+	/**
 		sets the spine scene of a node
 		
 		Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.
@@ -801,6 +857,15 @@ package defold;
 		@param spine_scene spine scene id (string|hash)
 	**/
 	static function set_spine_scene(node:TODO, spine_scene:TODO):TODO;
+	/**
+		sets the spine skin
+		
+		Sets the spine skin on a spine node.
+		
+		@param node node to set the spine skin on (node)
+		@param spine_skin spine skin id (string|hash)
+	**/
+	static function set_spine_skin(node:TODO, spine_skin:TODO):TODO;
 	/**
 		sets the node text
 		
@@ -834,8 +899,9 @@ package defold;
 		  <li><code>"l"</code> - LUMINANCE</li>
 		</ul>
 		@param buffer texture data (string)
+		@param flip flip texture vertically (boolean)
 	**/
-	static function set_texture_data(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO):TODO;
+	static function set_texture_data(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO, flip:TODO):TODO;
 	/**
 		sets the tracking of the text node
 		

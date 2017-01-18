@@ -23,7 +23,7 @@ package defold;
 		play an animation on a spine model
 		
 		@param url the spine model for which to play the animation (url)
-		@param animation_id id of the animation to play (string|hash)
+		@param anim_id id of the animation to play (string|hash)
 		@param playback playback mode of the animation (constant)
 		<ul>
 		  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
@@ -33,10 +33,15 @@ package defold;
 		  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
 		  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
 		</ul>
-		@param blend_duration duration of a linear blend between the current and new animations
+		@param play_properties optional table with properties (table)
+		<ul>
+		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
+		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
+		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
+		</ul>
 		@param complete_function function to call when the animation has completed (function)
 	**/
-	static function play(url:TODO, animation_id:TODO, playback:TODO, blend_duration:TODO, ?complete_function:TODO):TODO;
+	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):TODO;
 	/**
 		reset a shader constant for a spine model
 		
@@ -121,4 +126,19 @@ package defold;
 		@param string user defined string value for the event (hash)
 	**/
 	static var SpineEvent(default, never) : Message<{ var event_id : TODO; var animation_id : TODO; var t : TODO; var blend_weight : TODO; var integer : TODO; var float : TODO; var string : TODO; }> = new Message("spine_event");
+}
+
+@:publicFields class SpineProperties {
+	/**
+		spine cursor (number)
+		
+		The normalized animation cursor. The type of the property is number.
+	**/
+	static var Cursor(default, never) : Property<TODO> = new Property("cursor");
+	/**
+		spine playback_rate (number)
+		
+		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
+	**/
+	static var PlaybackRate(default, never) : Property<TODO> = new Property("playback_rate");
 }

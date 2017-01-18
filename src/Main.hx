@@ -170,12 +170,20 @@ class Main {
                                 var args = [];
                                 for (p in element.parameters) {
                                     var pName = p.name.replace("-", "_");
-                                    if (!reParameterName.match(pName))
-                                        throw 'Non-conventional parameter name: ${p.name}';
-                                    var opt = (reParameterName.matched(1) != null);
-                                    pName = reParameterName.matched(2);
+                                    var doc = p.doc;
+                                    var opt = false;
+                                    if (!reParameterName.match(pName)) {
+                                        if (p.name == "gui.PIEBOUNDS_RECTANGLE") {
+                                            pName = "bounds";
+                                            doc = p.name + " " + doc;
+                                        } else
+                                            throw 'Non-conventional parameter name: ${p.name}';
+                                    } else {
+                                        opt = (reParameterName.matched(1) != null);
+                                        pName = reParameterName.matched(2);
+                                    }
                                     args.push({name: pName, type: ctTODO, opt: opt});
-                                    signatureDoc.push('@param $pName ${p.doc}');
+                                    signatureDoc.push('@param $pName ${doc}');
                                 }
                                 fieldKind = FFun({
                                     expr: null,
