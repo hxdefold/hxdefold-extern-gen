@@ -37,7 +37,7 @@ typedef ApiElement = {
             default: throw 'Invalid API element type: $s';
         }
     }
-} 
+}
 
 class Main {
     static function loadManifest(cb:Manifest->Void) {
@@ -50,7 +50,7 @@ class Main {
         var r = new haxe.Http('http://d.defold.com/archive/$sha1/engine/share/ref-doc.zip');
         r.onData = cb;
         r.request();
-    } 
+    }
 
     static var ctTODO = macro : TODO;
     static var reModuleName = ~/^(\w+)_doc$/;
@@ -99,8 +99,8 @@ class Main {
                         throw 'Non-conventional module json name: ${path.file}';
                     var moduleName = underscoreToCamelCase(reModuleName.matched(1));
                     var moduleNameFromFile = true;
-                    var api:Api = haxe.Json.parse(entry.data.toString());
                     print('Processing module $moduleName (${entry.fileName})');
+                    var api:Api = haxe.Json.parse(haxe.zip.Reader.unzip(entry).toString());
 
                     var nativePath = "_G";
                     var methods = [];
@@ -113,7 +113,7 @@ class Main {
                         print('=> "${element.name}" (${(cast element.type : String).toLowerCase()})');
 
                         element.type = ApiElementType.fromString(element.type); // validate
-                        
+
                         inline function print(s:String) Sys.println("  > " + s);
 
                         if (element.type == PACKAGE) {
@@ -242,7 +242,7 @@ class Main {
 
                     var types:Array<TypeDefinition> = [];
 
-                    if (methods.length > 0) 
+                    if (methods.length > 0)
                         types.push({
                             pos: pos,
                             pack: ["defold"],
@@ -255,7 +255,7 @@ class Main {
                             ]
                         });
 
-                    if (messages.length > 0) 
+                    if (messages.length > 0)
                         types.push({
                             pos: pos,
                             pack: ["defold"],
@@ -267,7 +267,7 @@ class Main {
                             ]
                         });
 
-                    if (properties.length > 0) 
+                    if (properties.length > 0)
                         types.push({
                             pos: pos,
                             pack: ["defold"],
@@ -279,7 +279,7 @@ class Main {
                             ]
                         });
 
-                    if (vars.length > 0) 
+                    if (vars.length > 0)
                         types.push({
                             pos: pos,
                             pack: ["defold"],
