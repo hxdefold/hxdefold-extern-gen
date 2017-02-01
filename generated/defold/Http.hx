@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.http") extern class Http {
 	/**
-		perform a HTTP/HTTPS request
+		Perform a HTTP/HTTPS request.
 		
 		Perform a HTTP/HTTPS request.
 		

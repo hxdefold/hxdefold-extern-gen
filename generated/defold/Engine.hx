@@ -73,28 +73,28 @@ typedef EngineMessageStartRecord = {
 **/
 @:publicFields class EngineMessages {
 	/**
-		exits application
+		Exits application.
 		
 		Terminates the game application and reports the specified `code` to the OS.
 		This message can only be sent to the designated `@system` socket.
 	**/
 	static var exit(default, never) : Message<EngineMessageExit> = new Message("exit");
 	/**
-		reboot engine with arguments
+		Reboot engine with arguments.
 		
 		Arguments will be translated into command line arguments. Sending the reboot
 		command is equivalent to starting the engine with the same arguments.
 	**/
 	static var reboot(default, never) : Message<EngineMessageReboot> = new Message("reboot");
 	/**
-		set update frequency
+		Set update frequency.
 		
 		Set game update-frequency. This option is equivalent to display.update_frequency but
 		set in run-time
 	**/
 	static var set_update_frequency(default, never) : Message<EngineMessageSetUpdateFrequency> = new Message("set_update_frequency");
 	/**
-		starts video recording
+		Starts video recording.
 		
 		Starts video recording of the game frame-buffer to file. Current video format is the
 		open vp8 codec in the ivf container. It's possible to upload this format directly
@@ -105,17 +105,17 @@ typedef EngineMessageStartRecord = {
 	**/
 	static var start_record(default, never) : Message<EngineMessageStartRecord> = new Message("start_record");
 	/**
-		stop current video recording
+		Stop current video recording.
 	**/
 	static var stop_record(default, never) : Message<Void> = new Message("stop_record");
 	/**
-		shows/hides the on-screen physics visual debugging
+		Shows/hides the on-screen physics visual debugging.
 		
 		This message can only be sent to the designated `@system` socket.
 	**/
 	static var toggle_physics_debug(default, never) : Message<Void> = new Message("toggle_physics_debug");
 	/**
-		shows/hides the on-screen profiler
+		Shows/hides the on-screen profiler.
 		
 		This message can only be sent to the designated `@system` socket.
 	**/

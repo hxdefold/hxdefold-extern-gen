@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.go") extern class Go {
 	/**
-		called when a script component is finalized
+		Called when a script component is finalized.
 		
 		<div>This is a callback-function, which is called by the engine when a script component is finalized (destroyed). It can
 		be used to e.g. take some last action, report the finalization to other game object instances, delete spawned objects
@@ -12,7 +12,7 @@ package defold;
 	**/
 	static function final(self:TODO):TODO;
 	/**
-		animates a named property of the specified game object or component
+		Animates a named property of the specified game object or component.
 		
 		This is only supported for numerical properties. If the node property is already being
 		animated, that animation will be canceled and replaced by the new one.
@@ -44,7 +44,7 @@ package defold;
 	**/
 	static function animate(url:TODO, property:TODO, playback:TODO, to:TODO, easing:TODO, duration:TODO, ?delay:TODO, ?complete_function:TODO):TODO;
 	/**
-		cancels all animations of the named property of the specified game object or component
+		Cancels all animations of the named property of the specified game object or component.
 		
 		By calling this function, all stored animations of the given property will be canceled.
 		
@@ -55,7 +55,7 @@ package defold;
 	**/
 	static function cancel_animations(url:TODO, property:TODO):TODO;
 	/**
-		deletes a game object instance
+		Deletes a game object instance.
 		
 		<div>Delete a game object identified by its id.</div>
 		
@@ -63,7 +63,7 @@ package defold;
 	**/
 	static function delete(?id:TODO):TODO;
 	/**
-		deletes a set of game object instance
+		Deletes a set of game object instance.
 		
 		<div>Delete all game objects simultaneously as listed in table.
 		The table values (not keys) should be game object ids (hashes).</div>
@@ -72,14 +72,14 @@ package defold;
 	**/
 	static function delete_all(?ids:TODO):TODO;
 	/**
-		gets a named property of the specified game object or component
+		Gets a named property of the specified game object or component.
 		
 		@param url url of the game object or component having the property (hash|string|url)
 		@param id id of the property to retrieve (hash|string)
 	**/
 	static function get(url:TODO, id:TODO):TODO;
 	/**
-		gets the id of an instance
+		Gets the id of an instance.
 		
 		The instance id is a hash of the absolute path.
 		If `path` is specified, it can either be absolute or relative to the instance of the calling script.
@@ -89,7 +89,7 @@ package defold;
 	**/
 	static function get_id(?path:TODO):TODO;
 	/**
-		gets the position of the instance
+		Gets the position of the instance.
 		
 		The position is relative the parent (if any). Use `go.get_world_position` to retrieve the global world position.
 		
@@ -97,7 +97,7 @@ package defold;
 	**/
 	static function get_position(?id:TODO):TODO;
 	/**
-		gets the rotation of the instance
+		Gets the rotation of the instance.
 		
 		The rotation is relative to the parent (if any). Use `go.get_world_rotation` to retrieve the global world position.
 		
@@ -105,7 +105,7 @@ package defold;
 	**/
 	static function get_rotation(?id:TODO):TODO;
 	/**
-		gets the uniform scale factor of the instance
+		Gets the uniform scale factor of the instance.
 		
 		The uniform scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
 		
@@ -113,7 +113,7 @@ package defold;
 	**/
 	static function get_scale(?id:TODO):TODO;
 	/**
-		gets the 3D scale factor of the instance
+		Gets the 3D scale factor of the instance.
 		
 		The scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
 		
@@ -121,7 +121,7 @@ package defold;
 	**/
 	static function get_scale_vector(?id:TODO):TODO;
 	/**
-		gets the instance world position
+		Gets the instance world position.
 		
 		Use `go.get_position` to retrieve the position relative to the parent.
 		
@@ -129,7 +129,7 @@ package defold;
 	**/
 	static function get_world_position(?id:TODO):TODO;
 	/**
-		gets the instance world rotation
+		Gets the instance world rotation.
 		
 		Use `go.get_rotation` to retrieve the rotation relative to the parent.
 		
@@ -137,7 +137,7 @@ package defold;
 	**/
 	static function get_world_rotation(?id:TODO):TODO;
 	/**
-		gets the instance world scale factor
+		Gets the instance world scale factor.
 		
 		Use `go.get_scale` to retrieve the scale factor relative to the parent.
 		
@@ -145,7 +145,7 @@ package defold;
 	**/
 	static function get_world_scale(?id:TODO):TODO;
 	/**
-		define a property to be used throughout the script
+		Define a property to be used throughout the script.
 		
 		This function defines a property which can then be used in the script through the self-reference.
 		The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
@@ -156,7 +156,7 @@ package defold;
 	**/
 	static function property(name:TODO, value:TODO):TODO;
 	/**
-		constructs a ray in world space from a position in screen space
+		Constructs a ray in world space from a position in screen space.
 		
 		Do not use this function, WIP!
 		
@@ -165,7 +165,7 @@ package defold;
 	**/
 	static function screen_ray(x:TODO, y:TODO):TODO;
 	/**
-		sets a named property of the specified game object or component
+		Sets a named property of the specified game object or component.
 		
 		@param url url of the game object or component having the property (hash|string|url)
 		@param id id of the property to set (hash|string)
@@ -173,7 +173,7 @@ package defold;
 	**/
 	static function set(url:TODO, id:TODO, value:TODO):TODO;
 	/**
-		sets the position of the instance
+		Sets the position of the instance.
 		
 		The position is relative to the parent (if any). The global world position cannot be manually set.
 		
@@ -182,7 +182,7 @@ package defold;
 	**/
 	static function set_position(position:TODO, ?id:TODO):TODO;
 	/**
-		sets the rotation of the instance
+		Sets the rotation of the instance.
 		
 		The rotation is relative to the parent (if any). The global world rotation cannot be manually set.
 		
@@ -191,7 +191,7 @@ package defold;
 	**/
 	static function set_rotation(rotation:TODO, ?id:TODO):TODO;
 	/**
-		sets the scale factor of the instance
+		Sets the scale factor of the instance.
 		
 		The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.
 		
@@ -202,7 +202,7 @@ package defold;
 	**/
 	static function set_scale(scale:TODO, ?id:TODO):TODO;
 	/**
-		called when a script component is initialized
+		Called when a script component is initialized.
 		
 		This is a callback-function, which is called by the engine when a script component is initialized. It can be used
 		to set the initial state of the script.
@@ -211,7 +211,7 @@ package defold;
 	**/
 	static function init(self:TODO):TODO;
 	/**
-		called when user input is received
+		Called when user input is received.
 		
 		This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.
 		It can be used to take action on the input, e.g. move the instance according to the input.
@@ -269,7 +269,7 @@ package defold;
 	**/
 	static function on_input(self:TODO, action_id:TODO, action:TODO):TODO;
 	/**
-		called when a message has been sent to the script component
+		Called when a message has been sent to the script component.
 		
 		This is a callback-function, which is called by the engine whenever a message has been sent to the script component.
 		It can be used to take action on the message, e.g. send a response back to the sender of the message.
@@ -284,7 +284,7 @@ package defold;
 	**/
 	static function on_message(self:TODO, message_id:TODO, message:TODO, sender:TODO):TODO;
 	/**
-		called when the script component is reloaded
+		Called when the script component is reloaded.
 		
 		This is a callback-function, which is called by the engine when the script component is reloaded, e.g. from the editor.
 		It can be used for live development, e.g. to tweak constants or set up the state properly for the instance.
@@ -293,7 +293,7 @@ package defold;
 	**/
 	static function on_reload(self:TODO):TODO;
 	/**
-		called every frame to update the script component
+		Called every frame to update the script component.
 		
 		This is a callback-function, which is called by the engine every frame to update the state of a script component.
 		It can be used to perform any kind of game related tasks, e.g. moving the game object instance.
@@ -353,7 +353,7 @@ typedef GoMessageTransformResponse = {
 **/
 @:publicFields class GoMessages {
 	/**
-		acquires the user input focus
+		Acquires the user input focus.
 		
 		Post this message to a game object instance to make that instance acquire the user input focus.
 		
@@ -369,7 +369,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var acquire_input_focus(default, never) : Message<Void> = new Message("acquire_input_focus");
 	/**
-		disables the receiving component
+		Disables the receiving component.
 		
 		This message disables the receiving component. All components are enabled by default, which means they will receive input, updates
 		and be a part of the simulation. A component is disabled when it receives the `disable` message.
@@ -385,7 +385,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var disable(default, never) : Message<Void> = new Message("disable");
 	/**
-		enables the receiving component
+		Enables the receiving component.
 		
 		This message enables the receiving component. All components are enabled by default, which means they will receive input, updates
 		and be a part of the simulation. A component is disabled when it receives the `disable` message.
@@ -401,7 +401,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var enable(default, never) : Message<Void> = new Message("enable");
 	/**
-		releases the user input focus
+		Releases the user input focus.
 		
 		Post this message to an instance to make that instance release the user input focus.
 		See `acquire_input_focus` for more information on how the user input handling
@@ -409,7 +409,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var release_input_focus(default, never) : Message<Void> = new Message("release_input_focus");
 	/**
-		(DEPRECATED) requests the transform from an instance
+		(DEPRECATED) requests the transform from an instance.
 		
 		<div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
 		Send this message to an instance to request its transform (position, rotation, scale).
@@ -418,7 +418,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var request_transform(default, never) : Message<Void> = new Message("request_transform");
 	/**
-		sets the parent of the receiving instance
+		Sets the parent of the receiving instance.
 		
 		When this message is sent to an instance, it sets the parent of that instance. This means that the instance will exist
 		in the geometrical space of its parent, like a basic transformation hierarchy or scene graph. If no parent is specified,
@@ -427,7 +427,7 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var set_parent(default, never) : Message<GoMessageSetParent> = new Message("set_parent");
 	/**
-		(DEPRECATED) reports back the transform of an instance
+		(DEPRECATED) reports back the transform of an instance.
 		
 		<div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
 		The response a script receives after it has requested the transform from an instance
@@ -442,7 +442,7 @@ typedef GoMessageTransformResponse = {
 **/
 @:publicFields class GoProperties {
 	/**
-		game object euler rotation (vector3)
+		Game object euler rotation (vector3).
 		
 		The rotation of the game object expressed in euler angles.
 		Euler angles are specified in degrees.
@@ -450,21 +450,21 @@ typedef GoMessageTransformResponse = {
 	**/
 	static var euler(default, never) : Property<TODO> = new Property("euler");
 	/**
-		game object position (vector3)
+		Game object position (vector3).
 		
 		The position of the game object.
 		The type of the property is vector3.
 	**/
 	static var position(default, never) : Property<TODO> = new Property("position");
 	/**
-		game object rotation (quaternion)
+		Game object rotation (quaternion).
 		
 		The rotation of the game object.
 		The type of the property is quaternion.
 	**/
 	static var rotation(default, never) : Property<TODO> = new Property("rotation");
 	/**
-		game object scale (vector3)
+		Game object scale (vector3).
 		
 		The non-uniform scale of the game object. The type of the property is vector3.
 	**/
@@ -473,195 +473,195 @@ typedef GoMessageTransformResponse = {
 
 @:native("_G.go") extern class GoVariables {
 	/**
-		in-back
+		In-back.
 	**/
 	static var EASING_INBACK(default, never) : TODO;
 	/**
-		in-bounce
+		In-bounce.
 	**/
 	static var EASING_INBOUNCE(default, never) : TODO;
 	/**
-		in-circlic
+		In-circlic.
 	**/
 	static var EASING_INCIRC(default, never) : TODO;
 	/**
-		in-cubic
+		In-cubic.
 	**/
 	static var EASING_INCUBIC(default, never) : TODO;
 	/**
-		in-elastic
+		In-elastic.
 	**/
 	static var EASING_INELASTIC(default, never) : TODO;
 	/**
-		in-exponential
+		In-exponential.
 	**/
 	static var EASING_INEXPO(default, never) : TODO;
 	/**
-		in-out-back
+		In-out-back.
 	**/
 	static var EASING_INOUTBACK(default, never) : TODO;
 	/**
-		in-out-bounce
+		In-out-bounce.
 	**/
 	static var EASING_INOUTBOUNCE(default, never) : TODO;
 	/**
-		in-out-circlic
+		In-out-circlic.
 	**/
 	static var EASING_INOUTCIRC(default, never) : TODO;
 	/**
-		in-out-cubic
+		In-out-cubic.
 	**/
 	static var EASING_INOUTCUBIC(default, never) : TODO;
 	/**
-		in-out-elastic
+		In-out-elastic.
 	**/
 	static var EASING_INOUTELASTIC(default, never) : TODO;
 	/**
-		in-out-exponential
+		In-out-exponential.
 	**/
 	static var EASING_INOUTEXPO(default, never) : TODO;
 	/**
-		in-out-quadratic
+		In-out-quadratic.
 	**/
 	static var EASING_INOUTQUAD(default, never) : TODO;
 	/**
-		in-out-quartic
+		In-out-quartic.
 	**/
 	static var EASING_INOUTQUART(default, never) : TODO;
 	/**
-		in-out-quintic
+		In-out-quintic.
 	**/
 	static var EASING_INOUTQUINT(default, never) : TODO;
 	/**
-		in-out-sine
+		In-out-sine.
 	**/
 	static var EASING_INOUTSINE(default, never) : TODO;
 	/**
-		in-quadratic
+		In-quadratic.
 	**/
 	static var EASING_INQUAD(default, never) : TODO;
 	/**
-		in-quartic
+		In-quartic.
 	**/
 	static var EASING_INQUART(default, never) : TODO;
 	/**
-		in-quintic
+		In-quintic.
 	**/
 	static var EASING_INQUINT(default, never) : TODO;
 	/**
-		in-sine
+		In-sine.
 	**/
 	static var EASING_INSINE(default, never) : TODO;
 	/**
-		linear interpolation
+		Linear interpolation.
 	**/
 	static var EASING_LINEAR(default, never) : TODO;
 	/**
-		out-back
+		Out-back.
 	**/
 	static var EASING_OUTBACK(default, never) : TODO;
 	/**
-		out-bounce
+		Out-bounce.
 	**/
 	static var EASING_OUTBOUNCE(default, never) : TODO;
 	/**
-		out-circlic
+		Out-circlic.
 	**/
 	static var EASING_OUTCIRC(default, never) : TODO;
 	/**
-		out-cubic
+		Out-cubic.
 	**/
 	static var EASING_OUTCUBIC(default, never) : TODO;
 	/**
-		out-elastic
+		Out-elastic.
 	**/
 	static var EASING_OUTELASTIC(default, never) : TODO;
 	/**
-		out-exponential
+		Out-exponential.
 	**/
 	static var EASING_OUTEXPO(default, never) : TODO;
 	/**
-		out-in-back
+		Out-in-back.
 	**/
 	static var EASING_OUTINBACK(default, never) : TODO;
 	/**
-		out-in-bounce
+		Out-in-bounce.
 	**/
 	static var EASING_OUTINBOUNCE(default, never) : TODO;
 	/**
-		out-in-circlic
+		Out-in-circlic.
 	**/
 	static var EASING_OUTINCIRC(default, never) : TODO;
 	/**
-		out-in-cubic
+		Out-in-cubic.
 	**/
 	static var EASING_OUTINCUBIC(default, never) : TODO;
 	/**
-		out-in-elastic
+		Out-in-elastic.
 	**/
 	static var EASING_OUTINELASTIC(default, never) : TODO;
 	/**
-		out-in-exponential
+		Out-in-exponential.
 	**/
 	static var EASING_OUTINEXPO(default, never) : TODO;
 	/**
-		out-in-quadratic
+		Out-in-quadratic.
 	**/
 	static var EASING_OUTINQUAD(default, never) : TODO;
 	/**
-		out-in-quartic
+		Out-in-quartic.
 	**/
 	static var EASING_OUTINQUART(default, never) : TODO;
 	/**
-		out-in-quintic
+		Out-in-quintic.
 	**/
 	static var EASING_OUTINQUINT(default, never) : TODO;
 	/**
-		out-in-sine
+		Out-in-sine.
 	**/
 	static var EASING_OUTINSINE(default, never) : TODO;
 	/**
-		out-quadratic
+		Out-quadratic.
 	**/
 	static var EASING_OUTQUAD(default, never) : TODO;
 	/**
-		out-quartic
+		Out-quartic.
 	**/
 	static var EASING_OUTQUART(default, never) : TODO;
 	/**
-		out-quintic
+		Out-quintic.
 	**/
 	static var EASING_OUTQUINT(default, never) : TODO;
 	/**
-		out-sine
+		Out-sine.
 	**/
 	static var EASING_OUTSINE(default, never) : TODO;
 	/**
-		loop backward
+		Loop backward.
 	**/
 	static var PLAYBACK_LOOP_BACKWARD(default, never) : TODO;
 	/**
-		loop forward
+		Loop forward.
 	**/
 	static var PLAYBACK_LOOP_FORWARD(default, never) : TODO;
 	/**
-		ping pong loop
+		Ping pong loop.
 	**/
 	static var PLAYBACK_LOOP_PINGPONG(default, never) : TODO;
 	/**
-		no playback
+		No playback.
 	**/
 	static var PLAYBACK_NONE(default, never) : TODO;
 	/**
-		once backward
+		Once backward.
 	**/
 	static var PLAYBACK_ONCE_BACKWARD(default, never) : TODO;
 	/**
-		once forward
+		Once forward.
 	**/
 	static var PLAYBACK_ONCE_FORWARD(default, never) : TODO;
 	/**
-		once ping pong
+		Once ping pong.
 	**/
 	static var PLAYBACK_ONCE_PINGPONG(default, never) : TODO;
 }

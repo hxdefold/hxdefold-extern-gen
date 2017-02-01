@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.push") extern class Push {
 	/**
-		Cancel a scheduled local push notification
+		Cancel a scheduled local push notification.
 		
 		Use this function to cancel a previously scheduled local push notification. The
 		notification is identified by a numeric id as returned by +push.schedule()+.
@@ -11,7 +11,7 @@ package defold;
 	**/
 	static function cancel(id:TODO):TODO;
 	/**
-		Retrieve data on all scheduled local push notifications
+		Retrieve data on all scheduled local push notifications.
 		
 		Returns a table with all data associated with all scheduled local push notifications.
 		The table contains key, value pairs where the key is the push notification id and the
@@ -20,7 +20,7 @@ package defold;
 	**/
 	static function get_all_scheduled():TODO;
 	/**
-		Retrieve data on a scheduled local push notification
+		Retrieve data on a scheduled local push notification.
 		
 		Returns a table with all data associated with a specified local push notification.
 		The notification is identified by a numeric id as returned by +push.schedule()+.
@@ -29,7 +29,7 @@ package defold;
 	**/
 	static function get_scheduled(id:TODO):TODO;
 	/**
-		Register for push notifications
+		Register for push notifications.
 		
 		Send a request for push notifications. Note that the notifications table parameter
 		is iOS only and will be ignored on Android.
@@ -39,7 +39,7 @@ package defold;
 	**/
 	static function register(notifications:TODO, callback:TODO):TODO;
 	/**
-		Schedule a local push notification to be triggered at a specific time in the future
+		Schedule a local push notification to be triggered at a specific time in the future.
 		
 		Local push notifications are scheduled with this function.
 		The returned `id` value is uniquely identifying the scheduled notification
@@ -68,7 +68,7 @@ package defold;
 	**/
 	static function schedule(time:TODO, title:TODO, alert:TODO, payload:TODO, notification_settings:TODO):TODO;
 	/**
-		set badge icon count
+		Set badge icon count.
 		
 		Set the badge count for application icon.
 		NOTE: This function is only available on iOS.
@@ -77,7 +77,7 @@ package defold;
 	**/
 	static function set_badge_count(count:TODO):TODO;
 	/**
-		set push listener
+		Set push listener.
 		
 		The listener callback has the following signature: function(self, payload, origin, activated) where payload is a table
 		with the push payload, origin is either ORIGIN_LOCAL or ORIGIN_REMOTE, and activated is either true or false depending
@@ -90,23 +90,23 @@ package defold;
 
 @:native("_G.push") extern class PushVariables {
 	/**
-		alert notification type
+		Alert notification type.
 	**/
 	static var NOTIFICATION_ALERT(default, never) : TODO;
 	/**
-		badge notification type
+		Badge notification type.
 	**/
 	static var NOTIFICATION_BADGE(default, never) : TODO;
 	/**
-		sound notification type
+		Sound notification type.
 	**/
 	static var NOTIFICATION_SOUND(default, never) : TODO;
 	/**
-		local push origin
+		Local push origin.
 	**/
 	static var ORIGIN_LOCAL(default, never) : TODO;
 	/**
-		remote push origin
+		Remote push origin.
 	**/
 	static var ORIGIN_REMOTE(default, never) : TODO;
 }

@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.vmath") extern class Vmath {
 	/**
-		calculates the conjugate of a quaternion
+		Calculates the conjugate of a quaternion.
 		
 		Calculates the conjugate of a quaternion. The result is a
 		quaternion with the same magnitudes but with the sign of
@@ -14,7 +14,7 @@ package defold;
 	**/
 	static function conj(q:TODO):TODO;
 	/**
-		calculates the cross-product of two vectors
+		Calculates the cross-product of two vectors.
 		
 		Given two linearly independent vectors P and Q, the cross product,
 		P &#x00D7; Q, is a vector that is perpendicular to both P and Q and
@@ -29,7 +29,7 @@ package defold;
 	**/
 	static function cross(v1:TODO, v2:TODO):TODO;
 	/**
-		calculates the dot-product of two vectors
+		Calculates the dot-product of two vectors.
 		
 		The returned value is a scalar defined as:
 		
@@ -46,7 +46,7 @@ package defold;
 	**/
 	static function dot(v1:TODO, v1:TODO):TODO;
 	/**
-		calculates the inverse matrix.
+		Calculates the inverse matrix..
 		
 		The resulting matrix is the inverse of the supplied matrix.
 		
@@ -59,7 +59,7 @@ package defold;
 	**/
 	static function inv(m:TODO):TODO;
 	/**
-		calculates the vector length
+		Calculates the vector length.
 		
 		Returns the length of the supplied vector.
 		
@@ -67,7 +67,7 @@ package defold;
 	**/
 	static function length(v:TODO):TODO;
 	/**
-		calculates the squared vector length
+		Calculates the squared vector length.
 		
 		Returns the squared length of the supplied vector.
 		
@@ -75,7 +75,7 @@ package defold;
 	**/
 	static function length_sqr(v:TODO):TODO;
 	/**
-		lerps between two vectors
+		Lerps between two vectors.
 		
 		Linearly interpolate between two vectors. The function
 		treats the vectors as positions and interpolates between
@@ -90,7 +90,7 @@ package defold;
 	**/
 	static function lerp(t:TODO, v1:TODO, v2:TODO):TODO;
 	/**
-		lerps between two quaternions
+		Lerps between two quaternions.
 		
 		Linearly interpolate between two quaternions. Linear
 		interpolation of rotations are only useful for small
@@ -105,7 +105,7 @@ package defold;
 	**/
 	static function lerp(t:TODO, q1:TODO, q2:TODO):TODO;
 	/**
-		lerps between two numbers
+		Lerps between two numbers.
 		
 		Linearly interpolate between two values. Lerp is useful
 		to describe transitions from one value to another over time.
@@ -118,14 +118,14 @@ package defold;
 	**/
 	static function lerp(t:TODO, n1:TODO, n2:TODO):TODO;
 	/**
-		creates a new identity matrix
+		Creates a new identity matrix.
 		
 		The resulting identity matrix describes a transform with
 		no translation or rotation.
 	**/
 	static function matrix4():TODO;
 	/**
-		creates a new matrix from another existing matrix
+		Creates a new matrix from another existing matrix.
 		
 		Creates a new matrix with all components set to the
 		corresponding values from the supplied matrix. I.e.
@@ -135,7 +135,7 @@ package defold;
 	**/
 	static function matrix4(m:TODO):TODO;
 	/**
-		creates a matrix from an axis and an angle
+		Creates a matrix from an axis and an angle.
 		
 		The resulting matrix describes a rotation around the axis by the specified angle.
 		
@@ -144,7 +144,7 @@ package defold;
 	**/
 	static function matrix4_axis_angle(v:TODO, angle:TODO):TODO;
 	/**
-		creates a matrix from a quaternion
+		Creates a matrix from a quaternion.
 		
 		The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).
 		
@@ -152,7 +152,7 @@ package defold;
 	**/
 	static function matrix4_from_quat(q:TODO):TODO;
 	/**
-		creates a frustum matrix
+		Creates a frustum matrix.
 		
 		Constructs a frustum matrix from the given values. The left, right,
 		top and bottom coordinates of the view cone are expressed as distances
@@ -168,7 +168,7 @@ package defold;
 	**/
 	static function matrix4_frustum(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
 	/**
-		creates a look-at view matrix
+		Creates a look-at view matrix.
 		
 		The resulting matrix is created from the supplied look-at parameters.
 		This is useful for constructing a view matrix for a camera or
@@ -180,7 +180,7 @@ package defold;
 	**/
 	static function matrix4_look_at(eye:TODO, look_at:TODO, up:TODO):TODO;
 	/**
-		creates an orthographic projection matrix
+		Creates an orthographic projection matrix.
 		
 		Creates an orthographic projection matrix.
 		This is useful to construct a projection matrix for a camera or rendering in general.
@@ -194,7 +194,7 @@ package defold;
 	**/
 	static function matrix4_orthographic(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
 	/**
-		creates a perspective projection matrix
+		Creates a perspective projection matrix.
 		
 		Creates a perspective projection matrix.
 		This is useful to construct a projection matrix for a camera or rendering in general.
@@ -206,7 +206,7 @@ package defold;
 	**/
 	static function matrix4_perspective(fov:TODO, aspect:TODO, near:TODO, far:TODO):TODO;
 	/**
-		creates a matrix from rotation around x-axis
+		Creates a matrix from rotation around x-axis.
 		
 		The resulting matrix describes a rotation around the x-axis
 		by the specified angle.
@@ -215,7 +215,7 @@ package defold;
 	**/
 	static function matrix4_rotation_x(angle:TODO):TODO;
 	/**
-		creates a matrix from rotation around y-axis
+		Creates a matrix from rotation around y-axis.
 		
 		The resulting matrix describes a rotation around the y-axis
 		by the specified angle.
@@ -224,7 +224,7 @@ package defold;
 	**/
 	static function matrix4_rotation_y(angle:TODO):TODO;
 	/**
-		creates a matrix from rotation around z-axis
+		Creates a matrix from rotation around z-axis.
 		
 		The resulting matrix describes a rotation around the z-axis
 		by the specified angle.
@@ -233,7 +233,7 @@ package defold;
 	**/
 	static function matrix4_rotation_z(angle:TODO):TODO;
 	/**
-		normalizes a vector
+		Normalizes a vector.
 		
 		Normalizes a vector, i.e. returns a new vector with the same
 		direction as the input vector, but with length 1.
@@ -245,7 +245,7 @@ package defold;
 	**/
 	static function normalize(v:TODO):TODO;
 	/**
-		calculates the inverse of an ortho-normal matrix.
+		Calculates the inverse of an ortho-normal matrix..
 		
 		The resulting matrix is the inverse of the supplied matrix.
 		The supplied matrix has to be an ortho-normal matrix, e.g.
@@ -258,7 +258,7 @@ package defold;
 	**/
 	static function ortho_inv(m:TODO):TODO;
 	/**
-		projects a vector onto another vector
+		Projects a vector onto another vector.
 		
 		Calculates the extent the projection of the first vector onto the second.
 		The returned value is a scalar p defined as:
@@ -272,7 +272,7 @@ package defold;
 	**/
 	static function project(v1:TODO, v2:TODO):TODO;
 	/**
-		creates a new identity quaternion
+		Creates a new identity quaternion.
 		
 		Creates a new identity quaternion. The identity
 		quaternion is equal to:
@@ -281,7 +281,7 @@ package defold;
 	**/
 	static function quat():TODO;
 	/**
-		creates a new quaternion from another existing quaternion
+		Creates a new quaternion from another existing quaternion.
 		
 		Creates a new quaternion with all components set to the
 		corresponding values from the supplied quaternion. I.e.
@@ -291,7 +291,7 @@ package defold;
 	**/
 	static function quat(q:TODO):TODO;
 	/**
-		creates a new quaternion from its coordinates
+		Creates a new quaternion from its coordinates.
 		
 		Creates a new quaternion with the components set
 		according to the supplied parameter values.
@@ -303,7 +303,7 @@ package defold;
 	**/
 	static function quat(x:TODO, y:TODO, z:TODO, w:TODO):TODO;
 	/**
-		creates a quaternion to rotate around a unit-length vector
+		Creates a quaternion to rotate around a unit-length vector.
 		
 		The resulting quaternion describes a rotation of `angle`
 		radians around the axis described by the unit length vector `v`.
@@ -313,7 +313,7 @@ package defold;
 	**/
 	static function quat_axis_angle(v:TODO, angle:TODO):TODO;
 	/**
-		creates a quaternion from three base unit length vectors
+		Creates a quaternion from three base unit length vectors.
 		
 		The resulting quaternion describes the rotation from the
 		identity quaternion (no rotation) to the coordinate system
@@ -325,7 +325,7 @@ package defold;
 	**/
 	static function quat_basis(x:TODO, y:TODO, z:TODO):TODO;
 	/**
-		creates a quaternion to rotate between two unit length vectors
+		Creates a quaternion to rotate between two unit length vectors.
 		
 		The resulting quaternion describes the rotation that,
 		if applied to the first vector, would rotate the first
@@ -339,7 +339,7 @@ package defold;
 	**/
 	static function quat_from_to(v1:TODO, v2:TODO):TODO;
 	/**
-		creates a quaternion from rotation around x-axis
+		Creates a quaternion from rotation around x-axis.
 		
 		The resulting quaternion describes a rotation of `angle`
 		radians around the x-axis.
@@ -348,7 +348,7 @@ package defold;
 	**/
 	static function quat_rotation_x(angle:TODO):TODO;
 	/**
-		creates a quaternion from rotation around y-axis
+		Creates a quaternion from rotation around y-axis.
 		
 		The resulting quaternion describes a rotation of `angle`
 		radians around the y-axis.
@@ -357,7 +357,7 @@ package defold;
 	**/
 	static function quat_rotation_y(angle:TODO):TODO;
 	/**
-		creates a quaternion from rotation around z-axis
+		Creates a quaternion from rotation around z-axis.
 		
 		The resulting quaternion describes a rotation of `angle`
 		radians around the z-axis.
@@ -366,7 +366,7 @@ package defold;
 	**/
 	static function quat_rotation_z(angle:TODO):TODO;
 	/**
-		rotates a vector by a quaternion
+		Rotates a vector by a quaternion.
 		
 		Returns a new vector from the supplied vector that is
 		rotated by the rotation described by the supplied
@@ -377,7 +377,7 @@ package defold;
 	**/
 	static function rotate(q:TODO, v:TODO):TODO;
 	/**
-		slerps between two vectors
+		Slerps between two vectors.
 		
 		Spherically interpolates between two vectors. The difference to
 		lerp is that slerp treats the vectors as directions instead of
@@ -397,7 +397,7 @@ package defold;
 	**/
 	static function slerp(t:TODO, v1:TODO, v2:TODO):TODO;
 	/**
-		slerps between two quaternions
+		Slerps between two quaternions.
 		
 		Slerp travels the torque-minimal path maintaining constant
 		velocity, which means it travels along the straightest path along
@@ -415,19 +415,19 @@ package defold;
 	**/
 	static function slerp(t:TODO, q1:TODO, q2:TODO):TODO;
 	/**
-		creates a new vector from a table of values
+		Creates a new vector from a table of values.
 		
 		@param t table of numbers
 	**/
 	static function vector(t:TODO):TODO;
 	/**
-		creates a new zero vector
+		Creates a new zero vector.
 		
 		Creates a new zero vector with all components set to 0.
 	**/
 	static function vector3():TODO;
 	/**
-		creates a new vector from scalar value
+		Creates a new vector from scalar value.
 		
 		Creates a new vector with all components set to the
 		supplied scalar value.
@@ -436,7 +436,7 @@ package defold;
 	**/
 	static function vector3(n:TODO):TODO;
 	/**
-		creates a new vector from another existing vector
+		Creates a new vector from another existing vector.
 		
 		Creates a new vector with all components set to the
 		corresponding values from the supplied vector. I.e.
@@ -446,7 +446,7 @@ package defold;
 	**/
 	static function vector3(v:TODO):TODO;
 	/**
-		creates a new vector from its coordinates
+		Creates a new vector from its coordinates.
 		
 		Creates a new vector with the components set to the
 		supplied values.
@@ -457,13 +457,13 @@ package defold;
 	**/
 	static function vector3(x:TODO, y:TODO, z:TODO):TODO;
 	/**
-		creates a new zero vector
+		Creates a new zero vector.
 		
 		Creates a new zero vector with all components set to 0.
 	**/
 	static function vector4():TODO;
 	/**
-		creates a new vector from scalar value
+		Creates a new vector from scalar value.
 		
 		Creates a new vector with all components set to the
 		supplied scalar value.
@@ -472,7 +472,7 @@ package defold;
 	**/
 	static function vector4(n:TODO):TODO;
 	/**
-		creates a new vector from another existing vector
+		Creates a new vector from another existing vector.
 		
 		Creates a new vector with all components set to the
 		corresponding values from the supplied vector. I.e.
@@ -482,7 +482,7 @@ package defold;
 	**/
 	static function vector4(v:TODO):TODO;
 	/**
-		creates a new vector from its coordinates
+		Creates a new vector from its coordinates.
 		
 		Creates a new vector with the components set to the
 		supplied values.

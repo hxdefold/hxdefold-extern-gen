@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.collectionfactory") extern class Collectionfactory {
 	/**
-		Spawn a new instance of a collection into the existing collection.
+		Spawn a new instance of a collection into the existing collection..
 		
 		The URL identifies the collectionfactory component that should do the spawning.
 		

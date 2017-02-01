@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.msg") extern class Msg {
 	/**
-		posts a message to a receiving URL
+		Posts a message to a receiving URL.
 		
 		@param receiver The receiver must be a string in URL-format, a URL object, a hashed string or nil. Nil is a short way of sending the message back to the calling script. (string|url|hash|nil)
 		@param message_id The id must be a string or a hashed string. (string|hash)
@@ -10,13 +10,13 @@ package defold;
 	**/
 	static function post(receiver:TODO, message_id:TODO, ?message:TODO):TODO;
 	/**
-		creates a new URL
+		Creates a new URL.
 		
 		This is equivalent to msg.url("").
 	**/
 	static function url():TODO;
 	/**
-		creates a new URL from a string
+		Creates a new URL from a string.
 		
 		The format of the string must be `"[socket:][path][#fragment]"`, which is similar to a http URL.
 		When addressing instances, `socket` is the name of the collection. `path` is the id of the instance,
@@ -26,7 +26,7 @@ package defold;
 	**/
 	static function url(urlstring:TODO):TODO;
 	/**
-		creates a new URL from separate arguments
+		Creates a new URL from separate arguments.
 		
 		@param socket socket of the URL (string|socket)
 		@param path path of the URL (string|hash)

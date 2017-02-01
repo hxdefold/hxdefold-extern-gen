@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.iap") extern class Iap {
 	/**
-		buy product
+		Buy product.
 		
 		Calling iap.finish is required on a successful transaction if auto_finish_transactions is disabled in project settings.
 		
@@ -15,7 +15,7 @@ package defold;
 	**/
 	static function buy(id:TODO, options:TODO):TODO;
 	/**
-		finish buying product
+		Finish buying product.
 		
 		Explicitly finish a product transaction.
 		
@@ -26,22 +26,22 @@ package defold;
 	**/
 	static function finish(transaction:TODO):TODO;
 	/**
-		get current provider id
+		Get current provider id.
 	**/
 	static function get_provider_id():TODO;
 	/**
-		list in-app products
+		List in-app products.
 		
 		@param ids table (array) to get information about
 		@param callback result callback
 	**/
 	static function list(ids:TODO, callback:TODO):TODO;
 	/**
-		restore products (non-consumable)
+		Restore products (non-consumable).
 	**/
 	static function restore():TODO;
 	/**
-		set transaction listener
+		Set transaction listener.
 		
 		The listener callback has the following signature: function(self, transaction, error) where transaction is a table
 		describing the transaction and error is a table. The error parameter is nil on success.
@@ -62,31 +62,31 @@ package defold;
 
 @:native("_G.iap") extern class IapVariables {
 	/**
-		unspecified error reason
+		Unspecified error reason.
 	**/
 	static var REASON_UNSPECIFIED(default, never) : TODO;
 	/**
-		user canceled reason
+		User canceled reason.
 	**/
 	static var REASON_USER_CANCELED(default, never) : TODO;
 	/**
-		transaction failed state
+		Transaction failed state.
 	**/
 	static var TRANS_STATE_FAILED(default, never) : TODO;
 	/**
-		transaction purchased state
+		Transaction purchased state.
 	**/
 	static var TRANS_STATE_PURCHASED(default, never) : TODO;
 	/**
-		transaction purchasing state, intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent.
+		Transaction purchasing state, intermediate mode followed by TRANS_STATE_PURCHASED. Store provider support dependent..
 	**/
 	static var TRANS_STATE_PURCHASING(default, never) : TODO;
 	/**
-		transaction restored state. Only available on store providers supporting restoring purchases.
+		Transaction restored state. Only available on store providers supporting restoring purchases..
 	**/
 	static var TRANS_STATE_RESTORED(default, never) : TODO;
 	/**
-		transaction unverified state, requires verification of purchase
+		Transaction unverified state, requires verification of purchase.
 	**/
 	static var TRANS_STATE_UNVERIFIED(default, never) : TODO;
 }

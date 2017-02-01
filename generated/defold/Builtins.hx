@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G") extern class Builtins {
 	/**
-		hashes a string
+		Hashes a string.
 		
 		All ids in the engine are represented as hashes, so a string needs to be hashed
 		before it can be compared with an id.
@@ -11,7 +11,7 @@ package defold;
 	**/
 	static function hash(s:TODO):TODO;
 	/**
-		get hex representation of a hash value as a string
+		Get hex representation of a hash value as a string.
 		
 		The returned string is always padded with leading zeros
 		
@@ -19,7 +19,7 @@ package defold;
 	**/
 	static function hash_to_hex(h:TODO):TODO;
 	/**
-		pretty printing
+		Pretty printing.
 		
 		Pretty printing of lua values
 		

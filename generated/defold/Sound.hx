@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.sound") extern class Sound {
 	/**
-		get mixer group gain
+		Get mixer group gain.
 		
 		Get mixer group gain
 		
@@ -12,7 +12,7 @@ package defold;
 	**/
 	static function get_group_gain(group:TODO):TODO;
 	/**
-		get mixer group name string
+		Get mixer group name string.
 		
 		Get a mixer group name as a string.
 		
@@ -22,13 +22,13 @@ package defold;
 	**/
 	static function get_group_name(group:TODO):TODO;
 	/**
-		get all mixer group names
+		Get all mixer group names.
 		
 		Get all mixer group names
 	**/
 	static function get_groups():TODO;
 	/**
-		get peak gain value from mixer group
+		Get peak gain value from mixer group.
 		
 		Get peak value from mixer group.
 		
@@ -40,7 +40,7 @@ package defold;
 	**/
 	static function get_peak(group:TODO, window:TODO):TODO;
 	/**
-		get rms value from mixer group
+		Get rms value from mixer group.
 		
 		Get RMS (Root Mean Square) value from mixer group.
 		
@@ -52,20 +52,20 @@ package defold;
 	**/
 	static function get_rms(group:TODO, window:TODO):TODO;
 	/**
-		check if background music is playing
+		Check if background music is playing.
 		
 		Checks if background music is playing, e.g. from iTunes
 	**/
 	static function is_music_playing():TODO;
 	/**
-		check if a phone call is active
+		Check if a phone call is active.
 		
 		Checks if a phone call is active. If there is an active phone call all
 		other sounds will be muted until the phone call is finished.
 	**/
 	static function is_phone_call_active():TODO;
 	/**
-		set mixer group gain
+		Set mixer group gain.
 		
 		Set mixer group gain
 		
@@ -109,19 +109,19 @@ typedef SoundMessageSetGain = {
 **/
 @:publicFields class SoundMessages {
 	/**
-		plays a sound
+		Plays a sound.
 		
 		Post this message to a sound-component to make it play its sound. Multiple voices is support. The limit is set to 32 voices per sound component.
 	**/
 	static var play_sound(default, never) : Message<SoundMessagePlaySound> = new Message("play_sound");
 	/**
-		set sound gain
+		Set sound gain.
 		
 		Post this message to a sound-component to set gain on all active playing voices.
 	**/
 	static var set_gain(default, never) : Message<SoundMessageSetGain> = new Message("set_gain");
 	/**
-		stop a playing a sound(s)
+		Stop a playing a sound(s).
 		
 		Post this message to a sound-component to make it stop playing all active voices
 	**/

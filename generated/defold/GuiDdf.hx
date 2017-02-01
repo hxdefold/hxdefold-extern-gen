@@ -19,7 +19,7 @@ typedef GuiDdfMessageLayoutChanged = {
 **/
 @:publicFields class GuiDdfMessages {
 	/**
-		reports a layout change
+		Reports a layout change.
 		
 		This message is broadcast to every GUI component when a layout change has been initiated
 		on device.

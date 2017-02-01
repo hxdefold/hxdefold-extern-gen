@@ -27,7 +27,7 @@ typedef CameraMessageSetCamera = {
 **/
 @:publicFields class CameraMessages {
 	/**
-		makes the receiving camera become the active camera
+		Makes the receiving camera become the active camera.
 		
 		Post this message to a camera-component to activate it.
 		
@@ -38,14 +38,14 @@ typedef CameraMessageSetCamera = {
 	**/
 	static var acquire_camera_focus(default, never) : Message<Void> = new Message("acquire_camera_focus");
 	/**
-		deactivates the receiving camera
+		Deactivates the receiving camera.
 		
 		Post this message to a camera-component to deactivate it. The camera is then removed from the active cameras.
 		See `acquire_camera_focus` for more information how the active cameras are used in rendering.
 	**/
 	static var release_camera_focus(default, never) : Message<Void> = new Message("release_camera_focus");
 	/**
-		sets camera properties
+		Sets camera properties.
 		
 		Post this message to a camera-component to set its properties at run-time.
 	**/

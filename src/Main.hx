@@ -178,7 +178,7 @@ class Main {
                             if (s != null && s != "") fieldDoc.push(s);
                         }
 
-                        addDoc(prepareDoc(element.brief));
+                        addDoc(prepareDoc(capitalize(element.brief) + "."));
                         addDoc(prepareDoc(element.description));
                         addDoc(prepareDoc(element.note));
 

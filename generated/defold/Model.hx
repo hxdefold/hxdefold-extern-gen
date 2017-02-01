@@ -2,13 +2,13 @@ package defold;
 
 @:native("_G.model") extern class Model {
 	/**
-		cancel all animation on a model
+		Cancel all animation on a model.
 		
 		@param url the model for which to cancel the animation (url)
 	**/
 	static function cancel(url:TODO):TODO;
 	/**
-		retrieve the game object corresponding to a model skeleton bone
+		Retrieve the game object corresponding to a model skeleton bone.
 		
 		The returned game object can be used for parenting and transform queries.
 		This function has complexity O(n), where n is the number of bones in the model skeleton.
@@ -20,7 +20,7 @@ package defold;
 	**/
 	static function get_go(url:TODO, bone_id:TODO):TODO;
 	/**
-		play an animation on a model
+		Play an animation on a model.
 		
 		@param url the model for which to play the animation (url)
 		@param anim_id id of the animation to play (string|hash)
@@ -41,7 +41,7 @@ package defold;
 	**/
 	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO):TODO;
 	/**
-		reset a shader constant for a model
+		Reset a shader constant for a model.
 		
 		The constant must be defined in the material assigned to the model.
 		Resetting a constant through this function implies that the value defined in the material will be used.
@@ -52,7 +52,7 @@ package defold;
 	**/
 	static function reset_constant(url:TODO, name:TODO):TODO;
 	/**
-		set a shader constant for a model component
+		Set a shader constant for a model component.
 		
 		The constant must be defined in the material assigned to the model.
 		Setting a constant through this function will override the value set for that constant in the material.
@@ -71,13 +71,13 @@ package defold;
 **/
 @:publicFields class ModelProperties {
 	/**
-		model cursor (number)
+		Model cursor (number).
 		
 		The normalized animation cursor. The type of the property is number.
 	**/
 	static var cursor(default, never) : Property<TODO> = new Property("cursor");
 	/**
-		model playback_rate (number)
+		Model playback_rate (number).
 		
 		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
 	**/

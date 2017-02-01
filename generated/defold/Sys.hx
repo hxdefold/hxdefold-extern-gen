@@ -2,14 +2,14 @@ package defold;
 
 @:native("_G.sys") extern class Sys {
 	/**
-		get application information
+		Get application information.
 		
 		Returns a table with the following members:
 		installed.
 	**/
 	static function get_application_info():TODO;
 	/**
-		get config value
+		Get config value.
 		
 		Get config value from the game.project configuration file.
 		
@@ -17,7 +17,7 @@ package defold;
 	**/
 	static function get_config(key:TODO):TODO;
 	/**
-		get config value with default value
+		Get config value with default value.
 		
 		Get config value from the game.project configuration file with default value
 		
@@ -26,25 +26,25 @@ package defold;
 	**/
 	static function get_config(key:TODO, default_value:TODO):TODO;
 	/**
-		get current network connectivity status
+		Get current network connectivity status.
 	**/
 	static function get_connectivity():TODO;
 	/**
-		get engine information
+		Get engine information.
 		
 		Returns a table with the following members:
 		version, engine_sha1.
 	**/
 	static function get_engine_info():TODO;
 	/**
-		enumerate network cards
+		Enumerate network cards.
 		
 		returns an array of tables with the following members:
 		name, address (ip-string), mac (hardware address, colon separated string), up (bool), running (bool). NOTE: ip and mac might be nil if not available
 	**/
 	static function get_ifaddrs():TODO;
 	/**
-		gets the save-file path
+		Gets the save-file path.
 		
 		The save-file path is operating system specific and is typically located under the users home directory.
 		
@@ -53,7 +53,7 @@ package defold;
 	**/
 	static function get_save_file(application_id:TODO, file_name:TODO):TODO;
 	/**
-		get system information
+		Get system information.
 		
 		Returns a table with the following members:
 		device_model, manufacturer, system_name, system_version, api_version, language, device_language, territory, gmt_offset (minutes), device_ident, ad_ident, ad_tracking_enabled and user_agent.
@@ -70,7 +70,7 @@ package defold;
 	**/
 	static function get_sys_info():TODO;
 	/**
-		loads a lua table from a file on disk
+		Loads a lua table from a file on disk.
 		
 		If the file exists, it must have been created by `sys.save` to be loaded.
 		
@@ -78,7 +78,7 @@ package defold;
 	**/
 	static function load(filename:TODO):TODO;
 	/**
-		loads resource from game data
+		Loads resource from game data.
 		
 		Loads a custom resource. Specify the full filename of the resource that you want
 		to load. When loaded, it is returned as a string.
@@ -96,7 +96,7 @@ package defold;
 	**/
 	static function load_resource(filename:TODO):TODO;
 	/**
-		open url in default application
+		Open url in default application.
 		
 		Open URL in default application, typically a browser
 		
@@ -104,7 +104,7 @@ package defold;
 	**/
 	static function open_url(url:TODO):TODO;
 	/**
-		saves a lua table to a file stored on disk
+		Saves a lua table to a file stored on disk.
 		
 		The table can later be loaded by `sys.load`.
 		Use `sys.get_save_file` to obtain a valid location for the file.
@@ -117,13 +117,13 @@ package defold;
 	**/
 	static function save(filename:TODO, table:TODO):TODO;
 	/**
-		set host to check for network connectivity against
+		Set host to check for network connectivity against.
 		
 		@param host hostname to check against (string)
 	**/
 	static function set_connectivity_host(host:TODO):TODO;
 	/**
-		set the error handler. The error handler is a function which is called whenever a lua runtime error occurs.
+		Set the error handler. The error handler is a function which is called whenever a lua runtime error occurs..
 		
 		@param error_handler the function to be called on error (function)
 	**/

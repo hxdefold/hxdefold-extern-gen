@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.tilemap") extern class Tilemap {
 	/**
-		get the bounds of a tile map
+		Get the bounds of a tile map.
 		
 		Get the bounds for a tile map. This function returns multiple values:
 		The lower left corner index x and y coordinates (1-indexed),
@@ -15,7 +15,7 @@ package defold;
 	**/
 	static function get_bounds(url:TODO):TODO;
 	/**
-		get a tile from a tile map
+		Get a tile from a tile map.
 		
 		Get the tile set at the specified position in the tilemap.
 		The position is identified by the tile index starting at origo
@@ -30,7 +30,7 @@ package defold;
 	**/
 	static function get_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO):TODO;
 	/**
-		reset a shader constant for a tile map
+		Reset a shader constant for a tile map.
 		
 		The constant must be defined in the material assigned to the tile map.
 		Resetting a constant through this function implies that the value defined in the material will be used.
@@ -41,7 +41,7 @@ package defold;
 	**/
 	static function reset_constant(url:TODO, name:TODO):TODO;
 	/**
-		set a shader constant for a tile map
+		Set a shader constant for a tile map.
 		
 		The constant must be defined in the material assigned to the tile map.
 		Setting a constant through this function will override the value set for that constant in the material.
@@ -54,7 +54,7 @@ package defold;
 	**/
 	static function set_constant(url:TODO, name:TODO, value:TODO):TODO;
 	/**
-		set a tile in a tile map
+		Set a tile in a tile map.
 		
 		Replace a tile in a tile map with a new tile.
 		The coordinates of the tiles are indexed so that the "first" tile just
@@ -119,7 +119,7 @@ typedef TilemapMessageSetTile = {
 **/
 @:publicFields class TilemapMessages {
 	/**
-		(DEPRECATED) changes a tile in a tile map
+		(DEPRECATED) changes a tile in a tile map.
 		
 		Send this message to a tile map component to change the tile in one of its cells.
 	**/

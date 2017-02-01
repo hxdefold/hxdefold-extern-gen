@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.crash") extern class Crash {
 	/**
-		read backtrace recorded in a loaded crash dump
+		Read backtrace recorded in a loaded crash dump.
 		
 		A table is returned containing the addresses of the call stack.
 		
@@ -10,7 +10,7 @@ package defold;
 	**/
 	static function get_backtrace(handle:TODO):TODO;
 	/**
-		read text blob recorded in a crash dump
+		Read text blob recorded in a crash dump.
 		
 		The format of read text blob is platform specific
 		and not guaranteed
@@ -20,7 +20,7 @@ package defold;
 	**/
 	static function get_extra_data(handle:TODO):TODO;
 	/**
-		get all loaded modules from when the crash occured
+		Get all loaded modules from when the crash occured.
 		
 		The function returns a table containing entries with sub-tables that
 		have 'name' and 'address' set for all loaded modules.
@@ -29,40 +29,40 @@ package defold;
 	**/
 	static function get_modules(handle:TODO):TODO;
 	/**
-		read signal number from a crash report
+		Read signal number from a crash report.
 		
 		@param handle crash dump handle (number)
 	**/
 	static function get_signum(handle:TODO):TODO;
 	/**
-		reads a system field from a loaded crash dump
+		Reads a system field from a loaded crash dump.
 		
 		@param handle crash dump handle (number)
 		@param index system field enum (number)
 	**/
 	static function get_sys_field(handle:TODO, index:TODO):TODO;
 	/**
-		reads user field from a loaded crash dump
+		Reads user field from a loaded crash dump.
 		
 		@param handle crash dump handle (number)
 		@param index user data slot index (number)
 	**/
 	static function get_user_field(handle:TODO, index:TODO):TODO;
 	/**
-		loads a previously written crash dump
+		Loads a previously written crash dump.
 		
 		The crash dump will be removed from disk upon a successful
 		load, so loading is one-shot.
 	**/
 	static function load_previous():TODO;
 	/**
-		releases a previously loaded crash dump
+		Releases a previously loaded crash dump.
 		
 		@param handle handle to loaded crash dump (number)
 	**/
 	static function release(handle:TODO):TODO;
 	/**
-		sets the file location for crash dumps
+		Sets the file location for crash dumps.
 		
 		Crashes occuring before the path is set will be stored to a default engine location.
 		
@@ -70,7 +70,7 @@ package defold;
 	**/
 	static function set_file_path(path:TODO):TODO;
 	/**
-		stores user-defined string value
+		Stores user-defined string value.
 		
 		Store a user value that will get written to a crash dump when
 		a crash occurs. This can be user id:s, breadcrumb data etc.
@@ -81,7 +81,7 @@ package defold;
 	**/
 	static function set_user_field(index:TODO, value:TODO):TODO;
 	/**
-		writes crash dump
+		Writes crash dump.
 		
 		Performs the same steps as if a crash had just occured but
 		allows the program to continue.
@@ -92,43 +92,43 @@ package defold;
 
 @:native("_G.crash") extern class CrashVariables {
 	/**
-		android build fingerprint
+		Android build fingerprint.
 	**/
 	static var SYSFIELD_ANDROID_BUILD_FINGERPRINT(default, never) : TODO;
 	/**
-		system device language as reported by sys.get_sys_info
+		System device language as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_DEVICE_LANGUAGE(default, never) : TODO;
 	/**
-		device manufacturer as reported by sys.get_sys_info
+		Device manufacturer as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_DEVICE_MANUFACTURER(default, never) : TODO;
 	/**
-		device model as reported by sys.get_sys_info
+		Device model as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_DEVICE_MODEL(default, never) : TODO;
 	/**
-		engine version as hash
+		Engine version as hash.
 	**/
 	static var SYSFIELD_ENGINE_HASH(default, never) : TODO;
 	/**
-		engine version as release number
+		Engine version as release number.
 	**/
 	static var SYSFIELD_ENGINE_VERSION(default, never) : TODO;
 	/**
-		system language as reported by sys.get_sys_info
+		System language as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_LANGUAGE(default, never) : TODO;
 	/**
-		system name as reported by sys.get_sys_info
+		System name as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_SYSTEM_NAME(default, never) : TODO;
 	/**
-		system version as reported by sys.get_sys_info
+		System version as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_SYSTEM_VERSION(default, never) : TODO;
 	/**
-		system territory as reported by sys.get_sys_info
+		System territory as reported by sys.get_sys_info.
 	**/
 	static var SYSFIELD_TERRITORY(default, never) : TODO;
 }

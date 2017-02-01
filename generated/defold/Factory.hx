@@ -2,7 +2,7 @@ package defold;
 
 @:native("_G.factory") extern class Factory {
 	/**
-		make a factory create a new game object
+		Make a factory create a new game object.
 		
 		The URL identifies which factory should create the game object.
 		If the game object is created inside of the frame (e.g. from an update callback), the game object will be created instantly, but none of its component will be updated in the same frame.

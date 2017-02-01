@@ -2,13 +2,13 @@ package defold;
 
 @:native("_G.window") extern class Window {
 	/**
-		Get the mode for screen dimming
+		Get the mode for screen dimming.
 		
 		The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction.
 	**/
 	static function get_dim_mode():TODO;
 	/**
-		Set the mode for screen dimming
+		Set the mode for screen dimming.
 		
 		The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction. The dimming mode will only affect the mobile device while the game is in focus on the device, but not when the game is running in the background.
 		
@@ -19,7 +19,7 @@ package defold;
 	**/
 	static function set_dim_mode(mode:TODO):TODO;
 	/**
-		Sets a window event listener
+		Sets a window event listener.
 		
 		Sets a window event listener.
 		
@@ -45,19 +45,19 @@ package defold;
 
 @:native("_G.window") extern class WindowVariables {
 	/**
-		dimming mode off
+		Dimming mode off.
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 	**/
 	static var DIMMING_OFF(default, never) : TODO;
 	/**
-		dimming mode on
+		Dimming mode on.
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 	**/
 	static var DIMMING_ON(default, never) : TODO;
 	/**
-		dimming mode unknown
+		Dimming mode unknown.
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 		This mode indicates that the dim mode can't be determined, or that the platform doesn't support dimming.
