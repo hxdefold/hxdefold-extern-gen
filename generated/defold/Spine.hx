@@ -88,6 +88,57 @@ package defold;
 	static function set_ik_target_position(url:TODO, ik_constraint_id:TODO, position:TODO):TODO;
 }
 
+/**
+	Data for the `SpineMessages.spine_animation_done` message.
+**/
+typedef SpineMessageSpineAnimationDone = {
+	/**
+		the id of the completed animation (hash)
+	**/
+	var animation_id : TODO;
+	/**
+		the playback mode of the completed animation (constant)
+	**/
+	var playback : TODO;
+}
+
+/**
+	Data for the `SpineMessages.spine_event` message.
+**/
+typedef SpineMessageSpineEvent = {
+	/**
+		the id of the event (hash)
+	**/
+	var event_id : TODO;
+	/**
+		the id of the animation (hash)
+	**/
+	var animation_id : TODO;
+	/**
+		the time of the event in seconds, relative to the start of the animation (number)
+	**/
+	var t : TODO;
+	/**
+		the blend weight (between 0.0-1.0) of the current animation at time t (number)
+	**/
+	var blend_weight : TODO;
+	/**
+		user defined integer value for the event (number)
+	**/
+	var integer : TODO;
+	/**
+		user defined floating point value for the event (number)
+	**/
+	var float : TODO;
+	/**
+		user defined string value for the event (hash)
+	**/
+	var string : TODO;
+}
+
+/**
+	Messages related to the `Spine` module.
+**/
 @:publicFields class SpineMessages {
 	/**
 		reports the completion of a Spine animation
@@ -100,40 +151,32 @@ package defold;
 		  * go.PLAYBACK_ONCE_FORWARD
 		  * go.PLAYBACK_ONCE_BACKWARD
 		  * go.PLAYBACK_ONCE_PINGPONG
-		
-		@param animation_id the id of the completed animation (hash)
-		@param playback the playback mode of the completed animation (constant)
 	**/
-	static var SpineAnimationDone(default, never) : Message<{ var animation_id : TODO; var playback : TODO; }> = new Message("spine_animation_done");
+	static var spine_animation_done(default, never) : Message<SpineMessageSpineAnimationDone> = new Message("spine_animation_done");
 	/**
 		reports an incoming event from the Spine animation
 		
 		This message is sent when Spine animation playback fires events. These events
 		has to be defined on the animation track in the Spine animation editor. An event
 		can contain custom values expressed in the fields "integer", "float" and "string".
-		
-		@param event_id the id of the event (hash)
-		@param animation_id the id of the animation (hash)
-		@param t the time of the event in seconds, relative to the start of the animation (number)
-		@param blend_weight the blend weight (between 0.0-1.0) of the current animation at time t (number)
-		@param integer user defined integer value for the event (number)
-		@param float user defined floating point value for the event (number)
-		@param string user defined string value for the event (hash)
 	**/
-	static var SpineEvent(default, never) : Message<{ var event_id : TODO; var animation_id : TODO; var t : TODO; var blend_weight : TODO; var integer : TODO; var float : TODO; var string : TODO; }> = new Message("spine_event");
+	static var spine_event(default, never) : Message<SpineMessageSpineEvent> = new Message("spine_event");
 }
 
+/**
+	Properties related to the `Spine` module.
+**/
 @:publicFields class SpineProperties {
 	/**
 		spine cursor (number)
 		
 		The normalized animation cursor. The type of the property is number.
 	**/
-	static var Cursor(default, never) : Property<TODO> = new Property("cursor");
+	static var cursor(default, never) : Property<TODO> = new Property("cursor");
 	/**
 		spine playback_rate (number)
 		
 		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
 	**/
-	static var PlaybackRate(default, never) : Property<TODO> = new Property("playback_rate");
+	static var playback_rate(default, never) : Property<TODO> = new Property("playback_rate");
 }

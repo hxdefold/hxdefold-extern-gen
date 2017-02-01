@@ -1,5 +1,22 @@
 package defold;
 
+/**
+	Data for the `CollectionProxyMessages.set_time_step` message.
+**/
+typedef CollectionProxyMessageSetTimeStep = {
+	/**
+		time-step scaling factor (number)
+	**/
+	var factor : TODO;
+	/**
+		time-step mode: 0 for continuous and 1 for discrete (number)
+	**/
+	var mode : TODO;
+}
+
+/**
+	Messages related to the `CollectionProxy` module.
+**/
 @:publicFields class CollectionProxyMessages {
 	/**
 		tells a collection proxy to start asynchronous loading of the referenced collection
@@ -9,26 +26,26 @@ package defold;
 		
 		A loaded collection must be initialized (message `init`) and enabled (message `enable`) in order to be simulated and drawn.
 	**/
-	static var AsyncLoad(default, never) : Message<{ }> = new Message("async_load");
+	static var async_load(default, never) : Message<Void> = new Message("async_load");
 	/**
 		tells a collection proxy to disable the referenced collection
 		
 		Post this message to a collection-proxy-component to disable the referenced collection, which in turn disables the contained game objects and components.
 	**/
-	static var Disable(default, never) : Message<{ }> = new Message("disable");
+	static var disable(default, never) : Message<Void> = new Message("disable");
 	/**
 		tells a collection proxy to enable the referenced collection
 		
 		Post this message to a collection-proxy-component to enable the referenced collection, which in turn enables the contained game objects and components.
 		If the referenced collection was not initialized prior to this call, it will automatically be initialized.
 	**/
-	static var Enable(default, never) : Message<{ }> = new Message("enable");
+	static var enable(default, never) : Message<Void> = new Message("enable");
 	/**
 		tells a collection proxy to finalize the referenced collection
 		
 		Post this message to a collection-proxy-component to finalize the referenced collection, which in turn finalizes the contained game objects and components.
 	**/
-	static var Final(default, never) : Message<{ }> = new Message("final");
+	static var final(default, never) : Message<Void> = new Message("final");
 	/**
 		tells a collection proxy to initialize the loaded collection
 		
@@ -36,7 +53,7 @@ package defold;
 		Sending `enable` to an uninitialized collection proxy automatically initializes it.
 		The `init` message simply provides a higher level of control.
 	**/
-	static var Init(default, never) : Message<{ }> = new Message("init");
+	static var init(default, never) : Message<Void> = new Message("init");
 	/**
 		tells a collection proxy to start loading the referenced collection
 		
@@ -45,21 +62,21 @@ package defold;
 		
 		A loaded collection must be initialized (message `init`) and enabled (message `enable`) in order to be simulated and drawn.
 	**/
-	static var Load(default, never) : Message<{ }> = new Message("load");
+	static var load(default, never) : Message<Void> = new Message("load");
 	/**
 		reports that a collection proxy has loaded its referenced collection
 		
 		This message is sent back to the script that initiated a collection proxy load when the referenced
 		collection is loaded. See documentation for "load" for examples how to use.
 	**/
-	static var ProxyLoaded(default, never) : Message<{ }> = new Message("proxy_loaded");
+	static var proxy_loaded(default, never) : Message<Void> = new Message("proxy_loaded");
 	/**
 		reports that a collection proxy has unloaded its referenced collection
 		
 		This message is sent back to the script that initiated an unload with a collection proxy when
 		the referenced collection is unloaded. See documentation for "unload" for examples how to use.
 	**/
-	static var ProxyUnloaded(default, never) : Message<{ }> = new Message("proxy_unloaded");
+	static var proxy_unloaded(default, never) : Message<Void> = new Message("proxy_unloaded");
 	/**
 		sets the time-step for update
 		
@@ -73,16 +90,13 @@ package defold;
 		to simulate pulses. E.g. if `factor` is set to `0.1` the time-step would be 0 for 9 frames, then be 1/60 for one
 		frame, 0 for 9 frames, and so on. The result in practice is that the game looks like it's updated at a much lower frequency than 60 Hz,
 		which can be useful for debugging when each frame needs to be inspected.
-		
-		@param factor time-step scaling factor (number)
-		@param mode time-step mode: 0 for continuous and 1 for discrete (number)
 	**/
-	static var SetTimeStep(default, never) : Message<{ var factor : TODO; var mode : TODO; }> = new Message("set_time_step");
+	static var set_time_step(default, never) : Message<CollectionProxyMessageSetTimeStep> = new Message("set_time_step");
 	/**
 		tells a collection proxy to start unloading the referenced collection
 		
 		Post this message to a collection-proxy-component to start the unloading of the referenced collection.
 		When the unloading has completed, the message `proxy_unloaded` will be sent back to the script.
 	**/
-	static var Unload(default, never) : Message<{ }> = new Message("unload");
+	static var unload(default, never) : Message<Void> = new Message("unload");
 }

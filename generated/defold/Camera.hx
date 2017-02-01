@@ -1,5 +1,30 @@
 package defold;
 
+/**
+	Data for the `CameraMessages.set_camera` message.
+**/
+typedef CameraMessageSetCamera = {
+	/**
+		Aspect ratio of the screen (width divided by height)
+	**/
+	var aspect_ratio : TODO;
+	/**
+		Field of view of the lens, measured as the angle between the right and left edge (radians)
+	**/
+	var fov : TODO;
+	/**
+		Position of the near clipping plane (distance from camera along relative z)
+	**/
+	var near_z : TODO;
+	/**
+		Position of the far clipping plane (distance from camera along relative z)
+	**/
+	var far_z : TODO;
+}
+
+/**
+	Messages related to the `Camera` module.
+**/
 @:publicFields class CameraMessages {
 	/**
 		makes the receiving camera become the active camera
@@ -11,23 +36,18 @@ package defold;
 		
 		The reason it is called "camera focus" is the similarity to how acquiring input focus works (see `acquire_input_focus`).
 	**/
-	static var AcquireCameraFocus(default, never) : Message<{ }> = new Message("acquire_camera_focus");
+	static var acquire_camera_focus(default, never) : Message<Void> = new Message("acquire_camera_focus");
 	/**
 		deactivates the receiving camera
 		
 		Post this message to a camera-component to deactivate it. The camera is then removed from the active cameras.
 		See `acquire_camera_focus` for more information how the active cameras are used in rendering.
 	**/
-	static var ReleaseCameraFocus(default, never) : Message<{ }> = new Message("release_camera_focus");
+	static var release_camera_focus(default, never) : Message<Void> = new Message("release_camera_focus");
 	/**
 		sets camera properties
 		
 		Post this message to a camera-component to set its properties at run-time.
-		
-		@param aspect_ratio Aspect ratio of the screen (width divided by height)
-		@param fov Field of view of the lens, measured as the angle between the right and left edge (radians)
-		@param near_z Position of the near clipping plane (distance from camera along relative z)
-		@param far_z Position of the far clipping plane (distance from camera along relative z)
 	**/
-	static var SetCamera(default, never) : Message<{ var aspect_ratio : TODO; var fov : TODO; var near_z : TODO; var far_z : TODO; }> = new Message("set_camera");
+	static var set_camera(default, never) : Message<CameraMessageSetCamera> = new Message("set_camera");
 }

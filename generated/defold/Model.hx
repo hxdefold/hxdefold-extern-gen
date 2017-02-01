@@ -66,17 +66,20 @@ package defold;
 	static function set_constant(url:TODO, name:TODO, value:TODO):TODO;
 }
 
+/**
+	Properties related to the `Model` module.
+**/
 @:publicFields class ModelProperties {
 	/**
 		model cursor (number)
 		
 		The normalized animation cursor. The type of the property is number.
 	**/
-	static var Cursor(default, never) : Property<TODO> = new Property("cursor");
+	static var cursor(default, never) : Property<TODO> = new Property("cursor");
 	/**
 		model playback_rate (number)
 		
 		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
 	**/
-	static var PlaybackRate(default, never) : Property<TODO> = new Property("playback_rate");
+	static var playback_rate(default, never) : Property<TODO> = new Property("playback_rate");
 }

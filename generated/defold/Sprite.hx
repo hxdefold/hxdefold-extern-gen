@@ -47,6 +47,33 @@ package defold;
 	static function set_vflip(url:TODO, flip:TODO):TODO;
 }
 
+/**
+	Data for the `SpriteMessages.animation_done` message.
+**/
+typedef SpriteMessageAnimationDone = {
+	/**
+		the current tile of the sprite (number)
+	**/
+	var current_tile : TODO;
+	/**
+		id of the animation that was completed (hash)
+	**/
+	var id : TODO;
+}
+
+/**
+	Data for the `SpriteMessages.play_animation` message.
+**/
+typedef SpriteMessagePlayAnimation = {
+	/**
+		the id of the animation to play
+	**/
+	var id : TODO;
+}
+
+/**
+	Messages related to the `Sprite` module.
+**/
 @:publicFields class SpriteMessages {
 	/**
 		reports that an animation has completed
@@ -63,33 +90,31 @@ package defold;
 		
 		See `play_animation` for more information and examples of how to use
 		this message.
-		
-		@param current_tile the current tile of the sprite (number)
-		@param id id of the animation that was completed (hash)
 	**/
-	static var AnimationDone(default, never) : Message<{ var current_tile : TODO; var id : TODO; }> = new Message("animation_done");
+	static var animation_done(default, never) : Message<SpriteMessageAnimationDone> = new Message("animation_done");
 	/**
 		plays a sprite animation
 		
 		Post this message to a sprite-component to make it play an animation from its tile set.
-		
-		@param id the id of the animation to play
 	**/
-	static var PlayAnimation(default, never) : Message<{ var id : TODO; }> = new Message("play_animation");
+	static var play_animation(default, never) : Message<SpriteMessagePlayAnimation> = new Message("play_animation");
 }
 
+/**
+	Properties related to the `Sprite` module.
+**/
 @:publicFields class SpriteProperties {
 	/**
 		sprite scale (vector3)
 		
 		The non-uniform scale of the sprite. The type of the property is vector3.
 	**/
-	static var Scale(default, never) : Property<TODO> = new Property("scale");
+	static var scale(default, never) : Property<TODO> = new Property("scale");
 	/**
 		sprite size (vector3)
 		
 		[READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.
 		The type of the property is vector3.
 	**/
-	static var Size(default, never) : Property<TODO> = new Property("size");
+	static var size(default, never) : Property<TODO> = new Property("size");
 }

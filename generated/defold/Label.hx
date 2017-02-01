@@ -12,36 +12,39 @@ package defold;
 	static function set_text(url:TODO, text:TODO):TODO;
 }
 
+/**
+	Properties related to the `Label` module.
+**/
 @:publicFields class LabelProperties {
 	/**
 		label color (vector4)
 		
 		The color of the label. The type of the property is vector4.
 	**/
-	static var Color(default, never) : Property<TODO> = new Property("color");
+	static var color(default, never) : Property<TODO> = new Property("color");
 	/**
 		label outline (vector4)
 		
 		The outline color of the label. The type of the property is vector4.
 	**/
-	static var Outline(default, never) : Property<TODO> = new Property("outline");
+	static var outline(default, never) : Property<TODO> = new Property("outline");
 	/**
 		label scale (vector3|number)
 		
 		The scale of the label. The type of the property is vector3.
 	**/
-	static var Scale(default, never) : Property<TODO> = new Property("scale");
+	static var scale(default, never) : Property<TODO> = new Property("scale");
 	/**
 		label shadow (vector4)
 		
 		The shadow color of the label. The type of the property is vector4.
 	**/
-	static var Shadow(default, never) : Property<TODO> = new Property("shadow");
+	static var shadow(default, never) : Property<TODO> = new Property("shadow");
 	/**
 		label size (vector3)
 		
 		Returns the size of the label. THe size will constrain the text if line break is enabled
 		The type of the property is vector3.
 	**/
-	static var Size(default, never) : Property<TODO> = new Property("size");
+	static var size(default, never) : Property<TODO> = new Property("size");
 }

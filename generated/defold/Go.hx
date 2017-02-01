@@ -304,6 +304,53 @@ package defold;
 	static function update(self:TODO, dt:TODO):TODO;
 }
 
+/**
+	Data for the `GoMessages.set_parent` message.
+**/
+typedef GoMessageSetParent = {
+	/**
+		the id of the new parent (hash)
+	**/
+	var parent_id : TODO;
+	/**
+		if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true (number)
+	**/
+	var keep_world_transform : TODO;
+}
+
+/**
+	Data for the `GoMessages.transform_response` message.
+**/
+typedef GoMessageTransformResponse = {
+	/**
+		local position of the instance (vector3)
+	**/
+	var position : TODO;
+	/**
+		local rotation of the instance (quaternion)
+	**/
+	var rotation : TODO;
+	/**
+		local scale of the instance (number)
+	**/
+	var scale : TODO;
+	/**
+		world position of the instance (vector3)
+	**/
+	var world_position : TODO;
+	/**
+		world rotation of the instancee (quaternion)
+	**/
+	var world_rotation : TODO;
+	/**
+		world scale of the instance (number)
+	**/
+	var world_scale : TODO;
+}
+
+/**
+	Messages related to the `Go` module.
+**/
 @:publicFields class GoMessages {
 	/**
 		acquires the user input focus
@@ -320,7 +367,7 @@ package defold;
 		in its `on_input` callback function. See `on_input` for more information on
 		how user input can be handled.
 	**/
-	static var AcquireInputFocus(default, never) : Message<{ }> = new Message("acquire_input_focus");
+	static var acquire_input_focus(default, never) : Message<Void> = new Message("acquire_input_focus");
 	/**
 		disables the receiving component
 		
@@ -336,7 +383,7 @@ package defold;
 		   * Sprite
 		   * Tile Grid
 	**/
-	static var Disable(default, never) : Message<{ }> = new Message("disable");
+	static var disable(default, never) : Message<Void> = new Message("disable");
 	/**
 		enables the receiving component
 		
@@ -352,7 +399,7 @@ package defold;
 		   * Sprite
 		   * Tile Grid
 	**/
-	static var Enable(default, never) : Message<{ }> = new Message("enable");
+	static var enable(default, never) : Message<Void> = new Message("enable");
 	/**
 		releases the user input focus
 		
@@ -360,7 +407,7 @@ package defold;
 		See `acquire_input_focus` for more information on how the user input handling
 		works.
 	**/
-	static var ReleaseInputFocus(default, never) : Message<{ }> = new Message("release_input_focus");
+	static var release_input_focus(default, never) : Message<Void> = new Message("release_input_focus");
 	/**
 		(DEPRECATED) requests the transform from an instance
 		
@@ -369,7 +416,7 @@ package defold;
 		The sending script will receive the answer as a `transform_response`-message
 		at a later time.
 	**/
-	static var RequestTransform(default, never) : Message<{ }> = new Message("request_transform");
+	static var request_transform(default, never) : Message<Void> = new Message("request_transform");
 	/**
 		sets the parent of the receiving instance
 		
@@ -377,11 +424,8 @@ package defold;
 		in the geometrical space of its parent, like a basic transformation hierarchy or scene graph. If no parent is specified,
 		the instance will be detached from any parent and exist in world space. A script can send this message to itself to set
 		the parent of its instance.
-		
-		@param parent_id the id of the new parent (hash)
-		@param keep_world_transform if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true (number)
 	**/
-	static var SetParent(default, never) : Message<{ var parent_id : TODO; var keep_world_transform : TODO; }> = new Message("set_parent");
+	static var set_parent(default, never) : Message<GoMessageSetParent> = new Message("set_parent");
 	/**
 		(DEPRECATED) reports back the transform of an instance
 		
@@ -389,17 +433,13 @@ package defold;
 		The response a script receives after it has requested the transform from an instance
 		using the `request_transform`-message. See the description of that message
 		for a complete example on how to use it.
-		
-		@param position local position of the instance (vector3)
-		@param rotation local rotation of the instance (quaternion)
-		@param scale local scale of the instance (number)
-		@param world_position world position of the instance (vector3)
-		@param world_rotation world rotation of the instancee (quaternion)
-		@param world_scale world scale of the instance (number)
 	**/
-	static var TransformResponse(default, never) : Message<{ var position : TODO; var rotation : TODO; var scale : TODO; var world_position : TODO; var world_rotation : TODO; var world_scale : TODO; }> = new Message("transform_response");
+	static var transform_response(default, never) : Message<GoMessageTransformResponse> = new Message("transform_response");
 }
 
+/**
+	Properties related to the `Go` module.
+**/
 @:publicFields class GoProperties {
 	/**
 		game object euler rotation (vector3)
@@ -408,27 +448,27 @@ package defold;
 		Euler angles are specified in degrees.
 		The type of the property is vector3.
 	**/
-	static var Euler(default, never) : Property<TODO> = new Property("euler");
+	static var euler(default, never) : Property<TODO> = new Property("euler");
 	/**
 		game object position (vector3)
 		
 		The position of the game object.
 		The type of the property is vector3.
 	**/
-	static var Position(default, never) : Property<TODO> = new Property("position");
+	static var position(default, never) : Property<TODO> = new Property("position");
 	/**
 		game object rotation (quaternion)
 		
 		The rotation of the game object.
 		The type of the property is quaternion.
 	**/
-	static var Rotation(default, never) : Property<TODO> = new Property("rotation");
+	static var rotation(default, never) : Property<TODO> = new Property("rotation");
 	/**
 		game object scale (vector3)
 		
 		The non-uniform scale of the game object. The type of the property is vector3.
 	**/
-	static var Scale(default, never) : Property<TODO> = new Property("scale");
+	static var scale(default, never) : Property<TODO> = new Property("scale");
 }
 
 @:native("_G.go") extern class GoVariables {

@@ -350,44 +350,91 @@ package defold;
 	static function set_viewport(x:TODO, y:TODO, width:TODO, height:TODO):TODO;
 }
 
+/**
+	Data for the `RenderMessages.clear_color` message.
+**/
+typedef RenderMessageClearColor = {
+	/**
+		color to use as clear color
+	**/
+	var color : TODO;
+}
+
+/**
+	Data for the `RenderMessages.draw_line` message.
+**/
+typedef RenderMessageDrawLine = {
+	/**
+		Start point of the line
+	**/
+	var start_point : TODO;
+	/**
+		End point of the line
+	**/
+	var end_point : TODO;
+	/**
+		Color of the line
+	**/
+	var color : TODO;
+}
+
+/**
+	Data for the `RenderMessages.draw_text` message.
+**/
+typedef RenderMessageDrawText = {
+	/**
+		Position of the text
+	**/
+	var position : TODO;
+	/**
+		The text to draw
+	**/
+	var text : TODO;
+}
+
+/**
+	Data for the `RenderMessages.window_resized` message.
+**/
+typedef RenderMessageWindowResized = {
+	/**
+		the new window height (number)
+	**/
+	var height : TODO;
+	/**
+		the new window width (number)
+	**/
+	var width : TODO;
+}
+
+/**
+	Messages related to the `Render` module.
+**/
 @:publicFields class RenderMessages {
 	/**
 		set clear color
 		
 		Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.
-		
-		@param color color to use as clear color
 	**/
-	static var ClearColor(default, never) : Message<{ var color : TODO; }> = new Message("clear_color");
+	static var clear_color(default, never) : Message<RenderMessageClearColor> = new Message("clear_color");
 	/**
 		draw a line on the screen
 		
 		Draw a line on the screen. This should mostly be used for debugging purposes.
-		
-		@param start_point Start point of the line
-		@param end_point End point of the line
-		@param color Color of the line
 	**/
-	static var DrawLine(default, never) : Message<{ var start_point : TODO; var end_point : TODO; var color : TODO; }> = new Message("draw_line");
+	static var draw_line(default, never) : Message<RenderMessageDrawLine> = new Message("draw_line");
 	/**
 		draw a text on the screen
 		
 		Draw a text on the screen. This should mostly be used for debugging purposes.
-		
-		@param position Position of the text
-		@param text The text to draw
 	**/
-	static var DrawText(default, never) : Message<{ var position : TODO; var text : TODO; }> = new Message("draw_text");
+	static var draw_text(default, never) : Message<RenderMessageDrawText> = new Message("draw_text");
 	/**
 		reports a window size change
 		
 		Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
 		on mobile devices.
-		
-		@param height the new window height (number)
-		@param width the new window width (number)
 	**/
-	static var WindowResized(default, never) : Message<{ var height : TODO; var width : TODO; }> = new Message("window_resized");
+	static var window_resized(default, never) : Message<RenderMessageWindowResized> = new Message("window_resized");
 }
 
 @:native("_G.render") extern class RenderVariables {

@@ -88,18 +88,41 @@ package defold;
 	static function set_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO, new:TODO, optional:TODO, optional:TODO):TODO;
 }
 
+/**
+	Data for the `TilemapMessages.set_tile` message.
+**/
+typedef TilemapMessageSetTile = {
+	/**
+		id of the layer for which to change a tile
+	**/
+	var layer_id : TODO;
+	/**
+		the position of the cell for which to change the tile (world space)
+	**/
+	var position : TODO;
+	/**
+		index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
+	**/
+	var tile : TODO;
+	/**
+		horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
+	**/
+	var dx : TODO;
+	/**
+		vertical offset from the supplied position to the requested cell (grid space, 0 by default)
+	**/
+	var dy : TODO;
+}
+
+/**
+	Messages related to the `Tilemap` module.
+**/
 @:publicFields class TilemapMessages {
 	/**
 		(DEPRECATED) changes a tile in a tile map
 		
 		Send this message to a tile map component to change the tile in one of its cells.
-		
-		@param layer_id id of the layer for which to change a tile
-		@param position the position of the cell for which to change the tile (world space)
-		@param tile index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
-		@param dx horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
-		@param dy vertical offset from the supplied position to the requested cell (grid space, 0 by default)
 	**/
 	@:deprecated("Use <code>tilemap.set_tile()</code> instead.")
-	static var SetTile(default, never) : Message<{ var layer_id : TODO; var position : TODO; var tile : TODO; var dx : TODO; var dy : TODO; }> = new Message("set_tile");
+	static var set_tile(default, never) : Message<TilemapMessageSetTile> = new Message("set_tile");
 }

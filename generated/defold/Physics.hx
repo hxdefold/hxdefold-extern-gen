@@ -1,5 +1,87 @@
 package defold;
 
+/**
+	Data for the `CollisionObjectMessages.apply_force` message.
+**/
+typedef CollisionObjectMessageApplyForce = {
+	/**
+		the force to be applied on the collision object, measured in Newton (vector3)
+	**/
+	var force : TODO;
+	/**
+		the position where the force should be applied (vector3)
+	**/
+	var position : TODO;
+}
+
+/**
+	Data for the `CollisionObjectMessages.collision_response` message.
+**/
+typedef CollisionObjectMessageCollisionResponse = {
+	/**
+		the id of the instance the collision object collided with (hash)
+	**/
+	var other_id : TODO;
+	/**
+		the world position of the instance the collision object collided with (vec3)
+	**/
+	var other_position : TODO;
+	/**
+		the collision group of the other collision object (hash)
+	**/
+	var group : TODO;
+}
+
+/**
+	Data for the `CollisionObjectMessages.contact_point_response` message.
+**/
+typedef CollisionObjectMessageContactPointResponse = {
+	/**
+		world position of the contact point (vector3)
+	**/
+	var position : TODO;
+	/**
+		normal in world space of the contact point, which points from the other object towards the current object (vector3)
+	**/
+	var normal : TODO;
+	/**
+		the relative velocity of the collision object as observed from the other object (vector3)
+	**/
+	var relative_velocity : TODO;
+	/**
+		the penetration distance between the objects, which is always positive (number)
+	**/
+	var distance : TODO;
+	/**
+		the impulse the contact resulted in (number)
+	**/
+	var applied_impulse : TODO;
+	/**
+		life time of the contact, *not currently used* (number)
+	**/
+	var life_time : TODO;
+	/**
+		the mass of the current collision object in kg (number)
+	**/
+	var mass : TODO;
+	/**
+		the mass of the other collision object in kg (number)
+	**/
+	var other_mass : TODO;
+	/**
+		the id of the instance the collision object is in contact with (hash)
+	**/
+	var other_id : TODO;
+	/**
+		the world position of the other collision object (vector3)
+	**/
+	var other_position : TODO;
+	/**
+		the collision group of the other collision object (hash)
+	**/
+	var group : TODO;
+}
+
 @:native("_G.physics") extern class Physics {
 	/**
 		requests a ray cast to be performed
@@ -17,17 +99,80 @@ package defold;
 	static function ray_cast(from:TODO, to:TODO, groups:TODO, ?request_id:TODO):TODO;
 }
 
+/**
+	Data for the `PhysicsMessages.ray_cast_response` message.
+**/
+typedef PhysicsMessageRayCastResponse = {
+	/**
+		the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end (number)
+	**/
+	var fraction : TODO;
+	/**
+		the world position of the hit
+	**/
+	var position : TODO;
+	/**
+		the normal of the surface of the collision object where it was hit
+	**/
+	var normal : TODO;
+	/**
+		the instance id of the hit collision object
+	**/
+	var id : TODO;
+	/**
+		the collision group of the hit collision object as a hashed name
+	**/
+	var group : TODO;
+	/**
+		id supplied when the ray cast was requested
+	**/
+	var request_id : TODO;
+}
+
+/**
+	Data for the `PhysicsMessages.trigger_response` message.
+**/
+typedef PhysicsMessageTriggerResponse = {
+	/**
+		the id of the instance the collision object collided with (hash)
+	**/
+	var other_id : TODO;
+	/**
+		if the interaction was an entry or not (exit)
+	**/
+	var enter : TODO;
+	/**
+		the collision group of the triggering object as a hashed name
+	**/
+	var group : TODO;
+}
+
+/**
+	Data for the `PhysicsMessages.velocity_response` message.
+**/
+typedef PhysicsMessageVelocityResponse = {
+	/**
+		the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)
+	**/
+	var linear_velocity : TODO;
+	/**
+		the angular velocity, i.e. rotation, of the collision object in radians/s.
+		The velocity is measured as a rotation around the vector with a speed equivalent to the vector length (vector3)
+	**/
+	var angular_velocity : TODO;
+}
+
+/**
+	Messages related to the `Physics` module.
+**/
 @:publicFields class PhysicsMessages {
 	/**
 		applies a force on a collision object
 		
 		Post this message to a collision-object-component to apply the specified force on the collision object.
 		The collision object must be dynamic.
-		
-		@param force the force to be applied on the collision object, measured in Newton (vector3)
-		@param position the position where the force should be applied (vector3)
 	**/
-	static var ApplyForce(default, never) : Message<{ var force : TODO; var position : TODO; }> = new Message("apply_force");
+	static var apply_force(default, never) : Message<CollisionObjectMessageApplyForce> = new Message("apply_force");
 	/**
 		reports a collision between two collision objects
 		
@@ -37,12 +182,8 @@ package defold;
 		
 		This message only reports that a collision actually happened and will only be sent once per colliding pair and frame.
 		To retrieve more detailed information, check for the `contact_point_response` instead.
-		
-		@param other_id the id of the instance the collision object collided with (hash)
-		@param other_position the world position of the instance the collision object collided with (vec3)
-		@param group the collision group of the other collision object (hash)
 	**/
-	static var CollisionResponse(default, never) : Message<{ var other_id : TODO; var other_position : TODO; var group : TODO; }> = new Message("collision_response");
+	static var collision_response(default, never) : Message<CollisionObjectMessageCollisionResponse> = new Message("collision_response");
 	/**
 		reports a contact point between two collision objects
 		
@@ -53,41 +194,22 @@ package defold;
 		Since multiple contact points can occur for two colliding objects, this message can be sent multiple times in
 		the same frame for the same two colliding objects. To only be notified once when the collision occurs, check
 		for the `collision_response` message instead.
-		
-		@param position world position of the contact point (vector3)
-		@param normal normal in world space of the contact point, which points from the other object towards the current object (vector3)
-		@param relative_velocity the relative velocity of the collision object as observed from the other object (vector3)
-		@param distance the penetration distance between the objects, which is always positive (number)
-		@param applied_impulse the impulse the contact resulted in (number)
-		@param life_time life time of the contact, *not currently used* (number)
-		@param mass the mass of the current collision object in kg (number)
-		@param other_mass the mass of the other collision object in kg (number)
-		@param other_id the id of the instance the collision object is in contact with (hash)
-		@param other_position the world position of the other collision object (vector3)
-		@param group the collision group of the other collision object (hash)
 	**/
-	static var ContactPointResponse(default, never) : Message<{ var position : TODO; var normal : TODO; var relative_velocity : TODO; var distance : TODO; var applied_impulse : TODO; var life_time : TODO; var mass : TODO; var other_mass : TODO; var other_id : TODO; var other_position : TODO; var group : TODO; }> = new Message("contact_point_response");
+	static var contact_point_response(default, never) : Message<CollisionObjectMessageContactPointResponse> = new Message("contact_point_response");
 	/**
 		reports a ray cast hit
 		
 		This message is sent back to the sender of a `ray_cast_request`, if the ray hit a collision object.
 		See `request_ray_cast` for examples of how to use it.
-		
-		@param fraction the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end (number)
-		@param position the world position of the hit
-		@param normal the normal of the surface of the collision object where it was hit
-		@param id the instance id of the hit collision object
-		@param group the collision group of the hit collision object as a hashed name
-		@param request_id id supplied when the ray cast was requested
 	**/
-	static var RayCastResponse(default, never) : Message<{ var fraction : TODO; var position : TODO; var normal : TODO; var id : TODO; var group : TODO; var request_id : TODO; }> = new Message("ray_cast_response");
+	static var ray_cast_response(default, never) : Message<PhysicsMessageRayCastResponse> = new Message("ray_cast_response");
 	/**
 		(DEPRECATED) requests the velocity of a collision object
 		
 		Post this message to a collision-object-component to retrieve its velocity.
 	**/
 	@:deprecated("Read properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.")
-	static var RequestVelocity(default, never) : Message<{ }> = new Message("request_velocity");
+	static var request_velocity(default, never) : Message<Void> = new Message("request_velocity");
 	/**
 		reports interaction (enter/exit) between a trigger collision object and another collision object
 		
@@ -98,27 +220,22 @@ package defold;
 		
 		This message only reports that an interaction actually happened and will only be sent once per colliding pair and frame.
 		To retrieve more detailed information, check for the `contact_point_response` instead.
-		
-		@param other_id the id of the instance the collision object collided with (hash)
-		@param enter if the interaction was an entry or not (exit)
-		@param group the collision group of the triggering object as a hashed name
 	**/
-	static var TriggerResponse(default, never) : Message<{ var other_id : TODO; var enter : TODO; var group : TODO; }> = new Message("trigger_response");
+	static var trigger_response(default, never) : Message<PhysicsMessageTriggerResponse> = new Message("trigger_response");
 	/**
 		(DEPRECATED) reports the velocity of a collision object
 		
 		See `request_velocity` for examples on how to use it.
 		
 		 This message is sent back to the sender of a `request_velocity` message.
-		
-		@param linear_velocity the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)
-		@param angular_velocity the angular velocity, i.e. rotation, of the collision object in radians/s.
-		The velocity is measured as a rotation around the vector with a speed equivalent to the vector length (vector3)
 	**/
 	@:deprecated("Read properties <code>linear_velocity</code> and <code>angular_velocity</code>\nwith <code>go.get()</code> instead.")
-	static var VelocityResponse(default, never) : Message<{ var linear_velocity : TODO; var angular_velocity : TODO; }> = new Message("velocity_response");
+	static var velocity_response(default, never) : Message<PhysicsMessageVelocityResponse> = new Message("velocity_response");
 }
 
+/**
+	Properties related to the `Physics` module.
+**/
 @:publicFields class PhysicsProperties {
 	/**
 		collision object angular damping (number)
@@ -126,7 +243,7 @@ package defold;
 		The angular damping value for the collision object. Setting this value alters the damping of
 		angular motion of the object (rotation). Valid values are between 0 (no damping) and 1 (full damping).
 	**/
-	static var AngularDamping(default, never) : Property<TODO> = new Property("angular_damping");
+	static var angular_damping(default, never) : Property<TODO> = new Property("angular_damping");
 	/**
 		collision object angular velocity (vector3)
 		
@@ -134,25 +251,25 @@ package defold;
 		The velocity is measured as a rotation around the vector with a speed equivalent to the vector length
 		in radians/s.
 	**/
-	static var AngularVelocity(default, never) : Property<TODO> = new Property("angular_velocity");
+	static var angular_velocity(default, never) : Property<TODO> = new Property("angular_velocity");
 	/**
 		collision object linear damping (number)
 		
 		The linear damping value for the collision object. Setting this value alters the damping of
 		linear motion of the object. Valid values are between 0 (no damping) and 1 (full damping).
 	**/
-	static var LinearDamping(default, never) : Property<TODO> = new Property("linear_damping");
+	static var linear_damping(default, never) : Property<TODO> = new Property("linear_damping");
 	/**
 		collision object linear velocity (vector3)
 		
 		[READ ONLY] Returns the current linear velocity of the collision object component as a vector3.
 		The velocity is measured in units/s (pixels/s).
 	**/
-	static var LinearVelocity(default, never) : Property<TODO> = new Property("linear_velocity");
+	static var linear_velocity(default, never) : Property<TODO> = new Property("linear_velocity");
 	/**
 		collision object mass (number)
 		
 		[READ ONLY] Returns the defined physical mass of the collision object component as a number.
 	**/
-	static var Mass(default, never) : Property<TODO> = new Property("mass");
+	static var mass(default, never) : Property<TODO> = new Property("mass");
 }

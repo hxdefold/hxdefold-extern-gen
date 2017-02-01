@@ -102,6 +102,8 @@ class Main {
                     print('Processing module $moduleName (${entry.fileName})');
                     var api:Api = haxe.Json.parse(haxe.zip.Reader.unzip(entry).toString());
 
+                    var types:Array<{t:TypeDefinition, ?d:String}> = [];
+
                     var nativePath = "_G";
                     var methods = [];
                     var messages = [];
@@ -212,10 +214,14 @@ class Main {
 
                             case MESSAGE:
                                 fields = messages;
-                                elementName = underscoreToCamelCase(elementName);
+                                // elementName = underscoreToCamelCase(elementName);
                                 if (element.returnvalues.length != 0)
                                     throw "Found MESSAGE with returnvalues!";
                                 var messageFields:Array<Field> = [];
+
+                                var messageType = null;
+                                var messageTypeName = moduleName + "Message" + underscoreToCamelCase(element.name);
+
                                 for (param in element.parameters) {
                                     if (!reParameterName.match(param.name))
                                         throw 'Non-conventional parameter name: ${param.name}';
@@ -224,14 +230,32 @@ class Main {
                                         name: name,
                                         pos: pos,
                                         kind: FVar(ctTODO),
+                                        doc: prepareDoc(param.doc),
                                         meta: if (reParameterName.matched(1) != null) [{name: ":optional", pos: pos}] else null
                                     });
-                                    signatureDoc.push('@param $name ${prepareDoc(param.doc)}');
+                                    // signatureDoc.push('@param $name ${}');
+                                    if (messageType == null)
+                                        messageType = TPath({pack: [], name: messageTypeName});
                                 }
-                                var ct = TAnonymous(messageFields);
+
+                                if (messageType == null) {
+                                    messageType = macro : Void;
+                                } else {
+                                    types.push({
+                                        t: {
+                                            pos: pos,
+                                            pack: ["defold"],
+                                            name: messageTypeName,
+                                            kind: TDStructure,
+                                            fields: messageFields,
+                                        },
+                                        d: 'Data for the `${moduleName}Messages.${element.name}` message.'
+                                    });
+                                }
+
                                 var nameExpr = {expr: EConst(CString(element.name)), pos: pos};
 
-                                fieldKind = FProp("default", "never", macro : Message<$ct>, macro new Message($nameExpr));
+                                fieldKind = FProp("default", "never", macro : Message<$messageType>, macro new Message($nameExpr));
 
                             case PROPERTY:
                                 if (element.parameters.length != 0)
@@ -239,7 +263,7 @@ class Main {
                                 if (element.returnvalues.length != 0)
                                     throw "Found PROPERTY with returnvalues!";
                                 fields = properties;
-                                elementName = underscoreToCamelCase(elementName);
+                                // elementName = underscoreToCamelCase(elementName);
                                 var nameExpr = {expr: EConst(CString(element.name)), pos: pos};
                                 fieldKind = FProp("default", "never", macro : Property<$ctTODO>, macro new Property($nameExpr));
 
@@ -271,10 +295,8 @@ class Main {
                         });
                     }
 
-                    var types:Array<TypeDefinition> = [];
-
                     if (methods.length > 0)
-                        types.push({
+                        types.push({t:{
                             pos: pos,
                             pack: ["defold"],
                             name: moduleName,
@@ -284,34 +306,40 @@ class Main {
                             meta: [
                                 {name: ":native", pos: pos, params: [{expr: EConst(CString(nativePath)), pos: pos}]}
                             ]
-                        });
+                        }});
 
                     if (messages.length > 0)
                         types.push({
-                            pos: pos,
-                            pack: ["defold"],
-                            name: moduleName + "Messages",
-                            kind: TDClass(),
-                            fields: messages,
-                            meta: [
-                                {name: ":publicFields", pos: pos}
-                            ]
+                            t:{
+                                pos: pos,
+                                pack: ["defold"],
+                                name: moduleName + "Messages",
+                                kind: TDClass(),
+                                fields: messages,
+                                meta: [
+                                    {name: ":publicFields", pos: pos}
+                                ]
+                            },
+                            d: 'Messages related to the `${moduleName}` module.'
                         });
 
                     if (properties.length > 0)
                         types.push({
-                            pos: pos,
-                            pack: ["defold"],
-                            name: moduleName + "Properties",
-                            kind: TDClass(),
-                            fields: properties,
-                            meta: [
-                                {name: ":publicFields", pos: pos}
-                            ]
+                            t:{
+                                pos: pos,
+                                pack: ["defold"],
+                                name: moduleName + "Properties",
+                                kind: TDClass(),
+                                fields: properties,
+                                meta: [
+                                    {name: ":publicFields", pos: pos}
+                                ]
+                            },
+                            d: 'Properties related to the `${moduleName}` module.'
                         });
 
                     if (vars.length > 0)
-                        types.push({
+                        types.push({t:{
                             pos: pos,
                             pack: ["defold"],
                             name: moduleName + "Variables",
@@ -321,9 +349,10 @@ class Main {
                             meta: [
                                 {name: ":native", pos: pos, params: [{expr: EConst(CString(nativePath)), pos: pos}]}
                             ]
-                        });
+                        }});
 
                     if (types.length > 0) {
+                        types.sort(function(a,b) return Reflect.compare(a.t.name, b.t.name));
                         outputModule(moduleName, types);
                     } else {
                         // throw "No types generated";
@@ -336,11 +365,15 @@ class Main {
         });
     }
 
-    static function outputModule(name:String, types:Array<TypeDefinition>) {
+    static function outputModule(name:String, types:Array<{t:TypeDefinition,?d:String}>) {
         var printer = new haxe.macro.Printer();
         var out = ['package defold;'];
         for (type in types) {
-            out.push(printer.printTypeDefinition(type, false));
+            var doc = "";
+            if (type.d != null) {
+                doc = '/**\n\t${type.d}\n**/\n';
+            }
+            out.push(doc+printer.printTypeDefinition(type.t, false));
         }
         sys.io.File.saveContent('$GENERATED_DIR/defold/$name.hx', out.join("\n\n"));
     }
