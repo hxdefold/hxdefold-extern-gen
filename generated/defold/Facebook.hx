@@ -12,7 +12,7 @@ package defold;
 		that Facebook won't be able to use event data for ad-tracking. Events will
 		still be sent to Facebook for insights.
 		
-		<b>NOTE!</b> Event usage cannot be controlled and is always enabled for the
+		*NOTE!* Event usage cannot be controlled and is always enabled for the
 		Facebook Canvas platform, therefore this function has no effect on Facebook
 		Canvas.
 	**/
@@ -23,7 +23,7 @@ package defold;
 		This function will enable event usage for Facebook Analytics which means
 		that Facebook will be able to use event data for ad-tracking.
 		
-		<b>NOTE!</b> Event usage cannot be controlled and is always enabled for the
+		*NOTE!* Event usage cannot be controlled and is always enabled for the
 		Facebook Canvas platform, therefore this function has no effect on Facebook
 		Canvas.
 	**/
@@ -36,7 +36,7 @@ package defold;
 		platform. Even if the user is already logged in to Facebook this function
 		can still be used to request additional publish permissions.
 		
-		<b>NOTE</b> that this function cannot be used to request read permissions.
+		*NOTE* that this function cannot be used to request read permissions.
 		If the application requires both publish and read permissions, individual
 		calls to both login_with_publish_permissions and login_with_read_permissions
 		has to be made.
@@ -46,17 +46,16 @@ package defold;
 		
 		@param permissions (table) Table with the requested publish permission strings.
 		@param audience (constant|number) The audience that should be able to see the publications.
-		<ul>
-		    <li>facebook.AUDIENCE_NONE</li>
-		    <li>facebook.AUDIENCE_ONLYME</li>
-		    <li>facebook.AUDIENCE_FRIENDS</li>
-		    <li>facebook.AUDIENCE_EVERYONE</li>
-		</ul>
+		
+		     * facebook.AUDIENCE_NONE
+		     * facebook.AUDIENCE_ONLYME
+		     * facebook.AUDIENCE_FRIENDS
+		     * facebook.AUDIENCE_EVERYONE
+		
 		@param callback (function) Callback function that takes the arguments (self, data), the callback is executed when the permission request dialog is closed.
-		<ul>
-		    <li><code>self</code> The context of the calling script
-		    <li><code>data</code> A table that contains the response
-		</ul>
+		
+		     * `self` The context of the calling script
+		     * `data` A table that contains the response
 	**/
 	static function login_with_publish_permissions(permissions:TODO, audience:TODO, callback:TODO):TODO;
 	/**
@@ -67,7 +66,7 @@ package defold;
 		platform. Even if the user is already logged in to Facebook this function
 		can still be used to request additional read permissions.
 		
-		<b>NOTE</b> that this function cannot be used to request publish permissions.
+		*NOTE* that this function cannot be used to request publish permissions.
 		If the application requires both read and publish permissions, individual
 		calls to both login_with_read_permissions and login_with_publish_permissions
 		has to be made.
@@ -77,10 +76,9 @@ package defold;
 		
 		@param permissions (table) Table with the requested read permission strings.
 		@param callback (function) Callback function that takes the arguments (self, data), the callback is executed when the permission request dialog is closed.
-		<ul>
-		    <li><code>self</code> The context of the calling script
-		    <li><code>data</code> A table that contains the response
-		</ul>
+		
+		     * `self` The context of the calling script
+		     * `data` A table that contains the response
 	**/
 	static function login_with_read_permissions(permissions:TODO, callback:TODO):TODO;
 	/**
@@ -104,110 +102,101 @@ package defold;
 		@param event (constant|text) An event can either be one of the predefined
 		constants below or a text which can be used to define a custom event that is
 		registered with Facebook Analytics.
-		<ul>
-		    <li>facebook.EVENT_ACHIEVED_LEVEL</li>
-		    <li>facebook.EVENT_ACTIVATED_APP</li>
-		    <li>facebook.EVENT_ADDED_PAYMENT_INFO</li>
-		    <li>facebook.EVENT_ADDED_TO_CART</li>
-		    <li>facebook.EVENT_ADDED_TO_WISHLIST</li>
-		    <li>facebook.EVENT_COMPLETED_REGISTRATION</li>
-		    <li>facebook.EVENT_COMPLETED_TUTORIAL</li>
-		    <li>facebook.EVENT_DEACTIVATED_APP</li>
-		    <li>facebook.EVENT_INITIATED_CHECKOUT</li>
-		    <li>facebook.EVENT_PURCHASED</li>
-		    <li>facebook.EVENT_RATED</li>
-		    <li>facebook.EVENT_SEARCHED</li>
-		    <li>facebook.EVENT_SESSION_INTERRUPTIONS</li>
-		    <li>facebook.EVENT_SPENT_CREDITS</li>
-		    <li>facebook.EVENT_TIME_BETWEEN_SESSIONS</li>
-		    <li>facebook.EVENT_UNLOCKED_ACHIEVEMENT</li>
-		    <li>facebook.EVENT_VIEWED_CONTENT</li>
-		</ul>
+		
+		     * facebook.EVENT_ACHIEVED_LEVEL
+		     * facebook.EVENT_ACTIVATED_APP
+		     * facebook.EVENT_ADDED_PAYMENT_INFO
+		     * facebook.EVENT_ADDED_TO_CART
+		     * facebook.EVENT_ADDED_TO_WISHLIST
+		     * facebook.EVENT_COMPLETED_REGISTRATION
+		     * facebook.EVENT_COMPLETED_TUTORIAL
+		     * facebook.EVENT_DEACTIVATED_APP
+		     * facebook.EVENT_INITIATED_CHECKOUT
+		     * facebook.EVENT_PURCHASED
+		     * facebook.EVENT_RATED
+		     * facebook.EVENT_SEARCHED
+		     * facebook.EVENT_SESSION_INTERRUPTIONS
+		     * facebook.EVENT_SPENT_CREDITS
+		     * facebook.EVENT_TIME_BETWEEN_SESSIONS
+		     * facebook.EVENT_UNLOCKED_ACHIEVEMENT
+		     * facebook.EVENT_VIEWED_CONTENT
+		
 		@param value_to_sum (number) A numeric value for the event. This should
 		represent the value of the event, such as the level achieved, price for an
 		item or number of orcs killed.
 		@param params (table) A table with parameters and their values. A key in the
 		table can either be one of the predefined constants below or a text which
 		can be used to define a custom parameter. Optional argument.
-		<ul>
-		    <li>facebook.PARAM_CONTENT_ID</li>
-		    <li>facebook.PARAM_CONTENT_TYPE</li>
-		    <li>facebook.PARAM_CURRENCY</li>
-		    <li>facebook.PARAM_DESCRIPTION</li>
-		    <li>facebook.PARAM_LEVEL</li>
-		    <li>facebook.PARAM_MAX_RATING_VALUE</li>
-		    <li>facebook.PARAM_NUM_ITEMS</li>
-		    <li>facebook.PARAM_PAYMENT_INFO_AVAILABLE</li>
-		    <li>facebook.PARAM_REGISTRATION_METHOD</li>
-		    <li>facebook.PARAM_SEARCH_STRING</li>
-		    <li>facebook.PARAM_SOURCE_APPLICATION</li>
-		    <li>facebook.PARAM_SUCCESS</li>
-		</ul>
+		
+		     * facebook.PARAM_CONTENT_ID
+		     * facebook.PARAM_CONTENT_TYPE
+		     * facebook.PARAM_CURRENCY
+		     * facebook.PARAM_DESCRIPTION
+		     * facebook.PARAM_LEVEL
+		     * facebook.PARAM_MAX_RATING_VALUE
+		     * facebook.PARAM_NUM_ITEMS
+		     * facebook.PARAM_PAYMENT_INFO_AVAILABLE
+		     * facebook.PARAM_REGISTRATION_METHOD
+		     * facebook.PARAM_SEARCH_STRING
+		     * facebook.PARAM_SOURCE_APPLICATION
+		     * facebook.PARAM_SUCCESS
 	**/
 	static function post_event(event:TODO, value_to_sum:TODO, params:TODO):TODO;
 	/**
 		show facebook web dialog
 		
-		Display a Facebook web dialog of the type specified in the <code>dialog</code> parameter.
-		The <code>param</code> table should be set up according to the requirements of each dialog
+		Display a Facebook web dialog of the type specified in the `dialog` parameter.
+		The `param` table should be set up according to the requirements of each dialog
 		type. Note that some parameters are mandatory. Below is the list of available dialogs and
 		where to find Facebook's developer documentation on parameters and response data.
 		
-		<code>apprequests</code>
+		`apprequests`
 		
 		Shows a Game Request dialog. Game Requests allows players to invite their friends to play a
 		game. Available parameters:
 		
-		<ul>
-		  <li><code>title</code> (string)</li>
-		  <li><code>message</code> (string)</li>
-		  <li><code>action_type</code> (number)</li>
-		  <li><code>filters</code> (number)</li>
-		  <li><code>data</code> (string)</li>
-		  <li><code>object_id</code> (string)</li>
-		  <li><code>suggestions</code> (table)</li>
-		  <li><code>recipients</code> (table)</li>
-		  <li><code>to</code> (string)</li>
-		</ul>
+		   * `title` (string)
+		   * `message` (string)
+		   * `action_type` (number)
+		   * `filters` (number)
+		   * `data` (string)
+		   * `object_id` (string)
+		   * `suggestions` (table)
+		   * `recipients` (table)
+		   * `to` (string)
 		
 		On success, the "result" table parameter passed to the callback function will include the following fields:
-		<ul>
-		  <li><code>request_id</code> (string)</li>
-		  <li><code>to</code> (table)</li>
-		</ul>
+		
+		   * `request_id` (string)
+		   * `to` (table)
 		
 		Details for each parameter: <a href='https://developers.facebook.com/docs/games/services/gamerequests/v2.6#dialogparameters'>https://developers.facebook.com/docs/games/services/gamerequests/v2.6#dialogparameters</a>
 		
-		<code>feed</code>
+		`feed`
 		
 		The Feed Dialog allows people to publish individual stories to their timeline.
 		
-		<ul>
-		  <li><code>caption</code> (string)</li>
-		  <li><code>description</code> (string)</li>
-		  <li><code>picture</code> (string)</li>
-		  <li><code>link</code> (string)</li>
-		  <li><code>people_ids</code> (table)</li>
-		  <li><code>place_id</code> (string)</li>
-		  <li><code>ref</code> (string)</li>
-		</ul>
+		   * `caption` (string)
+		   * `description` (string)
+		   * `picture` (string)
+		   * `link` (string)
+		   * `people_ids` (table)
+		   * `place_id` (string)
+		   * `ref` (string)
 		
 		On success, the "result" table parameter passed to the callback function will include the following fields:
-		<ul>
-		  <li><code>post_id</code> (string)</li>
-		</ul>
+		
+		   * `post_id` (string)
 		
 		Details for each parameter: <a href='https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.6#params'>https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.6#params</a>
 		
-		<code>appinvite</code>
+		`appinvite`
 		
-		The App Invite dialog is available only on iOS and Android. Note that the <code>url</code> parameter
+		The App Invite dialog is available only on iOS and Android. Note that the `url` parameter
 		corresponds to the appLinkURL (iOS) and setAppLinkUrl (Android) properties.
 		
-		<ul>
-		  <li><code>url</code> (string)</li>
-		  <li><code>preview_image</code> (string)</li>
-		</ul>
+		   * `url` (string)
+		   * `preview_image` (string)
 		
 		Details for each parameter: <a href='https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppInviteContent/'>https://developers.facebook.com/docs/reference/ios/current/class/FBSDKAppInviteContent/</a>
 		
@@ -285,10 +274,8 @@ package defold;
 		
 		passed to facebook.post_event should be the number of credits spent.
 		
-		<p>
-		<b>NOTE!</b> This event is currently an undocumented event in the Facebook
+		*NOTE!* This event is currently an undocumented event in the Facebook
 		SDK.
-		</p>
 	**/
 	static var EVENT_SPENT_CREDITS(default, never) : TODO;
 	/**

@@ -6,7 +6,7 @@ package defold;
 		
 		<div>This is a callback-function, which is called by the engine when a script component is finalized (destroyed). It can
 		be used to e.g. take some last action, report the finalization to other game object instances, delete spawned objects
-		or release user input focus (see <code>release_input_focus</code>).</div>
+		or release user input focus (see `release_input_focus`).</div>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
@@ -14,32 +14,28 @@ package defold;
 	/**
 		animates a named property of the specified game object or component
 		
-		<p>
 		This is only supported for numerical properties. If the node property is already being
 		animated, that animation will be canceled and replaced by the new one.
-		</p>
-		<p>
-		If a <code>complete_function</code> (lua function) is specified, that function will be called when the animation has completed.
+		
+		If a `complete_function` (lua function) is specified, that function will be called when the animation has completed.
 		By starting a new animation in that function, several animations can be sequenced together. See the examples for more information.
 		
-		<b>NOTE!</b> If you call <code>go.animate()</code> from a game object's <code>final()</code> function, any passed
-		<code>complete_function</code> will be ignored and never called upon animation completion.
-		</p>
-		<p>
+		*NOTE!* If you call `go.animate()` from a game object's `final()` function, any passed
+		`complete_function` will be ignored and never called upon animation completion.
+		
 		See the <a href="/doc/properties">properties guide</a> for which properties can be animated and how.
-		</p>
 		
 		@param url url of the game object or component having the property (hash|string|url)
 		@param property name of the property to animate (hash|string)
 		@param playback playback mode of the animation (constant)
-		<ul>
-		  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
-		  <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
-		</ul>
+		
+		   * `go.PLAYBACK_ONCE_FORWARD`
+		   * `go.PLAYBACK_ONCE_BACKWARD`
+		   * `go.PLAYBACK_ONCE_PINGPONG`
+		   * `go.PLAYBACK_LOOP_FORWARD`
+		   * `go.PLAYBACK_LOOP_BACKWARD`
+		   * `go.PLAYBACK_LOOP_PINGPONG`
+		
 		@param to target property value (number|vector3|vector4|quaternion)
 		@param easing easing to use during animation. Either specify a constant, see the <a href="/doc/properties">properties guide</a> for a complete list, or a vmath.vector with a curve. (constant|vector)
 		@param duration duration of the animation in seconds (number)
@@ -50,12 +46,9 @@ package defold;
 	/**
 		cancels all animations of the named property of the specified game object or component
 		
-		<p>
 		By calling this function, all stored animations of the given property will be canceled.
-		</p>
-		<p>
+		
 		See the <a href="/doc/properties">properties guide</a> for which properties can be animated and how.
-		</p>
 		
 		@param url url of the game object or component having the property (hash|string|url)
 		@param property name of the property to animate (hash|string)
@@ -89,8 +82,8 @@ package defold;
 		gets the id of an instance
 		
 		The instance id is a hash of the absolute path.
-		If <code>path</code> is specified, it can either be absolute or relative to the instance of the calling script.
-		If <code>path</code> is not specified, the id of the instance of the calling script will be returned. See the examples below for more information.
+		If `path` is specified, it can either be absolute or relative to the instance of the calling script.
+		If `path` is not specified, the id of the instance of the calling script will be returned. See the examples below for more information.
 		
 		@param path path of the instance for which to return the id (string)
 	**/
@@ -98,7 +91,7 @@ package defold;
 	/**
 		gets the position of the instance
 		
-		The position is relative the parent (if any). Use <code>go.get_world_position</code> to retrieve the global world position.
+		The position is relative the parent (if any). Use `go.get_world_position` to retrieve the global world position.
 		
 		@param id optional id of the instance to get the position for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -106,7 +99,7 @@ package defold;
 	/**
 		gets the rotation of the instance
 		
-		The rotation is relative to the parent (if any). Use <code>go.get_world_rotation</code> to retrieve the global world position.
+		The rotation is relative to the parent (if any). Use `go.get_world_rotation` to retrieve the global world position.
 		
 		@param id optional id of the instance to get the rotation for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -114,7 +107,7 @@ package defold;
 	/**
 		gets the uniform scale factor of the instance
 		
-		The uniform scale is relative the parent (if any). Use <code>go.get_world_scale</code> to retrieve the global world scale factor.
+		The uniform scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
 		
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -122,7 +115,7 @@ package defold;
 	/**
 		gets the 3D scale factor of the instance
 		
-		The scale is relative the parent (if any). Use <code>go.get_world_scale</code> to retrieve the global world scale factor.
+		The scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
 		
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -130,7 +123,7 @@ package defold;
 	/**
 		gets the instance world position
 		
-		Use <code>go.get_position</code> to retrieve the position relative to the parent.
+		Use `go.get_position` to retrieve the position relative to the parent.
 		
 		@param id optional id of the instance to get the world position for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -138,7 +131,7 @@ package defold;
 	/**
 		gets the instance world rotation
 		
-		Use <code>go.get_rotation</code> to retrieve the rotation relative to the parent.
+		Use `go.get_rotation` to retrieve the rotation relative to the parent.
 		
 		@param id optional id of the instance to get the world rotation for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -146,7 +139,7 @@ package defold;
 	/**
 		gets the instance world scale factor
 		
-		Use <code>go.get_scale</code> to retrieve the scale factor relative to the parent.
+		Use `go.get_scale` to retrieve the scale factor relative to the parent.
 		
 		@param id optional id of the instance to get the world scale for, by default the instance of the calling script (hash|string|url)
 	**/
@@ -202,7 +195,7 @@ package defold;
 		
 		The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.
 		
-		<b>NOTE!</b> Physics are currently not affected when setting scale from this function.
+		*NOTE!* Physics are currently not affected when setting scale from this function.
 		
 		@param scale vector or uniform scale factor, must be greater than 0 (number|vector3)
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
@@ -220,60 +213,54 @@ package defold;
 	/**
 		called when user input is received
 		
-		<p>
 		This is a callback-function, which is called by the engine when user input is sent to the game object instance of the script.
 		It can be used to take action on the input, e.g. move the instance according to the input.
-		</p>
-		<p>
-		For an instance to obtain user input, it must first acquire input focuse through the message <code>acquire_input_focus</code>.
+		
+		For an instance to obtain user input, it must first acquire input focuse through the message `acquire_input_focus`.
 		See the documentation of that message for more information.
-		</p>
-		<p>
-		The <code>action</code> parameter is a table containing data about the input mapped to the <code>action_id</code>.
+		
+		The `action` parameter is a table containing data about the input mapped to the `action_id`.
 		For mapped actions it specifies the value of the input and if it was just pressed or released.
 		Actions are mapped to input in an input_binding-file.
-		</p>
-		<p>
-		Mouse movement is specifically handled and uses <code>nil</code> as its <code>action_id</code>.
-		The <code>action</code> only contains positional parameters in this case, such as x and y of the pointer.
-		</p>
-		<p>
+		
+		Mouse movement is specifically handled and uses `nil` as its `action_id`.
+		The `action` only contains positional parameters in this case, such as x and y of the pointer.
+		
 		Here is a brief description of the available table fields:
-		</p>
+		
 		<table>
 		  <th>Field</th>
 		  <th>Description</th>
-		  <tr><td><code>value</code></td><td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>pressed</code></td><td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>released</code></td><td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>repeated</code></td><td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>x</code></td><td>The x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>y</code></td><td>The y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_x</code></td><td>The screen space x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_y</code></td><td>The screen space y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>dx</code></td><td>The change in x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>dy</code></td><td>The change in y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_dx</code></td><td>The change in screen space x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_dy</code></td><td>The change in screen space y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>touch</code></td><td>List of touch input, one element per finger, if present. See table below about touch input</td></tr>
+		  <tr><td>`value`</td><td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td></tr>
+		  <tr><td>`pressed`</td><td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
+		  <tr><td>`released`</td><td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
+		  <tr><td>`repeated`</td><td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td></tr>
+		  <tr><td>`x`</td><td>The x value of a pointer device, if present.</td></tr>
+		  <tr><td>`y`</td><td>The y value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_x`</td><td>The screen space x value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_y`</td><td>The screen space y value of a pointer device, if present.</td></tr>
+		  <tr><td>`dx`</td><td>The change in x value of a pointer device, if present.</td></tr>
+		  <tr><td>`dy`</td><td>The change in y value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_dx`</td><td>The change in screen space x value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_dy`</td><td>The change in screen space y value of a pointer device, if present.</td></tr>
+		  <tr><td>`touch`</td><td>List of touch input, one element per finger, if present. See table below about touch input</td></tr>
 		</table>
 		
-		<p>
 		Touch input table:
-		</p>
+		
 		<table>
 		  <th>Field</th>
 		  <th>Description</th>
-		  <tr><td><code>pressed</code></td><td>True if the finger was pressed this frame.</td></tr>
-		  <tr><td><code>released</code></td><td>True if the finger was released this frame.</td></tr>
-		  <tr><td><code>tap_count</code></td><td>Number of taps, one for single, two for double-tap, etc</td></tr>
-		  <tr><td><code>x</code></td><td>The x touch location.</td></tr>
-		  <tr><td><code>y</code></td><td>The y touch location.</td></tr>
-		  <tr><td><code>dx</code></td><td>The change in x value.</td></tr>
-		  <tr><td><code>dy</code></td><td>The change in y value.</td></tr>
-		  <tr><td><code>acc_x</code></td><td>Accelerometer x value (if present).</td></tr>
-		  <tr><td><code>acc_y</code></td><td>Accelerometer y value (if present).</td></tr>
-		  <tr><td><code>acc_z</code></td><td>Accelerometer z value (if present).</td></tr>
+		  <tr><td>`pressed`</td><td>True if the finger was pressed this frame.</td></tr>
+		  <tr><td>`released`</td><td>True if the finger was released this frame.</td></tr>
+		  <tr><td>`tap_count`</td><td>Number of taps, one for single, two for double-tap, etc</td></tr>
+		  <tr><td>`x`</td><td>The x touch location.</td></tr>
+		  <tr><td>`y`</td><td>The y touch location.</td></tr>
+		  <tr><td>`dx`</td><td>The change in x value.</td></tr>
+		  <tr><td>`dy`</td><td>The change in y value.</td></tr>
+		  <tr><td>`acc_x`</td><td>Accelerometer x value (if present).</td></tr>
+		  <tr><td>`acc_y`</td><td>Accelerometer y value (if present).</td></tr>
+		  <tr><td>`acc_z`</td><td>Accelerometer z value (if present).</td></tr>
 		</table>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
@@ -284,14 +271,11 @@ package defold;
 	/**
 		called when a message has been sent to the script component
 		
-		<p>
 		This is a callback-function, which is called by the engine whenever a message has been sent to the script component.
 		It can be used to take action on the message, e.g. send a response back to the sender of the message.
-		</p>
-		<p>
-		The <code>message</code> parameter is a table containing the message data. If the message is sent from the engine, the
+		
+		The `message` parameter is a table containing the message data. If the message is sent from the engine, the
 		documentation of the message specifies which data is supplied.
-		</p>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 		@param message_id id of the received message (hash)
@@ -302,10 +286,8 @@ package defold;
 	/**
 		called when the script component is reloaded
 		
-		<p>
 		This is a callback-function, which is called by the engine when the script component is reloaded, e.g. from the editor.
 		It can be used for live development, e.g. to tweak constants or set up the state properly for the instance.
-		</p>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
@@ -326,79 +308,65 @@ package defold;
 	/**
 		acquires the user input focus
 		
-		<p>
 		Post this message to a game object instance to make that instance acquire the user input focus.
-		</p>
-		<p>
+		
 		User input is distributed by the engine to every instance that has requested it. The last instance
 		to request focus will receive it first. This means that the scripts in the instance will have
 		first-hand-chance at reacting on user input, possibly consuming it so that no other instances
 		can react on it. The most common case is for a script to send this message to itself when it needs to
 		respond to user input.
-		</p>
-		<p>
+		
 		A script belonging to an instance which has the user input focus will receive the input actions
-		in its <code>on_input</code> callback function. See <code>on_input</code> for more information on
+		in its `on_input` callback function. See `on_input` for more information on
 		how user input can be handled.
-		</p>
 	**/
 	static var AcquireInputFocus(default, never) : Message<{ }> = new Message("acquire_input_focus");
 	/**
 		disables the receiving component
 		
-		<p>
 		This message disables the receiving component. All components are enabled by default, which means they will receive input, updates
-		and be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.
-		</p>
+		and be a part of the simulation. A component is disabled when it receives the `disable` message.
 		
-		<P>
-		<b>Note!</b> Components that currently supports this message are:
-		<ul>
-		  <li>Collection Proxy</li>
-		  <li>Collision Object</li>
-		  <li>Gui</li>
-		  <li>Spine Model</li>
-		  <li>Sprite</li>
-		  <li>Tile Grid</li>
-		</ul>
-		</p>
+		*Note!* Components that currently supports this message are:
+		
+		   * Collection Proxy
+		   * Collision Object
+		   * Gui
+		   * Spine Model
+		   * Sprite
+		   * Tile Grid
 	**/
 	static var Disable(default, never) : Message<{ }> = new Message("disable");
 	/**
 		enables the receiving component
 		
-		<p>
 		This message enables the receiving component. All components are enabled by default, which means they will receive input, updates
-		and be a part of the simulation. A component is disabled when it receives the <code>disable</code> message.
-		</p>
+		and be a part of the simulation. A component is disabled when it receives the `disable` message.
 		
-		<P>
-		<b>Note!</b> Components that currently supports this message are:
-		<ul>
-		  <li>Collection Proxy</li>
-		  <li>Collision Object</li>
-		  <li>Gui</li>
-		  <li>Spine Model</li>
-		  <li>Sprite</li>
-		  <li>Tile Grid</li>
-		</ul>
-		</p>
+		*Note!* Components that currently supports this message are:
+		
+		   * Collection Proxy
+		   * Collision Object
+		   * Gui
+		   * Spine Model
+		   * Sprite
+		   * Tile Grid
 	**/
 	static var Enable(default, never) : Message<{ }> = new Message("enable");
 	/**
 		releases the user input focus
 		
 		Post this message to an instance to make that instance release the user input focus.
-		See <code>acquire_input_focus</code> for more information on how the user input handling
+		See `acquire_input_focus` for more information on how the user input handling
 		works.
 	**/
 	static var ReleaseInputFocus(default, never) : Message<{ }> = new Message("release_input_focus");
 	/**
 		(DEPRECATED) requests the transform from an instance
 		
-		<div><b>DEPRECATED!</b> See the functions <code>go.get_position</code>, <code>go.get_rotation</code>, etc. for a simpler way to obtain the transform of another game object instance.</div>
+		<div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
 		Send this message to an instance to request its transform (position, rotation, scale).
-		The sending script will receive the answer as a <code>transform_response</code>-message
+		The sending script will receive the answer as a `transform_response`-message
 		at a later time.
 	**/
 	static var RequestTransform(default, never) : Message<{ }> = new Message("request_transform");
@@ -417,9 +385,9 @@ package defold;
 	/**
 		(DEPRECATED) reports back the transform of an instance
 		
-		<div><b>DEPRECATED!</b> See the functions <code>go.get_position</code>, <code>go.get_rotation</code>, etc. for a simpler way to obtain the transform of another game object instance.</div>
+		<div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
 		The response a script receives after it has requested the transform from an instance
-		using the <code>request_transform</code>-message. See the description of that message
+		using the `request_transform`-message. See the description of that message
 		for a complete example on how to use it.
 		
 		@param position local position of the instance (vector3)

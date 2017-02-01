@@ -19,7 +19,7 @@ package defold;
 		
 		Get the tile set at the specified position in the tilemap.
 		The position is identified by the tile index starting at origo
-		with index 1, 1. (see <code>tilemap.set_tile()</code>)
+		with index 1, 1. (see `tilemap.set_tile()`)
 		Which tile map and layer to query is identified by the URL and the
 		layer name parameters.
 		

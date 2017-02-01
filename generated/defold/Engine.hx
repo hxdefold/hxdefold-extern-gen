@@ -4,8 +4,8 @@ package defold;
 	/**
 		exits application
 		
-		Terminates the game application and reports the specified <code>code</code> to the OS.
-		This message can only be sent to the designated <code>@system</code> socket.
+		Terminates the game application and reports the specified `code` to the OS.
+		This message can only be sent to the designated `@system` socket.
 		
 		@param code exit code to report to the OS, 0 means clean exit (number)
 	**/
@@ -55,13 +55,13 @@ package defold;
 	/**
 		shows/hides the on-screen physics visual debugging
 		
-		This message can only be sent to the designated <code>@system</code> socket.
+		This message can only be sent to the designated `@system` socket.
 	**/
 	static var TogglePhysicsDebug(default, never) : Message<{ }> = new Message("toggle_physics_debug");
 	/**
 		shows/hides the on-screen profiler
 		
-		This message can only be sent to the designated <code>@system</code> socket.
+		This message can only be sent to the designated `@system` socket.
 	**/
 	static var ToggleProfile(default, never) : Message<{ }> = new Message("toggle_profile");
 }

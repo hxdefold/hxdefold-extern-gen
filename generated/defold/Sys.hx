@@ -4,10 +4,8 @@ package defold;
 	/**
 		get application information
 		
-		<p>
 		Returns a table with the following members:
 		installed.
-		</p>
 	**/
 	static function get_application_info():TODO;
 	/**
@@ -34,10 +32,8 @@ package defold;
 	/**
 		get engine information
 		
-		<p>
 		Returns a table with the following members:
 		version, engine_sha1.
-		</p>
 	**/
 	static function get_engine_info():TODO;
 	/**
@@ -59,21 +55,24 @@ package defold;
 	/**
 		get system information
 		
-		<p>
 		Returns a table with the following members:
 		device_model, manufacturer, system_name, system_version, api_version, language, device_language, territory, gmt_offset (minutes), device_ident, ad_ident, ad_tracking_enabled and user_agent.
-		</p>
-		<p><code>device_model</code> and <code>manufacturer</code> is currently only available on iOS and Android.</p>
-		<p><code>language</code> is in ISO-639 format (two characters) and <code>territory</code> in ISO-3166 format (two characters).</p>
-		<p><code>device_language</code> is in ISO-639 format (two characters) and if applicable by a dash (-) and an ISO 15924 script code. Reflects device preferred language.</p>
-		<p><code>device_ident</code> is "identifierForVendor" and <code>ad_ident</code> is "advertisingIdentifier" on iOS</p>
-		<p><code>device_ident</code> is "android_id" and <code>ad_ident</code> is advertising ID provided by Google Play on Android.</p>
+		
+		`device_model` and `manufacturer` is currently only available on iOS and Android.
+		
+		`language` is in ISO-639 format (two characters) and `territory` in ISO-3166 format (two characters).
+		
+		`device_language` is in ISO-639 format (two characters) and if applicable by a dash (-) and an ISO 15924 script code. Reflects device preferred language.
+		
+		`device_ident` is "identifierForVendor" and `ad_ident` is "advertisingIdentifier" on iOS
+		
+		`device_ident` is "android_id" and `ad_ident` is advertising ID provided by Google Play on Android.
 	**/
 	static function get_sys_info():TODO;
 	/**
 		loads a lua table from a file on disk
 		
-		If the file exists, it must have been created by <code>sys.save</code> to be loaded.
+		If the file exists, it must have been created by `sys.save` to be loaded.
 		
 		@param filename file to read from (string)
 	**/
@@ -107,8 +106,8 @@ package defold;
 	/**
 		saves a lua table to a file stored on disk
 		
-		The table can later be loaded by <code>sys.load</code>.
-		Use <code>sys.get_save_file</code> to obtain a valid location for the file.
+		The table can later be loaded by `sys.load`.
+		Use `sys.get_save_file` to obtain a valid location for the file.
 		Internally, this function uses a workspace buffer sized output file sized 128kb. This size reflects the output file size which must not exceed this limit.
 		Additionally, the total number of rows that any one table may contain is limited to 65536 (i.e. a 16 bit range). When tables are used to represent arrays, the values of
 		keys are permitted to fall within a 32 bit range, supporting sparse arrays, however the limit on the total number of rows remains in effect.

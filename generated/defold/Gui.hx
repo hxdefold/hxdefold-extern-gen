@@ -6,7 +6,7 @@ package defold;
 		
 		This is a callback-function, which is called by the engine when a gui component is finalized (destroyed). It can
 		be used to e.g. take some last action, report the finalization to other game object instances
-		or release user input focus (see <code>release_input_focus</code>). There is no use in starting any animations or similar
+		or release user input focus (see `release_input_focus`). There is no use in starting any animations or similar
 		from this function since the gui component is about to be destroyed.
 		
 		@param self reference to the script state to be used for storing data (script_ref)
@@ -15,86 +15,77 @@ package defold;
 	/**
 		animates a node property
 		
-		<p>
 		This starts an animation of a node property according to the specified parameters. If the node property is already being
 		animated, that animation will be canceled and replaced by the new one. Note however that several different node properties
-		can be animated simultaneously. Use <code>gui.cancel_animation</code> to stop the animation before it has completed.
-		</p>
-		<p>
+		can be animated simultaneously. Use `gui.cancel_animation` to stop the animation before it has completed.
+		
 		Composite properties of type vector3, vector4 or quaternion also expose their sub-components (x, y, z and w).
 		You can address the components individually by suffixing the name with a dot '.' and the name of the component.
 		For instance, "position.x" (the position x coordinate) or "color.w" (the color alpha value).
-		</p>
-		<p>
-		If a <code>complete_function</code> (Lua function) is specified, that function will be called when the animation has completed.
+		
+		If a `complete_function` (Lua function) is specified, that function will be called when the animation has completed.
 		By starting a new animation in that function, several animations can be sequenced together. See the examples for more information.
-		</p>
 		
 		@param node node to animate (node)
 		@param property property to animate (string|constant)
-		<ul>
-		  <li><code>"position"</code></li>
-		  <li><code>"rotation"</code></li>
-		  <li><code>"scale"</code></li>
-		  <li><code>"color"</code></li>
-		  <li><code>"outline"</code></li>
-		  <li><code>"shadow"</code></li>
-		  <li><code>"size"</code></li>
-		  <li><code>"fill_angle"</code> (pie nodes)</li>
-		  <li><code>"inner_radius"</code> (pie nodes)</li>
-		  <li><code>"slice9"</code> (slice9 nodes)</li>
-		</ul>
-		The following property constants are also defined equalling the corresponding property string names.
-		<ul>
-		  <li><code>gui.PROP_POSITION</code></li>
-		  <li><code>gui.PROP_ROTATION</code></li>
-		  <li><code>gui.PROP_SCALE</code></li>
-		  <li><code>gui.PROP_COLOR</code></li>
-		  <li><code>gui.PROP_OUTLINE</code></li>
-		  <li><code>gui.PROP_SHADOW</code></li>
-		  <li><code>gui.PROP_SIZE</code></li>
-		  <li><code>gui.PROP_FILL_ANGLE</code></li>
-		  <li><code>gui.PROP_INNER_RADIUS</code></li>
-		  <li><code>gui.PROP_SLICE9</code></li>
-		</ul>
-		<p>
 		
-		</p>
+		   * `"position"`
+		   * `"rotation"`
+		   * `"scale"`
+		   * `"color"`
+		   * `"outline"`
+		   * `"shadow"`
+		   * `"size"`
+		   * `"fill_angle"` (pie nodes)
+		   * `"inner_radius"` (pie nodes)
+		   * `"slice9"` (slice9 nodes)
+		
+		The following property constants are also defined equalling the corresponding property string names.
+		
+		   * `gui.PROP_POSITION`
+		   * `gui.PROP_ROTATION`
+		   * `gui.PROP_SCALE`
+		   * `gui.PROP_COLOR`
+		   * `gui.PROP_OUTLINE`
+		   * `gui.PROP_SHADOW`
+		   * `gui.PROP_SIZE`
+		   * `gui.PROP_FILL_ANGLE`
+		   * `gui.PROP_INNER_RADIUS`
+		   * `gui.PROP_SLICE9`
+		
 		@param to target property value (vector3|vector4)
 		@param easing easing to use during animation. Either specify one of the gui.EASING_* constants or provide a vmath.vector with a custom curve. (constant|vector)
 		@param duration duration of the animation (number)
 		@param delay delay before the animation starts (number)
 		@param complete_function function to call when the animation has completed (function)
 		@param playback playback mode (constant)
-		<ul>
-		  <li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>
-		  <li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>
-		  <li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>
-		</ul>
+		
+		   * `gui.PLAYBACK_ONCE_FORWARD`
+		   * `gui.PLAYBACK_ONCE_BACKWARD`
+		   * `gui.PLAYBACK_ONCE_PINGPONG`
+		   * `gui.PLAYBACK_LOOP_FORWARD`
+		   * `gui.PLAYBACK_LOOP_BACKWARD`
+		   * `gui.PLAYBACK_LOOP_PINGPONG`
 	**/
 	static function animate(node:TODO, property:TODO, to:TODO, easing:TODO, duration:TODO, ?delay:TODO, ?complete_function:TODO, ?playback:TODO):TODO;
 	/**
 		cancels an ongoing animation
 		
-		If an animation of the specified node is currently running (started by <code>gui.animate</code>), it will immediately be canceled.
+		If an animation of the specified node is currently running (started by `gui.animate`), it will immediately be canceled.
 		
 		@param node node that should have its animation canceled (node)
 		@param property property for which the animation should be canceled (string|constant)
-		<ul>
-		  <li><code>"position"</code></li>
-		  <li><code>"rotation"</code></li>
-		  <li><code>"scale"</code></li>
-		  <li><code>"color"</code></li>
-		  <li><code>"outline"</code></li>
-		  <li><code>"shadow"</code></li>
-		  <li><code>"size"</code></li>
-		  <li><code>"fill_angle"</code> (pie nodes)</li>
-		  <li><code>"inner_radius"</code> (pie nodes)</li>
-		  <li><code>"slice9"</code> (slice9 nodes)</li>
-		</ul>
+		
+		   * `"position"`
+		   * `"rotation"`
+		   * `"scale"`
+		   * `"color"`
+		   * `"outline"`
+		   * `"shadow"`
+		   * `"size"`
+		   * `"fill_angle"` (pie nodes)
+		   * `"inner_radius"` (pie nodes)
+		   * `"slice9"` (slice9 nodes)
 	**/
 	static function cancel_animation(node:TODO, property:TODO):TODO;
 	/**
@@ -522,11 +513,11 @@ package defold;
 		@param width texture width (number)
 		@param height texture height (number)
 		@param type texture type (string|constant)
-		<ul>
-		  <li><code>"rgb"</code> - RGB</li>
-		  <li><code>"rgba"</code> - RGBA</li>
-		  <li><code>"l"</code> - LUMINANCE</li>
-		</ul>
+		
+		   * `"rgb"` - RGB
+		   * `"rgba"` - RGBA
+		   * `"l"` - LUMINANCE
+		
 		@param buffer texture data (string)
 		@param flip flip texture vertically (boolean)
 	**/
@@ -555,20 +546,20 @@ package defold;
 		@param node spine node that should play the animation (node)
 		@param animation_id id of the animation to play (string|hash)
 		@param playback playback mode (constant)
-		<ul>
-		  <li><code>gui.PLAYBACK_ONCE_FORWARD</code></li>
-		  <li><code>gui.PLAYBACK_ONCE_BACKWARD</code></li>
-		  <li><code>gui.PLAYBACK_ONCE_PINGPONG</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_FORWARD</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_BACKWARD</code></li>
-		  <li><code>gui.PLAYBACK_LOOP_PINGPONG</code></li>
-		</ul>
+		
+		   * `gui.PLAYBACK_ONCE_FORWARD`
+		   * `gui.PLAYBACK_ONCE_BACKWARD`
+		   * `gui.PLAYBACK_ONCE_PINGPONG`
+		   * `gui.PLAYBACK_LOOP_FORWARD`
+		   * `gui.PLAYBACK_LOOP_BACKWARD`
+		   * `gui.PLAYBACK_LOOP_PINGPONG`
+		
 		@param play_properties optional table with properties (table)
-		<ul>
-		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
-		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
-		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
-		</ul>
+		
+		   * `blend_duration` duration of a linear blend between the current and new animation (number)
+		   * `offset` the normalized initial value of the animation cursor when the animation starts playing (number)
+		   * `playback_rate` the rate with which the animation will be played. Must be positive (number)
+		
 		@param complete_function function to call when the animation has completed (function)
 	**/
 	static function play_spine_anim(node:TODO, animation_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):TODO;
@@ -591,11 +582,10 @@ package defold;
 		
 		@param node node to set adjust mode for (node)
 		@param adjust_mode adjust mode to set (constant)
-		<ul>
-		  <li><code>gui.ADJUST_FIT</code></li>
-		  <li><code>gui.ADJUST_ZOOM</code></li>
-		  <li><code>gui.ADJUST_STRETCH</code></li>
-		</ul>
+		
+		   * `gui.ADJUST_FIT`
+		   * `gui.ADJUST_ZOOM`
+		   * `gui.ADJUST_STRETCH`
 	**/
 	static function set_adjust_mode(node:TODO, adjust_mode:TODO):TODO;
 	/**
@@ -605,12 +595,11 @@ package defold;
 		
 		@param node node to set blend mode for (node)
 		@param blend_mode blend mode to set (constant)
-		<ul>
-		  <li><code>gui.BLEND_ALPHA</code></li>
-		  <li><code>gui.BLEND_ADD</code></li>
-		  <li><code>gui.BLEND_ADD_ALPHA</code></li>
-		  <li><code>gui.BLEND_MULT</code></li>
-		</ul>
+		
+		   * `gui.BLEND_ALPHA`
+		   * `gui.BLEND_ADD`
+		   * `gui.BLEND_ADD_ALPHA`
+		   * `gui.BLEND_MULT`
 	**/
 	static function set_blend_mode(node:TODO, blend_mode:TODO):TODO;
 	/**
@@ -629,10 +618,9 @@ package defold;
 		
 		@param node node to set clipping mode for (node)
 		@param clipping_mode clipping mode to set (constant)
-		<ul>
-		  <li><code>gui.CLIPPING_MODE_NONE</code></li>
-		  <li><code>gui.CLIPPING_MODE_STENCIL</code></li>
-		</ul>
+		
+		   * `gui.CLIPPING_MODE_NONE`
+		   * `gui.CLIPPING_MODE_STENCIL`
 	**/
 	static function set_clipping_mode(node:TODO, clipping_mode:TODO):TODO;
 	/**
@@ -749,17 +737,16 @@ package defold;
 		
 		@param node node to set pivot for (node)
 		@param pivot pivot constant (constant)
-		<ul>
-		  <li><code>gui.PIVOT_CENTER</code></li>
-		  <li><code>gui.PIVOT_N</code></li>
-		  <li><code>gui.PIVOT_NE</code></li>
-		  <li><code>gui.PIVOT_E</code></li>
-		  <li><code>gui.PIVOT_SE</code></li>
-		  <li><code>gui.PIVOT_S</code></li>
-		  <li><code>gui.PIVOT_SW</code></li>
-		  <li><code>gui.PIVOT_W</code></li>
-		  <li><code>gui.PIVOT_NW</code></li>
-		</ul>
+		
+		   * `gui.PIVOT_CENTER`
+		   * `gui.PIVOT_N`
+		   * `gui.PIVOT_NE`
+		   * `gui.PIVOT_E`
+		   * `gui.PIVOT_SE`
+		   * `gui.PIVOT_S`
+		   * `gui.PIVOT_SW`
+		   * `gui.PIVOT_W`
+		   * `gui.PIVOT_NW`
 	**/
 	static function set_pivot(node:TODO, pivot:TODO):TODO;
 	/**
@@ -804,7 +791,7 @@ package defold;
 	/**
 		sets the node size
 		
-		<b>NOTE!</b> You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
+		*NOTE!* You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
 		
 		@param node node to set the size for (node)
 		@param size new size (vector3|vector4)
@@ -817,10 +804,9 @@ package defold;
 		
 		@param node node to set size mode for (node)
 		@param size_mode size mode to set (constant)
-		<ul>
-		  <li><code>gui.SIZE_MODE_MANUAL</code></li>
-		  <li><code>gui.SIZE_MODE_AUTO</code></li>
-		</ul>
+		
+		   * `gui.SIZE_MODE_MANUAL`
+		   * `gui.SIZE_MODE_AUTO`
 	**/
 	static function set_size_mode(node:TODO, size_mode:TODO):TODO;
 	/**
@@ -893,11 +879,11 @@ package defold;
 		@param width texture width (number)
 		@param height texture height (number)
 		@param type texture type (string|constant)
-		<ul>
-		  <li><code>"rgb"</code> - RGB</li>
-		  <li><code>"rgba"</code> - RGBA</li>
-		  <li><code>"l"</code> - LUMINANCE</li>
-		</ul>
+		
+		   * `"rgb"` - RGB
+		   * `"rgba"` - RGBA
+		   * `"l"` - LUMINANCE
+		
 		@param buffer texture data (string)
 		@param flip flip texture vertically (boolean)
 	**/
@@ -916,11 +902,10 @@ package defold;
 		
 		@param node node to set x-anchor for (node)
 		@param anchor anchor constant (constant)
-		<ul>
-		  <li><code>gui.ANCHOR_NONE</code></li>
-		  <li><code>gui.ANCHOR_LEFT</code></li>
-		  <li><code>gui.ANCHOR_RIGHT</code></li>
-		</ul>
+		
+		   * `gui.ANCHOR_NONE`
+		   * `gui.ANCHOR_LEFT`
+		   * `gui.ANCHOR_RIGHT`
 	**/
 	static function set_xanchor(node:TODO, anchor:TODO):TODO;
 	/**
@@ -930,11 +915,10 @@ package defold;
 		
 		@param node node to set y-anchor for (node)
 		@param anchor anchor constant (constant)
-		<ul>
-		  <li><code>gui.ANCHOR_NONE</code></li>
-		  <li><code>gui.ANCHOR_TOP</code></li>
-		  <li><code>gui.ANCHOR_BOTTOM</code></li>
-		</ul>
+		
+		   * `gui.ANCHOR_NONE`
+		   * `gui.ANCHOR_TOP`
+		   * `gui.ANCHOR_BOTTOM`
 	**/
 	static function set_yanchor(node:TODO, anchor:TODO):TODO;
 	/**
@@ -944,12 +928,12 @@ package defold;
 		the device.
 		
 		@param type keyboard type (constant)
-		<ul>
-		  <li><code>gui.KEYBOARD_TYPE_DEFAULT</code></li>
-		  <li><code>gui.KEYBOARD_TYPE_EMAIL</code></li>
-		  <li><code>gui.KEYBOARD_TYPE_NUMBER_PAD</code></li>
-		  <li><code>gui.KEYBOARD_TYPE_PASSWORD</code></li>
-		</ul>
+		
+		   * `gui.KEYBOARD_TYPE_DEFAULT`
+		   * `gui.KEYBOARD_TYPE_EMAIL`
+		   * `gui.KEYBOARD_TYPE_NUMBER_PAD`
+		   * `gui.KEYBOARD_TYPE_PASSWORD`
+		
 		@param autoclose close keyboard automatically when clicking outside
 	**/
 	static function show_keyboard(type:TODO, autoclose:TODO):TODO;
@@ -965,60 +949,54 @@ package defold;
 	/**
 		called when user input is received
 		
-		<p>
 		This is a callback-function, which is called by the engine when user input is sent to the instance of the gui component.
 		It can be used to take action on the input, e.g. modify the gui according to the input.
-		</p>
-		<p>
-		For an instance to obtain user input, it must first acquire input focuse through the message <code>acquire_input_focus</code>.
+		
+		For an instance to obtain user input, it must first acquire input focuse through the message `acquire_input_focus`.
 		See the documentation of that message for more information.
-		</p>
-		<p>
-		The <code>action</code> parameter is a table containing data about the input mapped to the <code>action_id</code>.
+		
+		The `action` parameter is a table containing data about the input mapped to the `action_id`.
 		For mapped actions it specifies the value of the input and if it was just pressed or released.
 		Actions are mapped to input in an input_binding-file.
-		</p>
-		<p>
-		Mouse movement is specifically handled and uses <code>nil</code> as its <code>action_id</code>.
-		The <code>action</code> only contains positional parameters in this case, such as x and y of the pointer.
-		</p>
-		<p>
+		
+		Mouse movement is specifically handled and uses `nil` as its `action_id`.
+		The `action` only contains positional parameters in this case, such as x and y of the pointer.
+		
 		Here is a brief description of the available table fields:
-		</p>
+		
 		<table>
 		  <th>Field</th>
 		  <th>Description</th>
-		  <tr><td><code>value</code></td><td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>pressed</code></td><td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>released</code></td><td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>repeated</code></td><td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td></tr>
-		  <tr><td><code>x</code></td><td>The x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>y</code></td><td>The y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_x</code></td><td>The screen space x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_y</code></td><td>The screen space y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>dx</code></td><td>The change in x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>dy</code></td><td>The change in y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_dx</code></td><td>The change in screen space x value of a pointer device, if present.</td></tr>
-		  <tr><td><code>screen_dy</code></td><td>The change in screen space y value of a pointer device, if present.</td></tr>
-		  <tr><td><code>touch</code></td><td>List of touch input, one element per finger, if present. See table below about touch input</td></tr>
+		  <tr><td>`value`</td><td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td></tr>
+		  <tr><td>`pressed`</td><td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
+		  <tr><td>`released`</td><td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
+		  <tr><td>`repeated`</td><td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td></tr>
+		  <tr><td>`x`</td><td>The x value of a pointer device, if present.</td></tr>
+		  <tr><td>`y`</td><td>The y value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_x`</td><td>The screen space x value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_y`</td><td>The screen space y value of a pointer device, if present.</td></tr>
+		  <tr><td>`dx`</td><td>The change in x value of a pointer device, if present.</td></tr>
+		  <tr><td>`dy`</td><td>The change in y value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_dx`</td><td>The change in screen space x value of a pointer device, if present.</td></tr>
+		  <tr><td>`screen_dy`</td><td>The change in screen space y value of a pointer device, if present.</td></tr>
+		  <tr><td>`touch`</td><td>List of touch input, one element per finger, if present. See table below about touch input</td></tr>
 		</table>
 		
-		<p>
 		Touch input table:
-		</p>
+		
 		<table>
 		  <th>Field</th>
 		  <th>Description</th>
-		  <tr><td><code>pressed</code></td><td>True if the finger was pressed this frame.</td></tr>
-		  <tr><td><code>released</code></td><td>True if the finger was released this frame.</td></tr>
-		  <tr><td><code>tap_count</code></td><td>Number of taps, one for single, two for double-tap, etc</td></tr>
-		  <tr><td><code>x</code></td><td>The x touch location.</td></tr>
-		  <tr><td><code>y</code></td><td>The y touch location.</td></tr>
-		  <tr><td><code>dx</code></td><td>The change in x value.</td></tr>
-		  <tr><td><code>dy</code></td><td>The change in y value.</td></tr>
-		  <tr><td><code>acc_x</code></td><td>Accelerometer x value (if present).</td></tr>
-		  <tr><td><code>acc_y</code></td><td>Accelerometer y value (if present).</td></tr>
-		  <tr><td><code>acc_z</code></td><td>Accelerometer z value (if present).</td></tr>
+		  <tr><td>`pressed`</td><td>True if the finger was pressed this frame.</td></tr>
+		  <tr><td>`released`</td><td>True if the finger was released this frame.</td></tr>
+		  <tr><td>`tap_count`</td><td>Number of taps, one for single, two for double-tap, etc</td></tr>
+		  <tr><td>`x`</td><td>The x touch location.</td></tr>
+		  <tr><td>`y`</td><td>The y touch location.</td></tr>
+		  <tr><td>`dx`</td><td>The change in x value.</td></tr>
+		  <tr><td>`dy`</td><td>The change in y value.</td></tr>
+		  <tr><td>`acc_x`</td><td>Accelerometer x value (if present).</td></tr>
+		  <tr><td>`acc_y`</td><td>Accelerometer y value (if present).</td></tr>
+		  <tr><td>`acc_z`</td><td>Accelerometer z value (if present).</td></tr>
 		</table>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
@@ -1029,15 +1007,13 @@ package defold;
 	/**
 		called when a message has been sent to the gui component
 		
-		<p>
 		This is a callback-function, which is called by the engine whenever a message has been sent to the gui component.
 		It can be used to take action on the message, e.g. update the gui or send a response back to the sender of the message.
-		</p>
-		<p>
-		The <code>message</code> parameter is a table containing the message data. If the message is sent from the engine, the
+		
+		The `message` parameter is a table containing the message data. If the message is sent from the engine, the
 		documentation of the message specifies which data is supplied.
-		</p>
-		<p>See the <code>update</code> function for examples on how to use this callback-function.</p>
+		
+		See the `update` function for examples on how to use this callback-function.
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 		@param message_id id of the received message (hash)
@@ -1047,10 +1023,8 @@ package defold;
 	/**
 		called when the gui script is reloaded
 		
-		<p>
 		This is a callback-function, which is called by the engine when the gui script is reloaded, e.g. from the editor.
 		It can be used for live development, e.g. to tweak constants or set up the state properly for the script.
-		</p>
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/

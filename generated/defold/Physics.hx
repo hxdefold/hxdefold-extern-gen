@@ -5,9 +5,9 @@ package defold;
 		requests a ray cast to be performed
 		
 		Ray casts are used to test for intersections against collision objects in the physics world.
-		Which collision objects to hit is filtered by their collision groups and can be configured through <code>groups</code>.
+		Which collision objects to hit is filtered by their collision groups and can be configured through `groups`.
 		The actual ray cast will be performed during the physics-update.
-		If an object is hit, the result will be reported via a <code>ray_cast_response</code> message.
+		If an object is hit, the result will be reported via a `ray_cast_response` message.
 		
 		@param from the world position of the start of the ray (vector3)
 		@param to the world position of the end of the ray (vector3)
@@ -31,15 +31,12 @@ package defold;
 	/**
 		reports a collision between two collision objects
 		
-		<p>
 		This message is broadcasted to every component of an instance that has a collision object, when the collision
 		object collides with another collision object. For a script to take action when such a collision happens, it
-		should check for this message in its <code>on_message</code> callback function.
-		</p>
-		<p>
+		should check for this message in its `on_message` callback function.
+		
 		This message only reports that a collision actually happened and will only be sent once per colliding pair and frame.
-		To retrieve more detailed information, check for the <code>contact_point_response</code> instead.
-		</p>
+		To retrieve more detailed information, check for the `contact_point_response` instead.
 		
 		@param other_id the id of the instance the collision object collided with (hash)
 		@param other_position the world position of the instance the collision object collided with (vec3)
@@ -49,23 +46,20 @@ package defold;
 	/**
 		reports a contact point between two collision objects
 		
-		<p>
 		This message is broadcasted to every component of an instance that has a collision object, when the collision
 		object has contact points with respect to another collision object. For a script to take action when
-		such contact points occur, it should check for this message in its <code>on_message</code> callback function.
-		</p>
-		<p>
+		such contact points occur, it should check for this message in its `on_message` callback function.
+		
 		Since multiple contact points can occur for two colliding objects, this message can be sent multiple times in
 		the same frame for the same two colliding objects. To only be notified once when the collision occurs, check
-		for the <code>collision_response</code> message instead.
-		</p>
+		for the `collision_response` message instead.
 		
 		@param position world position of the contact point (vector3)
 		@param normal normal in world space of the contact point, which points from the other object towards the current object (vector3)
 		@param relative_velocity the relative velocity of the collision object as observed from the other object (vector3)
 		@param distance the penetration distance between the objects, which is always positive (number)
 		@param applied_impulse the impulse the contact resulted in (number)
-		@param life_time life time of the contact, <b>not currently used</b> (number)
+		@param life_time life time of the contact, *not currently used* (number)
 		@param mass the mass of the current collision object in kg (number)
 		@param other_mass the mass of the other collision object in kg (number)
 		@param other_id the id of the instance the collision object is in contact with (hash)
@@ -76,8 +70,8 @@ package defold;
 	/**
 		reports a ray cast hit
 		
-		This message is sent back to the sender of a <code>ray_cast_request</code>, if the ray hit a collision object.
-		See <code>request_ray_cast</code> for examples of how to use it.
+		This message is sent back to the sender of a `ray_cast_request`, if the ray hit a collision object.
+		See `request_ray_cast` for examples of how to use it.
 		
 		@param fraction the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end (number)
 		@param position the world position of the hit
@@ -97,16 +91,13 @@ package defold;
 	/**
 		reports interaction (enter/exit) between a trigger collision object and another collision object
 		
-		<p>
 		This message is broadcasted to every component of an instance that has a collision object, when the collision
 		object interacts with another collision object and one of them is a trigger.
 		For a script to take action when such an interaction happens, it
-		should check for this message in its <code>on_message</code> callback function.
-		</p>
-		<p>
+		should check for this message in its `on_message` callback function.
+		
 		This message only reports that an interaction actually happened and will only be sent once per colliding pair and frame.
-		To retrieve more detailed information, check for the <code>contact_point_response</code> instead.
-		</p>
+		To retrieve more detailed information, check for the `contact_point_response` instead.
 		
 		@param other_id the id of the instance the collision object collided with (hash)
 		@param enter if the interaction was an entry or not (exit)
@@ -116,9 +107,9 @@ package defold;
 	/**
 		(DEPRECATED) reports the velocity of a collision object
 		
-		See <code>request_velocity</code> for examples on how to use it.
+		See `request_velocity` for examples on how to use it.
 		
-		 This message is sent back to the sender of a <code>request_velocity</code> message.
+		 This message is sent back to the sender of a `request_velocity` message.
 		
 		@param linear_velocity the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)
 		@param angular_velocity the angular velocity, i.e. rotation, of the collision object in radians/s.

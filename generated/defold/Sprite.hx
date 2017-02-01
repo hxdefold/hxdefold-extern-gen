@@ -51,19 +51,18 @@ package defold;
 	/**
 		reports that an animation has completed
 		
-		<p>This message is sent to the sender of a <code>play_animation</code> message when the
-		animation has completed.</p>
+		This message is sent to the sender of a `play_animation` message when the
+		animation has completed.
 		
-		<p>Note that this message is sent only for animations that play with the following
-		playback modes:</p>
-		<ul>
-		<li>Once Forward</li>
-		<li>Once Backward</li>
-		<li>Once Ping Pong</li>
-		</ul>
+		Note that this message is sent only for animations that play with the following
+		playback modes:
 		
-		<p>See <code>play_animation</code> for more information and examples of how to use
-		this message.</p>
+		 * Once Forward
+		 * Once Backward
+		 * Once Ping Pong
+		
+		See `play_animation` for more information and examples of how to use
+		this message.
 		
 		@param current_tile the current tile of the sprite (number)
 		@param id id of the animation that was completed (hash)
@@ -72,9 +71,7 @@ package defold;
 	/**
 		plays a sprite animation
 		
-		<p>
 		Post this message to a sprite-component to make it play an animation from its tile set.
-		</p>
 		
 		@param id the id of the animation to play
 	**/

@@ -18,9 +18,9 @@ package defold;
 	/**
 		creates a new URL from a string
 		
-		The format of the string must be <code>"[socket:][path][#fragment]"</code>, which is similar to a http URL.
-		When addressing instances, <code>socket</code> is the name of the collection. <code>path</code> is the id of the instance,
-		which can either be relative the instance of the calling script or global. <code>fragment</code> would be the id of the desired component.
+		The format of the string must be `"[socket:][path][#fragment]"`, which is similar to a http URL.
+		When addressing instances, `socket` is the name of the collection. `path` is the id of the instance,
+		which can either be relative the instance of the calling script or global. `fragment` would be the id of the desired component.
 		
 		@param urlstring string to create the url from (string)
 	**/

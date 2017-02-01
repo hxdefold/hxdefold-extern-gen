@@ -8,17 +8,16 @@ package defold;
 		
 		@param buffers Table with keys specifying which buffers to clear and values set to clear values. (table)
 		Available keys are:
-		<ul>
-		    <li><code>render.BUFFER_COLOR_BIT</code></li>
-		    <li><code>render.BUFFER_DEPTH_BIT</code></li>
-		    <li><code>render.BUFFER_STENCIL_BIT</code></li>
-		</ul>
+		
+		     * `render.BUFFER_COLOR_BIT`
+		     * `render.BUFFER_DEPTH_BIT`
+		     * `render.BUFFER_STENCIL_BIT`
 	**/
 	static function clear(buffers:TODO):TODO;
 	/**
 		create a new constant buffer.
 		
-		Constant buffers are used to set shader program variables and are optionally passed to the <code>render.draw()</code>
+		Constant buffers are used to set shader program variables and are optionally passed to the `render.draw()`
 		function. The buffer's constant elements can be indexed like an ordinary Lua table, but you can't iterate
 		over them with pairs() or ipairs().
 	**/
@@ -45,13 +44,12 @@ package defold;
 		disables a render state
 		
 		@param state state to enable (constant)
-		<ul>
-		  <li><code>render.STATE_DEPTH_TEST</code></li>
-		  <li><code>render.STATE_STENCIL_TEST</code></li>
-		  <li><code>render.STATE_BLEND</code></li>
-		  <li><code>render.STATE_CULL_FACE</code></li>
-		  <li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>
-		</ul>
+		
+		   * `render.STATE_DEPTH_TEST`
+		   * `render.STATE_STENCIL_TEST`
+		   * `render.STATE_BLEND`
+		   * `render.STATE_CULL_FACE`
+		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
 	static function disable_state(state:TODO):TODO;
 	/**
@@ -67,7 +65,7 @@ package defold;
 		Draws all objects that match a specified predicate. An optional constants buffer can be
 		provided to override the default constants. If no constants buffer is provided, a default
 		system constants buffer is used containing constants as defined in materials and set through
-		<code>*.set_constant()</code> and <code>*.reset_constant()</code> on visual components.
+		`*.set_constant()` and `*.reset_constant()` on visual components.
 		
 		@param predicate predicate to draw for (predicate)
 		@param constants optional constants to use while rendering (constants_buffer)
@@ -102,14 +100,13 @@ package defold;
 		enables a render state
 		
 		@param state state to enable (constant)
-		<ul>
-		  <li><code>render.STATE_DEPTH_TEST</code></li>
-		  <li><code>render.STATE_STENCIL_TEST</code></li>
-		  <li><code>render.STATE_BLEND</code></li>
-		  <li><code>render.STATE_ALPHA_TEST</code> (not available on iOS and Android)</li>
-		  <li><code>render.STATE_CULL_FACE</code></li>
-		  <li><code>render.STATE_POLYGON_OFFSET_FILL</code></li>
-		</ul>
+		
+		   * `render.STATE_DEPTH_TEST`
+		   * `render.STATE_STENCIL_TEST`
+		   * `render.STATE_BLEND`
+		   * `render.STATE_ALPHA_TEST` (not available on iOS and Android)
+		   * `render.STATE_CULL_FACE`
+		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
 	static function enable_state(state:TODO):TODO;
 	/**
@@ -207,23 +204,22 @@ package defold;
 		sets the blending function
 		
 		Available factors:
-		<ul>
-		  <li><code>render.BLEND_ZERO</code></li>
-		  <li><code>render.BLEND_ONE</code></li>
-		  <li><code>render.BLEND_SRC_COLOR</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_SRC_COLOR</code></li>
-		  <li><code>render.BLEND_DST_COLOR</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_DST_COLOR</code></li>
-		  <li><code>render.BLEND_SRC_ALPHA</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_SRC_ALPHA</code></li>
-		  <li><code>render.BLEND_DST_ALPHA</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_DST_ALPHA</code></li>
-		  <li><code>render.BLEND_SRC_ALPHA_SATURATE</code></li>
-		  <li><code>render.BLEND_CONSTANT_COLOR</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_CONSTANT_COLOR</code></li>
-		  <li><code>render.BLEND_CONSTANT_ALPHA</code></li>
-		  <li><code>render.BLEND_ONE_MINUS_CONSTANT_ALPHA</code></li>
-		</ul>
+		
+		   * `render.BLEND_ZERO`
+		   * `render.BLEND_ONE`
+		   * `render.BLEND_SRC_COLOR`
+		   * `render.BLEND_ONE_MINUS_SRC_COLOR`
+		   * `render.BLEND_DST_COLOR`
+		   * `render.BLEND_ONE_MINUS_DST_COLOR`
+		   * `render.BLEND_SRC_ALPHA`
+		   * `render.BLEND_ONE_MINUS_SRC_ALPHA`
+		   * `render.BLEND_DST_ALPHA`
+		   * `render.BLEND_ONE_MINUS_DST_ALPHA`
+		   * `render.BLEND_SRC_ALPHA_SATURATE`
+		   * `render.BLEND_CONSTANT_COLOR`
+		   * `render.BLEND_ONE_MINUS_CONSTANT_COLOR`
+		   * `render.BLEND_CONSTANT_ALPHA`
+		   * `render.BLEND_ONE_MINUS_CONSTANT_ALPHA`
 		
 		@param source_factor source factor (constant)
 		@param destination_factor destination factor (constant)
@@ -242,27 +238,25 @@ package defold;
 		sets the cull face
 		
 		@param face_type face type (constant)
-		<ul>
-		  <li><code>render.FACE_FRONT</code></li>
-		  <li><code>render.FACE_BACK</code></li>
-		  <li><code>render.FACE_FRONT_AND_BACK</code></li>
-		</ul>
+		
+		   * `render.FACE_FRONT`
+		   * `render.FACE_BACK`
+		   * `render.FACE_FRONT_AND_BACK`
 	**/
 	static function set_cull_face(face_type:TODO):TODO;
 	/**
 		sets the depth test function
 		
 		@param func depth test function (constant)
-		<ul>
-		  <li><code>render.COMPARE_FUNC_NEVER</code></li>
-		  <li><code>render.COMPARE_FUNC_LESS</code></li>
-		  <li><code>render.COMPARE_FUNC_LEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_GREATER</code></li>
-		  <li><code>render.COMPARE_FUNC_GEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_EQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_NOTEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_ALWAYS</code></li>
-		</ul>
+		
+		   * `render.COMPARE_FUNC_NEVER`
+		   * `render.COMPARE_FUNC_LESS`
+		   * `render.COMPARE_FUNC_LEQUAL`
+		   * `render.COMPARE_FUNC_GREATER`
+		   * `render.COMPARE_FUNC_GEQUAL`
+		   * `render.COMPARE_FUNC_EQUAL`
+		   * `render.COMPARE_FUNC_NOTEQUAL`
+		   * `render.COMPARE_FUNC_ALWAYS`
 	**/
 	static function set_depth_func(func:TODO):TODO;
 	/**
@@ -298,16 +292,16 @@ package defold;
 		sets the stencil test function
 		
 		@param func stencil test function (constant)
-		<ul>
-		  <li><code>render.COMPARE_FUNC_NEVER</code></li>
-		  <li><code>render.COMPARE_FUNC_LESS</code></li>
-		  <li><code>render.COMPARE_FUNC_LEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_GREATER</code></li>
-		  <li><code>render.COMPARE_FUNC_GEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_EQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_NOTEQUAL</code></li>
-		  <li><code>render.COMPARE_FUNC_ALWAYS</code></li>
-		</ul>
+		
+		   * `render.COMPARE_FUNC_NEVER`
+		   * `render.COMPARE_FUNC_LESS`
+		   * `render.COMPARE_FUNC_LEQUAL`
+		   * `render.COMPARE_FUNC_GREATER`
+		   * `render.COMPARE_FUNC_GEQUAL`
+		   * `render.COMPARE_FUNC_EQUAL`
+		   * `render.COMPARE_FUNC_NOTEQUAL`
+		   * `render.COMPARE_FUNC_ALWAYS`
+		
 		@param ref reference value for the stencil test (number)
 		@param mask mask that is ANDed with both the reference value and the stored stencil value when the test is done (number)
 	**/
@@ -322,16 +316,15 @@ package defold;
 		sets the stencil operator
 		
 		Available operators:
-		<ul>
-		  <li><code>render.STENCIL_OP_KEEP</code></li>
-		  <li><code>render.STENCIL_OP_ZERO</code></li>
-		  <li><code>render.STENCIL_OP_REPLACE</code></li>
-		  <li><code>render.STENCIL_OP_INCR</code></li>
-		  <li><code>render.STENCIL_OP_INCR_WRAP</code></li>
-		  <li><code>render.STENCIL_OP_DECR</code></li>
-		  <li><code>render.STENCIL_OP_DECR_WRAP</code></li>
-		  <li><code>render.STENCIL_OP_INVERT</code></li>
-		</ul>
+		
+		   * `render.STENCIL_OP_KEEP`
+		   * `render.STENCIL_OP_ZERO`
+		   * `render.STENCIL_OP_REPLACE`
+		   * `render.STENCIL_OP_INCR`
+		   * `render.STENCIL_OP_INCR_WRAP`
+		   * `render.STENCIL_OP_DECR`
+		   * `render.STENCIL_OP_DECR_WRAP`
+		   * `render.STENCIL_OP_INVERT`
 		
 		@param sfail action to take when the stencil test fails (constant)
 		@param dpfail the stencil action when the stencil test passes (constant)

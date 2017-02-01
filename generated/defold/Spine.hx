@@ -25,20 +25,20 @@ package defold;
 		@param url the spine model for which to play the animation (url)
 		@param anim_id id of the animation to play (string|hash)
 		@param playback playback mode of the animation (constant)
-		<ul>
-		  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
-		  <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
-		</ul>
+		
+		   * `go.PLAYBACK_ONCE_FORWARD`
+		   * `go.PLAYBACK_ONCE_BACKWARD`
+		   * `go.PLAYBACK_ONCE_PINGPONG`
+		   * `go.PLAYBACK_LOOP_FORWARD`
+		   * `go.PLAYBACK_LOOP_BACKWARD`
+		   * `go.PLAYBACK_LOOP_PINGPONG`
+		
 		@param play_properties optional table with properties (table)
-		<ul>
-		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
-		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
-		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
-		</ul>
+		
+		   * `blend_duration` duration of a linear blend between the current and new animation (number)
+		   * `offset` the normalized initial value of the animation cursor when the animation starts playing (number)
+		   * `playback_rate` the rate with which the animation will be played. Must be positive (number)
+		
 		@param complete_function function to call when the animation has completed (function)
 	**/
 	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):TODO;
@@ -92,17 +92,14 @@ package defold;
 	/**
 		reports the completion of a Spine animation
 		
-		<p>
 		This message is sent when a Spine animation has finished playing back to the script
 		that started the animation. This message is sent only for animations that play with
 		the following playback modes and no message is sent if the animation is cancelled with
 		spine.cancel():
-		<ul>
-		 <li>go.PLAYBACK_ONCE_FORWARD</li>
-		 <li>go.PLAYBACK_ONCE_BACKWARD</li>
-		 <li>go.PLAYBACK_ONCE_PINGPONG</li>
-		</ul>
-		</p>
+		
+		  * go.PLAYBACK_ONCE_FORWARD
+		  * go.PLAYBACK_ONCE_BACKWARD
+		  * go.PLAYBACK_ONCE_PINGPONG
 		
 		@param animation_id the id of the completed animation (hash)
 		@param playback the playback mode of the completed animation (constant)
@@ -111,11 +108,9 @@ package defold;
 	/**
 		reports an incoming event from the Spine animation
 		
-		<p>
 		This message is sent when Spine animation playback fires events. These events
 		has to be defined on the animation track in the Spine animation editor. An event
 		can contain custom values expressed in the fields "integer", "float" and "string".
-		</p>
 		
 		@param event_id the id of the event (hash)
 		@param animation_id the id of the animation (hash)

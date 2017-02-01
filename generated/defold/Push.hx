@@ -42,7 +42,7 @@ package defold;
 		Schedule a local push notification to be triggered at a specific time in the future
 		
 		Local push notifications are scheduled with this function.
-		The returned <code>id</code> value is uniquely identifying the scheduled notification
+		The returned `id` value is uniquely identifying the scheduled notification
 		and can be stored for later reference.
 		
 		@param time number of seconds into the future until the notification should be triggered (number)
@@ -51,15 +51,15 @@ package defold;
 		@param payload JSON string to be passed to the registered listener function (string)
 		@param notification_settings table with notification and platform specific fields (table)
 		<dl>
-		 <dt><code>action</code></dt>
+		 <dt>`action`</dt>
 		 <dd>(iOS only). The alert action string to be used as the title of the
 		         right button of the alert or the value of the unlock slider, where the value replaces
 		         "unlock" in "slide to unlock" text. (string)</dd>
-		 <dt><code>badge_count</code></dt>
+		 <dt>`badge_count`</dt>
 		 <dd>(iOS only). The numeric value of the icon badge. (number)</dd>
-		 <dt><code>badge_number</code></dt>
+		 <dt>`badge_number`</dt>
 		 <dd>Deprecated! Use badge_count instead</dd>
-		 <dt><code>priority</code></dt>
+		 <dt>`priority`</dt>
 		 <dd>(Android only). The priority is a hint to the device UI about how the notification
 		     should be displayed. There are five priority levels, from -2 to 2 where -1 is the
 		     lowest priority and 2 the highest. Unless specified, a default priority level of 2

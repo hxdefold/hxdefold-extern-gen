@@ -25,20 +25,19 @@ package defold;
 		@param url the model for which to play the animation (url)
 		@param anim_id id of the animation to play (string|hash)
 		@param playback playback mode of the animation (constant)
-		<ul>
-		  <li><code>go.PLAYBACK_ONCE_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_ONCE_PINGPONG</code></li>
-		  <li><code>go.PLAYBACK_LOOP_FORWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_BACKWARD</code></li>
-		  <li><code>go.PLAYBACK_LOOP_PINGPONG</code></li>
-		</ul>
+		
+		   * `go.PLAYBACK_ONCE_FORWARD`
+		   * `go.PLAYBACK_ONCE_BACKWARD`
+		   * `go.PLAYBACK_ONCE_PINGPONG`
+		   * `go.PLAYBACK_LOOP_FORWARD`
+		   * `go.PLAYBACK_LOOP_BACKWARD`
+		   * `go.PLAYBACK_LOOP_PINGPONG`
+		
 		@param play_properties optional table with properties (table)
-		<ul>
-		  <li><code>blend_duration</code> duration of a linear blend between the current and new animation (number)</li>
-		  <li><code>offset</code> the normalized initial value of the animation cursor when the animation starts playing (number)</li>
-		  <li><code>playback_rate</code> the rate with which the animation will be played. Must be positive (number)</li>
-		</ul>
+		
+		   * `blend_duration` duration of a linear blend between the current and new animation (number)
+		   * `offset` the normalized initial value of the animation cursor when the animation starts playing (number)
+		   * `playback_rate` the rate with which the animation will be played. Must be positive (number)
 	**/
 	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO):TODO;
 	/**

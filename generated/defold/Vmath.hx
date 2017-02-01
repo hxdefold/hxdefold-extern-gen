@@ -7,7 +7,8 @@ package defold;
 		Calculates the conjugate of a quaternion. The result is a
 		quaternion with the same magnitudes but with the sign of
 		the imaginary (vector) parts changed:
-		<p><code>q<super>*</super> = [w, -v]</code></p>
+		
+		`q<super>*</super> = [w, -v]`
 		
 		@param q quaternion of which to calculate the conjugate (quaternion)
 	**/
@@ -19,9 +20,9 @@ package defold;
 		P &#x00D7; Q, is a vector that is perpendicular to both P and Q and
 		therefore normal to the plane containing them.
 		
-		<p>If the two vectors have the same direction (or have the exact
+		If the two vectors have the same direction (or have the exact
 		opposite direction from one another, i.e. are not linearly independent)
-		or if either one has zero length, then their cross product is zero.</p>
+		or if either one has zero length, then their cross product is zero.
 		
 		@param v1 first vector (vector3)
 		@param v2 second vector (vector3)
@@ -31,13 +32,14 @@ package defold;
 		calculates the dot-product of two vectors
 		
 		The returned value is a scalar defined as:
-		<p><code>P &#x22C5; Q = |P| |Q| cos &#x03B8;</code></p>
+		
+		`P &#x22C5; Q = |P| |Q| cos &#x03B8;`
+		
 		where &#x03B8; is the angle between the vectors P and Q.
-		<ul>
-		<li>If the dot product is >1.0 then the vectors are both pointing in the same direction.</li>
-		<li>If the dot product is zero the vectors are perpendicular (at right-angles to each other).</li>
-		<li>If the dot product is < 1.0 then the vectors are pointing in opposite directions.</li>
-		</ul>
+		
+		 * If the dot product is >1.0 then the vectors are both pointing in the same direction.
+		 * If the dot product is zero the vectors are perpendicular (at right-angles to each other).
+		 * If the dot product is < 1.0 then the vectors are pointing in opposite directions.
 		
 		@param v1 first vector (vector3 or vector4)
 		@param v1 second vector (vector3 or vector4)
@@ -49,7 +51,7 @@ package defold;
 		The resulting matrix is the inverse of the supplied matrix.
 		
 		For ortho-normal matrices, e.g. regular object transformation,
-		use <code>vmath.ortho_inv()</code> instead.
+		use `vmath.ortho_inv()` instead.
 		The specialized inverse for ortho-normalized matrices is much faster
 		than the general inverse.
 		
@@ -93,7 +95,7 @@ package defold;
 		Linearly interpolate between two quaternions. Linear
 		interpolation of rotations are only useful for small
 		rotations. For interpolations of arbitrary rotations,
-		<code>vmath.slerp()</code> yields much better results.
+		`vmath.slerp()` yields much better results.
 		
 		The function does not clamp t between 0 and 1.
 		
@@ -250,7 +252,7 @@ package defold;
 		describe a regular object transformation.
 		
 		For matrices that are not ortho-normal
-		use the general inverse <code>vmath.inv()</code> instead.
+		use the general inverse `vmath.inv()` instead.
 		
 		@param m ortho-normalized matrix to invert (matrix4)
 	**/
@@ -260,7 +262,9 @@ package defold;
 		
 		Calculates the extent the projection of the first vector onto the second.
 		The returned value is a scalar p defined as:
-		<p><code>p = |P| cos &#x03B8; / |Q|</code></p>
+		
+		`p = |P| cos &#x03B8; / |Q|`
+		
 		where &#x03B8; is the angle between the vectors P and Q.
 		
 		@param v1 vector to be projected on the second (vector3)
@@ -272,7 +276,8 @@ package defold;
 		
 		Creates a new identity quaternion. The identity
 		quaternion is equal to:
-		<p><code>vmath.quat(0, 0, 0, 1)</code></p>
+		
+		`vmath.quat(0, 0, 0, 1)`
 	**/
 	static function quat():TODO;
 	/**
@@ -300,8 +305,8 @@ package defold;
 	/**
 		creates a quaternion to rotate around a unit-length vector
 		
-		The resulting quaternion describes a rotation of <code>angle</code>
-		radians around the axis described by the unit length vector <code>v</code>.
+		The resulting quaternion describes a rotation of `angle`
+		radians around the axis described by the unit length vector `v`.
 		
 		@param v axis (vector3)
 		@param angle angle (number)
@@ -336,7 +341,7 @@ package defold;
 	/**
 		creates a quaternion from rotation around x-axis
 		
-		The resulting quaternion describes a rotation of <code>angle</code>
+		The resulting quaternion describes a rotation of `angle`
 		radians around the x-axis.
 		
 		@param angle angle in radians around x-axis (number)
@@ -345,7 +350,7 @@ package defold;
 	/**
 		creates a quaternion from rotation around y-axis
 		
-		The resulting quaternion describes a rotation of <code>angle</code>
+		The resulting quaternion describes a rotation of `angle`
 		radians around the y-axis.
 		
 		@param angle angle in radians around y-axis (number)
@@ -354,7 +359,7 @@ package defold;
 	/**
 		creates a quaternion from rotation around z-axis
 		
-		The resulting quaternion describes a rotation of <code>angle</code>
+		The resulting quaternion describes a rotation of `angle`
 		radians around the z-axis.
 		
 		@param angle angle in radians around z-axis (number)

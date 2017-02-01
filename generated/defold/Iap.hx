@@ -10,9 +10,8 @@ package defold;
 		@param options table of optional parameters as properties.
 		
 		The options table has the following members:
-		<ul>
-		<li> request_id: custom unique request id -- optional argument only available for Facebook IAP transactions
-		</ul>
+		
+		 *  request_id: custom unique request id -- optional argument only available for Facebook IAP transactions
 	**/
 	static function buy(id:TODO, options:TODO):TODO;
 	/**
@@ -47,15 +46,14 @@ package defold;
 		The listener callback has the following signature: function(self, transaction, error) where transaction is a table
 		describing the transaction and error is a table. The error parameter is nil on success.
 		The transaction table has the following members:
-		<ul>
-		<li> ident: product identifier
-		<li> state: transaction state
-		<li> date: transaction date
-		<li> original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)
-		<li> trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED, TRANS_STATE_UNVERIFIED or TRANS_STATE_PURCHASED)
-		<li> request_id: transaction request id. (only if receipt is set and for Facebook IAP transactions when used in the iap.buy call parameters)
-		<li> receipt: receipt (only set when state == TRANS_STATE_PURCHASED or TRANS_STATE_UNVERIFIED)
-		</ul>
+		
+		 *  ident: product identifier
+		 *  state: transaction state
+		 *  date: transaction date
+		 *  original_trans: original transaction (only set when state == TRANS_STATE_RESTORED)
+		 *  trans_ident: transaction identifier (only set when state == TRANS_STATE_RESTORED, TRANS_STATE_UNVERIFIED or TRANS_STATE_PURCHASED)
+		 *  request_id: transaction request id. (only if receipt is set and for Facebook IAP transactions when used in the iap.buy call parameters)
+		 *  receipt: receipt (only set when state == TRANS_STATE_PURCHASED or TRANS_STATE_UNVERIFIED)
 		
 		@param listener listener function
 	**/

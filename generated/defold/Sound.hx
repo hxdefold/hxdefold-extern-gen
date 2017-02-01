@@ -5,9 +5,8 @@ package defold;
 		get mixer group gain
 		
 		Get mixer group gain
-		<p>
+		
 		Note that gain is in linear scale.
-		</p>
 		
 		@param group group name (hash|string)
 	**/
@@ -16,7 +15,8 @@ package defold;
 		get mixer group name string
 		
 		Get a mixer group name as a string.
-		<p>Note that this function does not return correct group name in release mode</p>
+		
+		Note that this function does not return correct group name in release mode
 		
 		@param group group name (hash|string)
 	**/
@@ -31,10 +31,9 @@ package defold;
 		get peak gain value from mixer group
 		
 		Get peak value from mixer group.
-		<p>
+		
 		Note that the returned value might be an approximation and in particular
 		the effective window might be larger than specified.
-		</p>
 		
 		@param group group name (hash|string)
 		@param window window length in seconds (number)
@@ -44,10 +43,9 @@ package defold;
 		get rms value from mixer group
 		
 		Get RMS (Root Mean Square) value from mixer group.
-		<p>
+		
 		Note that the returned value might be an approximation and in particular
 		the effective window might be larger than specified.
-		</p>
 		
 		@param group group name (hash|string)
 		@param window window length in seconds (number)
@@ -70,9 +68,8 @@ package defold;
 		set mixer group gain
 		
 		Set mixer group gain
-		<p>
+		
 		Note that gain is in linear scale.
-		</p>
 		
 		@param group group name (hash|string)
 		@param gain gain in linear scale (number)

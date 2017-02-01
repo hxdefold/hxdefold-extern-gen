@@ -152,14 +152,33 @@ class Main {
                                 params: [{expr: EConst(CString(element.deprecated)), pos: pos}]
                             });
 
+
+                        function prepareDoc(s:String):String {
+                            s = s
+                                .replace("<code>", "`")
+                                .replace("</code>", "`")
+                                .replace("<p>", "\n")
+                                .replace("</p>", "\n")
+                                .replace("<P>", "\n")
+                                .replace("</P>", "\n")
+                                .replace("<b>", "*")
+                                .replace("</b>", "*")
+                                .replace("<ul>", "\n")
+                                .replace("</ul>", "\n")
+                                .replace("<li>", " * ")
+                                .replace("</li>", "")
+                                ;
+                            return s;
+                        }
+
                         var fieldDoc = [];
                         inline function addDoc(s) {
                             if (s != null && s != "") fieldDoc.push(s);
                         }
 
-                        addDoc(element.brief);
-                        addDoc(element.description);
-                        addDoc(element.note);
+                        addDoc(prepareDoc(element.brief));
+                        addDoc(prepareDoc(element.description));
+                        addDoc(prepareDoc(element.note));
 
                         var signatureDoc = [];
 
@@ -183,7 +202,7 @@ class Main {
                                         pName = reParameterName.matched(2);
                                     }
                                     args.push({name: pName, type: ctTODO, opt: opt});
-                                    signatureDoc.push('@param $pName ${doc}');
+                                    signatureDoc.push('@param $pName ${prepareDoc(doc)}');
                                 }
                                 fieldKind = FFun({
                                     expr: null,
@@ -207,7 +226,7 @@ class Main {
                                         kind: FVar(ctTODO),
                                         meta: if (reParameterName.matched(1) != null) [{name: ":optional", pos: pos}] else null
                                     });
-                                    signatureDoc.push('@param $name ${param.doc}');
+                                    signatureDoc.push('@param $name ${prepareDoc(param.doc)}');
                                 }
                                 var ct = TAnonymous(messageFields);
                                 var nameExpr = {expr: EConst(CString(element.name)), pos: pos};
@@ -238,11 +257,15 @@ class Main {
 
                         addDoc(signatureDoc.join("\n"));
 
+                        var doc = fieldDoc.join("\n\n");
+                        doc = ~/\n\n+/g.replace(doc, "\n\n");
+                        doc = ~/(.*)\s*$/g.replace(doc, "$1");
+
                         fields.push({
                             pos: pos,
                             name: elementName,
                             kind: fieldKind,
-                            doc: fieldDoc.join("\n\n"),
+                            doc: doc,
                             meta: fieldMeta,
                             access: [AStatic],
                         });
