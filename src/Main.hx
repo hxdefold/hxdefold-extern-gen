@@ -214,10 +214,23 @@ class Main {
                                     args.push({name: pName, type: ctTODO, opt: opt});
                                     signatureDoc.push('@param $pName ${prepareDoc(doc)}');
                                 }
+
+                                var ret = switch (element.returnvalues) {
+                                    case []:
+                                        macro : Void;
+                                    case [r]:
+                                        signatureDoc.push('@return ${prepareDoc(r.name + " " + r.doc)}');
+                                        ctTODO;
+                                    case multiple:
+                                        for (r in multiple)
+                                            signatureDoc.push('@return ${prepareDoc(r.name + " " + r.doc)}');
+                                        TPath({pack: [], name: "TODO", params: [TPExpr({pos: pos, expr: EConst(CString("MULTIPLE"))})]});
+                                }
+
                                 fieldKind = FFun({
                                     expr: null,
                                     args: args,
-                                    ret: ctTODO
+                                    ret: ret
                                 });
 
                             case MESSAGE:

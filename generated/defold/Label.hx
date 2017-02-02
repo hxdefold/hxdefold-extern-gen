@@ -14,7 +14,7 @@ package defold;
 		@param url the label that should have a constant set (url)
 		@param text the text (string|hash)
 	**/
-	static function set_text(url:TODO, text:TODO):TODO;
+	static function set_text(url:TODO, text:TODO):Void;
 }
 
 /**

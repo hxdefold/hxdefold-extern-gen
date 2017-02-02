@@ -11,6 +11,12 @@ package defold;
 		Get the mode for screen dimming.
 		
 		The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction.
+		
+		@return mode (constant) The mode for screen dimming
+		
+		     * `window.DIMMING_UNKNOWN`
+		     * `window.DIMMING_ON`
+		     * `window.DIMMING_OFF`
 	**/
 	static function get_dim_mode():TODO;
 	/**
@@ -23,7 +29,7 @@ package defold;
 		     * `window.DIMMING_ON`
 		     * `window.DIMMING_OFF`
 	**/
-	static function set_dim_mode(mode:TODO):TODO;
+	static function set_dim_mode(mode:TODO):Void;
 	/**
 		Sets a window event listener.
 		
@@ -46,7 +52,7 @@ package defold;
 		         * width (number) The width of a resize event. nil otherwise.
 		         * height (number) The height of a resize event. nil otherwise.
 	**/
-	static function set_listener(callback:TODO):TODO;
+	static function set_listener(callback:TODO):Void;
 }
 
 @:native("_G.window") extern class WindowVariables {

@@ -39,6 +39,7 @@ package defold;
 		
 		     </dd>
 		</dl>
+		@return (int) The id number of the webview
 	**/
 	static function create(callback:TODO):TODO;
 	/**
@@ -48,7 +49,7 @@ package defold;
 		
 		@param webview_id (number) The webview id (returned by the webview.create() call)
 	**/
-	static function destroy(webview_id:TODO):TODO;
+	static function destroy(webview_id:TODO):Void;
 	/**
 		Evaluates javascript in a webview.
 		
@@ -56,6 +57,7 @@ package defold;
 		
 		@param webview_id    (number) The webview id
 		@param code          (string) The java script code to evaluate
+		@return (int) The id number of the request
 	**/
 	static function eval(webview_id:TODO, code:TODO):TODO;
 	/**
@@ -64,6 +66,7 @@ package defold;
 		Gets the visibility state of the webview
 		
 		@param webview_id    (number) The webview id (returned by the webview.create() call)
+		@return (number) Returns 0 if not visible, 1 if it is visible
 	**/
 	static function is_visible(webview_id:TODO):TODO;
 	/**
@@ -77,6 +80,7 @@ package defold;
 		<dl>
 		    <dt>hidden (boolean)</dt><dd>If true, the webview will stay hidden (default=false)</dd>
 		</dl>
+		@return (int) The id number of the request
 	**/
 	static function open(webview_id:TODO, url:TODO, options:TODO):TODO;
 	/**
@@ -87,6 +91,7 @@ package defold;
 		@param webview_id    (number) The webview id
 		@param html          (string) The html data to display
 		@param options       (table) A table of options for the request. See webview.open()
+		@return (int) The id number of the request
 	**/
 	static function open_raw(webview_id:TODO, html:TODO, options:TODO):TODO;
 	/**
@@ -97,5 +102,5 @@ package defold;
 		@param webview_id    (number) The webview id (returned by the webview.create() call)
 		@param visible       (number) If 0, hides the webview. If non zero, shows the view
 	**/
-	static function set_visible(webview_id:TODO, visible:TODO):TODO;
+	static function set_visible(webview_id:TODO, visible:TODO):Void;
 }

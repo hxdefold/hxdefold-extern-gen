@@ -10,6 +10,7 @@ package defold;
 		A lua error is raised is on error
 		
 		@param buf buffer to deflate (string)
+		@return deflated buffer (string)
 	**/
 	static function deflate(buf:TODO):TODO;
 	/**
@@ -18,6 +19,7 @@ package defold;
 		A lua error is raised is on error
 		
 		@param buf buffer to inflate (string)
+		@return inflated buffer (string)
 	**/
 	static function inflate(buf:TODO):TODO;
 }

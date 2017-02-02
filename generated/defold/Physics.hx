@@ -104,7 +104,7 @@ typedef CollisionObjectMessageContactPointResponse = {
 		@param groups a lua table containing the hashed groups for which to test collisions against (table)
 		@param request_id a number between 0-255 that will be sent back in the response for identification, 0 by default (number)
 	**/
-	static function ray_cast(from:TODO, to:TODO, groups:TODO, ?request_id:TODO):TODO;
+	static function ray_cast(from:TODO, to:TODO, groups:TODO, ?request_id:TODO):Void;
 }
 
 /**

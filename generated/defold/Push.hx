@@ -15,7 +15,7 @@ package defold;
 		
 		@param id the numeric id of the local push notification (number)
 	**/
-	static function cancel(id:TODO):TODO;
+	static function cancel(id:TODO):Void;
 	/**
 		Retrieve data on all scheduled local push notifications.
 		
@@ -23,6 +23,8 @@ package defold;
 		The table contains key, value pairs where the key is the push notification id and the
 		value is a table with the notification data, corresponding to the data given by
 		push.get_scheduled(id).
+		
+		@return data table with all data associated with all scheduled notifications (table)
 	**/
 	static function get_all_scheduled():TODO;
 	/**
@@ -32,6 +34,7 @@ package defold;
 		The notification is identified by a numeric id as returned by +push.schedule()+.
 		
 		@param id the numeric id of the local push notification (number)
+		@return data table with all data associated with the notification (table)
 	**/
 	static function get_scheduled(id:TODO):TODO;
 	/**
@@ -43,7 +46,7 @@ package defold;
 		@param notifications the types of notifications to listen to. (iOS only) (table)
 		@param callback register callback function (function)
 	**/
-	static function register(notifications:TODO, callback:TODO):TODO;
+	static function register(notifications:TODO, callback:TODO):Void;
 	/**
 		Schedule a local push notification to be triggered at a specific time in the future.
 		
@@ -71,8 +74,10 @@ package defold;
 		     lowest priority and 2 the highest. Unless specified, a default priority level of 2
 		     is used. (number)</dd>
 		</dl>
+		@return id unique id that can be used to cancel or inspect the notification (number)
+		@return err error string if something went wrong, otherwise nil (string)
 	**/
-	static function schedule(time:TODO, title:TODO, alert:TODO, payload:TODO, notification_settings:TODO):TODO;
+	static function schedule(time:TODO, title:TODO, alert:TODO, payload:TODO, notification_settings:TODO):TODO<"MULTIPLE">;
 	/**
 		Set badge icon count.
 		
@@ -81,7 +86,7 @@ package defold;
 		
 		@param count badge count (number)
 	**/
-	static function set_badge_count(count:TODO):TODO;
+	static function set_badge_count(count:TODO):Void;
 	/**
 		Set push listener.
 		
@@ -91,7 +96,7 @@ package defold;
 		
 		@param listener listener callback function (function)
 	**/
-	static function set_listener(listener:TODO):TODO;
+	static function set_listener(listener:TODO):Void;
 }
 
 @:native("_G.push") extern class PushVariables {

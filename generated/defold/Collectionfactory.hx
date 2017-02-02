@@ -30,6 +30,7 @@ package defold;
 		@param rotation rotation to assign to the newly spawned collection (quat)
 		@param properties table of script properties to propagate to any new game object instances (table)
 		@param scale uniform scaling to apply to the newly spawned collection (must be greater than 0). (number)
+		@return a table mapping the id:s from the collection to the new instance id:s
 	**/
 	static function create(url:TODO, ?position:TODO, ?rotation:TODO, ?properties:TODO, ?scale:TODO):TODO;
 }

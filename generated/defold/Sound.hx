@@ -15,6 +15,7 @@ package defold;
 		Note that gain is in linear scale.
 		
 		@param group group name (hash|string)
+		@return gain in linear scale
 	**/
 	static function get_group_gain(group:TODO):TODO;
 	/**
@@ -25,12 +26,15 @@ package defold;
 		Note that this function does not return correct group name in release mode
 		
 		@param group group name (hash|string)
+		@return group name (string)
 	**/
 	static function get_group_name(group:TODO):TODO;
 	/**
 		Get all mixer group names.
 		
 		Get all mixer group names
+		
+		@return table of mixer groups names (table)
 	**/
 	static function get_groups():TODO;
 	/**
@@ -43,8 +47,10 @@ package defold;
 		
 		@param group group name (hash|string)
 		@param window window length in seconds (number)
+		@return peak value for left channel (number)
+		@return peak value for right channel (number)
 	**/
-	static function get_peak(group:TODO, window:TODO):TODO;
+	static function get_peak(group:TODO, window:TODO):TODO<"MULTIPLE">;
 	/**
 		Get rms value from mixer group.
 		
@@ -55,12 +61,16 @@ package defold;
 		
 		@param group group name (hash|string)
 		@param window window length in seconds (number)
+		@return rms value for left channel (number)
+		@return rms value for right channel (number)
 	**/
-	static function get_rms(group:TODO, window:TODO):TODO;
+	static function get_rms(group:TODO, window:TODO):TODO<"MULTIPLE">;
 	/**
 		Check if background music is playing.
 		
 		Checks if background music is playing, e.g. from iTunes
+		
+		@return true if music is playing (bool)
 	**/
 	static function is_music_playing():TODO;
 	/**
@@ -68,6 +78,8 @@ package defold;
 		
 		Checks if a phone call is active. If there is an active phone call all
 		other sounds will be muted until the phone call is finished.
+		
+		@return true if there is an active phone call (bool)
 	**/
 	static function is_phone_call_active():TODO;
 	/**
@@ -80,7 +92,7 @@ package defold;
 		@param group group name (hash|string)
 		@param gain gain in linear scale (number)
 	**/
-	static function set_group_gain(group:TODO, gain:TODO):TODO;
+	static function set_group_gain(group:TODO, gain:TODO):Void;
 }
 
 /**

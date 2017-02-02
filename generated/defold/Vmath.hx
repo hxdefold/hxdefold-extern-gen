@@ -14,6 +14,7 @@ package defold;
 		`q<super>*</super> = [w, -v]`
 		
 		@param q quaternion of which to calculate the conjugate (quaternion)
+		@return the conjugate (quaternion)
 	**/
 	static function conj(q:TODO):TODO;
 	/**
@@ -29,6 +30,7 @@ package defold;
 		
 		@param v1 first vector (vector3)
 		@param v2 second vector (vector3)
+		@return a new vector representing the cross product (vector3)
 	**/
 	static function cross(v1:TODO, v2:TODO):TODO;
 	/**
@@ -46,6 +48,7 @@ package defold;
 		
 		@param v1 first vector (vector3 or vector4)
 		@param v1 second vector (vector3 or vector4)
+		@return dot product (number)
 	**/
 	static function dot(v1:TODO, v1:TODO):TODO;
 	/**
@@ -59,6 +62,7 @@ package defold;
 		than the general inverse.
 		
 		@param m matrix to invert (matrix4)
+		@return inverse of the supplied matrix (matrix4)
 	**/
 	static function inv(m:TODO):TODO;
 	/**
@@ -67,6 +71,7 @@ package defold;
 		Returns the length of the supplied vector.
 		
 		@param v vector of which to calculate the length (vector3 or vector4)
+		@return vector length (number)
 	**/
 	static function length(v:TODO):TODO;
 	/**
@@ -75,6 +80,7 @@ package defold;
 		Returns the squared length of the supplied vector.
 		
 		@param v vector of which to calculate the squared length (vector3 or vector4)
+		@return squared vector length (number)
 	**/
 	static function length_sqr(v:TODO):TODO;
 	/**
@@ -90,6 +96,7 @@ package defold;
 		@param t interpolation parameter, 0-1 (number)
 		@param v1 vector to lerp from (vector3 or vector4)
 		@param v2 vector to lerp to (vector3 or vector4)
+		@return the lerped vector (vector3 or vector4)
 	**/
 	static function lerp(t:TODO, v1:TODO, v2:TODO):TODO;
 	/**
@@ -105,6 +112,7 @@ package defold;
 		@param t interpolation parameter, 0-1 (number)
 		@param q1 quaternion to lerp from (quaternion)
 		@param q2 quaternion to lerp to (quaternion)
+		@return the lerped quaternion (quaternion)
 	**/
 	static function lerp(t:TODO, q1:TODO, q2:TODO):TODO;
 	/**
@@ -118,6 +126,7 @@ package defold;
 		@param t interpolation parameter, 0-1 (number)
 		@param n1 number to lerp from (number)
 		@param n2 number to lerp to (number)
+		@return the lerped number (number)
 	**/
 	static function lerp(t:TODO, n1:TODO, n2:TODO):TODO;
 	/**
@@ -125,6 +134,8 @@ package defold;
 		
 		The resulting identity matrix describes a transform with
 		no translation or rotation.
+		
+		@return identity matrix (matrix4)
 	**/
 	static function matrix4():TODO;
 	/**
@@ -135,6 +146,7 @@ package defold;
 		the function creates a copy of the given matrix.
 		
 		@param m existing matrix (matrix4)
+		@return matrix which is a copy of the specified matrix (matrix4)
 	**/
 	static function matrix4(m:TODO):TODO;
 	/**
@@ -144,6 +156,7 @@ package defold;
 		
 		@param v axis (vector3)
 		@param angle angle in radians (number)
+		@return matrix represented by axis and angle (matrix4)
 	**/
 	static function matrix4_axis_angle(v:TODO, angle:TODO):TODO;
 	/**
@@ -152,6 +165,7 @@ package defold;
 		The resulting matrix describes the same rotation as the quaternion, but does not have any translation (also like the quaternion).
 		
 		@param q quaternion to create matrix from (quaternion)
+		@return matrix represented by quaternion (matrix4)
 	**/
 	static function matrix4_from_quat(q:TODO):TODO;
 	/**
@@ -168,6 +182,7 @@ package defold;
 		@param top coordinate for top clipping plane (number)
 		@param near coordinate for near clipping plane (number)
 		@param far coordinate for far clipping plane (number)
+		@return matrix representing the frustum (matrix4)
 	**/
 	static function matrix4_frustum(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
 	/**
@@ -180,6 +195,7 @@ package defold;
 		@param eye eye position (vector3)
 		@param look_at look-at position (vector3)
 		@param up up vector (vector3)
+		@return look-at matrix (matrix4)
 	**/
 	static function matrix4_look_at(eye:TODO, look_at:TODO, up:TODO):TODO;
 	/**
@@ -194,6 +210,7 @@ package defold;
 		@param top coordinate for top clipping plane (number)
 		@param near coordinate for near clipping plane (number)
 		@param far coordinate for far clipping plane (number)
+		@return orthographic projection matrix (matrix4)
 	**/
 	static function matrix4_orthographic(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
 	/**
@@ -206,6 +223,7 @@ package defold;
 		@param aspect aspect ratio (number)
 		@param near coordinate for near clipping plane (number)
 		@param far coordinate for far clipping plane (number)
+		@return perspective projection matrix (matrix4)
 	**/
 	static function matrix4_perspective(fov:TODO, aspect:TODO, near:TODO, far:TODO):TODO;
 	/**
@@ -215,6 +233,7 @@ package defold;
 		by the specified angle.
 		
 		@param angle angle in radians around x-axis (number)
+		@return matrix from rotation around x-axis (matrix4)
 	**/
 	static function matrix4_rotation_x(angle:TODO):TODO;
 	/**
@@ -224,6 +243,7 @@ package defold;
 		by the specified angle.
 		
 		@param angle angle in radians around y-axis (number)
+		@return matrix from rotation around y-axis (matrix4)
 	**/
 	static function matrix4_rotation_y(angle:TODO):TODO;
 	/**
@@ -233,6 +253,7 @@ package defold;
 		by the specified angle.
 		
 		@param angle angle in radians around z-axis (number)
+		@return matrix from rotation around z-axis (matrix4)
 	**/
 	static function matrix4_rotation_z(angle:TODO):TODO;
 	/**
@@ -245,6 +266,7 @@ package defold;
 		division-by-zero will occur.
 		
 		@param v vector to normalize (vector3|vector4)
+		@return new normalized vector (vector3|vector4)
 	**/
 	static function normalize(v:TODO):TODO;
 	/**
@@ -258,6 +280,7 @@ package defold;
 		use the general inverse `vmath.inv()` instead.
 		
 		@param m ortho-normalized matrix to invert (matrix4)
+		@return inverse of the supplied matrix (matrix4)
 	**/
 	static function ortho_inv(m:TODO):TODO;
 	/**
@@ -272,6 +295,7 @@ package defold;
 		
 		@param v1 vector to be projected on the second (vector3)
 		@param v2 vector onto which the first will be projected, must not have zero length (vector3)
+		@return the projected extent of the first vector onto the second (number)
 	**/
 	static function project(v1:TODO, v2:TODO):TODO;
 	/**
@@ -281,6 +305,8 @@ package defold;
 		quaternion is equal to:
 		
 		`vmath.quat(0, 0, 0, 1)`
+		
+		@return new identity quaternion (quaternion)
 	**/
 	static function quat():TODO;
 	/**
@@ -291,6 +317,7 @@ package defold;
 		This function creates a copy of the given quaternion.
 		
 		@param q existing quaternion (quaternion)
+		@return new quaternion (quaternion)
 	**/
 	static function quat(q:TODO):TODO;
 	/**
@@ -303,6 +330,7 @@ package defold;
 		@param y y coordinate (number)
 		@param z z coordinate (number)
 		@param w w coordinate (number)
+		@return new quaternion (quaternion)
 	**/
 	static function quat(x:TODO, y:TODO, z:TODO, w:TODO):TODO;
 	/**
@@ -313,6 +341,7 @@ package defold;
 		
 		@param v axis (vector3)
 		@param angle angle (number)
+		@return quaternion representing the axis-angle rotation (quaternion)
 	**/
 	static function quat_axis_angle(v:TODO, angle:TODO):TODO;
 	/**
@@ -325,6 +354,7 @@ package defold;
 		@param x x base vector (vector3)
 		@param y y base vector (vector3)
 		@param z z base vector (vector3)
+		@return quaternion representing the rotation of the specified base vectors (quaternion)
 	**/
 	static function quat_basis(x:TODO, y:TODO, z:TODO):TODO;
 	/**
@@ -339,6 +369,7 @@ package defold;
 		
 		@param v1 first unit vector, before rotation (vector3)
 		@param v2 second unit vector, after rotation (vector3)
+		@return quaternion representing the rotation from first to second vector (quaternion)
 	**/
 	static function quat_from_to(v1:TODO, v2:TODO):TODO;
 	/**
@@ -348,6 +379,7 @@ package defold;
 		radians around the x-axis.
 		
 		@param angle angle in radians around x-axis (number)
+		@return quaternion representing the rotation around the x-axis (quaternion)
 	**/
 	static function quat_rotation_x(angle:TODO):TODO;
 	/**
@@ -357,6 +389,7 @@ package defold;
 		radians around the y-axis.
 		
 		@param angle angle in radians around y-axis (number)
+		@return quaternion representing the rotation around the y-axis (quaternion)
 	**/
 	static function quat_rotation_y(angle:TODO):TODO;
 	/**
@@ -366,6 +399,7 @@ package defold;
 		radians around the z-axis.
 		
 		@param angle angle in radians around z-axis (number)
+		@return quaternion representing the rotation around the z-axis (quaternion)
 	**/
 	static function quat_rotation_z(angle:TODO):TODO;
 	/**
@@ -377,6 +411,7 @@ package defold;
 		
 		@param q quaternion (quaternion)
 		@param v vector to rotate (vector3)
+		@return the rotated vector (vector3)
 	**/
 	static function rotate(q:TODO, v:TODO):TODO;
 	/**
@@ -397,6 +432,7 @@ package defold;
 		@param t interpolation parameter, 0-1 (number)
 		@param v1 vector to slerp from (vector3 or vector4)
 		@param v2 vector to slerp to (vector3 or vector4)
+		@return the slerped vector (vector3 or vector4)
 	**/
 	static function slerp(t:TODO, v1:TODO, v2:TODO):TODO;
 	/**
@@ -415,18 +451,22 @@ package defold;
 		@param t interpolation parameter, 0-1 (number)
 		@param q1 quaternion to slerp from (quaternion)
 		@param q2 quaternion to slerp to (quaternion)
+		@return the slerped quaternion (quaternion)
 	**/
 	static function slerp(t:TODO, q1:TODO, q2:TODO):TODO;
 	/**
 		Creates a new vector from a table of values.
 		
 		@param t table of numbers
+		@return new vector (vector)
 	**/
 	static function vector(t:TODO):TODO;
 	/**
 		Creates a new zero vector.
 		
 		Creates a new zero vector with all components set to 0.
+		
+		@return new zero vector (vector3)
 	**/
 	static function vector3():TODO;
 	/**
@@ -436,6 +476,7 @@ package defold;
 		supplied scalar value.
 		
 		@param n scalar value to splat (number)
+		@return new vector (vector3)
 	**/
 	static function vector3(n:TODO):TODO;
 	/**
@@ -446,6 +487,7 @@ package defold;
 		This function creates a copy of the given vector.
 		
 		@param v existing vector (vector3)
+		@return new vector (vector3)
 	**/
 	static function vector3(v:TODO):TODO;
 	/**
@@ -457,12 +499,15 @@ package defold;
 		@param x x coordinate (number)
 		@param y y coordinate (number)
 		@param z z coordinate (number)
+		@return new vector (vector3)
 	**/
 	static function vector3(x:TODO, y:TODO, z:TODO):TODO;
 	/**
 		Creates a new zero vector.
 		
 		Creates a new zero vector with all components set to 0.
+		
+		@return new zero vector (vector4)
 	**/
 	static function vector4():TODO;
 	/**
@@ -472,6 +517,7 @@ package defold;
 		supplied scalar value.
 		
 		@param n scalar value to splat (number)
+		@return new vector (vector4)
 	**/
 	static function vector4(n:TODO):TODO;
 	/**
@@ -482,6 +528,7 @@ package defold;
 		This function creates a copy of the given vector.
 		
 		@param v existing vector (vector4)
+		@return new vector (vector4)
 	**/
 	static function vector4(v:TODO):TODO;
 	/**
@@ -494,6 +541,7 @@ package defold;
 		@param y y coordinate (number)
 		@param z z coordinate (number)
 		@param w w coordinate (number)
+		@return new vector (vector4)
 	**/
 	static function vector4(x:TODO, y:TODO, z:TODO, w:TODO):TODO;
 }

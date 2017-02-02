@@ -19,7 +19,7 @@ package defold;
 		
 		 *  request_id: custom unique request id -- optional argument only available for Facebook IAP transactions
 	**/
-	static function buy(id:TODO, options:TODO):TODO;
+	static function buy(id:TODO, options:TODO):Void;
 	/**
 		Finish buying product.
 		
@@ -30,9 +30,16 @@ package defold;
 		
 		@param transaction transaction table parameter as supplied in listener callback
 	**/
-	static function finish(transaction:TODO):TODO;
+	static function finish(transaction:TODO):Void;
 	/**
 		Get current provider id.
+		
+		@return provider id (constant).
+		
+		     * iap.PROVIDER_ID_GOOGLE
+		     * iap.PROVIDER_ID_AMAZON
+		     * iap.PROVIDER_ID_APPLE
+		     * iap.PROVIDER_ID_FACEBOOK
 	**/
 	static function get_provider_id():TODO;
 	/**
@@ -41,9 +48,11 @@ package defold;
 		@param ids table (array) to get information about
 		@param callback result callback
 	**/
-	static function list(ids:TODO, callback:TODO):TODO;
+	static function list(ids:TODO, callback:TODO):Void;
 	/**
 		Restore products (non-consumable).
+		
+		@return false if current store doesn't support handling restored transactions, otherwise true (bool)
 	**/
 	static function restore():TODO;
 	/**
@@ -63,7 +72,7 @@ package defold;
 		
 		@param listener listener function
 	**/
-	static function set_listener(listener:TODO):TODO;
+	static function set_listener(listener:TODO):Void;
 }
 
 @:native("_G.iap") extern class IapVariables {

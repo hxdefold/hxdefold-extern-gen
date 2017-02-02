@@ -17,8 +17,12 @@ package defold;
 		the bounds are calculated as if all layers were collapsed into one.
 		
 		@param url the tile map (url)
+		@return x coordinate of the bottom left corner (number)
+		@return y coordinate of the bottom left corner (number)
+		@return number of columns in the tile map (number)
+		@return number of rows in the tile map (number)
 	**/
-	static function get_bounds(url:TODO):TODO;
+	static function get_bounds(url:TODO):TODO<"MULTIPLE">;
 	/**
 		Get a tile from a tile map.
 		
@@ -32,6 +36,7 @@ package defold;
 		@param name of the layer (string|hash)
 		@param x_coordinate of the tile (number)
 		@param y_coordinate of the tile (number)
+		@return index of the tile (number)
 	**/
 	static function get_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO):TODO;
 	/**
@@ -44,7 +49,7 @@ package defold;
 		@param url the tile map that should have a constant reset (url)
 		@param name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, name:TODO):TODO;
+	static function reset_constant(url:TODO, name:TODO):Void;
 	/**
 		Set a shader constant for a tile map.
 		
@@ -57,7 +62,7 @@ package defold;
 		@param name of the constant (string|hash)
 		@param value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, name:TODO, value:TODO):TODO;
+	static function set_constant(url:TODO, name:TODO, value:TODO):Void;
 	/**
 		Set a tile in a tile map.
 		
@@ -90,7 +95,7 @@ package defold;
 		@param optional if the tile should be horizontally flipped (boolean)
 		@param optional i the tile should be vertically flipped (boolean)
 	**/
-	static function set_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO, new:TODO, optional:TODO, optional:TODO):TODO;
+	static function set_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO, new:TODO, optional:TODO, optional:TODO):Void;
 }
 
 /**

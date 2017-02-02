@@ -11,11 +11,13 @@ package defold;
 		@param message_id The id must be a string or a hashed string. (string|hash)
 		@param message lua table message to send (table)
 	**/
-	static function post(receiver:TODO, message_id:TODO, ?message:TODO):TODO;
+	static function post(receiver:TODO, message_id:TODO, ?message:TODO):Void;
 	/**
 		Creates a new URL.
 		
 		This is equivalent to msg.url("").
+		
+		@return a new URL (url)
 	**/
 	static function url():TODO;
 	/**
@@ -26,6 +28,7 @@ package defold;
 		which can either be relative the instance of the calling script or global. `fragment` would be the id of the desired component.
 		
 		@param urlstring string to create the url from (string)
+		@return a new URL (url)
 	**/
 	static function url(urlstring:TODO):TODO;
 	/**
@@ -34,6 +37,7 @@ package defold;
 		@param socket socket of the URL (string|socket)
 		@param path path of the URL (string|hash)
 		@param fragment fragment of the URL (string|hash)
+		@return a new URL (url)
 	**/
 	static function url(?socket:TODO, ?path:TODO, ?fragment:TODO):TODO;
 }

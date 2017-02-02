@@ -11,6 +11,7 @@ package defold;
 		A Lua error is raised for syntax errors.
 		
 		@param json json data (string)
+		@return decoded json (table)
 	**/
 	static function decode(json:TODO):TODO;
 }

@@ -20,13 +20,15 @@ package defold;
 		     * `render.BUFFER_DEPTH_BIT`
 		     * `render.BUFFER_STENCIL_BIT`
 	**/
-	static function clear(buffers:TODO):TODO;
+	static function clear(buffers:TODO):Void;
 	/**
 		Create a new constant buffer..
 		
 		Constant buffers are used to set shader program variables and are optionally passed to the `render.draw()`
 		function. The buffer's constant elements can be indexed like an ordinary Lua table, but you can't iterate
 		over them with pairs() or ipairs().
+		
+		@return new constant buffer (constant_buffer)
 	**/
 	static function constant_buffer():TODO;
 	/**
@@ -34,19 +36,19 @@ package defold;
 		
 		@param render_target render target to delete (render_target)
 	**/
-	static function delete_render_target(render_target:TODO):TODO;
+	static function delete_render_target(render_target:TODO):Void;
 	/**
 		Disables the currently enabled material.
 		
 		If a material is currently enabled, disable it.
 	**/
-	static function disable_material():TODO;
+	static function disable_material():Void;
 	/**
 		Disables a render target.
 		
 		@param render_target render target to disable (render_target)
 	**/
-	static function disable_render_target(render_target:TODO):TODO;
+	static function disable_render_target(render_target:TODO):Void;
 	/**
 		Disables a render state.
 		
@@ -58,14 +60,14 @@ package defold;
 		   * `render.STATE_CULL_FACE`
 		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
-	static function disable_state(state:TODO):TODO;
+	static function disable_state(state:TODO):Void;
 	/**
 		Disables a texture for a render target.
 		
 		@param unit texture unit to enable disable for (number)
 		@param render_target render target for which to disable the specified texture unit (render_target)
 	**/
-	static function disable_texture(unit:TODO, render_target:TODO):TODO;
+	static function disable_texture(unit:TODO, render_target:TODO):Void;
 	/**
 		Draws all objects matching a predicate.
 		
@@ -77,18 +79,18 @@ package defold;
 		@param predicate predicate to draw for (predicate)
 		@param constants optional constants to use while rendering (constants_buffer)
 	**/
-	static function draw(predicate:TODO, constants:TODO):TODO;
+	static function draw(predicate:TODO, constants:TODO):Void;
 	/**
 		Draws all 2d debug graphics (Deprecated).
 	**/
 	@:deprecated("Use render.draw_debug3d() to draw visual debug info.")
-	static function draw_debug2d():TODO;
+	static function draw_debug2d():Void;
 	/**
 		Draws all 3d debug graphics.
 		
 		Draws all 3d debug graphics such as lines drawn with "draw_line" messages and physics visualization.
 	**/
-	static function draw_debug3d():TODO;
+	static function draw_debug3d():Void;
 	/**
 		Enables a material.
 		
@@ -96,13 +98,13 @@ package defold;
 		
 		@param material_id material id to enable (string)
 	**/
-	static function enable_material(material_id:TODO):TODO;
+	static function enable_material(material_id:TODO):Void;
 	/**
 		Enables a render target.
 		
 		@param render_target render target to enable (render_target)
 	**/
-	static function enable_render_target(render_target:TODO):TODO;
+	static function enable_render_target(render_target:TODO):Void;
 	/**
 		Enables a render state.
 		
@@ -115,7 +117,7 @@ package defold;
 		   * `render.STATE_CULL_FACE`
 		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
-	static function enable_state(state:TODO):TODO;
+	static function enable_state(state:TODO):Void;
 	/**
 		Enables a texture for a render target.
 		
@@ -123,9 +125,11 @@ package defold;
 		@param render_target render target from which to enable the specified texture unit (render_target)
 		@param buffer_type buffer type from which to enable the texture (constant)
 	**/
-	static function enable_texture(unit:TODO, render_target:TODO, buffer_type:TODO):TODO;
+	static function enable_texture(unit:TODO, render_target:TODO, buffer_type:TODO):Void;
 	/**
 		Gets the window height, as specified for the project.
+		
+		@return specified window height (number)
 	**/
 	static function get_height():TODO;
 	/**
@@ -133,6 +137,7 @@ package defold;
 		
 		@param render_target render target from which to retrieve the buffer height (render_target)
 		@param buffer_type which type of buffer to retrieve the height from (constant)
+		@return the height of the render target buffer texture (number)
 	**/
 	static function get_render_target_height(render_target:TODO, buffer_type:TODO):TODO;
 	/**
@@ -140,24 +145,32 @@ package defold;
 		
 		@param render_target render target from which to retrieve the buffer width (render_target)
 		@param buffer_type which type of buffer to retrieve the width from (constant)
+		@return the width of the render target buffer texture (number)
 	**/
 	static function get_render_target_width(render_target:TODO, buffer_type:TODO):TODO;
 	/**
 		Gets the window width, as specified for the project.
+		
+		@return specified window width (number)
 	**/
 	static function get_width():TODO;
 	/**
 		Gets the window height.
+		
+		@return actual window height (number)
 	**/
 	static function get_window_height():TODO;
 	/**
 		Gets the actual window width.
+		
+		@return actual window width (number)
 	**/
 	static function get_window_width():TODO;
 	/**
 		Creates a new render predicate.
 		
 		@param predicates table of tags that the predicate should match (table). The tags can be either (hash|string)
+		@return new predicate (predicate)
 	**/
 	static function predicate(predicates:TODO):TODO;
 	/**
@@ -205,6 +218,7 @@ package defold;
 		
 		@param name render target name (string)
 		@param parameters table of all parameters, see the description for available keys and values (table)
+		@return new render target (render_target)
 	**/
 	static function render_target(name:TODO, parameters:TODO):TODO;
 	/**
@@ -231,7 +245,7 @@ package defold;
 		@param source_factor source factor (constant)
 		@param destination_factor destination factor (constant)
 	**/
-	static function set_blend_func(source_factor:TODO, destination_factor:TODO):TODO;
+	static function set_blend_func(source_factor:TODO, destination_factor:TODO):Void;
 	/**
 		Sets the color mask.
 		
@@ -240,7 +254,7 @@ package defold;
 		@param blue blue mask (boolean)
 		@param alpha alpha mask (boolean)
 	**/
-	static function set_color_mask(red:TODO, green:TODO, blue:TODO, alpha:TODO):TODO;
+	static function set_color_mask(red:TODO, green:TODO, blue:TODO, alpha:TODO):Void;
 	/**
 		Sets the cull face.
 		
@@ -250,7 +264,7 @@ package defold;
 		   * `render.FACE_BACK`
 		   * `render.FACE_FRONT_AND_BACK`
 	**/
-	static function set_cull_face(face_type:TODO):TODO;
+	static function set_cull_face(face_type:TODO):Void;
 	/**
 		Sets the depth test function.
 		
@@ -265,20 +279,20 @@ package defold;
 		   * `render.COMPARE_FUNC_NOTEQUAL`
 		   * `render.COMPARE_FUNC_ALWAYS`
 	**/
-	static function set_depth_func(func:TODO):TODO;
+	static function set_depth_func(func:TODO):Void;
 	/**
 		Sets the depth mask.
 		
 		@param depth depth mask (boolean)
 	**/
-	static function set_depth_mask(depth:TODO):TODO;
+	static function set_depth_mask(depth:TODO):Void;
 	/**
 		Sets the polygon offset.
 		
 		@param factor polygon offset factor (number)
 		@param units polygon offset units (number)
 	**/
-	static function set_polygon_offset(factor:TODO, units:TODO):TODO;
+	static function set_polygon_offset(factor:TODO, units:TODO):Void;
 	/**
 		Sets the projection matrix.
 		
@@ -286,7 +300,7 @@ package defold;
 		
 		@param matrix projection matrix (matrix4)
 	**/
-	static function set_projection(matrix:TODO):TODO;
+	static function set_projection(matrix:TODO):Void;
 	/**
 		Sets the render target size.
 		
@@ -294,7 +308,7 @@ package defold;
 		@param width new render target width (number)
 		@param height new render target height (number)
 	**/
-	static function set_render_target_size(render_target:TODO, width:TODO, height:TODO):TODO;
+	static function set_render_target_size(render_target:TODO, width:TODO, height:TODO):Void;
 	/**
 		Sets the stencil test function.
 		
@@ -312,13 +326,13 @@ package defold;
 		@param ref reference value for the stencil test (number)
 		@param mask mask that is ANDed with both the reference value and the stored stencil value when the test is done (number)
 	**/
-	static function set_stencil_func(func:TODO, ref:TODO, mask:TODO):TODO;
+	static function set_stencil_func(func:TODO, ref:TODO, mask:TODO):Void;
 	/**
 		Sets the stencil mask.
 		
 		@param mask stencil mask (number)
 	**/
-	static function set_stencil_mask(mask:TODO):TODO;
+	static function set_stencil_mask(mask:TODO):Void;
 	/**
 		Sets the stencil operator.
 		
@@ -337,7 +351,7 @@ package defold;
 		@param dpfail the stencil action when the stencil test passes (constant)
 		@param dppass the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled (constant)
 	**/
-	static function set_stencil_op(sfail:TODO, dpfail:TODO, dppass:TODO):TODO;
+	static function set_stencil_op(sfail:TODO, dpfail:TODO, dppass:TODO):Void;
 	/**
 		Sets the view matrix.
 		
@@ -345,7 +359,7 @@ package defold;
 		
 		@param matrix view matrix to set (matrix4)
 	**/
-	static function set_view(matrix:TODO):TODO;
+	static function set_view(matrix:TODO):Void;
 	/**
 		Sets the render viewport.
 		
@@ -354,7 +368,7 @@ package defold;
 		@param width viewport width (number)
 		@param height viewport height (number)
 	**/
-	static function set_viewport(x:TODO, y:TODO, width:TODO, height:TODO):TODO;
+	static function set_viewport(x:TODO, y:TODO, width:TODO, height:TODO):Void;
 }
 
 /**

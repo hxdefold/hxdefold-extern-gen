@@ -19,6 +19,7 @@ package defold;
 		@param rotation the rotation of the new game object, the rotation of the game object containing the factory is used by default (quat)
 		@param properties the properties defined in a script attached to the new game object (table)
 		@param scale the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default (number or vector3)
+		@return the global id of the spawned game object (hash)
 	**/
 	static function create(url:TODO, ?position:TODO, ?rotation:TODO, ?properties:TODO, ?scale:TODO):TODO;
 }

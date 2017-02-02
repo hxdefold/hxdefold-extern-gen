@@ -12,6 +12,7 @@ package defold;
 		A table is returned containing the addresses of the call stack.
 		
 		@param handle crash dump handle (number)
+		@return backtrace table containing the backtrace (table)
 	**/
 	static function get_backtrace(handle:TODO):TODO;
 	/**
@@ -22,6 +23,7 @@ package defold;
 		but can be useful for manual inspection.
 		
 		@param handle crash dump handle (number)
+		@return blob string with the platform specific data (string)
 	**/
 	static function get_extra_data(handle:TODO):TODO;
 	/**
@@ -31,12 +33,14 @@ package defold;
 		have 'name' and 'address' set for all loaded modules.
 		
 		@param handle crash dump handle (number)
+		@return modules module table (table)
 	**/
 	static function get_modules(handle:TODO):TODO;
 	/**
 		Read signal number from a crash report.
 		
 		@param handle crash dump handle (number)
+		@return signal signal number (number)
 	**/
 	static function get_signum(handle:TODO):TODO;
 	/**
@@ -44,6 +48,7 @@ package defold;
 		
 		@param handle crash dump handle (number)
 		@param index system field enum (number)
+		@return value value recorded in the crash dump (string)
 	**/
 	static function get_sys_field(handle:TODO, index:TODO):TODO;
 	/**
@@ -51,6 +56,7 @@ package defold;
 		
 		@param handle crash dump handle (number)
 		@param index user data slot index (number)
+		@return value user data value recorded in the crash dump (string)
 	**/
 	static function get_user_field(handle:TODO, index:TODO):TODO;
 	/**
@@ -58,6 +64,8 @@ package defold;
 		
 		The crash dump will be removed from disk upon a successful
 		load, so loading is one-shot.
+		
+		@return handle handle to the loaded dump, or nil if no dump was found. (number)
 	**/
 	static function load_previous():TODO;
 	/**
@@ -65,7 +73,7 @@ package defold;
 		
 		@param handle handle to loaded crash dump (number)
 	**/
-	static function release(handle:TODO):TODO;
+	static function release(handle:TODO):Void;
 	/**
 		Sets the file location for crash dumps.
 		
@@ -73,7 +81,7 @@ package defold;
 		
 		@param path file path to use (string)
 	**/
-	static function set_file_path(path:TODO):TODO;
+	static function set_file_path(path:TODO):Void;
 	/**
 		Stores user-defined string value.
 		
@@ -84,7 +92,7 @@ package defold;
 		@param index slot index. 0-indexed. (number)
 		@param value string value to store (string)
 	**/
-	static function set_user_field(index:TODO, value:TODO):TODO;
+	static function set_user_field(index:TODO, value:TODO):Void;
 	/**
 		Writes crash dump.
 		
@@ -92,7 +100,7 @@ package defold;
 		allows the program to continue.
 		The generated dump can be read by crash.load_previous
 	**/
-	static function write_dump():TODO;
+	static function write_dump():Void;
 }
 
 @:native("_G.crash") extern class CrashVariables {

@@ -11,6 +11,7 @@ package defold;
 		before it can be compared with an id.
 		
 		@param s string to hash (string)
+		@return a hashed string (hash)
 	**/
 	static function hash(s:TODO):TODO;
 	/**
@@ -19,6 +20,7 @@ package defold;
 		The returned string is always padded with leading zeros
 		
 		@param h hash value to get hex string for
+		@return hex representation
 	**/
 	static function hash_to_hex(h:TODO):TODO;
 	/**
@@ -28,5 +30,5 @@ package defold;
 		
 		@param v value to print
 	**/
-	static function pprint(v:TODO):TODO;
+	static function pprint(v:TODO):Void;
 }

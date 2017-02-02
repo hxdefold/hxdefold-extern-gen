@@ -8,6 +8,8 @@ package defold;
 @:native("_G.facebook") extern class Facebook {
 	/**
 		Get the current Facebook access token.
+		
+		@return the access token (string)
 	**/
 	static function access_token():TODO;
 	/**
@@ -21,7 +23,7 @@ package defold;
 		Facebook Canvas platform, therefore this function has no effect on Facebook
 		Canvas.
 	**/
-	static function disable_event_usage():TODO;
+	static function disable_event_usage():Void;
 	/**
 		Enable event usage with Facebook Analytics.
 		
@@ -32,7 +34,7 @@ package defold;
 		Facebook Canvas platform, therefore this function has no effect on Facebook
 		Canvas.
 	**/
-	static function enable_event_usage():TODO;
+	static function enable_event_usage():Void;
 	/**
 		Login to Facebook and request a set of publish permissions.
 		
@@ -62,7 +64,7 @@ package defold;
 		     * `self` The context of the calling script
 		     * `data` A table that contains the response
 	**/
-	static function login_with_publish_permissions(permissions:TODO, audience:TODO, callback:TODO):TODO;
+	static function login_with_publish_permissions(permissions:TODO, audience:TODO, callback:TODO):Void;
 	/**
 		Login to Facebook and request a set of read permissions.
 		
@@ -85,17 +87,19 @@ package defold;
 		     * `self` The context of the calling script
 		     * `data` A table that contains the response
 	**/
-	static function login_with_read_permissions(permissions:TODO, callback:TODO):TODO;
+	static function login_with_read_permissions(permissions:TODO, callback:TODO):Void;
 	/**
 		Logout from Facebook.
 		
 		Logout from Facebook.
 	**/
-	static function logout():TODO;
+	static function logout():Void;
 	/**
 		Get the currently granted permissions.
 		
 		This function returns a table with all the currently granted permission strings.
+		
+		@return the permissions (table)
 	**/
 	static function permissions():TODO;
 	/**
@@ -146,7 +150,7 @@ package defold;
 		     * facebook.PARAM_SOURCE_APPLICATION
 		     * facebook.PARAM_SUCCESS
 	**/
-	static function post_event(event:TODO, value_to_sum:TODO, params:TODO):TODO;
+	static function post_event(event:TODO, value_to_sum:TODO, params:TODO):Void;
 	/**
 		Show facebook web dialog.
 		
@@ -209,7 +213,7 @@ package defold;
 		@param param table with dialog parameters (table)
 		@param callback callback function with parameters (self, result, error) that is called when the dialog is closed. Result is table with an url-field set. (function)
 	**/
-	static function show_dialog(dialog:TODO, param:TODO, callback:TODO):TODO;
+	static function show_dialog(dialog:TODO, param:TODO, callback:TODO):Void;
 }
 
 @:native("_G.facebook") extern class FacebookVariables {

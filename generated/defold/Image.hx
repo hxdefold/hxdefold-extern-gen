@@ -13,6 +13,7 @@ package defold;
 		
 		@param buffer image data buffer
 		@param premult premultiply alpha. optional and defaults to false
+		@return object with the following fields: width, height, type and buffer (raw data). nil is returned if loading fails.
 	**/
 	static function load(buffer:TODO, ?premult:TODO):TODO;
 }

@@ -10,6 +10,8 @@ package defold;
 		
 		Returns a table with the following members:
 		installed.
+		
+		@return table with application information (table)
 	**/
 	static function get_application_info():TODO;
 	/**
@@ -18,6 +20,7 @@ package defold;
 		Get config value from the game.project configuration file.
 		
 		@param key key to get value for. The syntax is SECTION.KEY (string)
+		@return config value as a string. nil if the config key doesn't exists (string)
 	**/
 	static function get_config(key:TODO):TODO;
 	/**
@@ -27,10 +30,13 @@ package defold;
 		
 		@param key key to get value for. The syntax is SECTION.KEY (string)
 		@param default_value default value to return if the value does not exist (string)
+		@return config value as a string. default_value if the config key does not exist (string)
 	**/
 	static function get_config(key:TODO, default_value:TODO):TODO;
 	/**
 		Get current network connectivity status.
+		
+		@return sys.NETWORK_DISCONNECTED if no network connection is found, sys.NETWORK_CONNECTED_CELLULAR if connected through mobile cellular, otherwise sys.NETWORK_CONNECTED (number)
 	**/
 	static function get_connectivity():TODO;
 	/**
@@ -38,6 +44,8 @@ package defold;
 		
 		Returns a table with the following members:
 		version, engine_sha1.
+		
+		@return table with engine information (table)
 	**/
 	static function get_engine_info():TODO;
 	/**
@@ -45,6 +53,8 @@ package defold;
 		
 		returns an array of tables with the following members:
 		name, address (ip-string), mac (hardware address, colon separated string), up (bool), running (bool). NOTE: ip and mac might be nil if not available
+		
+		@return an array of tables (table)
 	**/
 	static function get_ifaddrs():TODO;
 	/**
@@ -54,6 +64,7 @@ package defold;
 		
 		@param application_id user defined id of the application, which helps define the location of the save-file (string)
 		@param file_name file-name to get path for (string)
+		@return path to save-file (string)
 	**/
 	static function get_save_file(application_id:TODO, file_name:TODO):TODO;
 	/**
@@ -71,6 +82,8 @@ package defold;
 		`device_ident` is "identifierForVendor" and `ad_ident` is "advertisingIdentifier" on iOS
 		
 		`device_ident` is "android_id" and `ad_ident` is advertising ID provided by Google Play on Android.
+		
+		@return table with system information (table)
 	**/
 	static function get_sys_info():TODO;
 	/**
@@ -79,6 +92,7 @@ package defold;
 		If the file exists, it must have been created by `sys.save` to be loaded.
 		
 		@param filename file to read from (string)
+		@return loaded lua table, which is empty if the file could not be found (table)
 	**/
 	static function load(filename:TODO):TODO;
 	/**
@@ -97,6 +111,7 @@ package defold;
 		</pre>
 		
 		@param filename resource to load, full path (string)
+		@return loaded data, which is empty if the file could not be found (string)
 	**/
 	static function load_resource(filename:TODO):TODO;
 	/**
@@ -105,6 +120,7 @@ package defold;
 		Open URL in default application, typically a browser
 		
 		@param url url to open (string)
+		@return a boolean indicating if the url could be opened or not (boolean)
 	**/
 	static function open_url(url:TODO):TODO;
 	/**
@@ -118,6 +134,7 @@ package defold;
 		
 		@param filename file to write to (string)
 		@param table lua table to save (table)
+		@return a boolean indicating if the table could be saved or not (boolean)
 	**/
 	static function save(filename:TODO, table:TODO):TODO;
 	/**
@@ -125,11 +142,11 @@ package defold;
 		
 		@param host hostname to check against (string)
 	**/
-	static function set_connectivity_host(host:TODO):TODO;
+	static function set_connectivity_host(host:TODO):Void;
 	/**
 		Set the error handler. The error handler is a function which is called whenever a lua runtime error occurs..
 		
 		@param error_handler the function to be called on error (function)
 	**/
-	static function set_error_handler(error_handler:TODO):TODO;
+	static function set_error_handler(error_handler:TODO):Void;
 }
