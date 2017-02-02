@@ -6,7 +6,8 @@ package defold;
 
     See `GuiDdfMessages` for related messages.
 **/
-@:native("_G") extern class GuiDdf {
+@:native("_G")
+extern class GuiDdf {
 
 }
 
@@ -27,7 +28,8 @@ typedef GuiDdfMessageLayoutChanged = {
 /**
     Messages related to the `GuiDdf` module.
 **/
-@:publicFields class GuiDdfMessages {
+@:publicFields
+class GuiDdfMessages {
     /**
         Reports a layout change.
         

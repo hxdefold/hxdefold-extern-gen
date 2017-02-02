@@ -249,7 +249,7 @@ class Printer {
 
 		var str = t == null ? "#NULL" :
 			(printPackage && t.pack.length > 0 && t.pack[0] != "" ? "package " + t.pack.join(".") + ";\n" : "") +
-			(t.meta != null && t.meta.length > 0 ? t.meta.map(printMetadata).join(" ") + " " : "") + (t.isExtern ? "extern " : "") + switch (t.kind) {
+			(t.meta != null && t.meta.length > 0 ? t.meta.map(printMetadata).join(" ") + "\n" : "") + (t.isExtern ? "extern " : "") + switch (t.kind) {
 				case TDEnum:
 					"enum " + t.name + ((t.params != null && t.params.length > 0) ? "<" + t.params.map(printTypeParamDecl).join(", ") + ">" : "") + " {\n"
 					+ [for (field in t.fields)

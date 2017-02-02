@@ -90,7 +90,8 @@ typedef CollisionObjectMessageContactPointResponse = {
     See `PhysicsMessages` for related messages.
     See `PhysicsProperties` for related properties.
 **/
-@:native("_G.physics") extern class Physics {
+@:native("_G.physics")
+extern class Physics {
     /**
         Requests a ray cast to be performed.
         
@@ -173,7 +174,8 @@ typedef PhysicsMessageVelocityResponse = {
 /**
     Messages related to the `Physics` module.
 **/
-@:publicFields class PhysicsMessages {
+@:publicFields
+class PhysicsMessages {
     /**
         Applies a force on a collision object.
         
@@ -250,7 +252,8 @@ typedef PhysicsMessageVelocityResponse = {
 /**
     Properties related to the `Physics` module.
 **/
-@:publicFields class PhysicsProperties {
+@:publicFields
+class PhysicsProperties {
     /**
         Collision object angular damping (number).
         

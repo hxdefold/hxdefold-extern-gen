@@ -3,7 +3,8 @@ package defold;
 /**
     Manipulation of JSON data strings.
 **/
-@:native("_G.json") extern class Json {
+@:native("_G.json")
+extern class Json {
     /**
         Decode JSON from a string to a lua-table.
         

@@ -6,7 +6,8 @@ package defold;
 
     See `SoundMessages` for related messages.
 **/
-@:native("_G.sound") extern class Sound {
+@:native("_G.sound")
+extern class Sound {
     /**
         Get mixer group gain.
         
@@ -132,7 +133,8 @@ typedef SoundMessageSetGain = {
 /**
     Messages related to the `Sound` module.
 **/
-@:publicFields class SoundMessages {
+@:publicFields
+class SoundMessages {
     /**
         Plays a sound.
         

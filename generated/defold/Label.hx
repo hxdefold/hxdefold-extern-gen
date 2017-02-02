@@ -5,7 +5,8 @@ package defold;
 
     See `LabelProperties` for related properties.
 **/
-@:native("_G.label") extern class Label {
+@:native("_G.label")
+extern class Label {
     /**
         Set the text for a label.
         
@@ -20,7 +21,8 @@ package defold;
 /**
     Properties related to the `Label` module.
 **/
-@:publicFields class LabelProperties {
+@:publicFields
+class LabelProperties {
     /**
         Label color (vector4).
         

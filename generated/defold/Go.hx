@@ -9,7 +9,8 @@ package defold;
     See `GoProperties` for related properties.
     See `GoVariables` for related variables.
 **/
-@:native("_G.go") extern class Go {
+@:native("_G.go")
+extern class Go {
     /**
         Called when a script component is finalized.
         
@@ -396,7 +397,8 @@ typedef GoMessageTransformResponse = {
 /**
     Messages related to the `Go` module.
 **/
-@:publicFields class GoMessages {
+@:publicFields
+class GoMessages {
     /**
         Acquires the user input focus.
         
@@ -491,7 +493,8 @@ typedef GoMessageTransformResponse = {
 /**
     Properties related to the `Go` module.
 **/
-@:publicFields class GoProperties {
+@:publicFields
+class GoProperties {
     /**
         Game object euler rotation (vector3).
         
@@ -525,7 +528,8 @@ typedef GoMessageTransformResponse = {
     static var scale(default, never):Property<TODO> = new Property("scale");
 }
 
-@:native("_G.go") extern class GoVariables {
+@:native("_G.go")
+extern class GoVariables {
     /**
         In-back.
     **/

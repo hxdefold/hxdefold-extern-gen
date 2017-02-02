@@ -6,7 +6,8 @@ package defold;
 
     See `PushVariables` for related variables.
 **/
-@:native("_G.push") extern class Push {
+@:native("_G.push")
+extern class Push {
     /**
         Cancel a scheduled local push notification.
         
@@ -105,7 +106,8 @@ package defold;
     static function set_listener(listener:TODO<"function">):Void;
 }
 
-@:native("_G.push") extern class PushVariables {
+@:native("_G.push")
+extern class PushVariables {
     /**
         Alert notification type.
     **/

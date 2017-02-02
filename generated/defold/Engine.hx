@@ -6,7 +6,8 @@ package defold;
 
     See `EngineMessages` for related messages.
 **/
-@:native("_G") extern class Engine {
+@:native("_G")
+extern class Engine {
 
 }
 
@@ -81,7 +82,8 @@ typedef EngineMessageStartRecord = {
 /**
     Messages related to the `Engine` module.
 **/
-@:publicFields class EngineMessages {
+@:publicFields
+class EngineMessages {
     /**
         Exits application.
         

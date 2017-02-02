@@ -5,7 +5,8 @@ package defold;
 
     See `TilemapMessages` for related messages.
 **/
-@:native("_G.tilemap") extern class Tilemap {
+@:native("_G.tilemap")
+extern class Tilemap {
     /**
         Get the bounds of a tile map.
         
@@ -131,7 +132,8 @@ typedef TilemapMessageSetTile = {
 /**
     Messages related to the `Tilemap` module.
 **/
-@:publicFields class TilemapMessages {
+@:publicFields
+class TilemapMessages {
     /**
         (DEPRECATED) changes a tile in a tile map.
         

@@ -5,7 +5,8 @@ package defold;
 
     See `ImageVariables` for related variables.
 **/
-@:native("_G.image") extern class Image {
+@:native("_G.image")
+extern class Image {
     /**
         Load image from buffer.
         
@@ -18,7 +19,8 @@ package defold;
     static function load(buffer:TODO, ?premult:TODO):TODO;
 }
 
-@:native("_G.image") extern class ImageVariables {
+@:native("_G.image")
+extern class ImageVariables {
     /**
         Luminance image type.
     **/

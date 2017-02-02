@@ -6,7 +6,8 @@ package defold;
     See `SpriteMessages` for related messages.
     See `SpriteProperties` for related properties.
 **/
-@:native("_G.sprite") extern class Sprite {
+@:native("_G.sprite")
+extern class Sprite {
     /**
         Reset a shader constant for a sprite.
         
@@ -83,7 +84,8 @@ typedef SpriteMessagePlayAnimation = {
 /**
     Messages related to the `Sprite` module.
 **/
-@:publicFields class SpriteMessages {
+@:publicFields
+class SpriteMessages {
     /**
         Reports that an animation has completed.
         
@@ -113,7 +115,8 @@ typedef SpriteMessagePlayAnimation = {
 /**
     Properties related to the `Sprite` module.
 **/
-@:publicFields class SpriteProperties {
+@:publicFields
+class SpriteProperties {
     /**
         Sprite scale (vector3).
         

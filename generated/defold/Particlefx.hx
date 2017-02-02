@@ -6,7 +6,8 @@ package defold;
 
     See `ParticlefxVariables` for related variables.
 **/
-@:native("_G.particlefx") extern class Particlefx {
+@:native("_G.particlefx")
+extern class Particlefx {
     /**
         Start playing a particle FX.
         
@@ -57,7 +58,8 @@ package defold;
     static function stop(url:Url):Void;
 }
 
-@:native("_G.particlefx") extern class ParticlefxVariables {
+@:native("_G.particlefx")
+extern class ParticlefxVariables {
     /**
         Postspawn state.
         

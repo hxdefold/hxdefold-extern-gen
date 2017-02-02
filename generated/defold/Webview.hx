@@ -4,7 +4,8 @@ package defold;
     Functions and for creating and controlling webviews to show html pages
     or evaluate javascript.
 **/
-@:native("_G.webview") extern class Webview {
+@:native("_G.webview")
+extern class Webview {
     /**
         Creates a webview.
         

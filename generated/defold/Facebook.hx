@@ -5,7 +5,8 @@ package defold;
 
     See `FacebookVariables` for related variables.
 **/
-@:native("_G.facebook") extern class Facebook {
+@:native("_G.facebook")
+extern class Facebook {
     /**
         Get the current Facebook access token.
         
@@ -224,7 +225,8 @@ package defold;
     static function show_dialog(dialog:String, param:TODO<"table">, callback:TODO<"self, result, error) that is called when the dialog is closed. Result is table with an url-field set. (function">):Void;
 }
 
-@:native("_G.facebook") extern class FacebookVariables {
+@:native("_G.facebook")
+extern class FacebookVariables {
     /**
         Publish permission to reach everyone..
     **/

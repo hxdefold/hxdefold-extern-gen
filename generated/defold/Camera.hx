@@ -7,7 +7,8 @@ package defold;
 
     See `CameraMessages` for related messages.
 **/
-@:native("_G") extern class Camera {
+@:native("_G")
+extern class Camera {
 
 }
 
@@ -36,7 +37,8 @@ typedef CameraMessageSetCamera = {
 /**
     Messages related to the `Camera` module.
 **/
-@:publicFields class CameraMessages {
+@:publicFields
+class CameraMessages {
     /**
         Makes the receiving camera become the active camera.
         

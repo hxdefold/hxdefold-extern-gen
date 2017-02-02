@@ -6,7 +6,8 @@ package defold;
 
     See `WindowVariables` for related variables.
 **/
-@:native("_G.window") extern class Window {
+@:native("_G.window")
+extern class Window {
     /**
         Get the mode for screen dimming.
         
@@ -57,7 +58,8 @@ package defold;
     static function set_listener(callback:TODO):Void;
 }
 
-@:native("_G.window") extern class WindowVariables {
+@:native("_G.window")
+extern class WindowVariables {
     /**
         Dimming mode off.
         

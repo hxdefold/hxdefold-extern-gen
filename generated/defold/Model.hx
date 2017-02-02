@@ -5,7 +5,8 @@ package defold;
 
     See `ModelProperties` for related properties.
 **/
-@:native("_G.model") extern class Model {
+@:native("_G.model")
+extern class Model {
     /**
         Cancel all animation on a model.
         
@@ -79,7 +80,8 @@ package defold;
 /**
     Properties related to the `Model` module.
 **/
-@:publicFields class ModelProperties {
+@:publicFields
+class ModelProperties {
     /**
         Model cursor (number).
         

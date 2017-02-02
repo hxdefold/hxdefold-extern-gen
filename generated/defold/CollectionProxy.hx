@@ -8,7 +8,8 @@ package defold;
 
     See `CollectionProxyMessages` for related messages.
 **/
-@:native("_G") extern class CollectionProxy {
+@:native("_G")
+extern class CollectionProxy {
 
 }
 
@@ -29,7 +30,8 @@ typedef CollectionProxyMessageSetTimeStep = {
 /**
     Messages related to the `CollectionProxy` module.
 **/
-@:publicFields class CollectionProxyMessages {
+@:publicFields
+class CollectionProxyMessages {
     /**
         Tells a collection proxy to start asynchronous loading of the referenced collection.
         

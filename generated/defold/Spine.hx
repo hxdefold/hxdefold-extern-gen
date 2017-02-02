@@ -7,7 +7,8 @@ package defold;
     See `SpineMessages` for related messages.
     See `SpineProperties` for related properties.
 **/
-@:native("_G.spine") extern class Spine {
+@:native("_G.spine")
+extern class Spine {
     /**
         Cancel all animation on a spine model.
         
@@ -153,7 +154,8 @@ typedef SpineMessageSpineEvent = {
 /**
     Messages related to the `Spine` module.
 **/
-@:publicFields class SpineMessages {
+@:publicFields
+class SpineMessages {
     /**
         Reports the completion of a Spine animation.
         
@@ -181,7 +183,8 @@ typedef SpineMessageSpineEvent = {
 /**
     Properties related to the `Spine` module.
 **/
-@:publicFields class SpineProperties {
+@:publicFields
+class SpineProperties {
     /**
         Spine cursor (number).
         

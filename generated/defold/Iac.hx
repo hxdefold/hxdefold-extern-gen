@@ -6,7 +6,8 @@ package defold;
 
     See `IacVariables` for related variables.
 **/
-@:native("_G.iac") extern class Iac {
+@:native("_G.iac")
+extern class Iac {
     /**
         Set iac listener.
         
@@ -18,7 +19,8 @@ package defold;
     static function set_listener(listener:TODO<"function">):Void;
 }
 
-@:native("_G.iac") extern class IacVariables {
+@:native("_G.iac")
+extern class IacVariables {
     /**
         Iac type.
     **/

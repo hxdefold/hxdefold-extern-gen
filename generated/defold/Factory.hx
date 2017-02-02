@@ -4,7 +4,8 @@ package defold;
     Functions for controlling factory components which are used to
     dynamically spawn game objects into the runtime.
 **/
-@:native("_G.factory") extern class Factory {
+@:native("_G.factory")
+extern class Factory {
     /**
         Make a factory create a new game object.
         

@@ -7,7 +7,8 @@ package defold;
 
     See `GuiVariables` for related variables.
 **/
-@:native("_G.gui") extern class Gui {
+@:native("_G.gui")
+extern class Gui {
     /**
         Called when a gui component is finalized.
         
@@ -1248,7 +1249,8 @@ package defold;
     static function update(self:TODO<"script_ref">, dt:TODO):Void;
 }
 
-@:native("_G.gui") extern class GuiVariables {
+@:native("_G.gui")
+extern class GuiVariables {
     /**
         Fit adjust mode.
         

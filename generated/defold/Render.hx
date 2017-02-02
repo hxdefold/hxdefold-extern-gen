@@ -7,7 +7,8 @@ package defold;
     See `RenderMessages` for related messages.
     See `RenderVariables` for related variables.
 **/
-@:native("_G.render") extern class Render {
+@:native("_G.render")
+extern class Render {
     /**
         Clears the active render target.
         
@@ -464,7 +465,8 @@ typedef RenderMessageWindowResized = {
 /**
     Messages related to the `Render` module.
 **/
-@:publicFields class RenderMessages {
+@:publicFields
+class RenderMessages {
     /**
         Set clear color.
         
@@ -495,7 +497,8 @@ typedef RenderMessageWindowResized = {
     static var window_resized(default, never):Message<RenderMessageWindowResized> = new Message("window_resized");
 }
 
-@:native("_G.render") extern class RenderVariables {
+@:native("_G.render")
+extern class RenderVariables {
     /**
         .
     **/

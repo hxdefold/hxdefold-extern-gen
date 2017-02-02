@@ -5,7 +5,8 @@ package defold;
 
     See `CrashVariables` for related variables.
 **/
-@:native("_G.crash") extern class Crash {
+@:native("_G.crash")
+extern class Crash {
     /**
         Read backtrace recorded in a loaded crash dump.
         
@@ -113,7 +114,8 @@ package defold;
     static function write_dump():Void;
 }
 
-@:native("_G.crash") extern class CrashVariables {
+@:native("_G.crash")
+extern class CrashVariables {
     /**
         Android build fingerprint.
     **/

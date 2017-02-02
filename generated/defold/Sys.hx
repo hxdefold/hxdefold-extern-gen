@@ -4,7 +4,8 @@ package defold;
     Functions and messages for using system resources, controlling the engine
     and for debugging.
 **/
-@:native("_G.sys") extern class Sys {
+@:native("_G.sys")
+extern class Sys {
     /**
         Get application information.
         

@@ -6,7 +6,8 @@ package defold;
 
     See `IapVariables` for related variables.
 **/
-@:native("_G.iap") extern class Iap {
+@:native("_G.iap")
+extern class Iap {
     /**
         Buy product.
         
@@ -80,7 +81,8 @@ package defold;
     static function set_listener(listener:TODO):Void;
 }
 
-@:native("_G.iap") extern class IapVariables {
+@:native("_G.iap")
+extern class IapVariables {
     /**
         Unspecified error reason.
     **/
