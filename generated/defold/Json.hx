@@ -13,5 +13,5 @@ package defold;
 		@param json json data (string)
 		@return decoded json (table)
 	**/
-	static function decode(json:TODO):TODO;
+	static function decode(json:String):TODO;
 }

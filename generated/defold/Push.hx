@@ -15,7 +15,7 @@ package defold;
 		
 		@param id the numeric id of the local push notification (number)
 	**/
-	static function cancel(id:TODO):Void;
+	static function cancel(id:Float):Void;
 	/**
 		Retrieve data on all scheduled local push notifications.
 		
@@ -36,7 +36,7 @@ package defold;
 		@param id the numeric id of the local push notification (number)
 		@return data table with all data associated with the notification (table)
 	**/
-	static function get_scheduled(id:TODO):TODO;
+	static function get_scheduled(id:Float):TODO;
 	/**
 		Register for push notifications.
 		
@@ -46,7 +46,7 @@ package defold;
 		@param notifications the types of notifications to listen to. (iOS only) (table)
 		@param callback register callback function (function)
 	**/
-	static function register(notifications:TODO, callback:TODO):Void;
+	static function register(notifications:TODO<"iOS only) (table">, callback:TODO<"function">):Void;
 	/**
 		Schedule a local push notification to be triggered at a specific time in the future.
 		
@@ -77,7 +77,7 @@ package defold;
 		@return id unique id that can be used to cancel or inspect the notification (number)
 		@return err error string if something went wrong, otherwise nil (string)
 	**/
-	static function schedule(time:TODO, title:TODO, alert:TODO, payload:TODO, notification_settings:TODO):TODO<"MULTIPLE">;
+	static function schedule(time:Float, title:String, alert:String, payload:String, notification_settings:TODO):TODO<"multiple">;
 	/**
 		Set badge icon count.
 		
@@ -86,7 +86,7 @@ package defold;
 		
 		@param count badge count (number)
 	**/
-	static function set_badge_count(count:TODO):Void;
+	static function set_badge_count(count:Float):Void;
 	/**
 		Set push listener.
 		
@@ -96,7 +96,7 @@ package defold;
 		
 		@param listener listener callback function (function)
 	**/
-	static function set_listener(listener:TODO):Void;
+	static function set_listener(listener:TODO<"function">):Void;
 }
 
 @:native("_G.push") extern class PushVariables {

@@ -16,7 +16,7 @@ package defold;
 		@param q quaternion of which to calculate the conjugate (quaternion)
 		@return the conjugate (quaternion)
 	**/
-	static function conj(q:TODO):TODO;
+	static function conj(q:TODO<"quaternion">):TODO;
 	/**
 		Calculates the cross-product of two vectors.
 		
@@ -32,7 +32,7 @@ package defold;
 		@param v2 second vector (vector3)
 		@return a new vector representing the cross product (vector3)
 	**/
-	static function cross(v1:TODO, v2:TODO):TODO;
+	static function cross(v1:Vector3, v2:Vector3):TODO;
 	/**
 		Calculates the dot-product of two vectors.
 		
@@ -50,7 +50,7 @@ package defold;
 		@param v1 second vector (vector3 or vector4)
 		@return dot product (number)
 	**/
-	static function dot(v1:TODO, v1:TODO):TODO;
+	static function dot(v1:EitherType<Vector4, Vector3>, v1:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Calculates the inverse matrix..
 		
@@ -64,7 +64,7 @@ package defold;
 		@param m matrix to invert (matrix4)
 		@return inverse of the supplied matrix (matrix4)
 	**/
-	static function inv(m:TODO):TODO;
+	static function inv(m:TODO<"matrix4">):TODO;
 	/**
 		Calculates the vector length.
 		
@@ -73,7 +73,7 @@ package defold;
 		@param v vector of which to calculate the length (vector3 or vector4)
 		@return vector length (number)
 	**/
-	static function length(v:TODO):TODO;
+	static function length(v:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Calculates the squared vector length.
 		
@@ -82,7 +82,7 @@ package defold;
 		@param v vector of which to calculate the squared length (vector3 or vector4)
 		@return squared vector length (number)
 	**/
-	static function length_sqr(v:TODO):TODO;
+	static function length_sqr(v:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Lerps between two vectors.
 		
@@ -98,7 +98,7 @@ package defold;
 		@param v2 vector to lerp to (vector3 or vector4)
 		@return the lerped vector (vector3 or vector4)
 	**/
-	static function lerp(t:TODO, v1:TODO, v2:TODO):TODO;
+	static function lerp(t:Float, v1:EitherType<Vector4, Vector3>, v2:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Lerps between two quaternions.
 		
@@ -114,7 +114,7 @@ package defold;
 		@param q2 quaternion to lerp to (quaternion)
 		@return the lerped quaternion (quaternion)
 	**/
-	static function lerp(t:TODO, q1:TODO, q2:TODO):TODO;
+	static function lerp(t:Float, q1:TODO<"quaternion">, q2:TODO<"quaternion">):TODO;
 	/**
 		Lerps between two numbers.
 		
@@ -128,7 +128,7 @@ package defold;
 		@param n2 number to lerp to (number)
 		@return the lerped number (number)
 	**/
-	static function lerp(t:TODO, n1:TODO, n2:TODO):TODO;
+	static function lerp(t:Float, n1:Float, n2:Float):TODO;
 	/**
 		Creates a new identity matrix.
 		
@@ -148,7 +148,7 @@ package defold;
 		@param m existing matrix (matrix4)
 		@return matrix which is a copy of the specified matrix (matrix4)
 	**/
-	static function matrix4(m:TODO):TODO;
+	static function matrix4(m:TODO<"matrix4">):TODO;
 	/**
 		Creates a matrix from an axis and an angle.
 		
@@ -158,7 +158,7 @@ package defold;
 		@param angle angle in radians (number)
 		@return matrix represented by axis and angle (matrix4)
 	**/
-	static function matrix4_axis_angle(v:TODO, angle:TODO):TODO;
+	static function matrix4_axis_angle(v:Vector3, angle:Float):TODO;
 	/**
 		Creates a matrix from a quaternion.
 		
@@ -167,7 +167,7 @@ package defold;
 		@param q quaternion to create matrix from (quaternion)
 		@return matrix represented by quaternion (matrix4)
 	**/
-	static function matrix4_from_quat(q:TODO):TODO;
+	static function matrix4_from_quat(q:TODO<"quaternion">):TODO;
 	/**
 		Creates a frustum matrix.
 		
@@ -184,7 +184,7 @@ package defold;
 		@param far coordinate for far clipping plane (number)
 		@return matrix representing the frustum (matrix4)
 	**/
-	static function matrix4_frustum(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
+	static function matrix4_frustum(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float):TODO;
 	/**
 		Creates a look-at view matrix.
 		
@@ -197,7 +197,7 @@ package defold;
 		@param up up vector (vector3)
 		@return look-at matrix (matrix4)
 	**/
-	static function matrix4_look_at(eye:TODO, look_at:TODO, up:TODO):TODO;
+	static function matrix4_look_at(eye:Vector3, look_at:Vector3, up:Vector3):TODO;
 	/**
 		Creates an orthographic projection matrix.
 		
@@ -212,7 +212,7 @@ package defold;
 		@param far coordinate for far clipping plane (number)
 		@return orthographic projection matrix (matrix4)
 	**/
-	static function matrix4_orthographic(left:TODO, right:TODO, bottom:TODO, top:TODO, near:TODO, far:TODO):TODO;
+	static function matrix4_orthographic(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float):TODO;
 	/**
 		Creates a perspective projection matrix.
 		
@@ -225,7 +225,7 @@ package defold;
 		@param far coordinate for far clipping plane (number)
 		@return perspective projection matrix (matrix4)
 	**/
-	static function matrix4_perspective(fov:TODO, aspect:TODO, near:TODO, far:TODO):TODO;
+	static function matrix4_perspective(fov:Float, aspect:Float, near:Float, far:Float):TODO;
 	/**
 		Creates a matrix from rotation around x-axis.
 		
@@ -235,7 +235,7 @@ package defold;
 		@param angle angle in radians around x-axis (number)
 		@return matrix from rotation around x-axis (matrix4)
 	**/
-	static function matrix4_rotation_x(angle:TODO):TODO;
+	static function matrix4_rotation_x(angle:Float):TODO;
 	/**
 		Creates a matrix from rotation around y-axis.
 		
@@ -245,7 +245,7 @@ package defold;
 		@param angle angle in radians around y-axis (number)
 		@return matrix from rotation around y-axis (matrix4)
 	**/
-	static function matrix4_rotation_y(angle:TODO):TODO;
+	static function matrix4_rotation_y(angle:Float):TODO;
 	/**
 		Creates a matrix from rotation around z-axis.
 		
@@ -255,7 +255,7 @@ package defold;
 		@param angle angle in radians around z-axis (number)
 		@return matrix from rotation around z-axis (matrix4)
 	**/
-	static function matrix4_rotation_z(angle:TODO):TODO;
+	static function matrix4_rotation_z(angle:Float):TODO;
 	/**
 		Normalizes a vector.
 		
@@ -268,7 +268,7 @@ package defold;
 		@param v vector to normalize (vector3|vector4)
 		@return new normalized vector (vector3|vector4)
 	**/
-	static function normalize(v:TODO):TODO;
+	static function normalize(v:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Calculates the inverse of an ortho-normal matrix..
 		
@@ -282,7 +282,7 @@ package defold;
 		@param m ortho-normalized matrix to invert (matrix4)
 		@return inverse of the supplied matrix (matrix4)
 	**/
-	static function ortho_inv(m:TODO):TODO;
+	static function ortho_inv(m:TODO<"matrix4">):TODO;
 	/**
 		Projects a vector onto another vector.
 		
@@ -297,7 +297,7 @@ package defold;
 		@param v2 vector onto which the first will be projected, must not have zero length (vector3)
 		@return the projected extent of the first vector onto the second (number)
 	**/
-	static function project(v1:TODO, v2:TODO):TODO;
+	static function project(v1:Vector3, v2:Vector3):TODO;
 	/**
 		Creates a new identity quaternion.
 		
@@ -319,7 +319,7 @@ package defold;
 		@param q existing quaternion (quaternion)
 		@return new quaternion (quaternion)
 	**/
-	static function quat(q:TODO):TODO;
+	static function quat(q:TODO<"quaternion">):TODO;
 	/**
 		Creates a new quaternion from its coordinates.
 		
@@ -332,7 +332,7 @@ package defold;
 		@param w w coordinate (number)
 		@return new quaternion (quaternion)
 	**/
-	static function quat(x:TODO, y:TODO, z:TODO, w:TODO):TODO;
+	static function quat(x:Float, y:Float, z:Float, w:Float):TODO;
 	/**
 		Creates a quaternion to rotate around a unit-length vector.
 		
@@ -343,7 +343,7 @@ package defold;
 		@param angle angle (number)
 		@return quaternion representing the axis-angle rotation (quaternion)
 	**/
-	static function quat_axis_angle(v:TODO, angle:TODO):TODO;
+	static function quat_axis_angle(v:Vector3, angle:Float):TODO;
 	/**
 		Creates a quaternion from three base unit length vectors.
 		
@@ -356,7 +356,7 @@ package defold;
 		@param z z base vector (vector3)
 		@return quaternion representing the rotation of the specified base vectors (quaternion)
 	**/
-	static function quat_basis(x:TODO, y:TODO, z:TODO):TODO;
+	static function quat_basis(x:Vector3, y:Vector3, z:Vector3):TODO;
 	/**
 		Creates a quaternion to rotate between two unit length vectors.
 		
@@ -371,7 +371,7 @@ package defold;
 		@param v2 second unit vector, after rotation (vector3)
 		@return quaternion representing the rotation from first to second vector (quaternion)
 	**/
-	static function quat_from_to(v1:TODO, v2:TODO):TODO;
+	static function quat_from_to(v1:Vector3, v2:Vector3):TODO;
 	/**
 		Creates a quaternion from rotation around x-axis.
 		
@@ -381,7 +381,7 @@ package defold;
 		@param angle angle in radians around x-axis (number)
 		@return quaternion representing the rotation around the x-axis (quaternion)
 	**/
-	static function quat_rotation_x(angle:TODO):TODO;
+	static function quat_rotation_x(angle:Float):TODO;
 	/**
 		Creates a quaternion from rotation around y-axis.
 		
@@ -391,7 +391,7 @@ package defold;
 		@param angle angle in radians around y-axis (number)
 		@return quaternion representing the rotation around the y-axis (quaternion)
 	**/
-	static function quat_rotation_y(angle:TODO):TODO;
+	static function quat_rotation_y(angle:Float):TODO;
 	/**
 		Creates a quaternion from rotation around z-axis.
 		
@@ -401,7 +401,7 @@ package defold;
 		@param angle angle in radians around z-axis (number)
 		@return quaternion representing the rotation around the z-axis (quaternion)
 	**/
-	static function quat_rotation_z(angle:TODO):TODO;
+	static function quat_rotation_z(angle:Float):TODO;
 	/**
 		Rotates a vector by a quaternion.
 		
@@ -413,7 +413,7 @@ package defold;
 		@param v vector to rotate (vector3)
 		@return the rotated vector (vector3)
 	**/
-	static function rotate(q:TODO, v:TODO):TODO;
+	static function rotate(q:TODO<"quaternion">, v:Vector3):TODO;
 	/**
 		Slerps between two vectors.
 		
@@ -434,7 +434,7 @@ package defold;
 		@param v2 vector to slerp to (vector3 or vector4)
 		@return the slerped vector (vector3 or vector4)
 	**/
-	static function slerp(t:TODO, v1:TODO, v2:TODO):TODO;
+	static function slerp(t:Float, v1:EitherType<Vector4, Vector3>, v2:EitherType<Vector4, Vector3>):TODO;
 	/**
 		Slerps between two quaternions.
 		
@@ -453,7 +453,7 @@ package defold;
 		@param q2 quaternion to slerp to (quaternion)
 		@return the slerped quaternion (quaternion)
 	**/
-	static function slerp(t:TODO, q1:TODO, q2:TODO):TODO;
+	static function slerp(t:Float, q1:TODO<"quaternion">, q2:TODO<"quaternion">):TODO;
 	/**
 		Creates a new vector from a table of values.
 		
@@ -478,7 +478,7 @@ package defold;
 		@param n scalar value to splat (number)
 		@return new vector (vector3)
 	**/
-	static function vector3(n:TODO):TODO;
+	static function vector3(n:Float):TODO;
 	/**
 		Creates a new vector from another existing vector.
 		
@@ -489,7 +489,7 @@ package defold;
 		@param v existing vector (vector3)
 		@return new vector (vector3)
 	**/
-	static function vector3(v:TODO):TODO;
+	static function vector3(v:Vector3):TODO;
 	/**
 		Creates a new vector from its coordinates.
 		
@@ -501,7 +501,7 @@ package defold;
 		@param z z coordinate (number)
 		@return new vector (vector3)
 	**/
-	static function vector3(x:TODO, y:TODO, z:TODO):TODO;
+	static function vector3(x:Float, y:Float, z:Float):TODO;
 	/**
 		Creates a new zero vector.
 		
@@ -519,7 +519,7 @@ package defold;
 		@param n scalar value to splat (number)
 		@return new vector (vector4)
 	**/
-	static function vector4(n:TODO):TODO;
+	static function vector4(n:Float):TODO;
 	/**
 		Creates a new vector from another existing vector.
 		
@@ -530,7 +530,7 @@ package defold;
 		@param v existing vector (vector4)
 		@return new vector (vector4)
 	**/
-	static function vector4(v:TODO):TODO;
+	static function vector4(v:Vector4):TODO;
 	/**
 		Creates a new vector from its coordinates.
 		
@@ -543,5 +543,5 @@ package defold;
 		@param w w coordinate (number)
 		@return new vector (vector4)
 	**/
-	static function vector4(x:TODO, y:TODO, z:TODO, w:TODO):TODO;
+	static function vector4(x:Float, y:Float, z:Float, w:Float):TODO;
 }

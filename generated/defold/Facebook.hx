@@ -213,7 +213,7 @@ package defold;
 		@param param table with dialog parameters (table)
 		@param callback callback function with parameters (self, result, error) that is called when the dialog is closed. Result is table with an url-field set. (function)
 	**/
-	static function show_dialog(dialog:TODO, param:TODO, callback:TODO):Void;
+	static function show_dialog(dialog:String, param:TODO<"table">, callback:TODO<"self, result, error) that is called when the dialog is closed. Result is table with an url-field set. (function">):Void;
 }
 
 @:native("_G.facebook") extern class FacebookVariables {

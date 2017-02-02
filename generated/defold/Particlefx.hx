@@ -16,7 +16,7 @@ package defold;
 		@param url the particle fx that should start playing (url)
 		@param emitter_state_cb optional callback that will be called when an emitter attached to this particlefx changes state.
 	**/
-	static function play(url:TODO, ?emitter_state_cb:TODO):Void;
+	static function play(url:Url, ?emitter_state_cb:TODO):Void;
 	/**
 		Reset a shader constant for a particle FX emitter.
 		
@@ -28,7 +28,7 @@ package defold;
 		@param emitter_id the id of the emitter (string|hash)
 		@param name the name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, emitter_id:TODO, name:TODO):Void;
+	static function reset_constant(url:Url, emitter_id:EitherType<Hash, String>, name:EitherType<Hash, String>):Void;
 	/**
 		Set a shader constant for a particle FX emitter.
 		
@@ -42,7 +42,7 @@ package defold;
 		@param name the name of the constant (string|hash)
 		@param value the value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, emitter_id:TODO, name:TODO, value:TODO):Void;
+	static function set_constant(url:Url, emitter_id:EitherType<Hash, String>, name:EitherType<Hash, String>, value:Vector4):Void;
 	/**
 		Stop playing a particle fx.
 		
@@ -51,7 +51,7 @@ package defold;
 		
 		@param url the particle fx that should stop playing (url)
 	**/
-	static function stop(url:TODO):Void;
+	static function stop(url:Url):Void;
 }
 
 @:native("_G.particlefx") extern class ParticlefxVariables {

@@ -13,7 +13,7 @@ package defold;
 		@param s string to hash (string)
 		@return a hashed string (hash)
 	**/
-	static function hash(s:TODO):TODO;
+	static function hash(s:String):TODO;
 	/**
 		Get hex representation of a hash value as a string.
 		

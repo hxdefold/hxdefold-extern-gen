@@ -14,7 +14,7 @@ package defold;
 		@param handle crash dump handle (number)
 		@return backtrace table containing the backtrace (table)
 	**/
-	static function get_backtrace(handle:TODO):TODO;
+	static function get_backtrace(handle:Float):TODO;
 	/**
 		Read text blob recorded in a crash dump.
 		
@@ -25,7 +25,7 @@ package defold;
 		@param handle crash dump handle (number)
 		@return blob string with the platform specific data (string)
 	**/
-	static function get_extra_data(handle:TODO):TODO;
+	static function get_extra_data(handle:Float):TODO;
 	/**
 		Get all loaded modules from when the crash occured.
 		
@@ -35,14 +35,14 @@ package defold;
 		@param handle crash dump handle (number)
 		@return modules module table (table)
 	**/
-	static function get_modules(handle:TODO):TODO;
+	static function get_modules(handle:Float):TODO;
 	/**
 		Read signal number from a crash report.
 		
 		@param handle crash dump handle (number)
 		@return signal signal number (number)
 	**/
-	static function get_signum(handle:TODO):TODO;
+	static function get_signum(handle:Float):TODO;
 	/**
 		Reads a system field from a loaded crash dump.
 		
@@ -50,7 +50,7 @@ package defold;
 		@param index system field enum (number)
 		@return value value recorded in the crash dump (string)
 	**/
-	static function get_sys_field(handle:TODO, index:TODO):TODO;
+	static function get_sys_field(handle:Float, index:Float):TODO;
 	/**
 		Reads user field from a loaded crash dump.
 		
@@ -58,7 +58,7 @@ package defold;
 		@param index user data slot index (number)
 		@return value user data value recorded in the crash dump (string)
 	**/
-	static function get_user_field(handle:TODO, index:TODO):TODO;
+	static function get_user_field(handle:Float, index:Float):TODO;
 	/**
 		Loads a previously written crash dump.
 		
@@ -73,7 +73,7 @@ package defold;
 		
 		@param handle handle to loaded crash dump (number)
 	**/
-	static function release(handle:TODO):Void;
+	static function release(handle:Float):Void;
 	/**
 		Sets the file location for crash dumps.
 		
@@ -81,7 +81,7 @@ package defold;
 		
 		@param path file path to use (string)
 	**/
-	static function set_file_path(path:TODO):Void;
+	static function set_file_path(path:String):Void;
 	/**
 		Stores user-defined string value.
 		
@@ -92,7 +92,7 @@ package defold;
 		@param index slot index. 0-indexed. (number)
 		@param value string value to store (string)
 	**/
-	static function set_user_field(index:TODO, value:TODO):Void;
+	static function set_user_field(index:Float, value:String):Void;
 	/**
 		Writes crash dump.
 		

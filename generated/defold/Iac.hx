@@ -15,7 +15,7 @@ package defold;
 		
 		@param listener listener callback function (function)
 	**/
-	static function set_listener(listener:TODO):Void;
+	static function set_listener(listener:TODO<"function">):Void;
 }
 
 @:native("_G.iac") extern class IacVariables {

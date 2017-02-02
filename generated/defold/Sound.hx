@@ -17,7 +17,7 @@ package defold;
 		@param group group name (hash|string)
 		@return gain in linear scale
 	**/
-	static function get_group_gain(group:TODO):TODO;
+	static function get_group_gain(group:EitherType<String, Hash>):TODO;
 	/**
 		Get mixer group name string.
 		
@@ -28,7 +28,7 @@ package defold;
 		@param group group name (hash|string)
 		@return group name (string)
 	**/
-	static function get_group_name(group:TODO):TODO;
+	static function get_group_name(group:EitherType<String, Hash>):TODO;
 	/**
 		Get all mixer group names.
 		
@@ -50,7 +50,7 @@ package defold;
 		@return peak value for left channel (number)
 		@return peak value for right channel (number)
 	**/
-	static function get_peak(group:TODO, window:TODO):TODO<"MULTIPLE">;
+	static function get_peak(group:EitherType<String, Hash>, window:Float):TODO<"multiple">;
 	/**
 		Get rms value from mixer group.
 		
@@ -64,7 +64,7 @@ package defold;
 		@return rms value for left channel (number)
 		@return rms value for right channel (number)
 	**/
-	static function get_rms(group:TODO, window:TODO):TODO<"MULTIPLE">;
+	static function get_rms(group:EitherType<String, Hash>, window:Float):TODO<"multiple">;
 	/**
 		Check if background music is playing.
 		
@@ -92,7 +92,7 @@ package defold;
 		@param group group name (hash|string)
 		@param gain gain in linear scale (number)
 	**/
-	static function set_group_gain(group:TODO, gain:TODO):Void;
+	static function set_group_gain(group:EitherType<String, Hash>, gain:Float):Void;
 }
 
 /**

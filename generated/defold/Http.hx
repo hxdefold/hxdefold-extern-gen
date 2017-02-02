@@ -18,5 +18,5 @@ package defold;
 		@param post_data optional data to send
 		@param options optional lua-table with request parameters. Supported entries: 'timeout'=<number> (in seconds)
 	**/
-	static function request(url:TODO, method:TODO, callback:TODO, ?headers:TODO, ?post_data:TODO, ?options:TODO):Void;
+	static function request(url:TODO, method:TODO, callback:TODO, ?headers:TODO, ?post_data:TODO, ?options:TODO<"in seconds">):Void;
 }

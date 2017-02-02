@@ -21,5 +21,5 @@ package defold;
 		@param scale the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default (number or vector3)
 		@return the global id of the spawned game object (hash)
 	**/
-	static function create(url:TODO, ?position:TODO, ?rotation:TODO, ?properties:TODO, ?scale:TODO):TODO;
+	static function create(url:Url, ?position:Vector3, ?rotation:TODO<"quat">, ?properties:TODO<"table">, ?scale:EitherType<Vector3, TODO<"must be greater than 0), the scale of the game object containing the factory is used by default (number">>):TODO;
 }

@@ -17,7 +17,7 @@ package defold;
 		@param url the sprite that should have a constant reset (url)
 		@param name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, name:TODO):Void;
+	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
 	/**
 		Set a shader constant for a sprite.
 		
@@ -30,7 +30,7 @@ package defold;
 		@param name of the constant (string|hash)
 		@param value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, name:TODO, value:TODO):Void;
+	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
 	/**
 		Make a sprite flip the animations horizontally or not.
 		
@@ -40,7 +40,7 @@ package defold;
 		@param url the sprite that should flip its animations (url)
 		@param flip if the sprite should flip its animations or not (boolean)
 	**/
-	static function set_hflip(url:TODO, flip:TODO):Void;
+	static function set_hflip(url:Url, flip:TODO<"boolean">):Void;
 	/**
 		Make a sprite flip the animations vertically or not.
 		
@@ -50,7 +50,7 @@ package defold;
 		@param url the sprite that should flip its animations (url)
 		@param flip if the sprite should flip its animations or not (boolean)
 	**/
-	static function set_vflip(url:TODO, flip:TODO):Void;
+	static function set_vflip(url:Url, flip:TODO<"boolean">):Void;
 }
 
 /**

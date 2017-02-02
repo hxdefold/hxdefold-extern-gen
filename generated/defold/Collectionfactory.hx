@@ -32,5 +32,5 @@ package defold;
 		@param scale uniform scaling to apply to the newly spawned collection (must be greater than 0). (number)
 		@return a table mapping the id:s from the collection to the new instance id:s
 	**/
-	static function create(url:TODO, ?position:TODO, ?rotation:TODO, ?properties:TODO, ?scale:TODO):TODO;
+	static function create(url:Url, ?position:Vector3, ?rotation:TODO<"quat">, ?properties:TODO<"table">, ?scale:TODO<"must be greater than 0). (number">):TODO;
 }

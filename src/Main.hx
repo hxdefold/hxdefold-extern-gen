@@ -64,6 +64,9 @@ class Main {
     static var reModuleName = ~/^(\w+)_doc$/;
     static var reElementName = ~/^((\w+)\.)?(\w+)$/;
     static var reParameterName = ~/^(\[)?(\w+)\]?$/;
+    static var reArgumentDoc = ~/\((.*)\)\s*$/;
+    static var reEitherType = ~/\|| or /gi;
+    static var pos = {file: "", min: 0, max: 0};
 
     static function capitalize(s:String):String {
         return s.charAt(0).toUpperCase() + s.substring(1);
@@ -71,6 +74,40 @@ class Main {
 
     static function underscoreToCamelCase(s:String):String {
         return s.split("_").map(capitalize).join("");
+    }
+
+    static inline function mkType(s:String):ComplexType
+        return TPath({pack: [], name: s});
+
+    static inline function mkTODOType(s:String):ComplexType
+        return TPath({pack: [], name: "TODO", params: [TPExpr({pos: pos, expr: EConst(CString(s))})]});
+
+
+    static var ctString = macro : String;
+    static var ctFloat = macro : Float;
+    static var ctHash = macro : Hash;
+    static var ctUrl = macro : Url;
+
+    static function parseArgType(doc:String):ComplexType {
+        if (!reArgumentDoc.match(doc))
+            return ctTODO;
+
+        var types = reEitherType.split(reArgumentDoc.matched(1)).map(function(s) return s.trim());
+        var types = types.map(function(t) return switch t {
+            case "string": ctString;
+            case "number": ctFloat;
+            case "hash": ctHash;
+            case "url": ctUrl;
+            case _ if (t.startsWith("vector")): mkType("V" + t.substring(1));
+            case _ if (t.startsWith("vec")): mkType("Vector" + t.substring(3));
+            default: mkTODOType(t);
+        });
+
+        var type = Lambda.fold(types, function(t, t2) {
+            return macro : EitherType<$t,$t2>;
+        }, types.shift());
+
+        return type;
     }
 
     static inline var GENERATED_DIR = "generated";
@@ -117,7 +154,6 @@ class Main {
                     var messages = [];
                     var properties = [];
                     var vars = [];
-                    var pos = {file: entry.fileName, min: 0, max: 0};
 
                     for (element in api.elements) {
                         print('=> "${element.name}" (${(cast element.type : String).toLowerCase()})');
@@ -211,7 +247,8 @@ class Main {
                                         opt = (reParameterName.matched(1) != null);
                                         pName = reParameterName.matched(2);
                                     }
-                                    args.push({name: pName, type: ctTODO, opt: opt});
+                                    var argType = parseArgType(doc);
+                                    args.push({name: pName, type: argType, opt: opt});
                                     signatureDoc.push('@param $pName ${prepareDoc(doc)}');
                                 }
 
@@ -224,7 +261,7 @@ class Main {
                                     case multiple:
                                         for (r in multiple)
                                             signatureDoc.push('@return ${prepareDoc(r.name + " " + r.doc)}');
-                                        TPath({pack: [], name: "TODO", params: [TPExpr({pos: pos, expr: EConst(CString("MULTIPLE"))})]});
+                                        mkTODOType("multiple");
                                 }
 
                                 fieldKind = FFun({

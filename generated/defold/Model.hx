@@ -11,7 +11,7 @@ package defold;
 		
 		@param url the model for which to cancel the animation (url)
 	**/
-	static function cancel(url:TODO):Void;
+	static function cancel(url:Url):Void;
 	/**
 		Retrieve the game object corresponding to a model skeleton bone.
 		
@@ -24,7 +24,7 @@ package defold;
 		@param bone_id id of the corresponding bone (string|hash)
 		@return id of the game object
 	**/
-	static function get_go(url:TODO, bone_id:TODO):TODO;
+	static function get_go(url:Url, bone_id:EitherType<Hash, String>):TODO;
 	/**
 		Play an animation on a model.
 		
@@ -45,7 +45,7 @@ package defold;
 		   * `offset` the normalized initial value of the animation cursor when the animation starts playing (number)
 		   * `playback_rate` the rate with which the animation will be played. Must be positive (number)
 	**/
-	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO):Void;
+	static function play_anim(url:Url, anim_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO):Void;
 	/**
 		Reset a shader constant for a model.
 		
@@ -56,7 +56,7 @@ package defold;
 		@param url the model that should have a constant reset (url)
 		@param name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, name:TODO):Void;
+	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
 	/**
 		Set a shader constant for a model component.
 		
@@ -69,7 +69,7 @@ package defold;
 		@param name of the constant (string|hash)
 		@param value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, name:TODO, value:TODO):Void;
+	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
 }
 
 /**

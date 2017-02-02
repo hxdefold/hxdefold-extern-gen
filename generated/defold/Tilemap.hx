@@ -22,7 +22,7 @@ package defold;
 		@return number of columns in the tile map (number)
 		@return number of rows in the tile map (number)
 	**/
-	static function get_bounds(url:TODO):TODO<"MULTIPLE">;
+	static function get_bounds(url:Url):TODO<"multiple">;
 	/**
 		Get a tile from a tile map.
 		
@@ -38,7 +38,7 @@ package defold;
 		@param y_coordinate of the tile (number)
 		@return index of the tile (number)
 	**/
-	static function get_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO):TODO;
+	static function get_tile(url:Url, name:EitherType<Hash, String>, x_coordinate:Float, y_coordinate:Float):TODO;
 	/**
 		Reset a shader constant for a tile map.
 		
@@ -49,7 +49,7 @@ package defold;
 		@param url the tile map that should have a constant reset (url)
 		@param name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, name:TODO):Void;
+	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
 	/**
 		Set a shader constant for a tile map.
 		
@@ -62,7 +62,7 @@ package defold;
 		@param name of the constant (string|hash)
 		@param value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, name:TODO, value:TODO):Void;
+	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
 	/**
 		Set a tile in a tile map.
 		
@@ -95,7 +95,7 @@ package defold;
 		@param optional if the tile should be horizontally flipped (boolean)
 		@param optional i the tile should be vertically flipped (boolean)
 	**/
-	static function set_tile(url:TODO, name:TODO, x_coordinate:TODO, y_coordinate:TODO, new:TODO, optional:TODO, optional:TODO):Void;
+	static function set_tile(url:Url, name:EitherType<Hash, String>, x_coordinate:Float, y_coordinate:Float, new:Float, optional:TODO<"boolean">, optional:TODO<"boolean">):Void;
 }
 
 /**

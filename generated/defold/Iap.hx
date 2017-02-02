@@ -19,7 +19,7 @@ package defold;
 		
 		 *  request_id: custom unique request id -- optional argument only available for Facebook IAP transactions
 	**/
-	static function buy(id:TODO, options:TODO):Void;
+	static function buy(id:TODO<"identifier">, options:TODO):Void;
 	/**
 		Finish buying product.
 		

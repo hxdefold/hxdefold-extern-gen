@@ -13,7 +13,7 @@ package defold;
 		
 		@param url the spine model for which to cancel the animation (url)
 	**/
-	static function cancel(url:TODO):Void;
+	static function cancel(url:Url):Void;
 	/**
 		Retrieve the game object corresponding to a spine model skeleton bone.
 		
@@ -26,7 +26,7 @@ package defold;
 		@param bone_id id of the corresponding bone (string|hash)
 		@return id of the game object
 	**/
-	static function get_go(url:TODO, bone_id:TODO):TODO;
+	static function get_go(url:Url, bone_id:EitherType<Hash, String>):TODO;
 	/**
 		Play an animation on a spine model.
 		
@@ -49,7 +49,7 @@ package defold;
 		
 		@param complete_function function to call when the animation has completed (function)
 	**/
-	static function play_anim(url:TODO, anim_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):Void;
+	static function play_anim(url:Url, anim_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO, ?complete_function:TODO<"function">):Void;
 	/**
 		Reset a shader constant for a spine model.
 		
@@ -60,7 +60,7 @@ package defold;
 		@param url the spine model that should have a constant reset (url)
 		@param name of the constant (string|hash)
 	**/
-	static function reset_constant(url:TODO, name:TODO):Void;
+	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
 	/**
 		Set a shader constant for a spine model.
 		
@@ -73,7 +73,7 @@ package defold;
 		@param name of the constant (string|hash)
 		@param value of the constant (vec4)
 	**/
-	static function set_constant(url:TODO, name:TODO, value:TODO):Void;
+	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
 	/**
 		Set the IK constraint object target position to follow position of a game object.
 		
@@ -83,7 +83,7 @@ package defold;
 		@param ik_constraint_id id of the corresponding IK constraint object (string|hash)
 		@param target_url target game object (url)
 	**/
-	static function set_ik_target(url:TODO, ik_constraint_id:TODO, target_url:TODO):Void;
+	static function set_ik_target(url:Url, ik_constraint_id:EitherType<Hash, String>, target_url:Url):Void;
 	/**
 		Set the target position of an IK constraint object.
 		
@@ -93,7 +93,7 @@ package defold;
 		@param ik_constraint_id id of the corresponding IK constraint object (string|hash)
 		@param position (vec3)
 	**/
-	static function set_ik_target_position(url:TODO, ik_constraint_id:TODO, position:TODO):Void;
+	static function set_ik_target_position(url:Url, ik_constraint_id:EitherType<Hash, String>, position:Vector3):Void;
 }
 
 /**

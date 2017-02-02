@@ -19,7 +19,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function final(self:TODO):Void;
+	static function final(self:TODO<"script_ref">):Void;
 	/**
 		Animates a named property of the specified game object or component.
 		
@@ -51,7 +51,7 @@ package defold;
 		@param delay delay before the animation starts in seconds (number)
 		@param complete_function function with parameters (self, url, property) to call when the animation has completed (function)
 	**/
-	static function animate(url:TODO, property:TODO, playback:TODO, to:TODO, easing:TODO, duration:TODO, ?delay:TODO, ?complete_function:TODO):Void;
+	static function animate(url:EitherType<Url, EitherType<String, Hash>>, property:EitherType<String, Hash>, playback:TODO, to:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, Float>>>, easing:EitherType<Vector, TODO<"constant">>, duration:Float, ?delay:Float, ?complete_function:TODO<"self, url, property) to call when the animation has completed (function">):Void;
 	/**
 		Cancels all animations of the named property of the specified game object or component.
 		
@@ -62,7 +62,7 @@ package defold;
 		@param url url of the game object or component having the property (hash|string|url)
 		@param property name of the property to animate (hash|string)
 	**/
-	static function cancel_animations(url:TODO, property:TODO):Void;
+	static function cancel_animations(url:EitherType<Url, EitherType<String, Hash>>, property:EitherType<String, Hash>):Void;
 	/**
 		Deletes a game object instance.
 		
@@ -70,7 +70,7 @@ package defold;
 		
 		@param id optional id of the instance to delete, the instance of the calling script is deleted by default (hash|string|url)
 	**/
-	static function delete(?id:TODO):Void;
+	static function delete(?id:EitherType<Url, EitherType<String, Hash>>):Void;
 	/**
 		Deletes a set of game object instance.
 		
@@ -87,7 +87,7 @@ package defold;
 		@param id id of the property to retrieve (hash|string)
 		@return the value of the specified property (any)
 	**/
-	static function get(url:TODO, id:TODO):TODO;
+	static function get(url:EitherType<Url, EitherType<String, Hash>>, id:EitherType<String, Hash>):TODO;
 	/**
 		Gets the id of an instance.
 		
@@ -98,7 +98,7 @@ package defold;
 		@param path path of the instance for which to return the id (string)
 		@return instance id (hash)
 	**/
-	static function get_id(?path:TODO):TODO;
+	static function get_id(?path:String):TODO;
 	/**
 		Gets the position of the instance.
 		
@@ -107,7 +107,7 @@ package defold;
 		@param id optional id of the instance to get the position for, by default the instance of the calling script (hash|string|url)
 		@return instance position (vector3)
 	**/
-	static function get_position(?id:TODO):TODO;
+	static function get_position(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the rotation of the instance.
 		
@@ -116,7 +116,7 @@ package defold;
 		@param id optional id of the instance to get the rotation for, by default the instance of the calling script (hash|string|url)
 		@return instance rotation (quaternion)
 	**/
-	static function get_rotation(?id:TODO):TODO;
+	static function get_rotation(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the uniform scale factor of the instance.
 		
@@ -125,7 +125,7 @@ package defold;
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 		@return uniform instance scale factor (number)
 	**/
-	static function get_scale(?id:TODO):TODO;
+	static function get_scale(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the 3D scale factor of the instance.
 		
@@ -134,7 +134,7 @@ package defold;
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 		@return scale factor (vector3)
 	**/
-	static function get_scale_vector(?id:TODO):TODO;
+	static function get_scale_vector(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the instance world position.
 		
@@ -143,7 +143,7 @@ package defold;
 		@param id optional id of the instance to get the world position for, by default the instance of the calling script (hash|string|url)
 		@return instance world position (vector3)
 	**/
-	static function get_world_position(?id:TODO):TODO;
+	static function get_world_position(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the instance world rotation.
 		
@@ -152,7 +152,7 @@ package defold;
 		@param id optional id of the instance to get the world rotation for, by default the instance of the calling script (hash|string|url)
 		@return instance world rotation (quaternion)
 	**/
-	static function get_world_rotation(?id:TODO):TODO;
+	static function get_world_rotation(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Gets the instance world scale factor.
 		
@@ -161,7 +161,7 @@ package defold;
 		@param id optional id of the instance to get the world scale for, by default the instance of the calling script (hash|string|url)
 		@return uniform instance world scale factor (number)
 	**/
-	static function get_world_scale(?id:TODO):TODO;
+	static function get_world_scale(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
 	/**
 		Define a property to be used throughout the script.
 		
@@ -172,7 +172,7 @@ package defold;
 		@param name the name of the property (string)
 		@param value default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. (number|hash|url|vector3|vector4|quaternion)
 	**/
-	static function property(name:TODO, value:TODO):Void;
+	static function property(name:String, value:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, EitherType<Url, EitherType<Hash, TODO<") is allowed. (number">>>>>>):Void;
 	/**
 		Constructs a ray in world space from a position in screen space.
 		
@@ -183,7 +183,7 @@ package defold;
 		@return position of the ray in world-space (vector3)
 		@return direction of the ray in world space (vector3)
 	**/
-	static function screen_ray(x:TODO, y:TODO):TODO<"MULTIPLE">;
+	static function screen_ray(x:Float, y:Float):TODO<"multiple">;
 	/**
 		Sets a named property of the specified game object or component.
 		
@@ -191,7 +191,7 @@ package defold;
 		@param id id of the property to set (hash|string)
 		@param value the value to set (any)
 	**/
-	static function set(url:TODO, id:TODO, value:TODO):Void;
+	static function set(url:EitherType<Url, EitherType<String, Hash>>, id:EitherType<String, Hash>, value:TODO<"any">):Void;
 	/**
 		Sets the position of the instance.
 		
@@ -200,7 +200,7 @@ package defold;
 		@param position position to set (vector3)
 		@param id optional id of the instance to set the position for, by default the instance of the calling script (hash|string|url)
 	**/
-	static function set_position(position:TODO, ?id:TODO):Void;
+	static function set_position(position:Vector3, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
 	/**
 		Sets the rotation of the instance.
 		
@@ -209,7 +209,7 @@ package defold;
 		@param rotation rotation to set (quaternion)
 		@param id optional id of the instance to get the rotation for, by default the instance of the calling script (hash|string|url)
 	**/
-	static function set_rotation(rotation:TODO, ?id:TODO):Void;
+	static function set_rotation(rotation:TODO<"quaternion">, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
 	/**
 		Sets the scale factor of the instance.
 		
@@ -220,7 +220,7 @@ package defold;
 		@param scale vector or uniform scale factor, must be greater than 0 (number|vector3)
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 	**/
-	static function set_scale(scale:TODO, ?id:TODO):Void;
+	static function set_scale(scale:EitherType<Vector3, Float>, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
 	/**
 		Called when a script component is initialized.
 		
@@ -229,7 +229,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function init(self:TODO):Void;
+	static function init(self:TODO<"script_ref">):Void;
 	/**
 		Called when user input is received.
 		
@@ -288,7 +288,7 @@ package defold;
 		@param action a table containing the input data, see above for a description (table)
 		@return optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false (boolean)
 	**/
-	static function on_input(self:TODO, action_id:TODO, action:TODO):TODO;
+	static function on_input(self:TODO<"script_ref">, action_id:Hash, action:TODO<"table">):TODO;
 	/**
 		Called when a message has been sent to the script component.
 		
@@ -303,7 +303,7 @@ package defold;
 		@param message a table containing the message data (table)
 		@param sender address of the sender (url)
 	**/
-	static function on_message(self:TODO, message_id:TODO, message:TODO, sender:TODO):Void;
+	static function on_message(self:TODO<"script_ref">, message_id:Hash, message:TODO<"table">, sender:Url):Void;
 	/**
 		Called when the script component is reloaded.
 		
@@ -312,7 +312,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function on_reload(self:TODO):Void;
+	static function on_reload(self:TODO<"script_ref">):Void;
 	/**
 		Called every frame to update the script component.
 		
@@ -322,7 +322,7 @@ package defold;
 		@param self reference to the script state to be used for storing data (script_ref)
 		@param dt the time-step of the frame update
 	**/
-	static function update(self:TODO, dt:TODO):Void;
+	static function update(self:TODO<"script_ref">, dt:TODO):Void;
 }
 
 /**

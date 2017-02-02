@@ -18,7 +18,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function final(self:TODO):Void;
+	static function final(self:TODO<"script_ref">):Void;
 	/**
 		Animates a node property.
 		
@@ -74,7 +74,7 @@ package defold;
 		   * `gui.PLAYBACK_LOOP_BACKWARD`
 		   * `gui.PLAYBACK_LOOP_PINGPONG`
 	**/
-	static function animate(node:TODO, property:TODO, to:TODO, easing:TODO, duration:TODO, ?delay:TODO, ?complete_function:TODO, ?playback:TODO):Void;
+	static function animate(node:TODO<"node">, property:TODO, to:EitherType<Vector4, Vector3>, easing:EitherType<Vector, TODO<"constant">>, duration:Float, ?delay:Float, ?complete_function:TODO<"function">, ?playback:TODO):Void;
 	/**
 		Cancels an ongoing animation.
 		
@@ -94,7 +94,7 @@ package defold;
 		   * `"inner_radius"` (pie nodes)
 		   * `"slice9"` (slice9 nodes)
 	**/
-	static function cancel_animation(node:TODO, property:TODO):Void;
+	static function cancel_animation(node:TODO<"node">, property:TODO):Void;
 	/**
 		Cancel a node flipbook animation.
 		
@@ -102,7 +102,7 @@ package defold;
 		
 		@param node node cancel flipbook animation for (node)
 	**/
-	static function cancel_flipbook(node:TODO):Void;
+	static function cancel_flipbook(node:TODO<"node">):Void;
 	/**
 		Cancel a spine animation.
 		
@@ -117,7 +117,7 @@ package defold;
 		@param node node to clone (node)
 		@return the cloned node (node)
 	**/
-	static function clone(node:TODO):TODO;
+	static function clone(node:TODO<"node">):TODO;
 	/**
 		Clone a node including its children.
 		
@@ -126,13 +126,13 @@ package defold;
 		@param node root node to clone (node)
 		@return a table mapping node ids to the corresponding cloned nodes (table)
 	**/
-	static function clone_tree(node:TODO):TODO;
+	static function clone_tree(node:TODO<"node">):TODO;
 	/**
 		Deletes a node.
 		
 		@param node node to delete (node)
 	**/
-	static function delete_node(node:TODO):Void;
+	static function delete_node(node:TODO<"node">):Void;
 	/**
 		Delete texture.
 		
@@ -140,7 +140,7 @@ package defold;
 		
 		@param texture texture id (string|hash)
 	**/
-	static function delete_texture(texture:TODO):Void;
+	static function delete_texture(texture:EitherType<Hash, String>):Void;
 	/**
 		Gets the node adjust mode.
 		
@@ -153,7 +153,7 @@ package defold;
 		   * `gui.ADJUST_ZOOM`
 		   * `gui.ADJUST_STRETCH`
 	**/
-	static function get_adjust_mode(node:TODO):TODO;
+	static function get_adjust_mode(node:TODO<"node">):TODO;
 	/**
 		Gets the node blend mode.
 		
@@ -167,7 +167,7 @@ package defold;
 		   * `gui.BLEND_ADD_ALPHA`
 		   * `gui.BLEND_MULT`
 	**/
-	static function get_blend_mode(node:TODO):TODO;
+	static function get_blend_mode(node:TODO<"node">):TODO;
 	/**
 		Gets node clipping inverted state.
 		
@@ -176,7 +176,7 @@ package defold;
 		@param node node from which to get the clipping inverted state (node)
 		@return true or false
 	**/
-	static function get_clipping_inverted(node:TODO):TODO;
+	static function get_clipping_inverted(node:TODO<"node">):TODO;
 	/**
 		Gets the node clipping mode.
 		
@@ -188,7 +188,7 @@ package defold;
 		   * `gui.CLIPPING_MODE_NONE`
 		   * `gui.CLIPPING_MODE_STENCIL`
 	**/
-	static function get_clipping_mode(node:TODO):TODO;
+	static function get_clipping_mode(node:TODO<"node">):TODO;
 	/**
 		Gets node clipping visibility state.
 		
@@ -197,21 +197,21 @@ package defold;
 		@param node node from which to get the clipping visibility state (node)
 		@return true or false
 	**/
-	static function get_clipping_visible(node:TODO):TODO;
+	static function get_clipping_visible(node:TODO<"node">):TODO;
 	/**
 		Gets the node color.
 		
 		@param node node to get the color from (node)
 		@return node color (vector4)
 	**/
-	static function get_color(node:TODO):TODO;
+	static function get_color(node:TODO<"node">):TODO;
 	/**
 		Gets the angle for the filled pie sector.
 		
 		@param node node from which to get the fill angle (node)
 		@return sector angle
 	**/
-	static function get_fill_angle(node:TODO):TODO;
+	static function get_fill_angle(node:TODO<"node">):TODO;
 	/**
 		Gets the node flipbook animation.
 		
@@ -220,7 +220,7 @@ package defold;
 		@param node node to get flipbook animation from (node)
 		@return animation animation id (hash)
 	**/
-	static function get_flipbook(node:TODO):TODO;
+	static function get_flipbook(node:TODO<"node">):TODO;
 	/**
 		Gets the node font.
 		
@@ -229,7 +229,7 @@ package defold;
 		@param node node from which to get the font (node)
 		@return font id (hash)
 	**/
-	static function get_font(node:TODO):TODO;
+	static function get_font(node:TODO<"node">):TODO;
 	/**
 		Gets the scene height.
 		
@@ -242,7 +242,7 @@ package defold;
 		@param node node to retrieve the id from (node)
 		@return id of the node (hash)
 	**/
-	static function get_id(node:TODO):TODO;
+	static function get_id(node:TODO<"node">):TODO;
 	/**
 		Gets the index of the specified node.
 		
@@ -252,14 +252,14 @@ package defold;
 		@param node node to retrieve the id from (node)
 		@return id of the node (hash)
 	**/
-	static function get_index(node:TODO):TODO;
+	static function get_index(node:TODO<"node">):TODO;
 	/**
 		Gets the pie inner radius (defined along the x dimension).
 		
 		@param node node from where to get the inner radius (node)
 		@return inner radius
 	**/
-	static function get_inner_radius(node:TODO):TODO;
+	static function get_inner_radius(node:TODO<"node">):TODO;
 	/**
 		Gets the node layer.
 		
@@ -268,7 +268,7 @@ package defold;
 		@param node node from which to get the layer (node)
 		@return layer id (hash)
 	**/
-	static function get_layer(node:TODO):TODO;
+	static function get_layer(node:TODO<"node">):TODO;
 	/**
 		Gets the scene current layout.
 		
@@ -281,7 +281,7 @@ package defold;
 		@param node node from where to get the leading (node)
 		@return scaling number (default=1) (number)
 	**/
-	static function get_leading(node:TODO):TODO;
+	static function get_leading(node:TODO<"node">):TODO;
 	/**
 		Get line-break mode.
 		
@@ -290,28 +290,28 @@ package defold;
 		@param node node from which to get the line-break for (node)
 		@return line-break (bool)
 	**/
-	static function get_line_break(node:TODO):TODO;
+	static function get_line_break(node:TODO<"node">):TODO;
 	/**
 		Gets the node with the specified id.
 		
 		@param id id of the node to retrieve (string|hash)
 		@return node instance (node)
 	**/
-	static function get_node(id:TODO):TODO;
+	static function get_node(id:EitherType<Hash, String>):TODO;
 	/**
 		Gets the pie outer bounds mode.
 		
 		@param node node from where to get the outer bounds mode (node)
 		@return gui.PIEBOUNDS_RECTANGLE or gui.PIEBOUNDS_ELLIPSE
 	**/
-	static function get_outer_bounds(node:TODO):TODO;
+	static function get_outer_bounds(node:TODO<"node">):TODO;
 	/**
 		Gets the node outline color.
 		
 		@param node node to get the outline color from (node)
 		@return node outline color (vector4)
 	**/
-	static function get_outline(node:TODO):TODO;
+	static function get_outline(node:TODO<"node">):TODO;
 	/**
 		Gets the parent of the specified node.
 		
@@ -320,7 +320,7 @@ package defold;
 		@param node the node from which to retrieve its parent (node)
 		@return parent instance (node)
 	**/
-	static function get_parent(node:TODO):TODO;
+	static function get_parent(node:TODO<"node">):TODO;
 	/**
 		Gets the number of generarted vertices around the perimeter.
 		
@@ -345,49 +345,49 @@ package defold;
 		   * `gui.PIVOT_W`
 		   * `gui.PIVOT_NW`
 	**/
-	static function get_pivot(node:TODO):TODO;
+	static function get_pivot(node:TODO<"node">):TODO;
 	/**
 		Gets the node position.
 		
 		@param node node to get the position from (node)
 		@return node position (vector3)
 	**/
-	static function get_position(node:TODO):TODO;
+	static function get_position(node:TODO<"node">):TODO;
 	/**
 		Gets the node rotation.
 		
 		@param node node to get the rotation from (node)
 		@return node rotation (vector3)
 	**/
-	static function get_rotation(node:TODO):TODO;
+	static function get_rotation(node:TODO<"node">):TODO;
 	/**
 		Gets the node scale.
 		
 		@param node node to get the scale from (node)
 		@return node scale (vector3)
 	**/
-	static function get_scale(node:TODO):TODO;
+	static function get_scale(node:TODO<"node">):TODO;
 	/**
 		Gets the node screen position.
 		
 		@param node node to get the screen position from (node)
 		@return node screen position (vector3)
 	**/
-	static function get_screen_position(node:TODO):TODO;
+	static function get_screen_position(node:TODO<"node">):TODO;
 	/**
 		Gets the node shadow color.
 		
 		@param node node to get the shadow color from (node)
 		@return node shadow color (vector4)
 	**/
-	static function get_shadow(node:TODO):TODO;
+	static function get_shadow(node:TODO<"node">):TODO;
 	/**
 		Gets the node size.
 		
 		@param node node to get the size from (node)
 		@return node size (vector3)
 	**/
-	static function get_size(node:TODO):TODO;
+	static function get_size(node:TODO<"node">):TODO;
 	/**
 		Gets the node size mode.
 		
@@ -399,7 +399,7 @@ package defold;
 		   * `gui.SIZE_MODE_MANUAL`
 		   * `gui.SIZE_MODE_AUTO`
 	**/
-	static function get_size_mode(node:TODO):TODO;
+	static function get_size_mode(node:TODO<"node">):TODO;
 	/**
 		Get the slice9 values for the node.
 		
@@ -417,7 +417,7 @@ package defold;
 		@param bone_id id of the corresponding bone (string|hash)
 		@return node corresponding to the spine bone (node)
 	**/
-	static function get_spine_bone(node:TODO, bone_id:TODO):TODO;
+	static function get_spine_bone(node:TODO<"node">, bone_id:EitherType<Hash, String>):TODO;
 	/**
 		Gets the normalized cursor of the animation on a spine node.
 		
@@ -426,7 +426,7 @@ package defold;
 		@param node spine node to set the cursor for (node)
 		@return cursor value (number)
 	**/
-	static function get_spine_cursor(node:TODO):TODO;
+	static function get_spine_cursor(node:TODO<"node">):TODO;
 	/**
 		Gets the playback rate of the animation on a spine node.
 		
@@ -435,7 +435,7 @@ package defold;
 		@param node spine node to set the cursor for (node)
 		@return playack rate (number)
 	**/
-	static function get_spine_playback_rate(node:TODO):TODO;
+	static function get_spine_playback_rate(node:TODO<"node">):TODO;
 	/**
 		Gets the spine scene of a node.
 		
@@ -444,7 +444,7 @@ package defold;
 		@param node node to get spine scene from (node)
 		@return spine scene id (hash)
 	**/
-	static function get_spine_scene(node:TODO):TODO;
+	static function get_spine_scene(node:TODO<"node">):TODO;
 	/**
 		Gets the skin of a spine node.
 		
@@ -453,7 +453,7 @@ package defold;
 		@param node node to get spine skin from (node)
 		@return spine skin id, 0 if no explicit skin is set (hash)
 	**/
-	static function get_spine_skin(node:TODO):TODO;
+	static function get_spine_skin(node:TODO<"node">):TODO;
 	/**
 		Gets the node text.
 		
@@ -462,7 +462,7 @@ package defold;
 		@param node node from which to get the text (node)
 		@return text value (string)
 	**/
-	static function get_text(node:TODO):TODO;
+	static function get_text(node:TODO<"node">):TODO;
 	/**
 		Get text metrics.
 		
@@ -476,7 +476,7 @@ package defold;
 		@param tracking scale value for letter spacing (default=0)
 		@return a table with the following fields: width, height, max_ascent, max_descent
 	**/
-	static function get_text_metrics(font:TODO, text:TODO, width:TODO, line_breaks:TODO, leading:TODO, tracking:TODO):TODO;
+	static function get_text_metrics(font:EitherType<String, Hash>, text:TODO, width:TODO<"default=FLT_MAX">, line_breaks:TODO<"default=false">, leading:TODO<"default=1">, tracking:TODO<"default=0">):TODO;
 	/**
 		Get text metrics from node.
 		
@@ -494,14 +494,14 @@ package defold;
 		@param node node to get texture from (node)
 		@return texture id (hash)
 	**/
-	static function get_texture(node:TODO):TODO;
+	static function get_texture(node:TODO<"node">):TODO;
 	/**
 		Gets the tracking of the text node.
 		
 		@param node node from where to get the tracking (node)
 		@return scaling number (default=0) (number)
 	**/
-	static function get_tracking(node:TODO):TODO;
+	static function get_tracking(node:TODO<"node">):TODO;
 	/**
 		Gets the scene width.
 		
@@ -520,7 +520,7 @@ package defold;
 		   * `gui.ANCHOR_LEFT`
 		   * `gui.ANCHOR_RIGHT`
 	**/
-	static function get_xanchor(node:TODO):TODO;
+	static function get_xanchor(node:TODO<"node">):TODO;
 	/**
 		Gets the y-anchor of a node.
 		
@@ -533,7 +533,7 @@ package defold;
 		   * `gui.ANCHOR_TOP`
 		   * `gui.ANCHOR_BOTTOM`
 	**/
-	static function get_yanchor(node:TODO):TODO;
+	static function get_yanchor(node:TODO<"node">):TODO;
 	/**
 		Hide on-display keyboard if available.
 		
@@ -548,7 +548,7 @@ package defold;
 		@param node node to query (node)
 		@return whether the node is enabled or not (boolean)
 	**/
-	static function is_enabled(node:TODO):TODO;
+	static function is_enabled(node:TODO<"node">):TODO;
 	/**
 		Moves the first node above the second.
 		
@@ -557,7 +557,7 @@ package defold;
 		@param node to move (node)
 		@param ref reference node above which the first node should be moved (node)
 	**/
-	static function move_above(node:TODO, ref:TODO):Void;
+	static function move_above(node:TODO<"node">, ref:TODO<"node">):Void;
 	/**
 		Moves the first node below the second.
 		
@@ -566,7 +566,7 @@ package defold;
 		@param node to move (node)
 		@param ref reference node below which the first node should be moved (node)
 	**/
-	static function move_below(node:TODO, ref:TODO):Void;
+	static function move_below(node:TODO<"node">, ref:TODO<"node">):Void;
 	/**
 		Creates a new box node.
 		
@@ -574,7 +574,7 @@ package defold;
 		@param size node size (vector3)
 		@return new box node (node)
 	**/
-	static function new_box_node(pos:TODO, size:TODO):TODO;
+	static function new_box_node(pos:EitherType<Vector4, Vector3>, size:Vector3):TODO;
 	/**
 		Creates a new pie node.
 		
@@ -582,7 +582,7 @@ package defold;
 		@param size node size (vector3)
 		@return new box node (node)
 	**/
-	static function new_pie_node(pos:TODO, size:TODO):TODO;
+	static function new_pie_node(pos:EitherType<Vector4, Vector3>, size:Vector3):TODO;
 	/**
 		Creates a new spine node.
 		
@@ -590,7 +590,7 @@ package defold;
 		@param spine_scene spine scene id (string|hash)
 		@return new spine node (node)
 	**/
-	static function new_spine_node(pos:TODO, spine_scene:TODO):TODO;
+	static function new_spine_node(pos:EitherType<Vector4, Vector3>, spine_scene:EitherType<Hash, String>):TODO;
 	/**
 		Creates a new text node.
 		
@@ -598,7 +598,7 @@ package defold;
 		@param text node text (string)
 		@return new text node (node)
 	**/
-	static function new_text_node(pos:TODO, text:TODO):TODO;
+	static function new_text_node(pos:EitherType<Vector4, Vector3>, text:String):TODO;
 	/**
 		Create new texture.
 		
@@ -617,7 +617,7 @@ package defold;
 		@param flip flip texture vertically (boolean)
 		@return texture creation was successful (boolean)
 	**/
-	static function new_texture(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO, flip:TODO):TODO;
+	static function new_texture(texture:EitherType<Hash, String>, width:Float, height:Float, type:TODO, buffer:String, flip:TODO<"boolean">):TODO;
 	/**
 		Determines if the node is pickable by the supplied coordinates.
 		
@@ -626,7 +626,7 @@ package defold;
 		@param y y-coordinate (see <a href="#on_input">on_input</a> )
 		@return pick result (boolean)
 	**/
-	static function pick_node(node:TODO, x:TODO, y:TODO):TODO;
+	static function pick_node(node:TODO<"node">, x:TODO<"see <a href=\"#on_input\">on_input</a>">, y:TODO<"see <a href=\"#on_input\">on_input</a>">):TODO;
 	/**
 		Play node flipbook animation.
 		
@@ -636,7 +636,7 @@ package defold;
 		@param animation animation id (string|hash)
 		@param complete_function function to call when the animation has completed (function)
 	**/
-	static function play_flipbook(node:TODO, animation:TODO, ?complete_function:TODO):Void;
+	static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function">):Void;
 	/**
 		Play a spine animation.
 		
@@ -659,7 +659,7 @@ package defold;
 		
 		@param complete_function function to call when the animation has completed (function)
 	**/
-	static function play_spine_anim(node:TODO, animation_id:TODO, playback:TODO, ?play_properties:TODO, ?complete_function:TODO):Void;
+	static function play_spine_anim(node:TODO<"node">, animation_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO, ?complete_function:TODO<"function">):Void;
 	/**
 		Reset on-display keyboard if available.
 		
@@ -684,7 +684,7 @@ package defold;
 		   * `gui.ADJUST_ZOOM`
 		   * `gui.ADJUST_STRETCH`
 	**/
-	static function set_adjust_mode(node:TODO, adjust_mode:TODO):Void;
+	static function set_adjust_mode(node:TODO<"node">, adjust_mode:TODO):Void;
 	/**
 		Sets node blend mode.
 		
@@ -698,7 +698,7 @@ package defold;
 		   * `gui.BLEND_ADD_ALPHA`
 		   * `gui.BLEND_MULT`
 	**/
-	static function set_blend_mode(node:TODO, blend_mode:TODO):Void;
+	static function set_blend_mode(node:TODO<"node">, blend_mode:TODO):Void;
 	/**
 		Sets node clipping visibility.
 		
@@ -707,7 +707,7 @@ package defold;
 		@param node node to set clipping inverted state for (node)
 		@param visible true or false
 	**/
-	static function set_clipping_inverted(node:TODO, visible:TODO):Void;
+	static function set_clipping_inverted(node:TODO<"node">, visible:TODO):Void;
 	/**
 		Sets node clipping mode state.
 		
@@ -719,7 +719,7 @@ package defold;
 		   * `gui.CLIPPING_MODE_NONE`
 		   * `gui.CLIPPING_MODE_STENCIL`
 	**/
-	static function set_clipping_mode(node:TODO, clipping_mode:TODO):Void;
+	static function set_clipping_mode(node:TODO<"node">, clipping_mode:TODO):Void;
 	/**
 		Sets node clipping visibility.
 		
@@ -728,14 +728,14 @@ package defold;
 		@param node node to set clipping visibility for (node)
 		@param visible true or false
 	**/
-	static function set_clipping_visible(node:TODO, visible:TODO):Void;
+	static function set_clipping_visible(node:TODO<"node">, visible:TODO):Void;
 	/**
 		Sets the node color.
 		
 		@param node node to set the color for (node)
 		@param color new color (vector3|vector4)
 	**/
-	static function set_color(node:TODO, color:TODO):Void;
+	static function set_color(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 	/**
 		Enables/disables a node.
 		
@@ -744,14 +744,14 @@ package defold;
 		@param node node to be enabled/disabled (node)
 		@param enabled whether the node should be enabled or not (boolean)
 	**/
-	static function set_enabled(node:TODO, enabled:TODO):Void;
+	static function set_enabled(node:TODO<"node">, enabled:TODO<"boolean">):Void;
 	/**
 		Sets the angle for the filled pie sector.
 		
 		@param node node to set the fill angle for (node)
 		@param sector angle
 	**/
-	static function set_fill_angle(node:TODO, sector:TODO):Void;
+	static function set_fill_angle(node:TODO<"node">, sector:TODO):Void;
 	/**
 		Sets the node font.
 		
@@ -760,21 +760,21 @@ package defold;
 		@param node node for which to set the font (node)
 		@param font font id (string|hash)
 	**/
-	static function set_font(node:TODO, font:TODO):Void;
+	static function set_font(node:TODO<"node">, font:EitherType<Hash, String>):Void;
 	/**
 		Sets the id of the specified node.
 		
 		@param node node to set the id for (node)
 		@param id id to set (string|hash)
 	**/
-	static function set_id(node:TODO, id:TODO):Void;
+	static function set_id(node:TODO<"node">, id:EitherType<Hash, String>):Void;
 	/**
 		Sets the pie inner radius (defined along the x dimension).
 		
 		@param node node to set the inner radius for (node)
 		@param inner radius
 	**/
-	static function set_inner_radius(node:TODO, inner:TODO):Void;
+	static function set_inner_radius(node:TODO<"node">, inner:TODO):Void;
 	/**
 		Sets the node layer.
 		
@@ -783,14 +783,14 @@ package defold;
 		@param node node for which to set the layer (node)
 		@param layer layer id (string|hash)
 	**/
-	static function set_layer(node:TODO, layer:TODO):Void;
+	static function set_layer(node:TODO<"node">, layer:EitherType<Hash, String>):Void;
 	/**
 		Sets the leading of the text node.
 		
 		@param node node for which to set the leading (node)
 		@param leading a scaling number for the line spacing (default=1) (number)
 	**/
-	static function set_leading(node:TODO, leading:TODO):Void;
+	static function set_leading(node:TODO<"node">, leading:TODO<"default=1) (number">):Void;
 	/**
 		Set line-break mode.
 		
@@ -799,34 +799,34 @@ package defold;
 		@param node node to set line-break for (node)
 		@param text text to set (string)
 	**/
-	static function set_line_break(node:TODO, text:TODO):Void;
+	static function set_line_break(node:TODO<"node">, text:String):Void;
 	/**
 		Sets the pie outer bounds mode.
 		
 		@param node node for which to set the outer bounds mode (node)
 		@param bounds gui.PIEBOUNDS_RECTANGLE or gui.PIEBOUNDS_ELLIPSE
 	**/
-	static function set_outer_bounds(node:TODO, bounds:TODO):Void;
+	static function set_outer_bounds(node:TODO<"node">, bounds:TODO):Void;
 	/**
 		Sets the node outline color.
 		
 		@param node node to set the outline color for (node)
 		@param color new outline color (vector3|vector4)
 	**/
-	static function set_outline(node:TODO, color:TODO):Void;
+	static function set_outline(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 	/**
 		Set the parent of the node.
 		
 		@param node node for which to set its parent (node)
 		@param parent parent node to set (node)
 	**/
-	static function set_parent(node:TODO, parent:TODO):Void;
+	static function set_parent(node:TODO<"node">, parent:TODO<"node">):Void;
 	/**
 		Sets the number of generarted vertices around the perimeter.
 		
 		@param vertex count (number)
 	**/
-	static function set_perimeter_vertices(vertex:TODO):Void;
+	static function set_perimeter_vertices(vertex:Float):Void;
 	/**
 		Sets the pivot of a node.
 		
@@ -845,14 +845,14 @@ package defold;
 		   * `gui.PIVOT_W`
 		   * `gui.PIVOT_NW`
 	**/
-	static function set_pivot(node:TODO, pivot:TODO):Void;
+	static function set_pivot(node:TODO<"node">, pivot:TODO):Void;
 	/**
 		Sets the node position.
 		
 		@param node node to set the position for (node)
 		@param position new position (vector3|vector4)
 	**/
-	static function set_position(node:TODO, position:TODO):Void;
+	static function set_position(node:TODO<"node">, position:EitherType<Vector4, Vector3>):Void;
 	/**
 		Set the render ordering for the current GUI scene.
 		
@@ -863,28 +863,28 @@ package defold;
 		
 		@param order rendering order (number)
 	**/
-	static function set_render_order(order:TODO):Void;
+	static function set_render_order(order:Float):Void;
 	/**
 		Sets the node rotation.
 		
 		@param node node to set the rotation for (node)
 		@param rotation new rotation (vector3|vector4)
 	**/
-	static function set_rotation(node:TODO, rotation:TODO):Void;
+	static function set_rotation(node:TODO<"node">, rotation:EitherType<Vector4, Vector3>):Void;
 	/**
 		Sets the node scale.
 		
 		@param node node to set the scale for (node)
 		@param scale new scale (vector3|vector4)
 	**/
-	static function set_scale(node:TODO, scale:TODO):Void;
+	static function set_scale(node:TODO<"node">, scale:EitherType<Vector4, Vector3>):Void;
 	/**
 		Sets the node shadow color.
 		
 		@param node node to set the shadow color for (node)
 		@param color new shadow color (vector3|vector4)
 	**/
-	static function set_shadow(node:TODO, color:TODO):Void;
+	static function set_shadow(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 	/**
 		Sets the node size.
 		
@@ -893,7 +893,7 @@ package defold;
 		@param node node to set the size for (node)
 		@param size new size (vector3|vector4)
 	**/
-	static function set_size(node:TODO, size:TODO):Void;
+	static function set_size(node:TODO<"node">, size:EitherType<Vector4, Vector3>):Void;
 	/**
 		Sets node size mode.
 		
@@ -905,14 +905,14 @@ package defold;
 		   * `gui.SIZE_MODE_MANUAL`
 		   * `gui.SIZE_MODE_AUTO`
 	**/
-	static function set_size_mode(node:TODO, size_mode:TODO):Void;
+	static function set_size_mode(node:TODO<"node">, size_mode:TODO):Void;
 	/**
 		Set the slice9 configuration for the node.
 		
 		@param node node to manipulate
 		@param params new value (vector4)
 	**/
-	static function set_slice9(node:TODO, params:TODO):Void;
+	static function set_slice9(node:TODO, params:Vector4):Void;
 	/**
 		Sets the normalized cursor of the animation on a spine node.
 		
@@ -921,7 +921,7 @@ package defold;
 		@param node spine node to set the cursor for (node)
 		@param cursor cursor value (number)
 	**/
-	static function set_spine_cursor(node:TODO, cursor:TODO):Void;
+	static function set_spine_cursor(node:TODO<"node">, cursor:Float):Void;
 	/**
 		Sets the playback rate of the animation on a spine node.
 		
@@ -930,7 +930,7 @@ package defold;
 		@param node spine node to set the cursor for (node)
 		@param playback_rate playback rate (number)
 	**/
-	static function set_spine_playback_rate(node:TODO, playback_rate:TODO):Void;
+	static function set_spine_playback_rate(node:TODO<"node">, playback_rate:Float):Void;
 	/**
 		Sets the spine scene of a node.
 		
@@ -939,7 +939,7 @@ package defold;
 		@param node node to set spine scene for (node)
 		@param spine_scene spine scene id (string|hash)
 	**/
-	static function set_spine_scene(node:TODO, spine_scene:TODO):Void;
+	static function set_spine_scene(node:TODO<"node">, spine_scene:EitherType<Hash, String>):Void;
 	/**
 		Sets the spine skin.
 		
@@ -948,7 +948,7 @@ package defold;
 		@param node node to set the spine skin on (node)
 		@param spine_skin spine skin id (string|hash)
 	**/
-	static function set_spine_skin(node:TODO, spine_skin:TODO):Void;
+	static function set_spine_skin(node:TODO<"node">, spine_skin:EitherType<Hash, String>):Void;
 	/**
 		Sets the node text.
 		
@@ -957,7 +957,7 @@ package defold;
 		@param node node to set text for (node)
 		@param text text to set (string)
 	**/
-	static function set_text(node:TODO, text:TODO):Void;
+	static function set_text(node:TODO<"node">, text:String):Void;
 	/**
 		Sets the node texture.
 		
@@ -966,7 +966,7 @@ package defold;
 		@param node node to set texture for (node)
 		@param texture texture id (string|hash)
 	**/
-	static function set_texture(node:TODO, texture:TODO):Void;
+	static function set_texture(node:TODO<"node">, texture:EitherType<Hash, String>):Void;
 	/**
 		Set the buffer data for a texture.
 		
@@ -985,14 +985,14 @@ package defold;
 		@param flip flip texture vertically (boolean)
 		@return setting the data was successful (boolean)
 	**/
-	static function set_texture_data(texture:TODO, width:TODO, height:TODO, type:TODO, buffer:TODO, flip:TODO):TODO;
+	static function set_texture_data(texture:EitherType<Hash, String>, width:Float, height:Float, type:TODO, buffer:String, flip:TODO<"boolean">):TODO;
 	/**
 		Sets the tracking of the text node.
 		
 		@param node node for which to set the tracking (node)
 		@param tracking a scaling number for the letter spacing (default=0) (number)
 	**/
-	static function set_tracking(node:TODO, tracking:TODO):Void;
+	static function set_tracking(node:TODO<"node">, tracking:TODO<"default=0) (number">):Void;
 	/**
 		Sets the x-anchor of a node.
 		
@@ -1005,7 +1005,7 @@ package defold;
 		   * `gui.ANCHOR_LEFT`
 		   * `gui.ANCHOR_RIGHT`
 	**/
-	static function set_xanchor(node:TODO, anchor:TODO):Void;
+	static function set_xanchor(node:TODO<"node">, anchor:TODO):Void;
 	/**
 		Sets the y-anchor of a node.
 		
@@ -1018,7 +1018,7 @@ package defold;
 		   * `gui.ANCHOR_TOP`
 		   * `gui.ANCHOR_BOTTOM`
 	**/
-	static function set_yanchor(node:TODO, anchor:TODO):Void;
+	static function set_yanchor(node:TODO<"node">, anchor:TODO):Void;
 	/**
 		Display on-display keyboard if available.
 		
@@ -1043,7 +1043,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function init(self:TODO):Void;
+	static function init(self:TODO<"script_ref">):Void;
 	/**
 		Called when user input is received.
 		
@@ -1101,7 +1101,7 @@ package defold;
 		@param action_id id of the received input action, as mapped in the input_binding-file (hash)
 		@param action a table containing the input data, see above for a description (table)
 	**/
-	static function on_input(self:TODO, action_id:TODO, action:TODO):Void;
+	static function on_input(self:TODO<"script_ref">, action_id:Hash, action:TODO<"table">):Void;
 	/**
 		Called when a message has been sent to the gui component.
 		
@@ -1117,7 +1117,7 @@ package defold;
 		@param message_id id of the received message (hash)
 		@param message a table containing the message data (table)
 	**/
-	static function on_message(self:TODO, message_id:TODO, message:TODO):Void;
+	static function on_message(self:TODO<"script_ref">, message_id:Hash, message:TODO<"table">):Void;
 	/**
 		Called when the gui script is reloaded.
 		
@@ -1126,7 +1126,7 @@ package defold;
 		
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
-	static function on_reload(self:TODO):Void;
+	static function on_reload(self:TODO<"script_ref">):Void;
 	/**
 		Called every frame to update the gui component.
 		
@@ -1136,7 +1136,7 @@ package defold;
 		@param self reference to the script state to be used for storing data (script_ref)
 		@param dt the time-step of the frame update
 	**/
-	static function update(self:TODO, dt:TODO):Void;
+	static function update(self:TODO<"script_ref">, dt:TODO):Void;
 }
 
 @:native("_G.gui") extern class GuiVariables {

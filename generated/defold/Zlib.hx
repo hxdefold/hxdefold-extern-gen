@@ -12,7 +12,7 @@ package defold;
 		@param buf buffer to deflate (string)
 		@return deflated buffer (string)
 	**/
-	static function deflate(buf:TODO):TODO;
+	static function deflate(buf:String):TODO;
 	/**
 		Inflate (decompress) a buffer.
 		
@@ -21,5 +21,5 @@ package defold;
 		@param buf buffer to inflate (string)
 		@return inflated buffer (string)
 	**/
-	static function inflate(buf:TODO):TODO;
+	static function inflate(buf:String):TODO;
 }

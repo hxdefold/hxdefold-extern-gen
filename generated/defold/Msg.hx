@@ -11,7 +11,7 @@ package defold;
 		@param message_id The id must be a string or a hashed string. (string|hash)
 		@param message lua table message to send (table)
 	**/
-	static function post(receiver:TODO, message_id:TODO, ?message:TODO):Void;
+	static function post(receiver:EitherType<TODO<"nil">, EitherType<Hash, EitherType<Url, String>>>, message_id:EitherType<Hash, String>, ?message:TODO<"table">):Void;
 	/**
 		Creates a new URL.
 		
@@ -30,7 +30,7 @@ package defold;
 		@param urlstring string to create the url from (string)
 		@return a new URL (url)
 	**/
-	static function url(urlstring:TODO):TODO;
+	static function url(urlstring:String):TODO;
 	/**
 		Creates a new URL from separate arguments.
 		
@@ -39,5 +39,5 @@ package defold;
 		@param fragment fragment of the URL (string|hash)
 		@return a new URL (url)
 	**/
-	static function url(?socket:TODO, ?path:TODO, ?fragment:TODO):TODO;
+	static function url(?socket:EitherType<TODO<"socket">, String>, ?path:EitherType<Hash, String>, ?fragment:EitherType<Hash, String>):TODO;
 }

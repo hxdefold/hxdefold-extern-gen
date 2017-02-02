@@ -22,7 +22,7 @@ package defold;
 		@param key key to get value for. The syntax is SECTION.KEY (string)
 		@return config value as a string. nil if the config key doesn't exists (string)
 	**/
-	static function get_config(key:TODO):TODO;
+	static function get_config(key:String):TODO;
 	/**
 		Get config value with default value.
 		
@@ -32,7 +32,7 @@ package defold;
 		@param default_value default value to return if the value does not exist (string)
 		@return config value as a string. default_value if the config key does not exist (string)
 	**/
-	static function get_config(key:TODO, default_value:TODO):TODO;
+	static function get_config(key:String, default_value:String):TODO;
 	/**
 		Get current network connectivity status.
 		
@@ -66,7 +66,7 @@ package defold;
 		@param file_name file-name to get path for (string)
 		@return path to save-file (string)
 	**/
-	static function get_save_file(application_id:TODO, file_name:TODO):TODO;
+	static function get_save_file(application_id:String, file_name:String):TODO;
 	/**
 		Get system information.
 		
@@ -94,7 +94,7 @@ package defold;
 		@param filename file to read from (string)
 		@return loaded lua table, which is empty if the file could not be found (table)
 	**/
-	static function load(filename:TODO):TODO;
+	static function load(filename:String):TODO;
 	/**
 		Loads resource from game data.
 		
@@ -113,7 +113,7 @@ package defold;
 		@param filename resource to load, full path (string)
 		@return loaded data, which is empty if the file could not be found (string)
 	**/
-	static function load_resource(filename:TODO):TODO;
+	static function load_resource(filename:String):TODO;
 	/**
 		Open url in default application.
 		
@@ -122,7 +122,7 @@ package defold;
 		@param url url to open (string)
 		@return a boolean indicating if the url could be opened or not (boolean)
 	**/
-	static function open_url(url:TODO):TODO;
+	static function open_url(url:String):TODO;
 	/**
 		Saves a lua table to a file stored on disk.
 		
@@ -136,17 +136,17 @@ package defold;
 		@param table lua table to save (table)
 		@return a boolean indicating if the table could be saved or not (boolean)
 	**/
-	static function save(filename:TODO, table:TODO):TODO;
+	static function save(filename:String, table:TODO<"table">):TODO;
 	/**
 		Set host to check for network connectivity against.
 		
 		@param host hostname to check against (string)
 	**/
-	static function set_connectivity_host(host:TODO):Void;
+	static function set_connectivity_host(host:String):Void;
 	/**
 		Set the error handler. The error handler is a function which is called whenever a lua runtime error occurs..
 		
 		@param error_handler the function to be called on error (function)
 	**/
-	static function set_error_handler(error_handler:TODO):Void;
+	static function set_error_handler(error_handler:TODO<"function">):Void;
 }
