@@ -8,6 +8,7 @@ typedef CollisionObjectMessageApplyForce = {
         the force to be applied on the collision object, measured in Newton (vector3)
     **/
     var force:TODO;
+
     /**
         the position where the force should be applied (vector3)
     **/
@@ -22,10 +23,12 @@ typedef CollisionObjectMessageCollisionResponse = {
         the id of the instance the collision object collided with (hash)
     **/
     var other_id:TODO;
+
     /**
         the world position of the instance the collision object collided with (vec3)
     **/
     var other_position:TODO;
+
     /**
         the collision group of the other collision object (hash)
     **/
@@ -40,42 +43,52 @@ typedef CollisionObjectMessageContactPointResponse = {
         world position of the contact point (vector3)
     **/
     var position:TODO;
+
     /**
         normal in world space of the contact point, which points from the other object towards the current object (vector3)
     **/
     var normal:TODO;
+
     /**
         the relative velocity of the collision object as observed from the other object (vector3)
     **/
     var relative_velocity:TODO;
+
     /**
         the penetration distance between the objects, which is always positive (number)
     **/
     var distance:TODO;
+
     /**
         the impulse the contact resulted in (number)
     **/
     var applied_impulse:TODO;
+
     /**
         life time of the contact, *not currently used* (number)
     **/
     var life_time:TODO;
+
     /**
         the mass of the current collision object in kg (number)
     **/
     var mass:TODO;
+
     /**
         the mass of the other collision object in kg (number)
     **/
     var other_mass:TODO;
+
     /**
         the id of the instance the collision object is in contact with (hash)
     **/
     var other_id:TODO;
+
     /**
         the world position of the other collision object (vector3)
     **/
     var other_position:TODO;
+
     /**
         the collision group of the other collision object (hash)
     **/
@@ -116,22 +129,27 @@ typedef PhysicsMessageRayCastResponse = {
         the fraction of the hit measured along the ray, where 0 is the start of the ray and 1 is the end (number)
     **/
     var fraction:TODO;
+
     /**
         the world position of the hit
     **/
     var position:TODO;
+
     /**
         the normal of the surface of the collision object where it was hit
     **/
     var normal:TODO;
+
     /**
         the instance id of the hit collision object
     **/
     var id:TODO;
+
     /**
         the collision group of the hit collision object as a hashed name
     **/
     var group:TODO;
+
     /**
         id supplied when the ray cast was requested
     **/
@@ -146,10 +164,12 @@ typedef PhysicsMessageTriggerResponse = {
         the id of the instance the collision object collided with (hash)
     **/
     var other_id:TODO;
+
     /**
         if the interaction was an entry or not (exit)
     **/
     var enter:TODO;
+
     /**
         the collision group of the triggering object as a hashed name
     **/
@@ -164,6 +184,7 @@ typedef PhysicsMessageVelocityResponse = {
         the linear velocity, i.e. translation, of the collision object in units/s (pixels/s (vector3)
     **/
     var linear_velocity:TODO;
+
     /**
         the angular velocity, i.e. rotation, of the collision object in radians/s.
         The velocity is measured as a rotation around the vector with a speed equivalent to the vector length (vector3)

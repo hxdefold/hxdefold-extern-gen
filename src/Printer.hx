@@ -136,7 +136,7 @@ class Printer {
 
 	public function printField(field:Field) return
 		(field.doc != null && field.doc != "" ? "/**\n" + tabs + tabString + StringTools.replace(field.doc, "\n", "\n" + tabs + tabString) + "\n" + tabs + "**/\n" + tabs : "")
-		+ (field.meta != null && field.meta.length > 0 ? field.meta.map(printMetadata).join('\n$tabs') + '\n$tabs' : "")
+		+ (field.meta != null && field.meta.length > 0 ? field.meta.map(printMetadata).join('\n$tabs') + (field.meta.length == 1 && field.meta[0].name == ":optional" ? " " : '\n$tabs') : "")
 		+ (field.access != null && field.access.length > 0 ? field.access.map(printAccess).join(" ") + " " : "")
 		+ switch(field.kind) {
 		  case FVar(t, eo): 'var ${field.name}' + opt(t, printComplexType, ":") + opt(eo, printExpr, " = ");
@@ -266,7 +266,7 @@ class Printer {
 					"typedef " + t.name + ((t.params != null && t.params.length > 0) ? "<" + t.params.map(printTypeParamDecl).join(", ") + ">" : "") + " = {\n"
 					+ [for (f in t.fields) {
 						tabs + printField(f) + ";";
-					}].join("\n")
+					}].join("\n\n")
 					+ "\n}";
 				case TDClass(superClass, interfaces, isInterface):
 					(isInterface ? "interface " : "class ") + t.name + (t.params != null && t.params.length > 0 ? "<" + t.params.map(printTypeParamDecl).join(", ") + ">" : "")

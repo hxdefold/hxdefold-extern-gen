@@ -111,18 +111,22 @@ typedef TilemapMessageSetTile = {
         id of the layer for which to change a tile
     **/
     var layer_id:TODO;
+
     /**
         the position of the cell for which to change the tile (world space)
     **/
     var position:TODO;
+
     /**
         index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
     **/
     var tile:TODO;
+
     /**
         horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
     **/
     var dx:TODO;
+
     /**
         vertical offset from the supplied position to the requested cell (grid space, 0 by default)
     **/

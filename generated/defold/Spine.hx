@@ -111,6 +111,7 @@ typedef SpineMessageSpineAnimationDone = {
         the id of the completed animation (hash)
     **/
     var animation_id:TODO;
+
     /**
         the playback mode of the completed animation (constant)
     **/
@@ -125,26 +126,32 @@ typedef SpineMessageSpineEvent = {
         the id of the event (hash)
     **/
     var event_id:TODO;
+
     /**
         the id of the animation (hash)
     **/
     var animation_id:TODO;
+
     /**
         the time of the event in seconds, relative to the start of the animation (number)
     **/
     var t:TODO;
+
     /**
         the blend weight (between 0.0-1.0) of the current animation at time t (number)
     **/
     var blend_weight:TODO;
+
     /**
         user defined integer value for the event (number)
     **/
     var integer:TODO;
+
     /**
         user defined floating point value for the event (number)
     **/
     var float:TODO;
+
     /**
         user defined string value for the event (hash)
     **/

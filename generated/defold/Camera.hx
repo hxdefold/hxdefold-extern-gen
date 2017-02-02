@@ -20,14 +20,17 @@ typedef CameraMessageSetCamera = {
         Aspect ratio of the screen (width divided by height)
     **/
     var aspect_ratio:TODO;
+
     /**
         Field of view of the lens, measured as the angle between the right and left edge (radians)
     **/
     var fov:TODO;
+
     /**
         Position of the near clipping plane (distance from camera along relative z)
     **/
     var near_z:TODO;
+
     /**
         Position of the far clipping plane (distance from camera along relative z)
     **/

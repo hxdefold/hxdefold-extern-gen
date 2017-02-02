@@ -65,6 +65,7 @@ typedef SpriteMessageAnimationDone = {
         the current tile of the sprite (number)
     **/
     var current_tile:TODO;
+
     /**
         id of the animation that was completed (hash)
     **/

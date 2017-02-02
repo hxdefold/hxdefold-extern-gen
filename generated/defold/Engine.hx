@@ -29,22 +29,27 @@ typedef EngineMessageReboot = {
         argument 1
     **/
     var arg1:TODO;
+
     /**
         argument 2
     **/
     var arg2:TODO;
+
     /**
         argument 3
     **/
     var arg3:TODO;
+
     /**
         argument 4
     **/
     var arg4:TODO;
+
     /**
         argument 5
     **/
     var arg5:TODO;
+
     /**
         argument 6
     **/
@@ -69,10 +74,12 @@ typedef EngineMessageStartRecord = {
         file name to write the video to
     **/
     var file_name:TODO;
+
     /**
         frame period to record, ie write every nth frame. Default value is 2
     **/
     var frame_period:TODO;
+
     /**
         frames per second. Playback speed for the video. Default value is 30. The fps value doens't affect the recording. It's only meta-data in the written video file.
     **/

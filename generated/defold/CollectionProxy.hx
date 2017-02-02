@@ -21,6 +21,7 @@ typedef CollectionProxyMessageSetTimeStep = {
         time-step scaling factor (number)
     **/
     var factor:TODO;
+
     /**
         time-step mode: 0 for continuous and 1 for discrete (number)
     **/

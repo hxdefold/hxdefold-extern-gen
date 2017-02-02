@@ -19,6 +19,7 @@ typedef GuiDdfMessageLayoutChanged = {
         the id of the layout the engine is changing to (hash)
     **/
     var id:TODO;
+
     /**
         the id of the layout the engine is changing from (hash)
     **/

@@ -424,10 +424,12 @@ typedef RenderMessageDrawLine = {
         Start point of the line
     **/
     var start_point:TODO;
+
     /**
         End point of the line
     **/
     var end_point:TODO;
+
     /**
         Color of the line
     **/
@@ -442,6 +444,7 @@ typedef RenderMessageDrawText = {
         Position of the text
     **/
     var position:TODO;
+
     /**
         The text to draw
     **/
@@ -456,6 +459,7 @@ typedef RenderMessageWindowResized = {
         the new window height (number)
     **/
     var height:TODO;
+
     /**
         the new window width (number)
     **/

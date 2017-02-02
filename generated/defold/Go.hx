@@ -358,6 +358,7 @@ typedef GoMessageSetParent = {
         the id of the new parent (hash)
     **/
     var parent_id:TODO;
+
     /**
         if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true (number)
     **/
@@ -372,22 +373,27 @@ typedef GoMessageTransformResponse = {
         local position of the instance (vector3)
     **/
     var position:TODO;
+
     /**
         local rotation of the instance (quaternion)
     **/
     var rotation:TODO;
+
     /**
         local scale of the instance (number)
     **/
     var scale:TODO;
+
     /**
         world position of the instance (vector3)
     **/
     var world_position:TODO;
+
     /**
         world rotation of the instancee (quaternion)
     **/
     var world_rotation:TODO;
+
     /**
         world scale of the instance (number)
     **/

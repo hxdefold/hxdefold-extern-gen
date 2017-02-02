@@ -110,13 +110,12 @@ typedef SoundMessagePlaySound = {
     /**
         delay in seconds before the sound starts playing, default is 0 (number)
     **/
-    @:optional
-    var delay:TODO;
+    @:optional var delay:TODO;
+
     /**
         sound gain between 0 and 1, default is 1 (number)
     **/
-    @:optional
-    var gain:TODO;
+    @:optional var gain:TODO;
 }
 
 /**
@@ -126,8 +125,7 @@ typedef SoundMessageSetGain = {
     /**
         sound gain between 0 and 1, default is 1 (number)
     **/
-    @:optional
-    var gain:TODO;
+    @:optional var gain:TODO;
 }
 
 /**
