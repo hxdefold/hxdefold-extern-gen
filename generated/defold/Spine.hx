@@ -4,8 +4,8 @@ package defold;
     Functions and messages for interacting with the 'Spine' 2D bone
     animation system.
 
-    See `SpineMessages` for related messages.
     See `SpineProperties` for related properties.
+    See `SpineMessages` for related messages.
 **/
 @:native("_G.spine")
 extern class Spine {
@@ -104,6 +104,55 @@ extern class Spine {
 }
 
 /**
+    Properties related to the `Spine` module.
+**/
+@:publicFields
+class SpineProperties {
+    /**
+        Spine cursor (number).
+        
+        The normalized animation cursor. The type of the property is number.
+    **/
+    static var cursor(default, never) = new Property<TODO>("cursor");
+
+    /**
+        Spine playback_rate (number).
+        
+        The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
+    **/
+    static var playback_rate(default, never) = new Property<TODO>("playback_rate");
+}
+
+/**
+    Messages related to the `Spine` module.
+**/
+@:publicFields
+class SpineMessages {
+    /**
+        Reports the completion of a Spine animation.
+        
+        This message is sent when a Spine animation has finished playing back to the script
+        that started the animation. This message is sent only for animations that play with
+        the following playback modes and no message is sent if the animation is cancelled with
+        spine.cancel():
+        
+          * go.PLAYBACK_ONCE_FORWARD
+          * go.PLAYBACK_ONCE_BACKWARD
+          * go.PLAYBACK_ONCE_PINGPONG
+    **/
+    static var spine_animation_done(default, never) = new Message<SpineMessageSpineAnimationDone>("spine_animation_done");
+
+    /**
+        Reports an incoming event from the Spine animation.
+        
+        This message is sent when Spine animation playback fires events. These events
+        has to be defined on the animation track in the Spine animation editor. An event
+        can contain custom values expressed in the fields "integer", "float" and "string".
+    **/
+    static var spine_event(default, never) = new Message<SpineMessageSpineEvent>("spine_event");
+}
+
+/**
     Data for the `SpineMessages.spine_animation_done` message.
 **/
 typedef SpineMessageSpineAnimationDone = {
@@ -156,53 +205,4 @@ typedef SpineMessageSpineEvent = {
         user defined string value for the event (hash)
     **/
     var string:TODO;
-}
-
-/**
-    Messages related to the `Spine` module.
-**/
-@:publicFields
-class SpineMessages {
-    /**
-        Reports the completion of a Spine animation.
-        
-        This message is sent when a Spine animation has finished playing back to the script
-        that started the animation. This message is sent only for animations that play with
-        the following playback modes and no message is sent if the animation is cancelled with
-        spine.cancel():
-        
-          * go.PLAYBACK_ONCE_FORWARD
-          * go.PLAYBACK_ONCE_BACKWARD
-          * go.PLAYBACK_ONCE_PINGPONG
-    **/
-    static var spine_animation_done(default, never):Message<SpineMessageSpineAnimationDone> = new Message("spine_animation_done");
-
-    /**
-        Reports an incoming event from the Spine animation.
-        
-        This message is sent when Spine animation playback fires events. These events
-        has to be defined on the animation track in the Spine animation editor. An event
-        can contain custom values expressed in the fields "integer", "float" and "string".
-    **/
-    static var spine_event(default, never):Message<SpineMessageSpineEvent> = new Message("spine_event");
-}
-
-/**
-    Properties related to the `Spine` module.
-**/
-@:publicFields
-class SpineProperties {
-    /**
-        Spine cursor (number).
-        
-        The normalized animation cursor. The type of the property is number.
-    **/
-    static var cursor(default, never):Property<TODO> = new Property("cursor");
-
-    /**
-        Spine playback_rate (number).
-        
-        The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
-    **/
-    static var playback_rate(default, never):Property<TODO> = new Property("playback_rate");
 }

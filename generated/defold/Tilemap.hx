@@ -104,6 +104,20 @@ extern class Tilemap {
 }
 
 /**
+    Messages related to the `Tilemap` module.
+**/
+@:publicFields
+class TilemapMessages {
+    /**
+        (DEPRECATED) changes a tile in a tile map.
+        
+        Send this message to a tile map component to change the tile in one of its cells.
+    **/
+    @:deprecated("Use <code>tilemap.set_tile()</code> instead.")
+    static var set_tile(default, never) = new Message<TilemapMessageSetTile>("set_tile");
+}
+
+/**
     Data for the `TilemapMessages.set_tile` message.
 **/
 typedef TilemapMessageSetTile = {
@@ -131,18 +145,4 @@ typedef TilemapMessageSetTile = {
         vertical offset from the supplied position to the requested cell (grid space, 0 by default)
     **/
     var dy:TODO;
-}
-
-/**
-    Messages related to the `Tilemap` module.
-**/
-@:publicFields
-class TilemapMessages {
-    /**
-        (DEPRECATED) changes a tile in a tile map.
-        
-        Send this message to a tile map component to change the tile in one of its cells.
-    **/
-    @:deprecated("Use <code>tilemap.set_tile()</code> instead.")
-    static var set_tile(default, never):Message<TilemapMessageSetTile> = new Message("set_tile");
 }

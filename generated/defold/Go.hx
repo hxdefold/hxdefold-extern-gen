@@ -5,8 +5,8 @@ package defold;
     game objects. The "go" namespace is accessible from game object script
     files.
 
-    See `GoMessages` for related messages.
     See `GoProperties` for related properties.
+    See `GoMessages` for related messages.
     See `GoVariables` for related variables.
 **/
 @:native("_G.go")
@@ -351,6 +351,140 @@ extern class Go {
 }
 
 /**
+    Properties related to the `Go` module.
+**/
+@:publicFields
+class GoProperties {
+    /**
+        Game object euler rotation (vector3).
+        
+        The rotation of the game object expressed in euler angles.
+        Euler angles are specified in degrees.
+        The type of the property is vector3.
+    **/
+    static var euler(default, never) = new Property<TODO>("euler");
+
+    /**
+        Game object position (vector3).
+        
+        The position of the game object.
+        The type of the property is vector3.
+    **/
+    static var position(default, never) = new Property<TODO>("position");
+
+    /**
+        Game object rotation (quaternion).
+        
+        The rotation of the game object.
+        The type of the property is quaternion.
+    **/
+    static var rotation(default, never) = new Property<TODO>("rotation");
+
+    /**
+        Game object scale (vector3).
+        
+        The non-uniform scale of the game object. The type of the property is vector3.
+    **/
+    static var scale(default, never) = new Property<TODO>("scale");
+}
+
+/**
+    Messages related to the `Go` module.
+**/
+@:publicFields
+class GoMessages {
+    /**
+        Acquires the user input focus.
+        
+        Post this message to a game object instance to make that instance acquire the user input focus.
+        
+        User input is distributed by the engine to every instance that has requested it. The last instance
+        to request focus will receive it first. This means that the scripts in the instance will have
+        first-hand-chance at reacting on user input, possibly consuming it so that no other instances
+        can react on it. The most common case is for a script to send this message to itself when it needs to
+        respond to user input.
+        
+        A script belonging to an instance which has the user input focus will receive the input actions
+        in its `on_input` callback function. See `on_input` for more information on
+        how user input can be handled.
+    **/
+    static var acquire_input_focus(default, never) = new Message<Void>("acquire_input_focus");
+
+    /**
+        Disables the receiving component.
+        
+        This message disables the receiving component. All components are enabled by default, which means they will receive input, updates
+        and be a part of the simulation. A component is disabled when it receives the `disable` message.
+        
+        *Note!* Components that currently supports this message are:
+        
+           * Collection Proxy
+           * Collision Object
+           * Gui
+           * Spine Model
+           * Sprite
+           * Tile Grid
+    **/
+    static var disable(default, never) = new Message<Void>("disable");
+
+    /**
+        Enables the receiving component.
+        
+        This message enables the receiving component. All components are enabled by default, which means they will receive input, updates
+        and be a part of the simulation. A component is disabled when it receives the `disable` message.
+        
+        *Note!* Components that currently supports this message are:
+        
+           * Collection Proxy
+           * Collision Object
+           * Gui
+           * Spine Model
+           * Sprite
+           * Tile Grid
+    **/
+    static var enable(default, never) = new Message<Void>("enable");
+
+    /**
+        Releases the user input focus.
+        
+        Post this message to an instance to make that instance release the user input focus.
+        See `acquire_input_focus` for more information on how the user input handling
+        works.
+    **/
+    static var release_input_focus(default, never) = new Message<Void>("release_input_focus");
+
+    /**
+        (DEPRECATED) requests the transform from an instance.
+        
+        <div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
+        Send this message to an instance to request its transform (position, rotation, scale).
+        The sending script will receive the answer as a `transform_response`-message
+        at a later time.
+    **/
+    static var request_transform(default, never) = new Message<Void>("request_transform");
+
+    /**
+        Sets the parent of the receiving instance.
+        
+        When this message is sent to an instance, it sets the parent of that instance. This means that the instance will exist
+        in the geometrical space of its parent, like a basic transformation hierarchy or scene graph. If no parent is specified,
+        the instance will be detached from any parent and exist in world space. A script can send this message to itself to set
+        the parent of its instance.
+    **/
+    static var set_parent(default, never) = new Message<GoMessageSetParent>("set_parent");
+
+    /**
+        (DEPRECATED) reports back the transform of an instance.
+        
+        <div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
+        The response a script receives after it has requested the transform from an instance
+        using the `request_transform`-message. See the description of that message
+        for a complete example on how to use it.
+    **/
+    static var transform_response(default, never) = new Message<GoMessageTransformResponse>("transform_response");
+}
+
+/**
     Data for the `GoMessages.set_parent` message.
 **/
 typedef GoMessageSetParent = {
@@ -398,140 +532,6 @@ typedef GoMessageTransformResponse = {
         world scale of the instance (number)
     **/
     var world_scale:TODO;
-}
-
-/**
-    Messages related to the `Go` module.
-**/
-@:publicFields
-class GoMessages {
-    /**
-        Acquires the user input focus.
-        
-        Post this message to a game object instance to make that instance acquire the user input focus.
-        
-        User input is distributed by the engine to every instance that has requested it. The last instance
-        to request focus will receive it first. This means that the scripts in the instance will have
-        first-hand-chance at reacting on user input, possibly consuming it so that no other instances
-        can react on it. The most common case is for a script to send this message to itself when it needs to
-        respond to user input.
-        
-        A script belonging to an instance which has the user input focus will receive the input actions
-        in its `on_input` callback function. See `on_input` for more information on
-        how user input can be handled.
-    **/
-    static var acquire_input_focus(default, never):Message<Void> = new Message("acquire_input_focus");
-
-    /**
-        Disables the receiving component.
-        
-        This message disables the receiving component. All components are enabled by default, which means they will receive input, updates
-        and be a part of the simulation. A component is disabled when it receives the `disable` message.
-        
-        *Note!* Components that currently supports this message are:
-        
-           * Collection Proxy
-           * Collision Object
-           * Gui
-           * Spine Model
-           * Sprite
-           * Tile Grid
-    **/
-    static var disable(default, never):Message<Void> = new Message("disable");
-
-    /**
-        Enables the receiving component.
-        
-        This message enables the receiving component. All components are enabled by default, which means they will receive input, updates
-        and be a part of the simulation. A component is disabled when it receives the `disable` message.
-        
-        *Note!* Components that currently supports this message are:
-        
-           * Collection Proxy
-           * Collision Object
-           * Gui
-           * Spine Model
-           * Sprite
-           * Tile Grid
-    **/
-    static var enable(default, never):Message<Void> = new Message("enable");
-
-    /**
-        Releases the user input focus.
-        
-        Post this message to an instance to make that instance release the user input focus.
-        See `acquire_input_focus` for more information on how the user input handling
-        works.
-    **/
-    static var release_input_focus(default, never):Message<Void> = new Message("release_input_focus");
-
-    /**
-        (DEPRECATED) requests the transform from an instance.
-        
-        <div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
-        Send this message to an instance to request its transform (position, rotation, scale).
-        The sending script will receive the answer as a `transform_response`-message
-        at a later time.
-    **/
-    static var request_transform(default, never):Message<Void> = new Message("request_transform");
-
-    /**
-        Sets the parent of the receiving instance.
-        
-        When this message is sent to an instance, it sets the parent of that instance. This means that the instance will exist
-        in the geometrical space of its parent, like a basic transformation hierarchy or scene graph. If no parent is specified,
-        the instance will be detached from any parent and exist in world space. A script can send this message to itself to set
-        the parent of its instance.
-    **/
-    static var set_parent(default, never):Message<GoMessageSetParent> = new Message("set_parent");
-
-    /**
-        (DEPRECATED) reports back the transform of an instance.
-        
-        <div>*DEPRECATED!* See the functions `go.get_position`, `go.get_rotation`, etc. for a simpler way to obtain the transform of another game object instance.</div>
-        The response a script receives after it has requested the transform from an instance
-        using the `request_transform`-message. See the description of that message
-        for a complete example on how to use it.
-    **/
-    static var transform_response(default, never):Message<GoMessageTransformResponse> = new Message("transform_response");
-}
-
-/**
-    Properties related to the `Go` module.
-**/
-@:publicFields
-class GoProperties {
-    /**
-        Game object euler rotation (vector3).
-        
-        The rotation of the game object expressed in euler angles.
-        Euler angles are specified in degrees.
-        The type of the property is vector3.
-    **/
-    static var euler(default, never):Property<TODO> = new Property("euler");
-
-    /**
-        Game object position (vector3).
-        
-        The position of the game object.
-        The type of the property is vector3.
-    **/
-    static var position(default, never):Property<TODO> = new Property("position");
-
-    /**
-        Game object rotation (quaternion).
-        
-        The rotation of the game object.
-        The type of the property is quaternion.
-    **/
-    static var rotation(default, never):Property<TODO> = new Property("rotation");
-
-    /**
-        Game object scale (vector3).
-        
-        The non-uniform scale of the game object. The type of the property is vector3.
-    **/
-    static var scale(default, never):Property<TODO> = new Property("scale");
 }
 
 @:native("_G.go")

@@ -147,11 +147,10 @@ class Main {
                     print('Processing module $moduleName (${entry.fileName})');
                     var api:Api = haxe.Json.parse(haxe.zip.Reader.unzip(entry).toString());
 
-                    var types:Array<{t:TypeDefinition, ?d:String}> = [];
-
                     var nativePath = "_G";
                     var methods = [];
                     var messages = [];
+                    var messageData = [];
                     var properties = [];
                     var vars = [];
 
@@ -228,6 +227,13 @@ class Main {
 
                         var signatureDoc = [];
 
+                        var field:Field = {
+                            pos: pos,
+                            access: [AStatic],
+                            name: null,
+                            kind: null,
+                        };
+
                         var fieldKind, fields;
                         switch (element.type) {
                             case FUNCTION:
@@ -277,9 +283,6 @@ class Main {
                                     throw "Found MESSAGE with returnvalues!";
                                 var messageFields:Array<Field> = [];
 
-                                var messageType = null;
-                                var messageTypeName = moduleName + "Message" + underscoreToCamelCase(element.name);
-
                                 for (param in element.parameters) {
                                     if (!reParameterName.match(param.name))
                                         throw 'Non-conventional parameter name: ${param.name}';
@@ -291,29 +294,24 @@ class Main {
                                         doc: prepareDoc(param.doc),
                                         meta: if (reParameterName.matched(1) != null) [{name: ":optional", pos: pos}] else null
                                     });
-                                    // signatureDoc.push('@param $name ${}');
-                                    if (messageType == null)
-                                        messageType = TPath({pack: [], name: messageTypeName});
-                                }
-
-                                if (messageType == null) {
-                                    messageType = macro : Void;
-                                } else {
-                                    types.push({
-                                        t: {
-                                            pos: pos,
-                                            pack: ["defold"],
-                                            name: messageTypeName,
-                                            kind: TDStructure,
-                                            fields: messageFields,
-                                        },
-                                        d: 'Data for the `${moduleName}Messages.${element.name}` message.'
-                                    });
                                 }
 
                                 var nameExpr = {expr: EConst(CString(element.name)), pos: pos};
 
-                                fieldKind = FProp("default", "never", macro : Message<$messageType>, macro new Message($nameExpr));
+                                if (messageFields.length == 0) {
+                                    fieldKind = FProp("default", "never", null, macro new Message<Void>($nameExpr));
+                                } else {
+                                    fieldKind = null;
+                                    messageData.push({
+                                        msg: element.name,
+                                        name: underscoreToCamelCase(element.name),
+                                        fields: messageFields,
+                                        apply: function() {
+                                            var ct = TPath({pack: [], name: moduleName + "Message" + underscoreToCamelCase(element.name)});
+                                            field.kind = FProp("default", "never", null, macro new Message<$ct>($nameExpr));
+                                        }
+                                    });
+                                }
 
                             case PROPERTY:
                                 if (element.parameters.length != 0)
@@ -323,7 +321,7 @@ class Main {
                                 fields = properties;
                                 // elementName = underscoreToCamelCase(elementName);
                                 var nameExpr = {expr: EConst(CString(element.name)), pos: pos};
-                                fieldKind = FProp("default", "never", macro : Property<$ctTODO>, macro new Property($nameExpr));
+                                fieldKind = FProp("default", "never", null, macro new Property<$ctTODO>($nameExpr));
 
                             case VARIABLE:
                                 if (element.parameters.length != 0)
@@ -343,14 +341,11 @@ class Main {
                         doc = ~/\n\n+/g.replace(doc, "\n\n");
                         doc = ~/(.*)\s*$/g.replace(doc, "$1");
 
-                        fields.push({
-                            pos: pos,
-                            name: elementName,
-                            kind: fieldKind,
-                            doc: doc,
-                            meta: fieldMeta,
-                            access: [AStatic],
-                        });
+                        field.name = elementName;
+                        field.kind = fieldKind;
+                        field.doc = doc;
+                        field.meta = fieldMeta;
+                        fields.push(field);
                     }
 
                     var mainTypeDoc = [];
@@ -359,6 +354,26 @@ class Main {
 
                     if (methods.length == 0) {
                         mainTypeDoc.push((if (api.info.description != "") "    " else "") + "This module currently has no functions.\n");
+                    }
+
+                    var types:Array<{t:TypeDefinition, ?d:String}> = [];
+
+                    if (properties.length > 0) {
+                        var className = moduleName + "Properties";
+                        mainTypeDoc.push('    See `$className` for related properties.');
+                        types.push({
+                            t:{
+                                pos: pos,
+                                pack: ["defold"],
+                                name: className,
+                                kind: TDClass(),
+                                fields: properties,
+                                meta: [
+                                    {name: ":publicFields", pos: pos}
+                                ]
+                            },
+                            d: 'Properties related to the `${moduleName}` module.'
+                        });
                     }
 
                     if (messages.length > 0) {
@@ -379,21 +394,17 @@ class Main {
                         });
                     }
 
-                    if (properties.length > 0) {
-                        var className = moduleName + "Properties";
-                        mainTypeDoc.push('    See `$className` for related properties.');
+                    for (data in messageData) {
+                        data.apply();
                         types.push({
-                            t:{
+                            t: {
                                 pos: pos,
                                 pack: ["defold"],
-                                name: className,
-                                kind: TDClass(),
-                                fields: properties,
-                                meta: [
-                                    {name: ":publicFields", pos: pos}
-                                ]
+                                name: '${moduleName}Message${data.name}',
+                                kind: TDStructure,
+                                fields: data.fields,
                             },
-                            d: 'Properties related to the `${moduleName}` module.'
+                            d: 'Data for the `${moduleName}Messages.${data.msg}` message.'
                         });
                     }
 
@@ -416,7 +427,7 @@ class Main {
                     if (mainTypeDoc.length > 1)
                         mainTypeDoc.insert(1, "");
 
-                    types.push({
+                    types.unshift({
                         t:{
                             pos: pos,
                             pack: ["defold"],
@@ -432,7 +443,6 @@ class Main {
                     });
 
                     if (types.length > 0) {
-                        types.sort(function(a,b) return Reflect.compare(a.t.name, b.t.name));
                         outputModule(moduleName, types);
                     } else {
                         // throw "No types generated";

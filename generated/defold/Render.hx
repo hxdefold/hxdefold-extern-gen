@@ -407,6 +407,41 @@ extern class Render {
 }
 
 /**
+    Messages related to the `Render` module.
+**/
+@:publicFields
+class RenderMessages {
+    /**
+        Set clear color.
+        
+        Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.
+    **/
+    static var clear_color(default, never) = new Message<RenderMessageClearColor>("clear_color");
+
+    /**
+        Draw a line on the screen.
+        
+        Draw a line on the screen. This should mostly be used for debugging purposes.
+    **/
+    static var draw_line(default, never) = new Message<RenderMessageDrawLine>("draw_line");
+
+    /**
+        Draw a text on the screen.
+        
+        Draw a text on the screen. This should mostly be used for debugging purposes.
+    **/
+    static var draw_text(default, never) = new Message<RenderMessageDrawText>("draw_text");
+
+    /**
+        Reports a window size change.
+        
+        Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
+        on mobile devices.
+    **/
+    static var window_resized(default, never) = new Message<RenderMessageWindowResized>("window_resized");
+}
+
+/**
     Data for the `RenderMessages.clear_color` message.
 **/
 typedef RenderMessageClearColor = {
@@ -464,41 +499,6 @@ typedef RenderMessageWindowResized = {
         the new window width (number)
     **/
     var width:TODO;
-}
-
-/**
-    Messages related to the `Render` module.
-**/
-@:publicFields
-class RenderMessages {
-    /**
-        Set clear color.
-        
-        Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.
-    **/
-    static var clear_color(default, never):Message<RenderMessageClearColor> = new Message("clear_color");
-
-    /**
-        Draw a line on the screen.
-        
-        Draw a line on the screen. This should mostly be used for debugging purposes.
-    **/
-    static var draw_line(default, never):Message<RenderMessageDrawLine> = new Message("draw_line");
-
-    /**
-        Draw a text on the screen.
-        
-        Draw a text on the screen. This should mostly be used for debugging purposes.
-    **/
-    static var draw_text(default, never):Message<RenderMessageDrawText> = new Message("draw_text");
-
-    /**
-        Reports a window size change.
-        
-        Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
-        on mobile devices.
-    **/
-    static var window_resized(default, never):Message<RenderMessageWindowResized> = new Message("window_resized");
 }
 
 @:native("_G.render")

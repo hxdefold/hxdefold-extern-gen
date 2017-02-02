@@ -104,6 +104,33 @@ extern class Sound {
 }
 
 /**
+    Messages related to the `Sound` module.
+**/
+@:publicFields
+class SoundMessages {
+    /**
+        Plays a sound.
+        
+        Post this message to a sound-component to make it play its sound. Multiple voices is support. The limit is set to 32 voices per sound component.
+    **/
+    static var play_sound(default, never) = new Message<SoundMessagePlaySound>("play_sound");
+
+    /**
+        Set sound gain.
+        
+        Post this message to a sound-component to set gain on all active playing voices.
+    **/
+    static var set_gain(default, never) = new Message<SoundMessageSetGain>("set_gain");
+
+    /**
+        Stop a playing a sound(s).
+        
+        Post this message to a sound-component to make it stop playing all active voices
+    **/
+    static var stop_sound(default, never) = new Message<Void>("stop_sound");
+}
+
+/**
     Data for the `SoundMessages.play_sound` message.
 **/
 typedef SoundMessagePlaySound = {
@@ -126,31 +153,4 @@ typedef SoundMessageSetGain = {
         sound gain between 0 and 1, default is 1 (number)
     **/
     @:optional var gain:TODO;
-}
-
-/**
-    Messages related to the `Sound` module.
-**/
-@:publicFields
-class SoundMessages {
-    /**
-        Plays a sound.
-        
-        Post this message to a sound-component to make it play its sound. Multiple voices is support. The limit is set to 32 voices per sound component.
-    **/
-    static var play_sound(default, never):Message<SoundMessagePlaySound> = new Message("play_sound");
-
-    /**
-        Set sound gain.
-        
-        Post this message to a sound-component to set gain on all active playing voices.
-    **/
-    static var set_gain(default, never):Message<SoundMessageSetGain> = new Message("set_gain");
-
-    /**
-        Stop a playing a sound(s).
-        
-        Post this message to a sound-component to make it stop playing all active voices
-    **/
-    static var stop_sound(default, never):Message<Void> = new Message("stop_sound");
 }

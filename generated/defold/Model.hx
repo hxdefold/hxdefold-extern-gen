@@ -87,12 +87,12 @@ class ModelProperties {
         
         The normalized animation cursor. The type of the property is number.
     **/
-    static var cursor(default, never):Property<TODO> = new Property("cursor");
+    static var cursor(default, never) = new Property<TODO>("cursor");
 
     /**
         Model playback_rate (number).
         
         The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
     **/
-    static var playback_rate(default, never):Property<TODO> = new Property("playback_rate");
+    static var playback_rate(default, never) = new Property<TODO>("playback_rate");
 }

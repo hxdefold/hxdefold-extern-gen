@@ -28,28 +28,28 @@ class LabelProperties {
         
         The color of the label. The type of the property is vector4.
     **/
-    static var color(default, never):Property<TODO> = new Property("color");
+    static var color(default, never) = new Property<TODO>("color");
 
     /**
         Label outline (vector4).
         
         The outline color of the label. The type of the property is vector4.
     **/
-    static var outline(default, never):Property<TODO> = new Property("outline");
+    static var outline(default, never) = new Property<TODO>("outline");
 
     /**
         Label scale (vector3|number).
         
         The scale of the label. The type of the property is vector3.
     **/
-    static var scale(default, never):Property<TODO> = new Property("scale");
+    static var scale(default, never) = new Property<TODO>("scale");
 
     /**
         Label shadow (vector4).
         
         The shadow color of the label. The type of the property is vector4.
     **/
-    static var shadow(default, never):Property<TODO> = new Property("shadow");
+    static var shadow(default, never) = new Property<TODO>("shadow");
 
     /**
         Label size (vector3).
@@ -57,5 +57,5 @@ class LabelProperties {
         Returns the size of the label. THe size will constrain the text if line break is enabled
         The type of the property is vector3.
     **/
-    static var size(default, never):Property<TODO> = new Property("size");
+    static var size(default, never) = new Property<TODO>("size");
 }

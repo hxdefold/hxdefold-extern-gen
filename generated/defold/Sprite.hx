@@ -3,8 +3,8 @@ package defold;
 /**
     Functions, messages and properties used to manipulate sprite components.
 
-    See `SpriteMessages` for related messages.
     See `SpriteProperties` for related properties.
+    See `SpriteMessages` for related messages.
 **/
 @:native("_G.sprite")
 extern class Sprite {
@@ -58,28 +58,24 @@ extern class Sprite {
 }
 
 /**
-    Data for the `SpriteMessages.animation_done` message.
+    Properties related to the `Sprite` module.
 **/
-typedef SpriteMessageAnimationDone = {
+@:publicFields
+class SpriteProperties {
     /**
-        the current tile of the sprite (number)
+        Sprite scale (vector3).
+        
+        The non-uniform scale of the sprite. The type of the property is vector3.
     **/
-    var current_tile:TODO;
+    static var scale(default, never) = new Property<TODO>("scale");
 
     /**
-        id of the animation that was completed (hash)
+        Sprite size (vector3).
+        
+        [READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.
+        The type of the property is vector3.
     **/
-    var id:TODO;
-}
-
-/**
-    Data for the `SpriteMessages.play_animation` message.
-**/
-typedef SpriteMessagePlayAnimation = {
-    /**
-        the id of the animation to play
-    **/
-    var id:TODO;
+    static var size(default, never) = new Property<TODO>("size");
 }
 
 /**
@@ -103,33 +99,37 @@ class SpriteMessages {
         See `play_animation` for more information and examples of how to use
         this message.
     **/
-    static var animation_done(default, never):Message<SpriteMessageAnimationDone> = new Message("animation_done");
+    static var animation_done(default, never) = new Message<SpriteMessageAnimationDone>("animation_done");
 
     /**
         Plays a sprite animation.
         
         Post this message to a sprite-component to make it play an animation from its tile set.
     **/
-    static var play_animation(default, never):Message<SpriteMessagePlayAnimation> = new Message("play_animation");
+    static var play_animation(default, never) = new Message<SpriteMessagePlayAnimation>("play_animation");
 }
 
 /**
-    Properties related to the `Sprite` module.
+    Data for the `SpriteMessages.animation_done` message.
 **/
-@:publicFields
-class SpriteProperties {
+typedef SpriteMessageAnimationDone = {
     /**
-        Sprite scale (vector3).
-        
-        The non-uniform scale of the sprite. The type of the property is vector3.
+        the current tile of the sprite (number)
     **/
-    static var scale(default, never):Property<TODO> = new Property("scale");
+    var current_tile:TODO;
 
     /**
-        Sprite size (vector3).
-        
-        [READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.
-        The type of the property is vector3.
+        id of the animation that was completed (hash)
     **/
-    static var size(default, never):Property<TODO> = new Property("size");
+    var id:TODO;
+}
+
+/**
+    Data for the `SpriteMessages.play_animation` message.
+**/
+typedef SpriteMessagePlayAnimation = {
+    /**
+        the id of the animation to play
+    **/
+    var id:TODO;
 }

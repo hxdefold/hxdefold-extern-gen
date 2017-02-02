@@ -12,6 +12,20 @@ extern class GuiDdf {
 }
 
 /**
+    Messages related to the `GuiDdf` module.
+**/
+@:publicFields
+class GuiDdfMessages {
+    /**
+        Reports a layout change.
+        
+        This message is broadcast to every GUI component when a layout change has been initiated
+        on device.
+    **/
+    static var layout_changed(default, never) = new Message<GuiDdfMessageLayoutChanged>("layout_changed");
+}
+
+/**
     Data for the `GuiDdfMessages.layout_changed` message.
 **/
 typedef GuiDdfMessageLayoutChanged = {
@@ -24,18 +38,4 @@ typedef GuiDdfMessageLayoutChanged = {
         the id of the layout the engine is changing from (hash)
     **/
     var previous_id:TODO;
-}
-
-/**
-    Messages related to the `GuiDdf` module.
-**/
-@:publicFields
-class GuiDdfMessages {
-    /**
-        Reports a layout change.
-        
-        This message is broadcast to every GUI component when a layout change has been initiated
-        on device.
-    **/
-    static var layout_changed(default, never):Message<GuiDdfMessageLayoutChanged> = new Message("layout_changed");
 }
