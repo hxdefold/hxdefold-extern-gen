@@ -1,5 +1,11 @@
 package defold;
 
+/**
+	Functions and constants for doing inter-app communication on iOS and
+	Android.
+
+	See `IacVariables` for related variables.
+**/
 @:native("_G.iac") extern class Iac {
 	/**
 		Set iac listener.

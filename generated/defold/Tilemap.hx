@@ -1,5 +1,10 @@
 package defold;
 
+/**
+	Functions and messages used to manipulate tile map components.
+
+	See `TilemapMessages` for related messages.
+**/
 @:native("_G.tilemap") extern class Tilemap {
 	/**
 		Get the bounds of a tile map.

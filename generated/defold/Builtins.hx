@@ -1,5 +1,8 @@
 package defold;
 
+/**
+	Built-in scripting functions.
+**/
 @:native("_G") extern class Builtins {
 	/**
 		Hashes a string.

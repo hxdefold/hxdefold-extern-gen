@@ -82,6 +82,14 @@ typedef CollisionObjectMessageContactPointResponse = {
 	var group : TODO;
 }
 
+/**
+	Functions and messages for collision object physics interaction
+	with other objects (collisions and ray-casting) and control of
+	physical behaviors.
+
+	See `PhysicsMessages` for related messages.
+	See `PhysicsProperties` for related properties.
+**/
 @:native("_G.physics") extern class Physics {
 	/**
 		Requests a ray cast to be performed.

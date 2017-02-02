@@ -1,5 +1,12 @@
 package defold;
 
+/**
+	Rendering functions, messages and constants. The "render" namespace is
+	accessible only from render scripts.
+
+	See `RenderMessages` for related messages.
+	See `RenderVariables` for related variables.
+**/
 @:native("_G.render") extern class Render {
 	/**
 		Clears the active render target.

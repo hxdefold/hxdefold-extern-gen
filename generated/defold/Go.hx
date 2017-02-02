@@ -1,5 +1,14 @@
 package defold;
 
+/**
+	Functions, core hooks, messages and constants for manipulation of
+	game objects. The "go" namespace is accessible from game object script
+	files.
+
+	See `GoMessages` for related messages.
+	See `GoProperties` for related properties.
+	See `GoVariables` for related variables.
+**/
 @:native("_G.go") extern class Go {
 	/**
 		Called when a script component is finalized.

@@ -1,5 +1,11 @@
 package defold;
 
+/**
+	Functions and messages for controlling sound components and
+	mixer groups.
+
+	See `SoundMessages` for related messages.
+**/
 @:native("_G.sound") extern class Sound {
 	/**
 		Get mixer group gain.

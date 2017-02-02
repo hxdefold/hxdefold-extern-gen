@@ -1,5 +1,11 @@
 package defold;
 
+/**
+	Functions and constants for interacting with Apple's In-app purchases
+	and Google's In-app billing.
+
+	See `IapVariables` for related variables.
+**/
 @:native("_G.iap") extern class Iap {
 	/**
 		Buy product.

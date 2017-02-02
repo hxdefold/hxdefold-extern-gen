@@ -1,5 +1,8 @@
 package defold;
 
+/**
+	Functions for mathematical operations on vectors, matrices and quaternions.
+**/
 @:native("_G.vmath") extern class Vmath {
 	/**
 		Calculates the conjugate of a quaternion.

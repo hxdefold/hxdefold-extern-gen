@@ -1,5 +1,11 @@
 package defold;
 
+/**
+	Functions and constants to access the window, window event listeners
+	and screen dimming.
+
+	See `WindowVariables` for related variables.
+**/
 @:native("_G.window") extern class Window {
 	/**
 		Get the mode for screen dimming.

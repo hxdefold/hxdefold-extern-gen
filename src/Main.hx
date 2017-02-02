@@ -8,6 +8,14 @@ typedef Manifest = {
 
 typedef Api = {
     var elements:Array<ApiElement>;
+    var info:ApiInfo;
+}
+
+typedef ApiInfo = {
+    var name:String;
+    var description:String;
+    var namespace:String;
+    var brief:String;
 }
 
 typedef ApiElement = {
@@ -295,8 +303,71 @@ class Main {
                         });
                     }
 
-                    if (methods.length > 0)
+                    var mainTypeDoc = [];
+                    if (api.info.description != "")
+                        mainTypeDoc.push(api.info.description.split("\n").join("\n\t"));
+
+                    if (methods.length == 0) {
+                        mainTypeDoc.push((if (api.info.description != "") "\t" else "") + "This module currently has no functions.\n");
+                    }
+
+                    if (messages.length > 0) {
+                        var className = moduleName + "Messages";
+                        mainTypeDoc.push('\tSee `$className` for related messages.');
+                        types.push({
+                            t:{
+                                pos: pos,
+                                pack: ["defold"],
+                                name: className,
+                                kind: TDClass(),
+                                fields: messages,
+                                meta: [
+                                    {name: ":publicFields", pos: pos}
+                                ]
+                            },
+                            d: 'Messages related to the `${moduleName}` module.'
+                        });
+                    }
+
+                    if (properties.length > 0) {
+                        var className = moduleName + "Properties";
+                        mainTypeDoc.push('\tSee `$className` for related properties.');
+                        types.push({
+                            t:{
+                                pos: pos,
+                                pack: ["defold"],
+                                name: className,
+                                kind: TDClass(),
+                                fields: properties,
+                                meta: [
+                                    {name: ":publicFields", pos: pos}
+                                ]
+                            },
+                            d: 'Properties related to the `${moduleName}` module.'
+                        });
+                    }
+
+                    if (vars.length > 0) {
+                        var className = moduleName + "Variables";
+                        mainTypeDoc.push('\tSee `$className` for related variables.');
                         types.push({t:{
+                            pos: pos,
+                            pack: ["defold"],
+                            name: className,
+                            kind: TDClass(),
+                            isExtern: true,
+                            fields: vars,
+                            meta: [
+                                {name: ":native", pos: pos, params: [{expr: EConst(CString(nativePath)), pos: pos}]}
+                            ]
+                        }});
+                    }
+
+                    if (mainTypeDoc.length > 1)
+                        mainTypeDoc.insert(1, "");
+
+                    types.push({
+                        t:{
                             pos: pos,
                             pack: ["defold"],
                             name: moduleName,
@@ -306,50 +377,9 @@ class Main {
                             meta: [
                                 {name: ":native", pos: pos, params: [{expr: EConst(CString(nativePath)), pos: pos}]}
                             ]
-                        }});
-
-                    if (messages.length > 0)
-                        types.push({
-                            t:{
-                                pos: pos,
-                                pack: ["defold"],
-                                name: moduleName + "Messages",
-                                kind: TDClass(),
-                                fields: messages,
-                                meta: [
-                                    {name: ":publicFields", pos: pos}
-                                ]
-                            },
-                            d: 'Messages related to the `${moduleName}` module.'
-                        });
-
-                    if (properties.length > 0)
-                        types.push({
-                            t:{
-                                pos: pos,
-                                pack: ["defold"],
-                                name: moduleName + "Properties",
-                                kind: TDClass(),
-                                fields: properties,
-                                meta: [
-                                    {name: ":publicFields", pos: pos}
-                                ]
-                            },
-                            d: 'Properties related to the `${moduleName}` module.'
-                        });
-
-                    if (vars.length > 0)
-                        types.push({t:{
-                            pos: pos,
-                            pack: ["defold"],
-                            name: moduleName + "Variables",
-                            kind: TDClass(),
-                            isExtern: true,
-                            fields: vars,
-                            meta: [
-                                {name: ":native", pos: pos, params: [{expr: EConst(CString(nativePath)), pos: pos}]}
-                            ]
-                        }});
+                        },
+                        d: mainTypeDoc.join("\n"),
+                    });
 
                     if (types.length > 0) {
                         types.sort(function(a,b) return Reflect.compare(a.t.name, b.t.name));

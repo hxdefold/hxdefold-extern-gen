@@ -1,6 +1,16 @@
 package defold;
 
 /**
+	This module currently has no functions.
+
+
+	See `EngineMessages` for related messages.
+**/
+@:native("_G") extern class Engine {
+
+}
+
+/**
 	Data for the `EngineMessages.exit` message.
 **/
 typedef EngineMessageExit = {

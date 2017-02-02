@@ -1,5 +1,11 @@
 package defold;
 
+/**
+	Functions, messages and properties used to manipulate sprite components.
+
+	See `SpriteMessages` for related messages.
+	See `SpriteProperties` for related properties.
+**/
 @:native("_G.sprite") extern class Sprite {
 	/**
 		Reset a shader constant for a sprite.

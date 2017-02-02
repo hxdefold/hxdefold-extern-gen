@@ -1,6 +1,16 @@
 package defold;
 
 /**
+	This module currently has no functions.
+
+
+	See `GuiDdfMessages` for related messages.
+**/
+@:native("_G") extern class GuiDdf {
+
+}
+
+/**
 	Data for the `GuiDdfMessages.layout_changed` message.
 **/
 typedef GuiDdfMessageLayoutChanged = {

@@ -1,5 +1,12 @@
 package defold;
 
+/**
+	Functions and messages for interacting with the 'Spine' 2D bone
+	animation system.
+
+	See `SpineMessages` for related messages.
+	See `SpineProperties` for related properties.
+**/
 @:native("_G.spine") extern class Spine {
 	/**
 		Cancel all animation on a spine model.
