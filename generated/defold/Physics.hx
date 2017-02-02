@@ -1,7 +1,7 @@
 package defold;
 
 /**
-	Data for the `CollisionObjectMessages.apply_force` message.
+    Data for the `CollisionObjectMessages.apply_force` message.
 **/
 typedef CollisionObjectMessageApplyForce = {
 	/**
@@ -15,7 +15,7 @@ typedef CollisionObjectMessageApplyForce = {
 }
 
 /**
-	Data for the `CollisionObjectMessages.collision_response` message.
+    Data for the `CollisionObjectMessages.collision_response` message.
 **/
 typedef CollisionObjectMessageCollisionResponse = {
 	/**
@@ -33,7 +33,7 @@ typedef CollisionObjectMessageCollisionResponse = {
 }
 
 /**
-	Data for the `CollisionObjectMessages.contact_point_response` message.
+    Data for the `CollisionObjectMessages.contact_point_response` message.
 **/
 typedef CollisionObjectMessageContactPointResponse = {
 	/**
@@ -83,12 +83,12 @@ typedef CollisionObjectMessageContactPointResponse = {
 }
 
 /**
-	Functions and messages for collision object physics interaction
-	with other objects (collisions and ray-casting) and control of
-	physical behaviors.
+    Functions and messages for collision object physics interaction
+    with other objects (collisions and ray-casting) and control of
+    physical behaviors.
 
-	See `PhysicsMessages` for related messages.
-	See `PhysicsProperties` for related properties.
+    See `PhysicsMessages` for related messages.
+    See `PhysicsProperties` for related properties.
 **/
 @:native("_G.physics") extern class Physics {
 	/**
@@ -108,7 +108,7 @@ typedef CollisionObjectMessageContactPointResponse = {
 }
 
 /**
-	Data for the `PhysicsMessages.ray_cast_response` message.
+    Data for the `PhysicsMessages.ray_cast_response` message.
 **/
 typedef PhysicsMessageRayCastResponse = {
 	/**
@@ -138,7 +138,7 @@ typedef PhysicsMessageRayCastResponse = {
 }
 
 /**
-	Data for the `PhysicsMessages.trigger_response` message.
+    Data for the `PhysicsMessages.trigger_response` message.
 **/
 typedef PhysicsMessageTriggerResponse = {
 	/**
@@ -156,7 +156,7 @@ typedef PhysicsMessageTriggerResponse = {
 }
 
 /**
-	Data for the `PhysicsMessages.velocity_response` message.
+    Data for the `PhysicsMessages.velocity_response` message.
 **/
 typedef PhysicsMessageVelocityResponse = {
 	/**
@@ -171,7 +171,7 @@ typedef PhysicsMessageVelocityResponse = {
 }
 
 /**
-	Messages related to the `Physics` module.
+    Messages related to the `Physics` module.
 **/
 @:publicFields class PhysicsMessages {
 	/**
@@ -248,7 +248,7 @@ typedef PhysicsMessageVelocityResponse = {
 }
 
 /**
-	Properties related to the `Physics` module.
+    Properties related to the `Physics` module.
 **/
 @:publicFields class PhysicsProperties {
 	/**

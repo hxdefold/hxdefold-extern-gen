@@ -1,8 +1,8 @@
 package defold;
 
 /**
-	Functions for controlling collection factory components which are
-	used to dynamically spawn collections into the runtime.
+    Functions for controlling collection factory components which are
+    used to dynamically spawn collections into the runtime.
 **/
 @:native("_G.collectionfactory") extern class Collectionfactory {
 	/**

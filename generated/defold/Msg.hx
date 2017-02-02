@@ -1,7 +1,7 @@
 package defold;
 
 /**
-	Functions for passing messages and constructing URL objects.
+    Functions for passing messages and constructing URL objects.
 **/
 @:native("_G.msg") extern class Msg {
 	/**

@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Functions and messages for interacting with model components.
+    Functions and messages for interacting with model components.
 
-	See `ModelProperties` for related properties.
+    See `ModelProperties` for related properties.
 **/
 @:native("_G.model") extern class Model {
 	/**
@@ -77,7 +77,7 @@ package defold;
 }
 
 /**
-	Properties related to the `Model` module.
+    Properties related to the `Model` module.
 **/
 @:publicFields class ModelProperties {
 	/**

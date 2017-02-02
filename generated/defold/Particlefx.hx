@@ -1,10 +1,10 @@
 package defold;
 
 /**
-	Functions for controlling particle effect component playback and
-	shader constants.
+    Functions for controlling particle effect component playback and
+    shader constants.
 
-	See `ParticlefxVariables` for related variables.
+    See `ParticlefxVariables` for related variables.
 **/
 @:native("_G.particlefx") extern class Particlefx {
 	/**

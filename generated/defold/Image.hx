@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Functions for creating image objects.
+    Functions for creating image objects.
 
-	See `ImageVariables` for related variables.
+    See `ImageVariables` for related variables.
 **/
 @:native("_G.image") extern class Image {
 	/**

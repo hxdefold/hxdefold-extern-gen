@@ -1,10 +1,10 @@
 package defold;
 
 /**
-	Functions and constants for interacting with local, as well as
-	Apple's and Google's push notification services.
+    Functions and constants for interacting with local, as well as
+    Apple's and Google's push notification services.
 
-	See `PushVariables` for related variables.
+    See `PushVariables` for related variables.
 **/
 @:native("_G.push") extern class Push {
 	/**

@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Functions and constants for interacting with Facebook APIs.
+    Functions and constants for interacting with Facebook APIs.
 
-	See `FacebookVariables` for related variables.
+    See `FacebookVariables` for related variables.
 **/
 @:native("_G.facebook") extern class Facebook {
 	/**

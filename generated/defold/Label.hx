@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Functions to manipulate a label component.
+    Functions to manipulate a label component.
 
-	See `LabelProperties` for related properties.
+    See `LabelProperties` for related properties.
 **/
 @:native("_G.label") extern class Label {
 	/**
@@ -18,7 +18,7 @@ package defold;
 }
 
 /**
-	Properties related to the `Label` module.
+    Properties related to the `Label` module.
 **/
 @:publicFields class LabelProperties {
 	/**

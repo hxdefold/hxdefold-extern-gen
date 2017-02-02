@@ -1,13 +1,13 @@
 package defold;
 
 /**
-	Functions, core hooks, messages and constants for manipulation of
-	game objects. The "go" namespace is accessible from game object script
-	files.
+    Functions, core hooks, messages and constants for manipulation of
+    game objects. The "go" namespace is accessible from game object script
+    files.
 
-	See `GoMessages` for related messages.
-	See `GoProperties` for related properties.
-	See `GoVariables` for related variables.
+    See `GoMessages` for related messages.
+    See `GoProperties` for related properties.
+    See `GoVariables` for related variables.
 **/
 @:native("_G.go") extern class Go {
 	/**
@@ -350,7 +350,7 @@ package defold;
 }
 
 /**
-	Data for the `GoMessages.set_parent` message.
+    Data for the `GoMessages.set_parent` message.
 **/
 typedef GoMessageSetParent = {
 	/**
@@ -364,7 +364,7 @@ typedef GoMessageSetParent = {
 }
 
 /**
-	Data for the `GoMessages.transform_response` message.
+    Data for the `GoMessages.transform_response` message.
 **/
 typedef GoMessageTransformResponse = {
 	/**
@@ -394,7 +394,7 @@ typedef GoMessageTransformResponse = {
 }
 
 /**
-	Messages related to the `Go` module.
+    Messages related to the `Go` module.
 **/
 @:publicFields class GoMessages {
 	/**
@@ -489,7 +489,7 @@ typedef GoMessageTransformResponse = {
 }
 
 /**
-	Properties related to the `Go` module.
+    Properties related to the `Go` module.
 **/
 @:publicFields class GoProperties {
 	/**

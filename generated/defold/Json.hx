@@ -1,7 +1,7 @@
 package defold;
 
 /**
-	Manipulation of JSON data strings.
+    Manipulation of JSON data strings.
 **/
 @:native("_G.json") extern class Json {
 	/**

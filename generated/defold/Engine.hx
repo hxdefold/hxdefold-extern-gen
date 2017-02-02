@@ -1,17 +1,17 @@
 package defold;
 
 /**
-	This module currently has no functions.
+    This module currently has no functions.
 
 
-	See `EngineMessages` for related messages.
+    See `EngineMessages` for related messages.
 **/
 @:native("_G") extern class Engine {
 
 }
 
 /**
-	Data for the `EngineMessages.exit` message.
+    Data for the `EngineMessages.exit` message.
 **/
 typedef EngineMessageExit = {
 	/**
@@ -21,7 +21,7 @@ typedef EngineMessageExit = {
 }
 
 /**
-	Data for the `EngineMessages.reboot` message.
+    Data for the `EngineMessages.reboot` message.
 **/
 typedef EngineMessageReboot = {
 	/**
@@ -51,7 +51,7 @@ typedef EngineMessageReboot = {
 }
 
 /**
-	Data for the `EngineMessages.set_update_frequency` message.
+    Data for the `EngineMessages.set_update_frequency` message.
 **/
 typedef EngineMessageSetUpdateFrequency = {
 	/**
@@ -61,7 +61,7 @@ typedef EngineMessageSetUpdateFrequency = {
 }
 
 /**
-	Data for the `EngineMessages.start_record` message.
+    Data for the `EngineMessages.start_record` message.
 **/
 typedef EngineMessageStartRecord = {
 	/**
@@ -79,7 +79,7 @@ typedef EngineMessageStartRecord = {
 }
 
 /**
-	Messages related to the `Engine` module.
+    Messages related to the `Engine` module.
 **/
 @:publicFields class EngineMessages {
 	/**

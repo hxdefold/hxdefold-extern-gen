@@ -1,11 +1,11 @@
 package defold;
 
 /**
-	Functions and messages for interacting with the 'Spine' 2D bone
-	animation system.
+    Functions and messages for interacting with the 'Spine' 2D bone
+    animation system.
 
-	See `SpineMessages` for related messages.
-	See `SpineProperties` for related properties.
+    See `SpineMessages` for related messages.
+    See `SpineProperties` for related properties.
 **/
 @:native("_G.spine") extern class Spine {
 	/**
@@ -103,7 +103,7 @@ package defold;
 }
 
 /**
-	Data for the `SpineMessages.spine_animation_done` message.
+    Data for the `SpineMessages.spine_animation_done` message.
 **/
 typedef SpineMessageSpineAnimationDone = {
 	/**
@@ -117,7 +117,7 @@ typedef SpineMessageSpineAnimationDone = {
 }
 
 /**
-	Data for the `SpineMessages.spine_event` message.
+    Data for the `SpineMessages.spine_event` message.
 **/
 typedef SpineMessageSpineEvent = {
 	/**
@@ -151,7 +151,7 @@ typedef SpineMessageSpineEvent = {
 }
 
 /**
-	Messages related to the `Spine` module.
+    Messages related to the `Spine` module.
 **/
 @:publicFields class SpineMessages {
 	/**
@@ -179,7 +179,7 @@ typedef SpineMessageSpineEvent = {
 }
 
 /**
-	Properties related to the `Spine` module.
+    Properties related to the `Spine` module.
 **/
 @:publicFields class SpineProperties {
 	/**

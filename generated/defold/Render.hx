@@ -1,11 +1,11 @@
 package defold;
 
 /**
-	Rendering functions, messages and constants. The "render" namespace is
-	accessible only from render scripts.
+    Rendering functions, messages and constants. The "render" namespace is
+    accessible only from render scripts.
 
-	See `RenderMessages` for related messages.
-	See `RenderVariables` for related variables.
+    See `RenderMessages` for related messages.
+    See `RenderVariables` for related variables.
 **/
 @:native("_G.render") extern class Render {
 	/**
@@ -406,7 +406,7 @@ package defold;
 }
 
 /**
-	Data for the `RenderMessages.clear_color` message.
+    Data for the `RenderMessages.clear_color` message.
 **/
 typedef RenderMessageClearColor = {
 	/**
@@ -416,7 +416,7 @@ typedef RenderMessageClearColor = {
 }
 
 /**
-	Data for the `RenderMessages.draw_line` message.
+    Data for the `RenderMessages.draw_line` message.
 **/
 typedef RenderMessageDrawLine = {
 	/**
@@ -434,7 +434,7 @@ typedef RenderMessageDrawLine = {
 }
 
 /**
-	Data for the `RenderMessages.draw_text` message.
+    Data for the `RenderMessages.draw_text` message.
 **/
 typedef RenderMessageDrawText = {
 	/**
@@ -448,7 +448,7 @@ typedef RenderMessageDrawText = {
 }
 
 /**
-	Data for the `RenderMessages.window_resized` message.
+    Data for the `RenderMessages.window_resized` message.
 **/
 typedef RenderMessageWindowResized = {
 	/**
@@ -462,7 +462,7 @@ typedef RenderMessageWindowResized = {
 }
 
 /**
-	Messages related to the `Render` module.
+    Messages related to the `Render` module.
 **/
 @:publicFields class RenderMessages {
 	/**

@@ -1,11 +1,11 @@
 package defold;
 
 /**
-	GUI core hooks, functions, messages, properties and constants for
-	creation and manipulation of GUI nodes. The "gui" namespace is
-	accessible only from gui scripts.
+    GUI core hooks, functions, messages, properties and constants for
+    creation and manipulation of GUI nodes. The "gui" namespace is
+    accessible only from gui scripts.
 
-	See `GuiVariables` for related variables.
+    See `GuiVariables` for related variables.
 **/
 @:native("_G.gui") extern class Gui {
 	/**

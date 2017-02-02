@@ -1,19 +1,19 @@
 package defold;
 
 /**
-	Messages for controlling and interacting with collection proxies
-	which are used to dynamically load collections into the runtime.
+    Messages for controlling and interacting with collection proxies
+    which are used to dynamically load collections into the runtime.
 
-	This module currently has no functions.
+    This module currently has no functions.
 
-	See `CollectionProxyMessages` for related messages.
+    See `CollectionProxyMessages` for related messages.
 **/
 @:native("_G") extern class CollectionProxy {
 
 }
 
 /**
-	Data for the `CollectionProxyMessages.set_time_step` message.
+    Data for the `CollectionProxyMessages.set_time_step` message.
 **/
 typedef CollectionProxyMessageSetTimeStep = {
 	/**
@@ -27,7 +27,7 @@ typedef CollectionProxyMessageSetTimeStep = {
 }
 
 /**
-	Messages related to the `CollectionProxy` module.
+    Messages related to the `CollectionProxy` module.
 **/
 @:publicFields class CollectionProxyMessages {
 	/**

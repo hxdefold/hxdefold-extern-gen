@@ -1,18 +1,18 @@
 package defold;
 
 /**
-	Messages to control camera components and camera focus.
+    Messages to control camera components and camera focus.
 
-	This module currently has no functions.
+    This module currently has no functions.
 
-	See `CameraMessages` for related messages.
+    See `CameraMessages` for related messages.
 **/
 @:native("_G") extern class Camera {
 
 }
 
 /**
-	Data for the `CameraMessages.set_camera` message.
+    Data for the `CameraMessages.set_camera` message.
 **/
 typedef CameraMessageSetCamera = {
 	/**
@@ -34,7 +34,7 @@ typedef CameraMessageSetCamera = {
 }
 
 /**
-	Messages related to the `Camera` module.
+    Messages related to the `Camera` module.
 **/
 @:publicFields class CameraMessages {
 	/**

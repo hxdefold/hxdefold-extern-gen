@@ -1,7 +1,7 @@
 package defold;
 
 /**
-	Functions for mathematical operations on vectors, matrices and quaternions.
+    Functions for mathematical operations on vectors, matrices and quaternions.
 **/
 @:native("_G.vmath") extern class Vmath {
 	/**

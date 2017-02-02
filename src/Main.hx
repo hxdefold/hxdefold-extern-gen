@@ -355,15 +355,15 @@ class Main {
 
                     var mainTypeDoc = [];
                     if (api.info.description != "")
-                        mainTypeDoc.push(api.info.description.split("\n").join("\n\t"));
+                        mainTypeDoc.push(api.info.description.split("\n").join("\n    "));
 
                     if (methods.length == 0) {
-                        mainTypeDoc.push((if (api.info.description != "") "\t" else "") + "This module currently has no functions.\n");
+                        mainTypeDoc.push((if (api.info.description != "") "    " else "") + "This module currently has no functions.\n");
                     }
 
                     if (messages.length > 0) {
                         var className = moduleName + "Messages";
-                        mainTypeDoc.push('\tSee `$className` for related messages.');
+                        mainTypeDoc.push('    See `$className` for related messages.');
                         types.push({
                             t:{
                                 pos: pos,
@@ -381,7 +381,7 @@ class Main {
 
                     if (properties.length > 0) {
                         var className = moduleName + "Properties";
-                        mainTypeDoc.push('\tSee `$className` for related properties.');
+                        mainTypeDoc.push('    See `$className` for related properties.');
                         types.push({
                             t:{
                                 pos: pos,
@@ -399,7 +399,7 @@ class Main {
 
                     if (vars.length > 0) {
                         var className = moduleName + "Variables";
-                        mainTypeDoc.push('\tSee `$className` for related variables.');
+                        mainTypeDoc.push('    See `$className` for related variables.');
                         types.push({t:{
                             pos: pos,
                             pack: ["defold"],
@@ -451,7 +451,7 @@ class Main {
         for (type in types) {
             var doc = "";
             if (type.d != null) {
-                doc = '/**\n\t${type.d}\n**/\n';
+                doc = '/**\n    ${type.d}\n**/\n';
             }
             out.push(doc+printer.printTypeDefinition(type.t, false));
         }

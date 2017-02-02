@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Native crash logging functions and constants.
+    Native crash logging functions and constants.
 
-	See `CrashVariables` for related variables.
+    See `CrashVariables` for related variables.
 **/
 @:native("_G.crash") extern class Crash {
 	/**

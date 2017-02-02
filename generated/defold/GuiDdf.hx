@@ -1,17 +1,17 @@
 package defold;
 
 /**
-	This module currently has no functions.
+    This module currently has no functions.
 
 
-	See `GuiDdfMessages` for related messages.
+    See `GuiDdfMessages` for related messages.
 **/
 @:native("_G") extern class GuiDdf {
 
 }
 
 /**
-	Data for the `GuiDdfMessages.layout_changed` message.
+    Data for the `GuiDdfMessages.layout_changed` message.
 **/
 typedef GuiDdfMessageLayoutChanged = {
 	/**
@@ -25,7 +25,7 @@ typedef GuiDdfMessageLayoutChanged = {
 }
 
 /**
-	Messages related to the `GuiDdf` module.
+    Messages related to the `GuiDdf` module.
 **/
 @:publicFields class GuiDdfMessages {
 	/**

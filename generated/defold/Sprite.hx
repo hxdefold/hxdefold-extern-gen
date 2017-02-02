@@ -1,10 +1,10 @@
 package defold;
 
 /**
-	Functions, messages and properties used to manipulate sprite components.
+    Functions, messages and properties used to manipulate sprite components.
 
-	See `SpriteMessages` for related messages.
-	See `SpriteProperties` for related properties.
+    See `SpriteMessages` for related messages.
+    See `SpriteProperties` for related properties.
 **/
 @:native("_G.sprite") extern class Sprite {
 	/**
@@ -57,7 +57,7 @@ package defold;
 }
 
 /**
-	Data for the `SpriteMessages.animation_done` message.
+    Data for the `SpriteMessages.animation_done` message.
 **/
 typedef SpriteMessageAnimationDone = {
 	/**
@@ -71,7 +71,7 @@ typedef SpriteMessageAnimationDone = {
 }
 
 /**
-	Data for the `SpriteMessages.play_animation` message.
+    Data for the `SpriteMessages.play_animation` message.
 **/
 typedef SpriteMessagePlayAnimation = {
 	/**
@@ -81,7 +81,7 @@ typedef SpriteMessagePlayAnimation = {
 }
 
 /**
-	Messages related to the `Sprite` module.
+    Messages related to the `Sprite` module.
 **/
 @:publicFields class SpriteMessages {
 	/**
@@ -111,7 +111,7 @@ typedef SpriteMessagePlayAnimation = {
 }
 
 /**
-	Properties related to the `Sprite` module.
+    Properties related to the `Sprite` module.
 **/
 @:publicFields class SpriteProperties {
 	/**

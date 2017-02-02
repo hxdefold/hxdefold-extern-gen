@@ -1,10 +1,10 @@
 package defold;
 
 /**
-	Functions and messages for controlling sound components and
-	mixer groups.
+    Functions and messages for controlling sound components and
+    mixer groups.
 
-	See `SoundMessages` for related messages.
+    See `SoundMessages` for related messages.
 **/
 @:native("_G.sound") extern class Sound {
 	/**
@@ -103,7 +103,7 @@ package defold;
 }
 
 /**
-	Data for the `SoundMessages.play_sound` message.
+    Data for the `SoundMessages.play_sound` message.
 **/
 typedef SoundMessagePlaySound = {
 	/**
@@ -119,7 +119,7 @@ typedef SoundMessagePlaySound = {
 }
 
 /**
-	Data for the `SoundMessages.set_gain` message.
+    Data for the `SoundMessages.set_gain` message.
 **/
 typedef SoundMessageSetGain = {
 	/**
@@ -130,7 +130,7 @@ typedef SoundMessageSetGain = {
 }
 
 /**
-	Messages related to the `Sound` module.
+    Messages related to the `Sound` module.
 **/
 @:publicFields class SoundMessages {
 	/**

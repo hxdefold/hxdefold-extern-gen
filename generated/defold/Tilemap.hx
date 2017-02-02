@@ -1,9 +1,9 @@
 package defold;
 
 /**
-	Functions and messages used to manipulate tile map components.
+    Functions and messages used to manipulate tile map components.
 
-	See `TilemapMessages` for related messages.
+    See `TilemapMessages` for related messages.
 **/
 @:native("_G.tilemap") extern class Tilemap {
 	/**
@@ -103,7 +103,7 @@ package defold;
 }
 
 /**
-	Data for the `TilemapMessages.set_tile` message.
+    Data for the `TilemapMessages.set_tile` message.
 **/
 typedef TilemapMessageSetTile = {
 	/**
@@ -129,7 +129,7 @@ typedef TilemapMessageSetTile = {
 }
 
 /**
-	Messages related to the `Tilemap` module.
+    Messages related to the `Tilemap` module.
 **/
 @:publicFields class TilemapMessages {
 	/**

@@ -1,7 +1,7 @@
 package defold;
 
 /**
-	Functions for compression and decompression of string buffers.
+    Functions for compression and decompression of string buffers.
 **/
 @:native("_G.zlib") extern class Zlib {
 	/**
