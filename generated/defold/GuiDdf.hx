@@ -17,11 +17,11 @@ typedef GuiDdfMessageLayoutChanged = {
 	/**
 		the id of the layout the engine is changing to (hash)
 	**/
-	var id : TODO;
+	var id:TODO;
 	/**
 		the id of the layout the engine is changing from (hash)
 	**/
-	var previous_id : TODO;
+	var previous_id:TODO;
 }
 
 /**
@@ -34,5 +34,5 @@ typedef GuiDdfMessageLayoutChanged = {
 		This message is broadcast to every GUI component when a layout change has been initiated
 		on device.
 	**/
-	static var layout_changed(default, never) : Message<GuiDdfMessageLayoutChanged> = new Message("layout_changed");
+	static var layout_changed(default, never):Message<GuiDdfMessageLayoutChanged> = new Message("layout_changed");
 }

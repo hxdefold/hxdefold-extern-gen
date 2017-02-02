@@ -17,6 +17,7 @@ package defold;
 		@param emitter_state_cb optional callback that will be called when an emitter attached to this particlefx changes state.
 	**/
 	static function play(url:Url, ?emitter_state_cb:TODO):Void;
+
 	/**
 		Reset a shader constant for a particle FX emitter.
 		
@@ -29,6 +30,7 @@ package defold;
 		@param name the name of the constant (string|hash)
 	**/
 	static function reset_constant(url:Url, emitter_id:EitherType<Hash, String>, name:EitherType<Hash, String>):Void;
+
 	/**
 		Set a shader constant for a particle FX emitter.
 		
@@ -43,6 +45,7 @@ package defold;
 		@param value the value of the constant (vec4)
 	**/
 	static function set_constant(url:Url, emitter_id:EitherType<Hash, String>, name:EitherType<Hash, String>, value:Vector4):Void;
+
 	/**
 		Stop playing a particle fx.
 		
@@ -60,23 +63,26 @@ package defold;
 		
 		The emitter is not spawning any particles, but has particles that are still alive.
 	**/
-	static var EMITTER_STATE_POSTSPAWN(default, never) : TODO;
+	static var EMITTER_STATE_POSTSPAWN(default, never):TODO;
+
 	/**
 		Prespawn state.
 		
 		The emitter will be in this state when it has been started but before spawning any particles. Normally the emitter is in this state for a short time, depending on if a start delay has been set for this emitter or not.
 	**/
-	static var EMITTER_STATE_PRESPAWN(default, never) : TODO;
+	static var EMITTER_STATE_PRESPAWN(default, never):TODO;
+
 	/**
 		Sleeping state.
 		
 		The emitter does not have any living particles and will not spawn any particles in this state.
 	**/
-	static var EMITTER_STATE_SLEEPING(default, never) : TODO;
+	static var EMITTER_STATE_SLEEPING(default, never):TODO;
+
 	/**
 		Spawning state.
 		
 		The emitter is spawning particles.
 	**/
-	static var EMITTER_STATE_SPAWNING(default, never) : TODO;
+	static var EMITTER_STATE_SPAWNING(default, never):TODO;
 }

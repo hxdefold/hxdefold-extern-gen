@@ -21,6 +21,7 @@ package defold;
 		     * `render.BUFFER_STENCIL_BIT`
 	**/
 	static function clear(buffers:TODO):Void;
+
 	/**
 		Create a new constant buffer..
 		
@@ -31,24 +32,28 @@ package defold;
 		@return new constant buffer (constant_buffer)
 	**/
 	static function constant_buffer():TODO;
+
 	/**
 		Deletes a render target.
 		
 		@param render_target render target to delete (render_target)
 	**/
 	static function delete_render_target(render_target:TODO<"render_target">):Void;
+
 	/**
 		Disables the currently enabled material.
 		
 		If a material is currently enabled, disable it.
 	**/
 	static function disable_material():Void;
+
 	/**
 		Disables a render target.
 		
 		@param render_target render target to disable (render_target)
 	**/
 	static function disable_render_target(render_target:TODO<"render_target">):Void;
+
 	/**
 		Disables a render state.
 		
@@ -61,6 +66,7 @@ package defold;
 		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
 	static function disable_state(state:TODO):Void;
+
 	/**
 		Disables a texture for a render target.
 		
@@ -68,6 +74,7 @@ package defold;
 		@param render_target render target for which to disable the specified texture unit (render_target)
 	**/
 	static function disable_texture(unit:Float, render_target:TODO<"render_target">):Void;
+
 	/**
 		Draws all objects matching a predicate.
 		
@@ -80,17 +87,20 @@ package defold;
 		@param constants optional constants to use while rendering (constants_buffer)
 	**/
 	static function draw(predicate:TODO<"predicate">, constants:TODO<"constants_buffer">):Void;
+
 	/**
 		Draws all 2d debug graphics (Deprecated).
 	**/
 	@:deprecated("Use render.draw_debug3d() to draw visual debug info.")
 	static function draw_debug2d():Void;
+
 	/**
 		Draws all 3d debug graphics.
 		
 		Draws all 3d debug graphics such as lines drawn with "draw_line" messages and physics visualization.
 	**/
 	static function draw_debug3d():Void;
+
 	/**
 		Enables a material.
 		
@@ -99,12 +109,14 @@ package defold;
 		@param material_id material id to enable (string)
 	**/
 	static function enable_material(material_id:String):Void;
+
 	/**
 		Enables a render target.
 		
 		@param render_target render target to enable (render_target)
 	**/
 	static function enable_render_target(render_target:TODO<"render_target">):Void;
+
 	/**
 		Enables a render state.
 		
@@ -118,6 +130,7 @@ package defold;
 		   * `render.STATE_POLYGON_OFFSET_FILL`
 	**/
 	static function enable_state(state:TODO):Void;
+
 	/**
 		Enables a texture for a render target.
 		
@@ -126,12 +139,14 @@ package defold;
 		@param buffer_type buffer type from which to enable the texture (constant)
 	**/
 	static function enable_texture(unit:Float, render_target:TODO<"render_target">, buffer_type:TODO<"constant">):Void;
+
 	/**
 		Gets the window height, as specified for the project.
 		
 		@return specified window height (number)
 	**/
 	static function get_height():TODO;
+
 	/**
 		Retrieve a buffer height from a render target.
 		
@@ -140,6 +155,7 @@ package defold;
 		@return the height of the render target buffer texture (number)
 	**/
 	static function get_render_target_height(render_target:TODO<"render_target">, buffer_type:TODO<"constant">):TODO;
+
 	/**
 		Retrieve a buffer width from a render target.
 		
@@ -148,24 +164,28 @@ package defold;
 		@return the width of the render target buffer texture (number)
 	**/
 	static function get_render_target_width(render_target:TODO<"render_target">, buffer_type:TODO<"constant">):TODO;
+
 	/**
 		Gets the window width, as specified for the project.
 		
 		@return specified window width (number)
 	**/
 	static function get_width():TODO;
+
 	/**
 		Gets the window height.
 		
 		@return actual window height (number)
 	**/
 	static function get_window_height():TODO;
+
 	/**
 		Gets the actual window width.
 		
 		@return actual window width (number)
 	**/
 	static function get_window_width():TODO;
+
 	/**
 		Creates a new render predicate.
 		
@@ -173,6 +193,7 @@ package defold;
 		@return new predicate (predicate)
 	**/
 	static function predicate(predicates:EitherType<String, TODO<"table). The tags can be either (hash">>):TODO;
+
 	/**
 		Creates a new render target.
 		
@@ -221,6 +242,7 @@ package defold;
 		@return new render target (render_target)
 	**/
 	static function render_target(name:String, parameters:TODO<"table">):TODO;
+
 	/**
 		Sets the blending function.
 		
@@ -246,6 +268,7 @@ package defold;
 		@param destination_factor destination factor (constant)
 	**/
 	static function set_blend_func(source_factor:TODO<"constant">, destination_factor:TODO<"constant">):Void;
+
 	/**
 		Sets the color mask.
 		
@@ -255,6 +278,7 @@ package defold;
 		@param alpha alpha mask (boolean)
 	**/
 	static function set_color_mask(red:TODO<"boolean">, green:TODO<"boolean">, blue:TODO<"boolean">, alpha:TODO<"boolean">):Void;
+
 	/**
 		Sets the cull face.
 		
@@ -265,6 +289,7 @@ package defold;
 		   * `render.FACE_FRONT_AND_BACK`
 	**/
 	static function set_cull_face(face_type:TODO):Void;
+
 	/**
 		Sets the depth test function.
 		
@@ -280,12 +305,14 @@ package defold;
 		   * `render.COMPARE_FUNC_ALWAYS`
 	**/
 	static function set_depth_func(func:TODO):Void;
+
 	/**
 		Sets the depth mask.
 		
 		@param depth depth mask (boolean)
 	**/
 	static function set_depth_mask(depth:TODO<"boolean">):Void;
+
 	/**
 		Sets the polygon offset.
 		
@@ -293,6 +320,7 @@ package defold;
 		@param units polygon offset units (number)
 	**/
 	static function set_polygon_offset(factor:Float, units:Float):Void;
+
 	/**
 		Sets the projection matrix.
 		
@@ -301,6 +329,7 @@ package defold;
 		@param matrix projection matrix (matrix4)
 	**/
 	static function set_projection(matrix:TODO<"matrix4">):Void;
+
 	/**
 		Sets the render target size.
 		
@@ -309,6 +338,7 @@ package defold;
 		@param height new render target height (number)
 	**/
 	static function set_render_target_size(render_target:TODO<"render_target">, width:Float, height:Float):Void;
+
 	/**
 		Sets the stencil test function.
 		
@@ -327,12 +357,14 @@ package defold;
 		@param mask mask that is ANDed with both the reference value and the stored stencil value when the test is done (number)
 	**/
 	static function set_stencil_func(func:TODO, ref:Float, mask:Float):Void;
+
 	/**
 		Sets the stencil mask.
 		
 		@param mask stencil mask (number)
 	**/
 	static function set_stencil_mask(mask:Float):Void;
+
 	/**
 		Sets the stencil operator.
 		
@@ -352,6 +384,7 @@ package defold;
 		@param dppass the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled (constant)
 	**/
 	static function set_stencil_op(sfail:TODO<"constant">, dpfail:TODO<"constant">, dppass:TODO<"constant">):Void;
+
 	/**
 		Sets the view matrix.
 		
@@ -360,6 +393,7 @@ package defold;
 		@param matrix view matrix to set (matrix4)
 	**/
 	static function set_view(matrix:TODO<"matrix4">):Void;
+
 	/**
 		Sets the render viewport.
 		
@@ -378,7 +412,7 @@ typedef RenderMessageClearColor = {
 	/**
 		color to use as clear color
 	**/
-	var color : TODO;
+	var color:TODO;
 }
 
 /**
@@ -388,15 +422,15 @@ typedef RenderMessageDrawLine = {
 	/**
 		Start point of the line
 	**/
-	var start_point : TODO;
+	var start_point:TODO;
 	/**
 		End point of the line
 	**/
-	var end_point : TODO;
+	var end_point:TODO;
 	/**
 		Color of the line
 	**/
-	var color : TODO;
+	var color:TODO;
 }
 
 /**
@@ -406,11 +440,11 @@ typedef RenderMessageDrawText = {
 	/**
 		Position of the text
 	**/
-	var position : TODO;
+	var position:TODO;
 	/**
 		The text to draw
 	**/
-	var text : TODO;
+	var text:TODO;
 }
 
 /**
@@ -420,11 +454,11 @@ typedef RenderMessageWindowResized = {
 	/**
 		the new window height (number)
 	**/
-	var height : TODO;
+	var height:TODO;
 	/**
 		the new window width (number)
 	**/
-	var width : TODO;
+	var width:TODO;
 }
 
 /**
@@ -436,255 +470,314 @@ typedef RenderMessageWindowResized = {
 		
 		Set render clear color. This is the color that appears on the screen where nothing is rendered, i.e. background.
 	**/
-	static var clear_color(default, never) : Message<RenderMessageClearColor> = new Message("clear_color");
+	static var clear_color(default, never):Message<RenderMessageClearColor> = new Message("clear_color");
+
 	/**
 		Draw a line on the screen.
 		
 		Draw a line on the screen. This should mostly be used for debugging purposes.
 	**/
-	static var draw_line(default, never) : Message<RenderMessageDrawLine> = new Message("draw_line");
+	static var draw_line(default, never):Message<RenderMessageDrawLine> = new Message("draw_line");
+
 	/**
 		Draw a text on the screen.
 		
 		Draw a text on the screen. This should mostly be used for debugging purposes.
 	**/
-	static var draw_text(default, never) : Message<RenderMessageDrawText> = new Message("draw_text");
+	static var draw_text(default, never):Message<RenderMessageDrawText> = new Message("draw_text");
+
 	/**
 		Reports a window size change.
 		
 		Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
 		on mobile devices.
 	**/
-	static var window_resized(default, never) : Message<RenderMessageWindowResized> = new Message("window_resized");
+	static var window_resized(default, never):Message<RenderMessageWindowResized> = new Message("window_resized");
 }
 
 @:native("_G.render") extern class RenderVariables {
 	/**
 		.
 	**/
-	static var BLEND_CONSTANT_ALPHA(default, never) : TODO;
+	static var BLEND_CONSTANT_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_CONSTANT_COLOR(default, never) : TODO;
+	static var BLEND_CONSTANT_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_DST_ALPHA(default, never) : TODO;
+	static var BLEND_DST_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_DST_COLOR(default, never) : TODO;
+	static var BLEND_DST_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE(default, never) : TODO;
+	static var BLEND_ONE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_CONSTANT_ALPHA(default, never) : TODO;
+	static var BLEND_ONE_MINUS_CONSTANT_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_CONSTANT_COLOR(default, never) : TODO;
+	static var BLEND_ONE_MINUS_CONSTANT_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_DST_ALPHA(default, never) : TODO;
+	static var BLEND_ONE_MINUS_DST_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_DST_COLOR(default, never) : TODO;
+	static var BLEND_ONE_MINUS_DST_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_SRC_ALPHA(default, never) : TODO;
+	static var BLEND_ONE_MINUS_SRC_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ONE_MINUS_SRC_COLOR(default, never) : TODO;
+	static var BLEND_ONE_MINUS_SRC_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_SRC_ALPHA(default, never) : TODO;
+	static var BLEND_SRC_ALPHA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_SRC_ALPHA_SATURATE(default, never) : TODO;
+	static var BLEND_SRC_ALPHA_SATURATE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_SRC_COLOR(default, never) : TODO;
+	static var BLEND_SRC_COLOR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BLEND_ZERO(default, never) : TODO;
+	static var BLEND_ZERO(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BUFFER_COLOR_BIT(default, never) : TODO;
+	static var BUFFER_COLOR_BIT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BUFFER_DEPTH_BIT(default, never) : TODO;
+	static var BUFFER_DEPTH_BIT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var BUFFER_STENCIL_BIT(default, never) : TODO;
+	static var BUFFER_STENCIL_BIT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_ALWAYS(default, never) : TODO;
+	static var COMPARE_FUNC_ALWAYS(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_EQUAL(default, never) : TODO;
+	static var COMPARE_FUNC_EQUAL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_GEQUAL(default, never) : TODO;
+	static var COMPARE_FUNC_GEQUAL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_GREATER(default, never) : TODO;
+	static var COMPARE_FUNC_GREATER(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_LEQUAL(default, never) : TODO;
+	static var COMPARE_FUNC_LEQUAL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_LESS(default, never) : TODO;
+	static var COMPARE_FUNC_LESS(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_NEVER(default, never) : TODO;
+	static var COMPARE_FUNC_NEVER(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var COMPARE_FUNC_NOTEQUAL(default, never) : TODO;
+	static var COMPARE_FUNC_NOTEQUAL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FACE_BACK(default, never) : TODO;
+	static var FACE_BACK(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FACE_FRONT(default, never) : TODO;
+	static var FACE_FRONT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FACE_FRONT_AND_BACK(default, never) : TODO;
+	static var FACE_FRONT_AND_BACK(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FILTER_LINEAR(default, never) : TODO;
+	static var FILTER_LINEAR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FILTER_NEAREST(default, never) : TODO;
+	static var FILTER_NEAREST(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_DEPTH(default, never) : TODO;
+	static var FORMAT_DEPTH(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_LUMINANCE(default, never) : TODO;
+	static var FORMAT_LUMINANCE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGB(default, never) : TODO;
+	static var FORMAT_RGB(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGBA(default, never) : TODO;
+	static var FORMAT_RGBA(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGBA_DXT1(default, never) : TODO;
+	static var FORMAT_RGBA_DXT1(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGBA_DXT3(default, never) : TODO;
+	static var FORMAT_RGBA_DXT3(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGBA_DXT5(default, never) : TODO;
+	static var FORMAT_RGBA_DXT5(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_RGB_DXT1(default, never) : TODO;
+	static var FORMAT_RGB_DXT1(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var FORMAT_STENCIL(default, never) : TODO;
+	static var FORMAT_STENCIL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STATE_BLEND(default, never) : TODO;
+	static var STATE_BLEND(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STATE_CULL_FACE(default, never) : TODO;
+	static var STATE_CULL_FACE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STATE_DEPTH_TEST(default, never) : TODO;
+	static var STATE_DEPTH_TEST(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STATE_POLYGON_OFFSET_FILL(default, never) : TODO;
+	static var STATE_POLYGON_OFFSET_FILL(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STATE_STENCIL_TEST(default, never) : TODO;
+	static var STATE_STENCIL_TEST(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_DECR(default, never) : TODO;
+	static var STENCIL_OP_DECR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_DECR_WRAP(default, never) : TODO;
+	static var STENCIL_OP_DECR_WRAP(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_INCR(default, never) : TODO;
+	static var STENCIL_OP_INCR(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_INCR_WRAP(default, never) : TODO;
+	static var STENCIL_OP_INCR_WRAP(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_INVERT(default, never) : TODO;
+	static var STENCIL_OP_INVERT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_KEEP(default, never) : TODO;
+	static var STENCIL_OP_KEEP(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_REPLACE(default, never) : TODO;
+	static var STENCIL_OP_REPLACE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var STENCIL_OP_ZERO(default, never) : TODO;
+	static var STENCIL_OP_ZERO(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var WRAP_CLAMP_TO_BORDER(default, never) : TODO;
+	static var WRAP_CLAMP_TO_BORDER(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var WRAP_CLAMP_TO_EDGE(default, never) : TODO;
+	static var WRAP_CLAMP_TO_EDGE(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var WRAP_MIRRORED_REPEAT(default, never) : TODO;
+	static var WRAP_MIRRORED_REPEAT(default, never):TODO;
+
 	/**
 		.
 	**/
-	static var WRAP_REPEAT(default, never) : TODO;
+	static var WRAP_REPEAT(default, never):TODO;
 }

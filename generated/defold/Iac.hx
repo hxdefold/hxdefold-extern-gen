@@ -22,5 +22,5 @@ package defold;
 	/**
 		Iac type.
 	**/
-	static var TYPE_INVOCATION(default, never) : TODO;
+	static var TYPE_INVOCATION(default, never):TODO;
 }

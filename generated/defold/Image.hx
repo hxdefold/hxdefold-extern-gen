@@ -22,13 +22,15 @@ package defold;
 	/**
 		Luminance image type.
 	**/
-	static var TYPE_LUMINANCE(default, never) : TODO;
+	static var TYPE_LUMINANCE(default, never):TODO;
+
 	/**
 		RGB image type.
 	**/
-	static var TYPE_RGB(default, never) : TODO;
+	static var TYPE_RGB(default, never):TODO;
+
 	/**
 		RGBA image type.
 	**/
-	static var TYPE_RGBA(default, never) : TODO;
+	static var TYPE_RGBA(default, never):TODO;
 }

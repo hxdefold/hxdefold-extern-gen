@@ -15,6 +15,7 @@ package defold;
 		@return backtrace table containing the backtrace (table)
 	**/
 	static function get_backtrace(handle:Float):TODO;
+
 	/**
 		Read text blob recorded in a crash dump.
 		
@@ -26,6 +27,7 @@ package defold;
 		@return blob string with the platform specific data (string)
 	**/
 	static function get_extra_data(handle:Float):TODO;
+
 	/**
 		Get all loaded modules from when the crash occured.
 		
@@ -36,6 +38,7 @@ package defold;
 		@return modules module table (table)
 	**/
 	static function get_modules(handle:Float):TODO;
+
 	/**
 		Read signal number from a crash report.
 		
@@ -43,6 +46,7 @@ package defold;
 		@return signal signal number (number)
 	**/
 	static function get_signum(handle:Float):TODO;
+
 	/**
 		Reads a system field from a loaded crash dump.
 		
@@ -51,6 +55,7 @@ package defold;
 		@return value value recorded in the crash dump (string)
 	**/
 	static function get_sys_field(handle:Float, index:Float):TODO;
+
 	/**
 		Reads user field from a loaded crash dump.
 		
@@ -59,6 +64,7 @@ package defold;
 		@return value user data value recorded in the crash dump (string)
 	**/
 	static function get_user_field(handle:Float, index:Float):TODO;
+
 	/**
 		Loads a previously written crash dump.
 		
@@ -68,12 +74,14 @@ package defold;
 		@return handle handle to the loaded dump, or nil if no dump was found. (number)
 	**/
 	static function load_previous():TODO;
+
 	/**
 		Releases a previously loaded crash dump.
 		
 		@param handle handle to loaded crash dump (number)
 	**/
 	static function release(handle:Float):Void;
+
 	/**
 		Sets the file location for crash dumps.
 		
@@ -82,6 +90,7 @@ package defold;
 		@param path file path to use (string)
 	**/
 	static function set_file_path(path:String):Void;
+
 	/**
 		Stores user-defined string value.
 		
@@ -93,6 +102,7 @@ package defold;
 		@param value string value to store (string)
 	**/
 	static function set_user_field(index:Float, value:String):Void;
+
 	/**
 		Writes crash dump.
 		
@@ -107,41 +117,50 @@ package defold;
 	/**
 		Android build fingerprint.
 	**/
-	static var SYSFIELD_ANDROID_BUILD_FINGERPRINT(default, never) : TODO;
+	static var SYSFIELD_ANDROID_BUILD_FINGERPRINT(default, never):TODO;
+
 	/**
 		System device language as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_DEVICE_LANGUAGE(default, never) : TODO;
+	static var SYSFIELD_DEVICE_LANGUAGE(default, never):TODO;
+
 	/**
 		Device manufacturer as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_DEVICE_MANUFACTURER(default, never) : TODO;
+	static var SYSFIELD_DEVICE_MANUFACTURER(default, never):TODO;
+
 	/**
 		Device model as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_DEVICE_MODEL(default, never) : TODO;
+	static var SYSFIELD_DEVICE_MODEL(default, never):TODO;
+
 	/**
 		Engine version as hash.
 	**/
-	static var SYSFIELD_ENGINE_HASH(default, never) : TODO;
+	static var SYSFIELD_ENGINE_HASH(default, never):TODO;
+
 	/**
 		Engine version as release number.
 	**/
-	static var SYSFIELD_ENGINE_VERSION(default, never) : TODO;
+	static var SYSFIELD_ENGINE_VERSION(default, never):TODO;
+
 	/**
 		System language as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_LANGUAGE(default, never) : TODO;
+	static var SYSFIELD_LANGUAGE(default, never):TODO;
+
 	/**
 		System name as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_SYSTEM_NAME(default, never) : TODO;
+	static var SYSFIELD_SYSTEM_NAME(default, never):TODO;
+
 	/**
 		System version as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_SYSTEM_VERSION(default, never) : TODO;
+	static var SYSFIELD_SYSTEM_VERSION(default, never):TODO;
+
 	/**
 		System territory as reported by sys.get_sys_info.
 	**/
-	static var SYSFIELD_TERRITORY(default, never) : TODO;
+	static var SYSFIELD_TERRITORY(default, never):TODO;
 }

@@ -14,6 +14,7 @@ package defold;
 		@return table with application information (table)
 	**/
 	static function get_application_info():TODO;
+
 	/**
 		Get config value.
 		
@@ -23,6 +24,7 @@ package defold;
 		@return config value as a string. nil if the config key doesn't exists (string)
 	**/
 	static function get_config(key:String):TODO;
+
 	/**
 		Get config value with default value.
 		
@@ -33,12 +35,14 @@ package defold;
 		@return config value as a string. default_value if the config key does not exist (string)
 	**/
 	static function get_config(key:String, default_value:String):TODO;
+
 	/**
 		Get current network connectivity status.
 		
 		@return sys.NETWORK_DISCONNECTED if no network connection is found, sys.NETWORK_CONNECTED_CELLULAR if connected through mobile cellular, otherwise sys.NETWORK_CONNECTED (number)
 	**/
 	static function get_connectivity():TODO;
+
 	/**
 		Get engine information.
 		
@@ -48,6 +52,7 @@ package defold;
 		@return table with engine information (table)
 	**/
 	static function get_engine_info():TODO;
+
 	/**
 		Enumerate network cards.
 		
@@ -57,6 +62,7 @@ package defold;
 		@return an array of tables (table)
 	**/
 	static function get_ifaddrs():TODO;
+
 	/**
 		Gets the save-file path.
 		
@@ -67,6 +73,7 @@ package defold;
 		@return path to save-file (string)
 	**/
 	static function get_save_file(application_id:String, file_name:String):TODO;
+
 	/**
 		Get system information.
 		
@@ -86,6 +93,7 @@ package defold;
 		@return table with system information (table)
 	**/
 	static function get_sys_info():TODO;
+
 	/**
 		Loads a lua table from a file on disk.
 		
@@ -95,6 +103,7 @@ package defold;
 		@return loaded lua table, which is empty if the file could not be found (table)
 	**/
 	static function load(filename:String):TODO;
+
 	/**
 		Loads resource from game data.
 		
@@ -114,6 +123,7 @@ package defold;
 		@return loaded data, which is empty if the file could not be found (string)
 	**/
 	static function load_resource(filename:String):TODO;
+
 	/**
 		Open url in default application.
 		
@@ -123,6 +133,7 @@ package defold;
 		@return a boolean indicating if the url could be opened or not (boolean)
 	**/
 	static function open_url(url:String):TODO;
+
 	/**
 		Saves a lua table to a file stored on disk.
 		
@@ -137,12 +148,14 @@ package defold;
 		@return a boolean indicating if the table could be saved or not (boolean)
 	**/
 	static function save(filename:String, table:TODO<"table">):TODO;
+
 	/**
 		Set host to check for network connectivity against.
 		
 		@param host hostname to check against (string)
 	**/
 	static function set_connectivity_host(host:String):Void;
+
 	/**
 		Set the error handler. The error handler is a function which is called whenever a lua runtime error occurs..
 		

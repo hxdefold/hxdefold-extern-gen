@@ -14,6 +14,7 @@ package defold;
 		@return a hashed string (hash)
 	**/
 	static function hash(s:String):TODO;
+
 	/**
 		Get hex representation of a hash value as a string.
 		
@@ -23,6 +24,7 @@ package defold;
 		@return hex representation
 	**/
 	static function hash_to_hex(h:TODO):TODO;
+
 	/**
 		Pretty printing.
 		

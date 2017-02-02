@@ -446,7 +446,7 @@ class Main {
     }
 
     static function outputModule(name:String, types:Array<{t:TypeDefinition,?d:String}>) {
-        var printer = new haxe.macro.Printer();
+        var printer = new Printer();
         var out = ['package defold;'];
         for (type in types) {
             var doc = "";

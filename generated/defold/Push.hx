@@ -16,6 +16,7 @@ package defold;
 		@param id the numeric id of the local push notification (number)
 	**/
 	static function cancel(id:Float):Void;
+
 	/**
 		Retrieve data on all scheduled local push notifications.
 		
@@ -27,6 +28,7 @@ package defold;
 		@return data table with all data associated with all scheduled notifications (table)
 	**/
 	static function get_all_scheduled():TODO;
+
 	/**
 		Retrieve data on a scheduled local push notification.
 		
@@ -37,6 +39,7 @@ package defold;
 		@return data table with all data associated with the notification (table)
 	**/
 	static function get_scheduled(id:Float):TODO;
+
 	/**
 		Register for push notifications.
 		
@@ -47,6 +50,7 @@ package defold;
 		@param callback register callback function (function)
 	**/
 	static function register(notifications:TODO<"iOS only) (table">, callback:TODO<"function">):Void;
+
 	/**
 		Schedule a local push notification to be triggered at a specific time in the future.
 		
@@ -78,6 +82,7 @@ package defold;
 		@return err error string if something went wrong, otherwise nil (string)
 	**/
 	static function schedule(time:Float, title:String, alert:String, payload:String, notification_settings:TODO):TODO<"multiple">;
+
 	/**
 		Set badge icon count.
 		
@@ -87,6 +92,7 @@ package defold;
 		@param count badge count (number)
 	**/
 	static function set_badge_count(count:Float):Void;
+
 	/**
 		Set push listener.
 		
@@ -103,21 +109,25 @@ package defold;
 	/**
 		Alert notification type.
 	**/
-	static var NOTIFICATION_ALERT(default, never) : TODO;
+	static var NOTIFICATION_ALERT(default, never):TODO;
+
 	/**
 		Badge notification type.
 	**/
-	static var NOTIFICATION_BADGE(default, never) : TODO;
+	static var NOTIFICATION_BADGE(default, never):TODO;
+
 	/**
 		Sound notification type.
 	**/
-	static var NOTIFICATION_SOUND(default, never) : TODO;
+	static var NOTIFICATION_SOUND(default, never):TODO;
+
 	/**
 		Local push origin.
 	**/
-	static var ORIGIN_LOCAL(default, never) : TODO;
+	static var ORIGIN_LOCAL(default, never):TODO;
+
 	/**
 		Remote push origin.
 	**/
-	static var ORIGIN_REMOTE(default, never) : TODO;
+	static var ORIGIN_REMOTE(default, never):TODO;
 }

@@ -13,6 +13,7 @@ package defold;
 		@return deflated buffer (string)
 	**/
 	static function deflate(buf:String):TODO;
+
 	/**
 		Inflate (decompress) a buffer.
 		

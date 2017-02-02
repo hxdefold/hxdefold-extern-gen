@@ -12,6 +12,7 @@ package defold;
 		@param url the model for which to cancel the animation (url)
 	**/
 	static function cancel(url:Url):Void;
+
 	/**
 		Retrieve the game object corresponding to a model skeleton bone.
 		
@@ -25,6 +26,7 @@ package defold;
 		@return id of the game object
 	**/
 	static function get_go(url:Url, bone_id:EitherType<Hash, String>):TODO;
+
 	/**
 		Play an animation on a model.
 		
@@ -46,6 +48,7 @@ package defold;
 		   * `playback_rate` the rate with which the animation will be played. Must be positive (number)
 	**/
 	static function play_anim(url:Url, anim_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO):Void;
+
 	/**
 		Reset a shader constant for a model.
 		
@@ -57,6 +60,7 @@ package defold;
 		@param name of the constant (string|hash)
 	**/
 	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
+
 	/**
 		Set a shader constant for a model component.
 		
@@ -81,11 +85,12 @@ package defold;
 		
 		The normalized animation cursor. The type of the property is number.
 	**/
-	static var cursor(default, never) : Property<TODO> = new Property("cursor");
+	static var cursor(default, never):Property<TODO> = new Property("cursor");
+
 	/**
 		Model playback_rate (number).
 		
 		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
 	**/
-	static var playback_rate(default, never) : Property<TODO> = new Property("playback_rate");
+	static var playback_rate(default, never):Property<TODO> = new Property("playback_rate");
 }

@@ -14,6 +14,7 @@ package defold;
 		@param url the spine model for which to cancel the animation (url)
 	**/
 	static function cancel(url:Url):Void;
+
 	/**
 		Retrieve the game object corresponding to a spine model skeleton bone.
 		
@@ -27,6 +28,7 @@ package defold;
 		@return id of the game object
 	**/
 	static function get_go(url:Url, bone_id:EitherType<Hash, String>):TODO;
+
 	/**
 		Play an animation on a spine model.
 		
@@ -50,6 +52,7 @@ package defold;
 		@param complete_function function to call when the animation has completed (function)
 	**/
 	static function play_anim(url:Url, anim_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO, ?complete_function:TODO<"function">):Void;
+
 	/**
 		Reset a shader constant for a spine model.
 		
@@ -61,6 +64,7 @@ package defold;
 		@param name of the constant (string|hash)
 	**/
 	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
+
 	/**
 		Set a shader constant for a spine model.
 		
@@ -74,6 +78,7 @@ package defold;
 		@param value of the constant (vec4)
 	**/
 	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
+
 	/**
 		Set the IK constraint object target position to follow position of a game object.
 		
@@ -84,6 +89,7 @@ package defold;
 		@param target_url target game object (url)
 	**/
 	static function set_ik_target(url:Url, ik_constraint_id:EitherType<Hash, String>, target_url:Url):Void;
+
 	/**
 		Set the target position of an IK constraint object.
 		
@@ -103,11 +109,11 @@ typedef SpineMessageSpineAnimationDone = {
 	/**
 		the id of the completed animation (hash)
 	**/
-	var animation_id : TODO;
+	var animation_id:TODO;
 	/**
 		the playback mode of the completed animation (constant)
 	**/
-	var playback : TODO;
+	var playback:TODO;
 }
 
 /**
@@ -117,31 +123,31 @@ typedef SpineMessageSpineEvent = {
 	/**
 		the id of the event (hash)
 	**/
-	var event_id : TODO;
+	var event_id:TODO;
 	/**
 		the id of the animation (hash)
 	**/
-	var animation_id : TODO;
+	var animation_id:TODO;
 	/**
 		the time of the event in seconds, relative to the start of the animation (number)
 	**/
-	var t : TODO;
+	var t:TODO;
 	/**
 		the blend weight (between 0.0-1.0) of the current animation at time t (number)
 	**/
-	var blend_weight : TODO;
+	var blend_weight:TODO;
 	/**
 		user defined integer value for the event (number)
 	**/
-	var integer : TODO;
+	var integer:TODO;
 	/**
 		user defined floating point value for the event (number)
 	**/
-	var float : TODO;
+	var float:TODO;
 	/**
 		user defined string value for the event (hash)
 	**/
-	var string : TODO;
+	var string:TODO;
 }
 
 /**
@@ -160,7 +166,8 @@ typedef SpineMessageSpineEvent = {
 		  * go.PLAYBACK_ONCE_BACKWARD
 		  * go.PLAYBACK_ONCE_PINGPONG
 	**/
-	static var spine_animation_done(default, never) : Message<SpineMessageSpineAnimationDone> = new Message("spine_animation_done");
+	static var spine_animation_done(default, never):Message<SpineMessageSpineAnimationDone> = new Message("spine_animation_done");
+
 	/**
 		Reports an incoming event from the Spine animation.
 		
@@ -168,7 +175,7 @@ typedef SpineMessageSpineEvent = {
 		has to be defined on the animation track in the Spine animation editor. An event
 		can contain custom values expressed in the fields "integer", "float" and "string".
 	**/
-	static var spine_event(default, never) : Message<SpineMessageSpineEvent> = new Message("spine_event");
+	static var spine_event(default, never):Message<SpineMessageSpineEvent> = new Message("spine_event");
 }
 
 /**
@@ -180,11 +187,12 @@ typedef SpineMessageSpineEvent = {
 		
 		The normalized animation cursor. The type of the property is number.
 	**/
-	static var cursor(default, never) : Property<TODO> = new Property("cursor");
+	static var cursor(default, never):Property<TODO> = new Property("cursor");
+
 	/**
 		Spine playback_rate (number).
 		
 		The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
 	**/
-	static var playback_rate(default, never) : Property<TODO> = new Property("playback_rate");
+	static var playback_rate(default, never):Property<TODO> = new Property("playback_rate");
 }

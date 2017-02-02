@@ -12,6 +12,7 @@ package defold;
 		@param message lua table message to send (table)
 	**/
 	static function post(receiver:EitherType<TODO<"nil">, EitherType<Hash, EitherType<Url, String>>>, message_id:EitherType<Hash, String>, ?message:TODO<"table">):Void;
+
 	/**
 		Creates a new URL.
 		
@@ -20,6 +21,7 @@ package defold;
 		@return a new URL (url)
 	**/
 	static function url():TODO;
+
 	/**
 		Creates a new URL from a string.
 		
@@ -31,6 +33,7 @@ package defold;
 		@return a new URL (url)
 	**/
 	static function url(urlstring:String):TODO;
+
 	/**
 		Creates a new URL from separate arguments.
 		

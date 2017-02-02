@@ -17,7 +17,7 @@ typedef EngineMessageExit = {
 	/**
 		exit code to report to the OS, 0 means clean exit (number)
 	**/
-	var code : TODO;
+	var code:TODO;
 }
 
 /**
@@ -27,27 +27,27 @@ typedef EngineMessageReboot = {
 	/**
 		argument 1
 	**/
-	var arg1 : TODO;
+	var arg1:TODO;
 	/**
 		argument 2
 	**/
-	var arg2 : TODO;
+	var arg2:TODO;
 	/**
 		argument 3
 	**/
-	var arg3 : TODO;
+	var arg3:TODO;
 	/**
 		argument 4
 	**/
-	var arg4 : TODO;
+	var arg4:TODO;
 	/**
 		argument 5
 	**/
-	var arg5 : TODO;
+	var arg5:TODO;
 	/**
 		argument 6
 	**/
-	var arg6 : TODO;
+	var arg6:TODO;
 }
 
 /**
@@ -57,7 +57,7 @@ typedef EngineMessageSetUpdateFrequency = {
 	/**
 		target frequency. 60 for 60 fps
 	**/
-	var frequency : TODO;
+	var frequency:TODO;
 }
 
 /**
@@ -67,15 +67,15 @@ typedef EngineMessageStartRecord = {
 	/**
 		file name to write the video to
 	**/
-	var file_name : TODO;
+	var file_name:TODO;
 	/**
 		frame period to record, ie write every nth frame. Default value is 2
 	**/
-	var frame_period : TODO;
+	var frame_period:TODO;
 	/**
 		frames per second. Playback speed for the video. Default value is 30. The fps value doens't affect the recording. It's only meta-data in the written video file.
 	**/
-	var fps : TODO;
+	var fps:TODO;
 }
 
 /**
@@ -88,21 +88,24 @@ typedef EngineMessageStartRecord = {
 		Terminates the game application and reports the specified `code` to the OS.
 		This message can only be sent to the designated `@system` socket.
 	**/
-	static var exit(default, never) : Message<EngineMessageExit> = new Message("exit");
+	static var exit(default, never):Message<EngineMessageExit> = new Message("exit");
+
 	/**
 		Reboot engine with arguments.
 		
 		Arguments will be translated into command line arguments. Sending the reboot
 		command is equivalent to starting the engine with the same arguments.
 	**/
-	static var reboot(default, never) : Message<EngineMessageReboot> = new Message("reboot");
+	static var reboot(default, never):Message<EngineMessageReboot> = new Message("reboot");
+
 	/**
 		Set update frequency.
 		
 		Set game update-frequency. This option is equivalent to display.update_frequency but
 		set in run-time
 	**/
-	static var set_update_frequency(default, never) : Message<EngineMessageSetUpdateFrequency> = new Message("set_update_frequency");
+	static var set_update_frequency(default, never):Message<EngineMessageSetUpdateFrequency> = new Message("set_update_frequency");
+
 	/**
 		Starts video recording.
 		
@@ -113,21 +116,24 @@ typedef EngineMessageStartRecord = {
 		The Miro Video Converter has support for vp8/ivf.
 		NOTE: Audio is currently not supported
 	**/
-	static var start_record(default, never) : Message<EngineMessageStartRecord> = new Message("start_record");
+	static var start_record(default, never):Message<EngineMessageStartRecord> = new Message("start_record");
+
 	/**
 		Stop current video recording.
 	**/
-	static var stop_record(default, never) : Message<Void> = new Message("stop_record");
+	static var stop_record(default, never):Message<Void> = new Message("stop_record");
+
 	/**
 		Shows/hides the on-screen physics visual debugging.
 		
 		This message can only be sent to the designated `@system` socket.
 	**/
-	static var toggle_physics_debug(default, never) : Message<Void> = new Message("toggle_physics_debug");
+	static var toggle_physics_debug(default, never):Message<Void> = new Message("toggle_physics_debug");
+
 	/**
 		Shows/hides the on-screen profiler.
 		
 		This message can only be sent to the designated `@system` socket.
 	**/
-	static var toggle_profile(default, never) : Message<Void> = new Message("toggle_profile");
+	static var toggle_profile(default, never):Message<Void> = new Message("toggle_profile");
 }

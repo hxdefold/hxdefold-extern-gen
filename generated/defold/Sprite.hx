@@ -18,6 +18,7 @@ package defold;
 		@param name of the constant (string|hash)
 	**/
 	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
+
 	/**
 		Set a shader constant for a sprite.
 		
@@ -31,6 +32,7 @@ package defold;
 		@param value of the constant (vec4)
 	**/
 	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
+
 	/**
 		Make a sprite flip the animations horizontally or not.
 		
@@ -41,6 +43,7 @@ package defold;
 		@param flip if the sprite should flip its animations or not (boolean)
 	**/
 	static function set_hflip(url:Url, flip:TODO<"boolean">):Void;
+
 	/**
 		Make a sprite flip the animations vertically or not.
 		
@@ -60,11 +63,11 @@ typedef SpriteMessageAnimationDone = {
 	/**
 		the current tile of the sprite (number)
 	**/
-	var current_tile : TODO;
+	var current_tile:TODO;
 	/**
 		id of the animation that was completed (hash)
 	**/
-	var id : TODO;
+	var id:TODO;
 }
 
 /**
@@ -74,7 +77,7 @@ typedef SpriteMessagePlayAnimation = {
 	/**
 		the id of the animation to play
 	**/
-	var id : TODO;
+	var id:TODO;
 }
 
 /**
@@ -97,13 +100,14 @@ typedef SpriteMessagePlayAnimation = {
 		See `play_animation` for more information and examples of how to use
 		this message.
 	**/
-	static var animation_done(default, never) : Message<SpriteMessageAnimationDone> = new Message("animation_done");
+	static var animation_done(default, never):Message<SpriteMessageAnimationDone> = new Message("animation_done");
+
 	/**
 		Plays a sprite animation.
 		
 		Post this message to a sprite-component to make it play an animation from its tile set.
 	**/
-	static var play_animation(default, never) : Message<SpriteMessagePlayAnimation> = new Message("play_animation");
+	static var play_animation(default, never):Message<SpriteMessagePlayAnimation> = new Message("play_animation");
 }
 
 /**
@@ -115,12 +119,13 @@ typedef SpriteMessagePlayAnimation = {
 		
 		The non-uniform scale of the sprite. The type of the property is vector3.
 	**/
-	static var scale(default, never) : Property<TODO> = new Property("scale");
+	static var scale(default, never):Property<TODO> = new Property("scale");
+
 	/**
 		Sprite size (vector3).
 		
 		[READ ONLY] Returns the size of the sprite, not allowing for any additional scaling that may be applied.
 		The type of the property is vector3.
 	**/
-	static var size(default, never) : Property<TODO> = new Property("size");
+	static var size(default, never):Property<TODO> = new Property("size");
 }

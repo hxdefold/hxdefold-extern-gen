@@ -20,6 +20,7 @@ package defold;
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
 	static function final(self:TODO<"script_ref">):Void;
+
 	/**
 		Animates a named property of the specified game object or component.
 		
@@ -52,6 +53,7 @@ package defold;
 		@param complete_function function with parameters (self, url, property) to call when the animation has completed (function)
 	**/
 	static function animate(url:EitherType<Url, EitherType<String, Hash>>, property:EitherType<String, Hash>, playback:TODO, to:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, Float>>>, easing:EitherType<Vector, TODO<"constant">>, duration:Float, ?delay:Float, ?complete_function:TODO<"self, url, property) to call when the animation has completed (function">):Void;
+
 	/**
 		Cancels all animations of the named property of the specified game object or component.
 		
@@ -63,6 +65,7 @@ package defold;
 		@param property name of the property to animate (hash|string)
 	**/
 	static function cancel_animations(url:EitherType<Url, EitherType<String, Hash>>, property:EitherType<String, Hash>):Void;
+
 	/**
 		Deletes a game object instance.
 		
@@ -71,6 +74,7 @@ package defold;
 		@param id optional id of the instance to delete, the instance of the calling script is deleted by default (hash|string|url)
 	**/
 	static function delete(?id:EitherType<Url, EitherType<String, Hash>>):Void;
+
 	/**
 		Deletes a set of game object instance.
 		
@@ -80,6 +84,7 @@ package defold;
 		@param ids table with values of instance ids (hashes) to be deleted
 	**/
 	static function delete_all(?ids:TODO):Void;
+
 	/**
 		Gets a named property of the specified game object or component.
 		
@@ -88,6 +93,7 @@ package defold;
 		@return the value of the specified property (any)
 	**/
 	static function get(url:EitherType<Url, EitherType<String, Hash>>, id:EitherType<String, Hash>):TODO;
+
 	/**
 		Gets the id of an instance.
 		
@@ -99,6 +105,7 @@ package defold;
 		@return instance id (hash)
 	**/
 	static function get_id(?path:String):TODO;
+
 	/**
 		Gets the position of the instance.
 		
@@ -108,6 +115,7 @@ package defold;
 		@return instance position (vector3)
 	**/
 	static function get_position(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the rotation of the instance.
 		
@@ -117,6 +125,7 @@ package defold;
 		@return instance rotation (quaternion)
 	**/
 	static function get_rotation(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the uniform scale factor of the instance.
 		
@@ -126,6 +135,7 @@ package defold;
 		@return uniform instance scale factor (number)
 	**/
 	static function get_scale(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the 3D scale factor of the instance.
 		
@@ -135,6 +145,7 @@ package defold;
 		@return scale factor (vector3)
 	**/
 	static function get_scale_vector(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the instance world position.
 		
@@ -144,6 +155,7 @@ package defold;
 		@return instance world position (vector3)
 	**/
 	static function get_world_position(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the instance world rotation.
 		
@@ -153,6 +165,7 @@ package defold;
 		@return instance world rotation (quaternion)
 	**/
 	static function get_world_rotation(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Gets the instance world scale factor.
 		
@@ -162,6 +175,7 @@ package defold;
 		@return uniform instance world scale factor (number)
 	**/
 	static function get_world_scale(?id:EitherType<Url, EitherType<String, Hash>>):TODO;
+
 	/**
 		Define a property to be used throughout the script.
 		
@@ -173,6 +187,7 @@ package defold;
 		@param value default value of the property. In the case of a url, only the empty constructor msg.url() is allowed. (number|hash|url|vector3|vector4|quaternion)
 	**/
 	static function property(name:String, value:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, EitherType<Url, EitherType<Hash, TODO<") is allowed. (number">>>>>>):Void;
+
 	/**
 		Constructs a ray in world space from a position in screen space.
 		
@@ -184,6 +199,7 @@ package defold;
 		@return direction of the ray in world space (vector3)
 	**/
 	static function screen_ray(x:Float, y:Float):TODO<"multiple">;
+
 	/**
 		Sets a named property of the specified game object or component.
 		
@@ -192,6 +208,7 @@ package defold;
 		@param value the value to set (any)
 	**/
 	static function set(url:EitherType<Url, EitherType<String, Hash>>, id:EitherType<String, Hash>, value:TODO<"any">):Void;
+
 	/**
 		Sets the position of the instance.
 		
@@ -201,6 +218,7 @@ package defold;
 		@param id optional id of the instance to set the position for, by default the instance of the calling script (hash|string|url)
 	**/
 	static function set_position(position:Vector3, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
+
 	/**
 		Sets the rotation of the instance.
 		
@@ -210,6 +228,7 @@ package defold;
 		@param id optional id of the instance to get the rotation for, by default the instance of the calling script (hash|string|url)
 	**/
 	static function set_rotation(rotation:TODO<"quaternion">, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
+
 	/**
 		Sets the scale factor of the instance.
 		
@@ -221,6 +240,7 @@ package defold;
 		@param id optional id of the instance to get the scale for, by default the instance of the calling script (hash|string|url)
 	**/
 	static function set_scale(scale:EitherType<Vector3, Float>, ?id:EitherType<Url, EitherType<String, Hash>>):Void;
+
 	/**
 		Called when a script component is initialized.
 		
@@ -230,6 +250,7 @@ package defold;
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
 	static function init(self:TODO<"script_ref">):Void;
+
 	/**
 		Called when user input is received.
 		
@@ -289,6 +310,7 @@ package defold;
 		@return optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false (boolean)
 	**/
 	static function on_input(self:TODO<"script_ref">, action_id:Hash, action:TODO<"table">):TODO;
+
 	/**
 		Called when a message has been sent to the script component.
 		
@@ -304,6 +326,7 @@ package defold;
 		@param sender address of the sender (url)
 	**/
 	static function on_message(self:TODO<"script_ref">, message_id:Hash, message:TODO<"table">, sender:Url):Void;
+
 	/**
 		Called when the script component is reloaded.
 		
@@ -313,6 +336,7 @@ package defold;
 		@param self reference to the script state to be used for storing data (script_ref)
 	**/
 	static function on_reload(self:TODO<"script_ref">):Void;
+
 	/**
 		Called every frame to update the script component.
 		
@@ -332,11 +356,11 @@ typedef GoMessageSetParent = {
 	/**
 		the id of the new parent (hash)
 	**/
-	var parent_id : TODO;
+	var parent_id:TODO;
 	/**
 		if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true (number)
 	**/
-	var keep_world_transform : TODO;
+	var keep_world_transform:TODO;
 }
 
 /**
@@ -346,27 +370,27 @@ typedef GoMessageTransformResponse = {
 	/**
 		local position of the instance (vector3)
 	**/
-	var position : TODO;
+	var position:TODO;
 	/**
 		local rotation of the instance (quaternion)
 	**/
-	var rotation : TODO;
+	var rotation:TODO;
 	/**
 		local scale of the instance (number)
 	**/
-	var scale : TODO;
+	var scale:TODO;
 	/**
 		world position of the instance (vector3)
 	**/
-	var world_position : TODO;
+	var world_position:TODO;
 	/**
 		world rotation of the instancee (quaternion)
 	**/
-	var world_rotation : TODO;
+	var world_rotation:TODO;
 	/**
 		world scale of the instance (number)
 	**/
-	var world_scale : TODO;
+	var world_scale:TODO;
 }
 
 /**
@@ -388,7 +412,8 @@ typedef GoMessageTransformResponse = {
 		in its `on_input` callback function. See `on_input` for more information on
 		how user input can be handled.
 	**/
-	static var acquire_input_focus(default, never) : Message<Void> = new Message("acquire_input_focus");
+	static var acquire_input_focus(default, never):Message<Void> = new Message("acquire_input_focus");
+
 	/**
 		Disables the receiving component.
 		
@@ -404,7 +429,8 @@ typedef GoMessageTransformResponse = {
 		   * Sprite
 		   * Tile Grid
 	**/
-	static var disable(default, never) : Message<Void> = new Message("disable");
+	static var disable(default, never):Message<Void> = new Message("disable");
+
 	/**
 		Enables the receiving component.
 		
@@ -420,7 +446,8 @@ typedef GoMessageTransformResponse = {
 		   * Sprite
 		   * Tile Grid
 	**/
-	static var enable(default, never) : Message<Void> = new Message("enable");
+	static var enable(default, never):Message<Void> = new Message("enable");
+
 	/**
 		Releases the user input focus.
 		
@@ -428,7 +455,8 @@ typedef GoMessageTransformResponse = {
 		See `acquire_input_focus` for more information on how the user input handling
 		works.
 	**/
-	static var release_input_focus(default, never) : Message<Void> = new Message("release_input_focus");
+	static var release_input_focus(default, never):Message<Void> = new Message("release_input_focus");
+
 	/**
 		(DEPRECATED) requests the transform from an instance.
 		
@@ -437,7 +465,8 @@ typedef GoMessageTransformResponse = {
 		The sending script will receive the answer as a `transform_response`-message
 		at a later time.
 	**/
-	static var request_transform(default, never) : Message<Void> = new Message("request_transform");
+	static var request_transform(default, never):Message<Void> = new Message("request_transform");
+
 	/**
 		Sets the parent of the receiving instance.
 		
@@ -446,7 +475,8 @@ typedef GoMessageTransformResponse = {
 		the instance will be detached from any parent and exist in world space. A script can send this message to itself to set
 		the parent of its instance.
 	**/
-	static var set_parent(default, never) : Message<GoMessageSetParent> = new Message("set_parent");
+	static var set_parent(default, never):Message<GoMessageSetParent> = new Message("set_parent");
+
 	/**
 		(DEPRECATED) reports back the transform of an instance.
 		
@@ -455,7 +485,7 @@ typedef GoMessageTransformResponse = {
 		using the `request_transform`-message. See the description of that message
 		for a complete example on how to use it.
 	**/
-	static var transform_response(default, never) : Message<GoMessageTransformResponse> = new Message("transform_response");
+	static var transform_response(default, never):Message<GoMessageTransformResponse> = new Message("transform_response");
 }
 
 /**
@@ -469,220 +499,270 @@ typedef GoMessageTransformResponse = {
 		Euler angles are specified in degrees.
 		The type of the property is vector3.
 	**/
-	static var euler(default, never) : Property<TODO> = new Property("euler");
+	static var euler(default, never):Property<TODO> = new Property("euler");
+
 	/**
 		Game object position (vector3).
 		
 		The position of the game object.
 		The type of the property is vector3.
 	**/
-	static var position(default, never) : Property<TODO> = new Property("position");
+	static var position(default, never):Property<TODO> = new Property("position");
+
 	/**
 		Game object rotation (quaternion).
 		
 		The rotation of the game object.
 		The type of the property is quaternion.
 	**/
-	static var rotation(default, never) : Property<TODO> = new Property("rotation");
+	static var rotation(default, never):Property<TODO> = new Property("rotation");
+
 	/**
 		Game object scale (vector3).
 		
 		The non-uniform scale of the game object. The type of the property is vector3.
 	**/
-	static var scale(default, never) : Property<TODO> = new Property("scale");
+	static var scale(default, never):Property<TODO> = new Property("scale");
 }
 
 @:native("_G.go") extern class GoVariables {
 	/**
 		In-back.
 	**/
-	static var EASING_INBACK(default, never) : TODO;
+	static var EASING_INBACK(default, never):TODO;
+
 	/**
 		In-bounce.
 	**/
-	static var EASING_INBOUNCE(default, never) : TODO;
+	static var EASING_INBOUNCE(default, never):TODO;
+
 	/**
 		In-circlic.
 	**/
-	static var EASING_INCIRC(default, never) : TODO;
+	static var EASING_INCIRC(default, never):TODO;
+
 	/**
 		In-cubic.
 	**/
-	static var EASING_INCUBIC(default, never) : TODO;
+	static var EASING_INCUBIC(default, never):TODO;
+
 	/**
 		In-elastic.
 	**/
-	static var EASING_INELASTIC(default, never) : TODO;
+	static var EASING_INELASTIC(default, never):TODO;
+
 	/**
 		In-exponential.
 	**/
-	static var EASING_INEXPO(default, never) : TODO;
+	static var EASING_INEXPO(default, never):TODO;
+
 	/**
 		In-out-back.
 	**/
-	static var EASING_INOUTBACK(default, never) : TODO;
+	static var EASING_INOUTBACK(default, never):TODO;
+
 	/**
 		In-out-bounce.
 	**/
-	static var EASING_INOUTBOUNCE(default, never) : TODO;
+	static var EASING_INOUTBOUNCE(default, never):TODO;
+
 	/**
 		In-out-circlic.
 	**/
-	static var EASING_INOUTCIRC(default, never) : TODO;
+	static var EASING_INOUTCIRC(default, never):TODO;
+
 	/**
 		In-out-cubic.
 	**/
-	static var EASING_INOUTCUBIC(default, never) : TODO;
+	static var EASING_INOUTCUBIC(default, never):TODO;
+
 	/**
 		In-out-elastic.
 	**/
-	static var EASING_INOUTELASTIC(default, never) : TODO;
+	static var EASING_INOUTELASTIC(default, never):TODO;
+
 	/**
 		In-out-exponential.
 	**/
-	static var EASING_INOUTEXPO(default, never) : TODO;
+	static var EASING_INOUTEXPO(default, never):TODO;
+
 	/**
 		In-out-quadratic.
 	**/
-	static var EASING_INOUTQUAD(default, never) : TODO;
+	static var EASING_INOUTQUAD(default, never):TODO;
+
 	/**
 		In-out-quartic.
 	**/
-	static var EASING_INOUTQUART(default, never) : TODO;
+	static var EASING_INOUTQUART(default, never):TODO;
+
 	/**
 		In-out-quintic.
 	**/
-	static var EASING_INOUTQUINT(default, never) : TODO;
+	static var EASING_INOUTQUINT(default, never):TODO;
+
 	/**
 		In-out-sine.
 	**/
-	static var EASING_INOUTSINE(default, never) : TODO;
+	static var EASING_INOUTSINE(default, never):TODO;
+
 	/**
 		In-quadratic.
 	**/
-	static var EASING_INQUAD(default, never) : TODO;
+	static var EASING_INQUAD(default, never):TODO;
+
 	/**
 		In-quartic.
 	**/
-	static var EASING_INQUART(default, never) : TODO;
+	static var EASING_INQUART(default, never):TODO;
+
 	/**
 		In-quintic.
 	**/
-	static var EASING_INQUINT(default, never) : TODO;
+	static var EASING_INQUINT(default, never):TODO;
+
 	/**
 		In-sine.
 	**/
-	static var EASING_INSINE(default, never) : TODO;
+	static var EASING_INSINE(default, never):TODO;
+
 	/**
 		Linear interpolation.
 	**/
-	static var EASING_LINEAR(default, never) : TODO;
+	static var EASING_LINEAR(default, never):TODO;
+
 	/**
 		Out-back.
 	**/
-	static var EASING_OUTBACK(default, never) : TODO;
+	static var EASING_OUTBACK(default, never):TODO;
+
 	/**
 		Out-bounce.
 	**/
-	static var EASING_OUTBOUNCE(default, never) : TODO;
+	static var EASING_OUTBOUNCE(default, never):TODO;
+
 	/**
 		Out-circlic.
 	**/
-	static var EASING_OUTCIRC(default, never) : TODO;
+	static var EASING_OUTCIRC(default, never):TODO;
+
 	/**
 		Out-cubic.
 	**/
-	static var EASING_OUTCUBIC(default, never) : TODO;
+	static var EASING_OUTCUBIC(default, never):TODO;
+
 	/**
 		Out-elastic.
 	**/
-	static var EASING_OUTELASTIC(default, never) : TODO;
+	static var EASING_OUTELASTIC(default, never):TODO;
+
 	/**
 		Out-exponential.
 	**/
-	static var EASING_OUTEXPO(default, never) : TODO;
+	static var EASING_OUTEXPO(default, never):TODO;
+
 	/**
 		Out-in-back.
 	**/
-	static var EASING_OUTINBACK(default, never) : TODO;
+	static var EASING_OUTINBACK(default, never):TODO;
+
 	/**
 		Out-in-bounce.
 	**/
-	static var EASING_OUTINBOUNCE(default, never) : TODO;
+	static var EASING_OUTINBOUNCE(default, never):TODO;
+
 	/**
 		Out-in-circlic.
 	**/
-	static var EASING_OUTINCIRC(default, never) : TODO;
+	static var EASING_OUTINCIRC(default, never):TODO;
+
 	/**
 		Out-in-cubic.
 	**/
-	static var EASING_OUTINCUBIC(default, never) : TODO;
+	static var EASING_OUTINCUBIC(default, never):TODO;
+
 	/**
 		Out-in-elastic.
 	**/
-	static var EASING_OUTINELASTIC(default, never) : TODO;
+	static var EASING_OUTINELASTIC(default, never):TODO;
+
 	/**
 		Out-in-exponential.
 	**/
-	static var EASING_OUTINEXPO(default, never) : TODO;
+	static var EASING_OUTINEXPO(default, never):TODO;
+
 	/**
 		Out-in-quadratic.
 	**/
-	static var EASING_OUTINQUAD(default, never) : TODO;
+	static var EASING_OUTINQUAD(default, never):TODO;
+
 	/**
 		Out-in-quartic.
 	**/
-	static var EASING_OUTINQUART(default, never) : TODO;
+	static var EASING_OUTINQUART(default, never):TODO;
+
 	/**
 		Out-in-quintic.
 	**/
-	static var EASING_OUTINQUINT(default, never) : TODO;
+	static var EASING_OUTINQUINT(default, never):TODO;
+
 	/**
 		Out-in-sine.
 	**/
-	static var EASING_OUTINSINE(default, never) : TODO;
+	static var EASING_OUTINSINE(default, never):TODO;
+
 	/**
 		Out-quadratic.
 	**/
-	static var EASING_OUTQUAD(default, never) : TODO;
+	static var EASING_OUTQUAD(default, never):TODO;
+
 	/**
 		Out-quartic.
 	**/
-	static var EASING_OUTQUART(default, never) : TODO;
+	static var EASING_OUTQUART(default, never):TODO;
+
 	/**
 		Out-quintic.
 	**/
-	static var EASING_OUTQUINT(default, never) : TODO;
+	static var EASING_OUTQUINT(default, never):TODO;
+
 	/**
 		Out-sine.
 	**/
-	static var EASING_OUTSINE(default, never) : TODO;
+	static var EASING_OUTSINE(default, never):TODO;
+
 	/**
 		Loop backward.
 	**/
-	static var PLAYBACK_LOOP_BACKWARD(default, never) : TODO;
+	static var PLAYBACK_LOOP_BACKWARD(default, never):TODO;
+
 	/**
 		Loop forward.
 	**/
-	static var PLAYBACK_LOOP_FORWARD(default, never) : TODO;
+	static var PLAYBACK_LOOP_FORWARD(default, never):TODO;
+
 	/**
 		Ping pong loop.
 	**/
-	static var PLAYBACK_LOOP_PINGPONG(default, never) : TODO;
+	static var PLAYBACK_LOOP_PINGPONG(default, never):TODO;
+
 	/**
 		No playback.
 	**/
-	static var PLAYBACK_NONE(default, never) : TODO;
+	static var PLAYBACK_NONE(default, never):TODO;
+
 	/**
 		Once backward.
 	**/
-	static var PLAYBACK_ONCE_BACKWARD(default, never) : TODO;
+	static var PLAYBACK_ONCE_BACKWARD(default, never):TODO;
+
 	/**
 		Once forward.
 	**/
-	static var PLAYBACK_ONCE_FORWARD(default, never) : TODO;
+	static var PLAYBACK_ONCE_FORWARD(default, never):TODO;
+
 	/**
 		Once ping pong.
 	**/
-	static var PLAYBACK_ONCE_PINGPONG(default, never) : TODO;
+	static var PLAYBACK_ONCE_PINGPONG(default, never):TODO;
 }

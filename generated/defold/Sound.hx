@@ -18,6 +18,7 @@ package defold;
 		@return gain in linear scale
 	**/
 	static function get_group_gain(group:EitherType<String, Hash>):TODO;
+
 	/**
 		Get mixer group name string.
 		
@@ -29,6 +30,7 @@ package defold;
 		@return group name (string)
 	**/
 	static function get_group_name(group:EitherType<String, Hash>):TODO;
+
 	/**
 		Get all mixer group names.
 		
@@ -37,6 +39,7 @@ package defold;
 		@return table of mixer groups names (table)
 	**/
 	static function get_groups():TODO;
+
 	/**
 		Get peak gain value from mixer group.
 		
@@ -51,6 +54,7 @@ package defold;
 		@return peak value for right channel (number)
 	**/
 	static function get_peak(group:EitherType<String, Hash>, window:Float):TODO<"multiple">;
+
 	/**
 		Get rms value from mixer group.
 		
@@ -65,6 +69,7 @@ package defold;
 		@return rms value for right channel (number)
 	**/
 	static function get_rms(group:EitherType<String, Hash>, window:Float):TODO<"multiple">;
+
 	/**
 		Check if background music is playing.
 		
@@ -73,6 +78,7 @@ package defold;
 		@return true if music is playing (bool)
 	**/
 	static function is_music_playing():TODO;
+
 	/**
 		Check if a phone call is active.
 		
@@ -82,6 +88,7 @@ package defold;
 		@return true if there is an active phone call (bool)
 	**/
 	static function is_phone_call_active():TODO;
+
 	/**
 		Set mixer group gain.
 		
@@ -103,12 +110,12 @@ typedef SoundMessagePlaySound = {
 		delay in seconds before the sound starts playing, default is 0 (number)
 	**/
 	@:optional
-	var delay : TODO;
+	var delay:TODO;
 	/**
 		sound gain between 0 and 1, default is 1 (number)
 	**/
 	@:optional
-	var gain : TODO;
+	var gain:TODO;
 }
 
 /**
@@ -119,7 +126,7 @@ typedef SoundMessageSetGain = {
 		sound gain between 0 and 1, default is 1 (number)
 	**/
 	@:optional
-	var gain : TODO;
+	var gain:TODO;
 }
 
 /**
@@ -131,17 +138,19 @@ typedef SoundMessageSetGain = {
 		
 		Post this message to a sound-component to make it play its sound. Multiple voices is support. The limit is set to 32 voices per sound component.
 	**/
-	static var play_sound(default, never) : Message<SoundMessagePlaySound> = new Message("play_sound");
+	static var play_sound(default, never):Message<SoundMessagePlaySound> = new Message("play_sound");
+
 	/**
 		Set sound gain.
 		
 		Post this message to a sound-component to set gain on all active playing voices.
 	**/
-	static var set_gain(default, never) : Message<SoundMessageSetGain> = new Message("set_gain");
+	static var set_gain(default, never):Message<SoundMessageSetGain> = new Message("set_gain");
+
 	/**
 		Stop a playing a sound(s).
 		
 		Post this message to a sound-component to make it stop playing all active voices
 	**/
-	static var stop_sound(default, never) : Message<Void> = new Message("stop_sound");
+	static var stop_sound(default, never):Message<Void> = new Message("stop_sound");
 }

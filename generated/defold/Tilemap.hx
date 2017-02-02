@@ -23,6 +23,7 @@ package defold;
 		@return number of rows in the tile map (number)
 	**/
 	static function get_bounds(url:Url):TODO<"multiple">;
+
 	/**
 		Get a tile from a tile map.
 		
@@ -39,6 +40,7 @@ package defold;
 		@return index of the tile (number)
 	**/
 	static function get_tile(url:Url, name:EitherType<Hash, String>, x_coordinate:Float, y_coordinate:Float):TODO;
+
 	/**
 		Reset a shader constant for a tile map.
 		
@@ -50,6 +52,7 @@ package defold;
 		@param name of the constant (string|hash)
 	**/
 	static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
+
 	/**
 		Set a shader constant for a tile map.
 		
@@ -63,6 +66,7 @@ package defold;
 		@param value of the constant (vec4)
 	**/
 	static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
+
 	/**
 		Set a tile in a tile map.
 		
@@ -105,23 +109,23 @@ typedef TilemapMessageSetTile = {
 	/**
 		id of the layer for which to change a tile
 	**/
-	var layer_id : TODO;
+	var layer_id:TODO;
 	/**
 		the position of the cell for which to change the tile (world space)
 	**/
-	var position : TODO;
+	var position:TODO;
 	/**
 		index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
 	**/
-	var tile : TODO;
+	var tile:TODO;
 	/**
 		horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
 	**/
-	var dx : TODO;
+	var dx:TODO;
 	/**
 		vertical offset from the supplied position to the requested cell (grid space, 0 by default)
 	**/
-	var dy : TODO;
+	var dy:TODO;
 }
 
 /**
@@ -134,5 +138,5 @@ typedef TilemapMessageSetTile = {
 		Send this message to a tile map component to change the tile in one of its cells.
 	**/
 	@:deprecated("Use <code>tilemap.set_tile()</code> instead.")
-	static var set_tile(default, never) : Message<TilemapMessageSetTile> = new Message("set_tile");
+	static var set_tile(default, never):Message<TilemapMessageSetTile> = new Message("set_tile");
 }

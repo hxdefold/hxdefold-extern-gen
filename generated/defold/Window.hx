@@ -19,6 +19,7 @@ package defold;
 		     * `window.DIMMING_OFF`
 	**/
 	static function get_dim_mode():TODO;
+
 	/**
 		Set the mode for screen dimming.
 		
@@ -30,6 +31,7 @@ package defold;
 		     * `window.DIMMING_OFF`
 	**/
 	static function set_dim_mode(mode:TODO):Void;
+
 	/**
 		Sets a window event listener.
 		
@@ -61,18 +63,20 @@ package defold;
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 	**/
-	static var DIMMING_OFF(default, never) : TODO;
+	static var DIMMING_OFF(default, never):TODO;
+
 	/**
 		Dimming mode on.
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 	**/
-	static var DIMMING_ON(default, never) : TODO;
+	static var DIMMING_ON(default, never):TODO;
+
 	/**
 		Dimming mode unknown.
 		
 		Dimming mode is used to control whether or not a mobile device should dim the screen after a period without user interaction.
 		This mode indicates that the dim mode can't be determined, or that the platform doesn't support dimming.
 	**/
-	static var DIMMING_UNKNOWN(default, never) : TODO;
+	static var DIMMING_UNKNOWN(default, never):TODO;
 }
