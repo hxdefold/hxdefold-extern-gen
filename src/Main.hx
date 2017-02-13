@@ -142,7 +142,16 @@ class Main {
                         continue;
                     if (!reModuleName.match(path.file))
                         throw 'Non-conventional module json name: ${path.file}';
-                    var moduleName = underscoreToCamelCase(reModuleName.matched(1));
+
+                    var name = reModuleName.matched(1);
+                    switch (name) {
+                        case "coroutine" | "bit" | "math" | "string" | "io" | "base" | "table" | "debug" | "os" | "package":
+                            // skip lua std lib
+                            continue;
+                        default:
+                    }
+
+                    var moduleName = underscoreToCamelCase(name);
                     var moduleNameFromFile = true;
                     print('Processing module $moduleName (${entry.fileName})');
                     var api:Api = haxe.Json.parse(haxe.zip.Reader.unzip(entry).toString());
