@@ -1,7 +1,7 @@
 package defold;
 
 /**
-    Messages to control camera components and camera focus.
+    <p>Messages to control camera components and camera focus.</p>
 
     This module currently has no functions.
 
@@ -50,22 +50,30 @@ class CameraMessages {
 **/
 typedef CameraMessageSetCamera = {
     /**
-        Aspect ratio of the screen (width divided by height)
+        
+        <span class="type">number</span> aspect ratio of the screen (width divided by height)
+        
     **/
-    var aspect_ratio:TODO;
+    var aspect_ratio:Float;
 
     /**
-        Field of view of the lens, measured as the angle between the right and left edge (radians)
+        
+        <span class="type">number</span> field of view of the lens, measured as the angle in radians between the right and left edge
+        
     **/
-    var fov:TODO;
+    var fov:Float;
 
     /**
-        Position of the near clipping plane (distance from camera along relative z)
+        
+        <span class="type">number</span> position of the near clipping plane (distance from camera along relative z)
+        
     **/
-    var near_z:TODO;
+    var near_z:Float;
 
     /**
-        Position of the far clipping plane (distance from camera along relative z)
+        
+        <span class="type">number</span> position of the far clipping plane (distance from camera along relative z)
+        
     **/
-    var far_z:TODO;
+    var far_z:Float;
 }

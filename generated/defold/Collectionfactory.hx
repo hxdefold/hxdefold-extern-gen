@@ -1,8 +1,8 @@
 package defold;
 
 /**
-    Functions for controlling collection factory components which are
-    used to dynamically spawn collections into the runtime.
+    <p>Functions for controlling collection factory components which are
+    used to dynamically spawn collections into the runtime.</p>
 **/
 @:native("_G.collectionfactory")
 extern class Collectionfactory {
@@ -26,12 +26,23 @@ extern class Collectionfactory {
         corresponding spawned instance id (hash) as value with a unique path
         prefix added to each instance.
         
-        @param url the collection factory component to be used (url)
-        @param position position to assign to the newly spawned collection (vector3)
-        @param rotation rotation to assign to the newly spawned collection (quat)
-        @param properties table of script properties to propagate to any new game object instances (table)
-        @param scale uniform scaling to apply to the newly spawned collection (must be greater than 0). (number)
-        @return a table mapping the id:s from the collection to the new instance id:s
+        @param url 
+        <span class="type">string | hash | url</span> the collection factory component to be used
+        
+        @param position 
+        <span class="type">vector3</span> position to assign to the newly spawned collection
+        
+        @param rotation 
+        <span class="type">quaternion</span> rotation to assign to the newly spawned collection
+        
+        @param properties 
+        <span class="type">table</span> table of script properties to propagate to any new game object instances
+        
+        @param scale 
+        <span class="type">number</span> uniform scaling to apply to the newly spawned collection (must be greater than 0).
+        
+        @return ids 
+        <span class="type">table</span> a table mapping the id:s from the collection to the new instance id:s
     **/
-    static function create(url:Url, ?position:Vector3, ?rotation:TODO<"quat">, ?properties:TODO<"table">, ?scale:TODO<"must be greater than 0). (number">):TODO;
+    static function create(url:EitherType<Url, EitherType<Hash, String>>, ?position:Vector3, ?rotation:TODO<"quaternion">, ?properties:TODO<"table">, ?scale:Float):TODO;
 }

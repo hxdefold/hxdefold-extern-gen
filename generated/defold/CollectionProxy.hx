@@ -1,30 +1,30 @@
 package defold;
 
 /**
-    Messages for controlling and interacting with collection proxies
-    which are used to dynamically load collections into the runtime.
+    <p>Messages for controlling and interacting with collection proxies
+    which are used to dynamically load collections into the runtime.</p>
 
     This module currently has no functions.
 
-    See `CollectionProxyMessages` for related messages.
+    See `CollectionproxyMessages` for related messages.
 **/
 @:native("_G")
-extern class CollectionProxy {
+extern class Collectionproxy {
 
 }
 
 /**
-    Messages related to the `CollectionProxy` module.
+    Messages related to the `Collectionproxy` module.
 **/
 @:publicFields
-class CollectionProxyMessages {
+class CollectionproxyMessages {
     /**
         Tells a collection proxy to start asynchronous loading of the referenced collection.
         
         Post this message to a collection-proxy-component to start background loading of the referenced collection.
         When the loading has completed, the message `proxy_loaded` will be sent back to the script.
         
-        A loaded collection must be initialized (message `init`) and enabled (message `enable`) in order to be simulated and drawn.
+        A loaded collection must be initialized (message `enable`) in order to be simulated and drawn.
     **/
     static var async_load(default, never) = new Message<Void>("async_load");
 
@@ -65,7 +65,7 @@ class CollectionProxyMessages {
         Post this message to a collection-proxy-component to start the loading of the referenced collection.
         When the loading has completed, the message `proxy_loaded` will be sent back to the script.
         
-        A loaded collection must be initialized (message `init`) and enabled (message `enable`) in order to be simulated and drawn.
+        A loaded collection must be initialized (message `enable`) in order to be simulated and drawn.
     **/
     static var load(default, never) = new Message<Void>("load");
 
@@ -73,7 +73,7 @@ class CollectionProxyMessages {
         Reports that a collection proxy has loaded its referenced collection.
         
         This message is sent back to the script that initiated a collection proxy load when the referenced
-        collection is loaded. See documentation for "load" for examples how to use.
+        collection is loaded. See documentation for `load` for examples how to use.
     **/
     static var proxy_loaded(default, never) = new Message<Void>("proxy_loaded");
 
@@ -81,7 +81,7 @@ class CollectionProxyMessages {
         Reports that a collection proxy has unloaded its referenced collection.
         
         This message is sent back to the script that initiated an unload with a collection proxy when
-        the referenced collection is unloaded. See documentation for "unload" for examples how to use.
+        the referenced collection is unloaded. See documentation for `unload` for examples how to use.
     **/
     static var proxy_unloaded(default, never) = new Message<Void>("proxy_unloaded");
 
@@ -99,7 +99,7 @@ class CollectionProxyMessages {
         frame, 0 for 9 frames, and so on. The result in practice is that the game looks like it's updated at a much lower frequency than 60 Hz,
         which can be useful for debugging when each frame needs to be inspected.
     **/
-    static var set_time_step(default, never) = new Message<CollectionProxyMessageSetTimeStep>("set_time_step");
+    static var set_time_step(default, never) = new Message<CollectionproxyMessageSetTimeStep>("set_time_step");
 
     /**
         Tells a collection proxy to start unloading the referenced collection.
@@ -111,16 +111,20 @@ class CollectionProxyMessages {
 }
 
 /**
-    Data for the `CollectionProxyMessages.set_time_step` message.
+    Data for the `CollectionproxyMessages.set_time_step` message.
 **/
-typedef CollectionProxyMessageSetTimeStep = {
+typedef CollectionproxyMessageSetTimeStep = {
     /**
-        time-step scaling factor (number)
+        
+        <span class="type">number</span> time-step scaling factor
+        
     **/
-    var factor:TODO;
+    var factor:Float;
 
     /**
-        time-step mode: 0 for continuous and 1 for discrete (number)
+        
+        <span class="type">number</span> time-step mode: 0 for continuous and 1 for discrete
+        
     **/
-    var mode:TODO;
+    var mode:Float;
 }

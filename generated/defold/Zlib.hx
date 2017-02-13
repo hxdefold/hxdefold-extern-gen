@@ -1,7 +1,7 @@
 package defold;
 
 /**
-    Functions for compression and decompression of string buffers.
+    <p>Functions for compression and decompression of string buffers.</p>
 **/
 @:native("_G.zlib")
 extern class Zlib {
@@ -10,8 +10,11 @@ extern class Zlib {
         
         A lua error is raised is on error
         
-        @param buf buffer to deflate (string)
-        @return deflated buffer (string)
+        @param buf 
+        <span class="type">string</span> buffer to deflate
+        
+        @return buf 
+        <span class="type">string</span> deflated buffer
     **/
     static function deflate(buf:String):TODO;
 
@@ -20,8 +23,11 @@ extern class Zlib {
         
         A lua error is raised is on error
         
-        @param buf buffer to inflate (string)
-        @return inflated buffer (string)
+        @param buf 
+        <span class="type">string</span> buffer to inflate
+        
+        @return buf 
+        <span class="type">string</span> inflated buffer
     **/
     static function inflate(buf:String):TODO;
 }

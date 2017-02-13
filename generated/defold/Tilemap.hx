@@ -1,9 +1,7 @@
 package defold;
 
 /**
-    Functions and messages used to manipulate tile map components.
-
-    See `TilemapMessages` for related messages.
+    <p>Functions and messages used to manipulate tile map components.</p>
 **/
 @:native("_G.tilemap")
 extern class Tilemap {
@@ -17,13 +15,22 @@ extern class Tilemap {
         The resulting values take all tile map layers into account, meaning that
         the bounds are calculated as if all layers were collapsed into one.
         
-        @param url the tile map (url)
-        @return x coordinate of the bottom left corner (number)
-        @return y coordinate of the bottom left corner (number)
-        @return number of columns in the tile map (number)
-        @return number of rows in the tile map (number)
+        @param url 
+        <span class="type">string | hash | url</span> the tile map
+        
+        @return x 
+        <span class="type">number</span> x coordinate of the bottom left corner
+        
+        @return y 
+        <span class="type">number</span> y coordinate of the bottom left corner
+        
+        @return w 
+        <span class="type">number</span> number of columns (width) in the tile map
+        
+        @return h 
+        <span class="type">number</span> number of rows (height) in the tile map
     **/
-    static function get_bounds(url:Url):TODO<"multiple">;
+    static function get_bounds(url:EitherType<Url, EitherType<Hash, String>>):TODO<"multiple">;
 
     /**
         Get a tile from a tile map.
@@ -34,39 +41,58 @@ extern class Tilemap {
         Which tile map and layer to query is identified by the URL and the
         layer name parameters.
         
-        @param url the tile map (url)
-        @param name of the layer (string|hash)
-        @param x_coordinate of the tile (number)
-        @param y_coordinate of the tile (number)
-        @return index of the tile (number)
+        @param url 
+        <span class="type">string | hash | url</span> the tile map
+        
+        @param layer 
+        <span class="type">string | hash</span> name of the layer for the tile
+        
+        @param x 
+        <span class="type">number</span> x-coordinate of the tile
+        
+        @param y 
+        <span class="type">number</span> y-coordinate of the tile
+        
+        @return tile 
+        <span class="type">number</span> index of the tile
     **/
-    static function get_tile(url:Url, name:EitherType<Hash, String>, x_coordinate:Float, y_coordinate:Float):TODO;
+    static function get_tile(url:EitherType<Url, EitherType<Hash, String>>, layer:EitherType<Hash, String>, x:Float, y:Float):TODO;
 
     /**
         Reset a shader constant for a tile map.
         
+        Resets a shader constant for a tile map component.
         The constant must be defined in the material assigned to the tile map.
         Resetting a constant through this function implies that the value defined in the material will be used.
         Which tile map to reset a constant for is identified by the URL.
         
-        @param url the tile map that should have a constant reset (url)
-        @param name of the constant (string|hash)
+        @param url 
+        <span class="type">string | hash | url</span> the tile map that should have a constant reset
+        
+        @param constant 
+        <span class="type">string | hash</span> name of the constant
     **/
-    static function reset_constant(url:Url, name:EitherType<Hash, String>):Void;
+    static function reset_constant(url:EitherType<Url, EitherType<Hash, String>>, constant:EitherType<Hash, String>):Void;
 
     /**
         Set a shader constant for a tile map.
         
+        Sets a shader constant for a tile map component.
         The constant must be defined in the material assigned to the tile map.
         Setting a constant through this function will override the value set for that constant in the material.
         The value will be overridden until tilemap.reset_constant is called.
         Which tile map to set a constant for is identified by the URL.
         
-        @param url the tile map that should have a constant set (url)
-        @param name of the constant (string|hash)
-        @param value of the constant (vec4)
+        @param url 
+        <span class="type">string | hash | url</span> the tile map that should have a constant set
+        
+        @param constant 
+        <span class="type">string | hash</span> name of the constant
+        
+        @param value 
+        <span class="type">vector4</span> value of the constant
     **/
-    static function set_constant(url:Url, name:EitherType<Hash, String>, value:Vector4):Void;
+    static function set_constant(url:EitherType<Url, EitherType<Hash, String>>, constant:EitherType<Hash, String>, value:Vector4):Void;
 
     /**
         Set a tile in a tile map.
@@ -87,62 +113,31 @@ extern class Tilemap {
         |  0,0  |  1,0  | 2,0  | 3,0  |
         +-------+-------+------+------+
         </pre>
-        The coordinates must be within the bounds of the tile map as it were created. That is, it is not
-        possible to extend the size of a tile map by setting tiles outside the edges.
-        To clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by
-        the URL and the layer name parameters.
         
-        @param url the tile map (url)
-        @param name of the layer (string|hash)
-        @param x_coordinate of the tile (number)
-        @param y_coordinate of the tile (number)
-        @param new tile to set (number)
-        @param optional if the tile should be horizontally flipped (boolean)
-        @param optional i the tile should be vertically flipped (boolean)
-    **/
-    static function set_tile(url:Url, name:EitherType<Hash, String>, x_coordinate:Float, y_coordinate:Float, new:Float, optional:TODO<"boolean">, optional:TODO<"boolean">):Void;
-}
-
-/**
-    Messages related to the `Tilemap` module.
-**/
-@:publicFields
-class TilemapMessages {
-    /**
-        (DEPRECATED) changes a tile in a tile map.
+        The coordinates must be within the bounds of the tile map as it were created.
+        That is, it is not possible to extend the size of a tile map by setting tiles outside the edges.
+        To clear a tile, set the tile to number 0. Which tile map and layer to manipulate is identified by the URL and the layer name parameters.
         
-        Send this message to a tile map component to change the tile in one of its cells.
+        @param url 
+        <span class="type">string | hash | url</span> the tile map
+        
+        @param layer 
+        <span class="type">string | hash</span> name of the layer for the tile
+        
+        @param x 
+        <span class="type">number</span> x-coordinate of the tile
+        
+        @param y 
+        <span class="type">number</span> y-coordinate of the tile
+        
+        @param tile 
+        <span class="type">number</span> index of new tile to set
+        
+        @param h_flipped 
+        <span class="type">boolean</span> optional if the tile should be horizontally flipped
+        
+        @param v_flipped 
+        <span class="type">boolean</span> optional i the tile should be vertically flipped
     **/
-    @:deprecated("Use <code>tilemap.set_tile()</code> instead.")
-    static var set_tile(default, never) = new Message<TilemapMessageSetTile>("set_tile");
-}
-
-/**
-    Data for the `TilemapMessages.set_tile` message.
-**/
-typedef TilemapMessageSetTile = {
-    /**
-        id of the layer for which to change a tile
-    **/
-    var layer_id:TODO;
-
-    /**
-        the position of the cell for which to change the tile (world space)
-    **/
-    var position:TODO;
-
-    /**
-        index of the tile to change to in the tile set, 1 for the first tile and 0 to clear the tile (0 by default)
-    **/
-    var tile:TODO;
-
-    /**
-        horizontal offset from the supplied position to the requested cell (grid space, 0 by default)
-    **/
-    var dx:TODO;
-
-    /**
-        vertical offset from the supplied position to the requested cell (grid space, 0 by default)
-    **/
-    var dy:TODO;
+    static function set_tile(url:EitherType<Url, EitherType<Hash, String>>, layer:EitherType<Hash, String>, x:Float, y:Float, tile:Float, ?h_flipped:TODO<"boolean">, ?v_flipped:TODO<"boolean">):Void;
 }

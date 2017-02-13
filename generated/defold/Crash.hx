@@ -1,7 +1,7 @@
 package defold;
 
 /**
-    Native crash logging functions and constants.
+    <p>Native crash logging functions and constants.</p>
 
     See `CrashVariables` for related variables.
 **/
@@ -12,8 +12,11 @@ extern class Crash {
         
         A table is returned containing the addresses of the call stack.
         
-        @param handle crash dump handle (number)
-        @return backtrace table containing the backtrace (table)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @return backtrace 
+        <span class="type">table</span> table containing the backtrace
     **/
     static function get_backtrace(handle:Float):TODO;
 
@@ -24,8 +27,11 @@ extern class Crash {
         and not guaranteed
         but can be useful for manual inspection.
         
-        @param handle crash dump handle (number)
-        @return blob string with the platform specific data (string)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @return blob 
+        <span class="type">string</span> string with the platform specific data
     **/
     static function get_extra_data(handle:Float):TODO;
 
@@ -33,36 +39,52 @@ extern class Crash {
         Get all loaded modules from when the crash occured.
         
         The function returns a table containing entries with sub-tables that
-        have 'name' and 'address' set for all loaded modules.
+        have fields 'name' and 'address' set for all loaded modules.
         
-        @param handle crash dump handle (number)
-        @return modules module table (table)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @return modules 
+        <span class="type">table</span> module table
     **/
     static function get_modules(handle:Float):TODO;
 
     /**
         Read signal number from a crash report.
         
-        @param handle crash dump handle (number)
-        @return signal signal number (number)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @return signal 
+        <span class="type">number</span> signal number
     **/
     static function get_signum(handle:Float):TODO;
 
     /**
         Reads a system field from a loaded crash dump.
         
-        @param handle crash dump handle (number)
-        @param index system field enum (number)
-        @return value value recorded in the crash dump (string)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @param index 
+        <span class="type">number</span> system field enum
+        
+        @return value 
+        <span class="type">string</span> value recorded in the crash dump
     **/
     static function get_sys_field(handle:Float, index:Float):TODO;
 
     /**
         Reads user field from a loaded crash dump.
         
-        @param handle crash dump handle (number)
-        @param index user data slot index (number)
-        @return value user data value recorded in the crash dump (string)
+        @param handle 
+        <span class="type">number</span> crash dump handle
+        
+        @param index 
+        <span class="type">number</span> user data slot index
+        
+        @return value 
+        <span class="type">string</span> user data value recorded in the crash dump
     **/
     static function get_user_field(handle:Float, index:Float):TODO;
 
@@ -72,14 +94,16 @@ extern class Crash {
         The crash dump will be removed from disk upon a successful
         load, so loading is one-shot.
         
-        @return handle handle to the loaded dump, or nil if no dump was found. (number)
+        @return handle 
+        <span class="type">number</span> handle to the loaded dump, or nil if no dump was found
     **/
     static function load_previous():TODO;
 
     /**
         Releases a previously loaded crash dump.
         
-        @param handle handle to loaded crash dump (number)
+        @param handle 
+        <span class="type">number</span> handle to loaded crash dump
     **/
     static function release(handle:Float):Void;
 
@@ -88,7 +112,8 @@ extern class Crash {
         
         Crashes occuring before the path is set will be stored to a default engine location.
         
-        @param path file path to use (string)
+        @param path 
+        <span class="type">string</span> file path to use
     **/
     static function set_file_path(path:String):Void;
 
@@ -99,8 +124,11 @@ extern class Crash {
         a crash occurs. This can be user id:s, breadcrumb data etc.
         There are 32 slots indexed from 0. Each slot stores at most 255 characters.
         
-        @param index slot index. 0-indexed. (number)
-        @param value string value to store (string)
+        @param index 
+        <span class="type">number</span> slot index. 0-indexed
+        
+        @param value 
+        <span class="type">string</span> string value to store
     **/
     static function set_user_field(index:Float, value:String):Void;
 

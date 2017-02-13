@@ -1,10 +1,11 @@
 package defold;
 
 /**
-    GUI core hooks, functions, messages, properties and constants for
+    <p>GUI core hooks, functions, messages, properties and constants for
     creation and manipulation of GUI nodes. The "gui" namespace is
-    accessible only from gui scripts.
+    accessible only from gui scripts.</p>
 
+    See `GuiMessages` for related messages.
     See `GuiVariables` for related variables.
 **/
 @:native("_G.gui")
@@ -17,128 +18,168 @@ extern class Gui {
         or release user input focus (see `release_input_focus`). There is no use in starting any animations or similar
         from this function since the gui component is about to be destroyed.
         
-        @param self reference to the script state to be used for storing data (script_ref)
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
     **/
-    static function final(self:TODO<"script_ref">):Void;
+    static function final(self:TODO<"object">):Void;
 
     /**
         Animates a node property.
         
-        This starts an animation of a node property according to the specified parameters. If the node property is already being
-        animated, that animation will be canceled and replaced by the new one. Note however that several different node properties
-        can be animated simultaneously. Use `gui.cancel_animation` to stop the animation before it has completed.
+        This starts an animation of a node property according to the specified parameters.
+        If the node property is already being animated, that animation will be canceled and
+        replaced by the new one. Note however that several different node properties
+        can be animated simultaneously. Use `gui.cancel_animation` to stop the animation
+        before it has completed.
         
-        Composite properties of type vector3, vector4 or quaternion also expose their sub-components (x, y, z and w).
-        You can address the components individually by suffixing the name with a dot '.' and the name of the component.
-        For instance, "position.x" (the position x coordinate) or "color.w" (the color alpha value).
+        Composite properties of type vector3, vector4 or quaternion
+        also expose their sub-components (x, y, z and w).
+        You can address the components individually by suffixing the name with a dot '.'
+        and the name of the component.
+        For instance, `"position.x"` (the position x coordinate) or `"color.w"`
+        (the color alpha value).
         
-        If a `complete_function` (Lua function) is specified, that function will be called when the animation has completed.
-        By starting a new animation in that function, several animations can be sequenced together. See the examples for more information.
+        If a `complete_function` (Lua function) is specified, that function will be called
+        when the animation has completed.
+        By starting a new animation in that function, several animations can be sequenced
+        together. See the examples below for more information.
         
-        @param node node to animate (node)
-        @param property property to animate (string|constant)
+        @param node 
+        <span class="type">node</span> node to animate
         
-           * `"position"`
-           * `"rotation"`
-           * `"scale"`
-           * `"color"`
-           * `"outline"`
-           * `"shadow"`
-           * `"size"`
-           * `"fill_angle"` (pie nodes)
-           * `"inner_radius"` (pie nodes)
-           * `"slice9"` (slice9 nodes)
+        @param property 
+        <span class="type">string | constant</span> property to animate
         
-        The following property constants are also defined equalling the corresponding property string names.
+         * `"position"`
+         * `"rotation"`
+         * `"scale"`
+         * `"color"`
+         * `"outline"`
+         * `"shadow"`
+         * `"size"`
+         * `"fill_angle"` (pie)
+         * `"inner_radius"` (pie)
+         * `"slice9"` (slice9)
         
-           * `gui.PROP_POSITION`
-           * `gui.PROP_ROTATION`
-           * `gui.PROP_SCALE`
-           * `gui.PROP_COLOR`
-           * `gui.PROP_OUTLINE`
-           * `gui.PROP_SHADOW`
-           * `gui.PROP_SIZE`
-           * `gui.PROP_FILL_ANGLE`
-           * `gui.PROP_INNER_RADIUS`
-           * `gui.PROP_SLICE9`
+        The following property constants are defined equaling the corresponding property string names.
         
-        @param to target property value (vector3|vector4)
-        @param easing easing to use during animation. Either specify one of the gui.EASING_* constants or provide a vmath.vector with a custom curve. (constant|vector)
-        @param duration duration of the animation (number)
-        @param delay delay before the animation starts (number)
-        @param complete_function function to call when the animation has completed (function)
-        @param playback playback mode (constant)
+         * `gui.PROP_POSITION`
+         * `gui.PROP_ROTATION`
+         * `gui.PROP_SCALE`
+         * `gui.PROP_COLOR`
+         * `gui.PROP_OUTLINE`
+         * `gui.PROP_SHADOW`
+         * `gui.PROP_SIZE`
+         * `gui.PROP_FILL_ANGLE`
+         * `gui.PROP_INNER_RADIUS`
+         * `gui.PROP_SLICE9`
         
-           * `gui.PLAYBACK_ONCE_FORWARD`
-           * `gui.PLAYBACK_ONCE_BACKWARD`
-           * `gui.PLAYBACK_ONCE_PINGPONG`
-           * `gui.PLAYBACK_LOOP_FORWARD`
-           * `gui.PLAYBACK_LOOP_BACKWARD`
-           * `gui.PLAYBACK_LOOP_PINGPONG`
+        @param to 
+        <span class="type">vector3 | vector4</span> target property value
+        
+        @param easing 
+        <span class="type">constant | vector</span> easing to use during animation.
+             Either specify one of the `gui.EASING_*` constants or provide a
+             <span class="type">vector</span> with a custom curve.
+        
+        @param duration 
+        <span class="type">number</span> duration of the animation
+        
+        @param delay 
+        <span class="type">number</span> delay before the animation starts
+        
+        @param complete_function 
+        <span class="type">function(self, node)</span> function to call when the
+             animation has completed
+        
+        @param playback 
+        <span class="type">constant</span> playback mode
+        
+         * `gui.PLAYBACK_ONCE_FORWARD`
+         * `gui.PLAYBACK_ONCE_BACKWARD`
+         * `gui.PLAYBACK_ONCE_PINGPONG`
+         * `gui.PLAYBACK_LOOP_FORWARD`
+         * `gui.PLAYBACK_LOOP_BACKWARD`
+         * `gui.PLAYBACK_LOOP_PINGPONG`
     **/
-    static function animate(node:TODO<"node">, property:TODO, to:EitherType<Vector4, Vector3>, easing:EitherType<Vector, TODO<"constant">>, duration:Float, ?delay:Float, ?complete_function:TODO<"function">, ?playback:TODO):Void;
+    static function animate(node:TODO<"node">, property:EitherType<TODO<"constant">, String>, to:EitherType<Vector4, Vector3>, easing:EitherType<Vector, TODO<"constant">>, duration:Float, ?delay:Float, ?complete_function:TODO<"function(self, node)">, ?playback:TODO<"constant">):Void;
 
     /**
         Cancels an ongoing animation.
         
         If an animation of the specified node is currently running (started by `gui.animate`), it will immediately be canceled.
         
-        @param node node that should have its animation canceled (node)
-        @param property property for which the animation should be canceled (string|constant)
+        @param node 
+        <span class="type">node</span> node that should have its animation canceled
         
-           * `"position"`
-           * `"rotation"`
-           * `"scale"`
-           * `"color"`
-           * `"outline"`
-           * `"shadow"`
-           * `"size"`
-           * `"fill_angle"` (pie nodes)
-           * `"inner_radius"` (pie nodes)
-           * `"slice9"` (slice9 nodes)
+        @param property 
+        <span class="type">string | constant</span> property for which the animation should be canceled
+        
+         * `"position"`
+         * `"rotation"`
+         * `"scale"`
+         * `"color"`
+         * `"outline"`
+         * `"shadow"`
+         * `"size"`
+         * `"fill_angle"` (pie)
+         * `"inner_radius"` (pie)
+         * `"slice9"` (slice9)
     **/
-    static function cancel_animation(node:TODO<"node">, property:TODO):Void;
+    static function cancel_animation(node:TODO<"node">, property:EitherType<TODO<"constant">, String>):Void;
 
     /**
         Cancel a node flipbook animation.
         
         Cancels any running flipbook animation on the specified node.
         
-        @param node node cancel flipbook animation for (node)
+        @param node 
+        <span class="type">node</span> node cancel flipbook animation for
     **/
     static function cancel_flipbook(node:TODO<"node">):Void;
 
     /**
         Cancel a spine animation.
         
-        @param node spine node that should cancel its animation
+        @param node 
+        <span class="type">node</span> spine node that should cancel its animation
     **/
-    static function cancel_spine(node:TODO):Void;
+    static function cancel_spine(node:TODO<"node">):Void;
 
     /**
         Clone a node.
         
-        This does not include its children. Use gui.clone_tree for that purpose.
+        Make a clone instance of a node.
+        This function does not clone the supplied node's children nodes.
+        Use gui.clone_tree for that purpose.
         
-        @param node node to clone (node)
-        @return the cloned node (node)
+        @param node 
+        <span class="type">node</span> node to clone
+        
+        @return clone 
+        <span class="type">node</span> the cloned node
     **/
     static function clone(node:TODO<"node">):TODO;
 
     /**
         Clone a node including its children.
         
+        Make a clone instance of a node and all its children.
         Use gui.clone to clone a node excluding its children.
         
-        @param node root node to clone (node)
-        @return a table mapping node ids to the corresponding cloned nodes (table)
+        @param node 
+        <span class="type">node</span> root node to clone
+        
+        @return clones 
+        <span class="type">table</span> a table mapping node ids to the corresponding cloned nodes
     **/
     static function clone_tree(node:TODO<"node">):TODO;
 
     /**
         Deletes a node.
         
-        @param node node to delete (node)
+        @param node 
+        <span class="type">node</span> node to delete
     **/
     static function delete_node(node:TODO<"node">):Void;
 
@@ -147,36 +188,46 @@ extern class Gui {
         
         Delete a dynamically created texture.
         
-        @param texture texture id (string|hash)
+        @param texture 
+        <span class="type">string | hash</span> texture id
     **/
     static function delete_texture(texture:EitherType<Hash, String>):Void;
 
     /**
         Gets the node adjust mode.
         
-        Adjust mode defines how the node will adjust itself to a screen resolution which differs from the project settings.
+        Returns the adjust mode of a node.
+        The adjust mode defines how the node will adjust itself to screen
+        resolutions that differs from the one in the project settings.
         
-        @param node node from which to get the adjust mode (node)
-        @return node adjust mode (constant)
+        @param node 
+        <span class="type">node</span> node from which to get the adjust mode (node)
         
-           * `gui.ADJUST_FIT`
-           * `gui.ADJUST_ZOOM`
-           * `gui.ADJUST_STRETCH`
+        @return adjust_mode 
+        <span class="type">constant</span> the current adjust mode
+        
+         * `gui.ADJUST_FIT`
+         * `gui.ADJUST_ZOOM`
+         * `gui.ADJUST_STRETCH`
     **/
     static function get_adjust_mode(node:TODO<"node">):TODO;
 
     /**
         Gets the node blend mode.
         
+        Returns the blend mode of a node.
         Blend mode defines how the node will be blended with the background.
         
-        @param node node from which to get the blend mode (node)
-        @return node blend mode (constant)
+        @param node 
+        <span class="type">node</span> node from which to get the blend mode
         
-           * `gui.BLEND_ALPHA`
-           * `gui.BLEND_ADD`
-           * `gui.BLEND_ADD_ALPHA`
-           * `gui.BLEND_MULT`
+        @return blend_mode 
+        <span class="type">constant</span> blend mode
+        
+         * `gui.BLEND_ALPHA`
+         * `gui.BLEND_ADD`
+         * `gui.BLEND_ADD_ALPHA`
+         * `gui.BLEND_MULT`
     **/
     static function get_blend_mode(node:TODO<"node">):TODO;
 
@@ -185,8 +236,11 @@ extern class Gui {
         
         If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.
         
-        @param node node from which to get the clipping inverted state (node)
-        @return true or false
+        @param node 
+        <span class="type">node</span> node from which to get the clipping inverted state
+        
+        @return inverted 
+        <span class="type">boolean</span> true or false
     **/
     static function get_clipping_inverted(node:TODO<"node">):TODO;
 
@@ -195,8 +249,11 @@ extern class Gui {
         
         Clipping mode defines how the node will clipping it's children nodes
         
-        @param node node from which to get the clipping mode (node)
-        @return node clipping mode (constant)
+        @param node 
+        <span class="type">node</span> node from which to get the clipping mode
+        
+        @return clipping_mode 
+        <span class="type">constant</span> clipping mode
         
            * `gui.CLIPPING_MODE_NONE`
            * `gui.CLIPPING_MODE_STENCIL`
@@ -208,24 +265,65 @@ extern class Gui {
         
         If node is set as visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.
         
-        @param node node from which to get the clipping visibility state (node)
-        @return true or false
+        @param node 
+        <span class="type">node</span> node from which to get the clipping visibility state
+        
+        @return visible 
+        <span class="type">boolean</span> true or false
     **/
     static function get_clipping_visible(node:TODO<"node">):TODO;
 
     /**
         Gets the node color.
         
-        @param node node to get the color from (node)
-        @return node color (vector4)
+        Returns the color of the supplied node. The components
+        of the returned vector4 contains the color channel values:
+        
+        <table>
+        <thead>
+        <tr>
+        <th>Component</th>
+        <th>Color value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>x</td>
+        <td>Red value</td>
+        </tr>
+        <tr>
+        <td>y</td>
+        <td>Green value</td>
+        </tr>
+        <tr>
+        <td>z</td>
+        <td>Blue value</td>
+        </tr>
+        <tr>
+        <td>w</td>
+        <td>Alpha value</td>
+        </tr>
+        </tbody>
+        </table>
+        
+        @param node 
+        <span class="type">node</span> node to get the color from
+        
+        @return color 
+        <span class="type">vector4</span> node color
     **/
     static function get_color(node:TODO<"node">):TODO;
 
     /**
         Gets the angle for the filled pie sector.
         
-        @param node node from which to get the fill angle (node)
-        @return sector angle
+        Returns the sector angle of a pie node.
+        
+        @param node 
+        <span class="type">node</span> node from which to get the fill angle
+        
+        @return angle 
+        <span class="type">number</span> sector angle
     **/
     static function get_fill_angle(node:TODO<"node">):TODO;
 
@@ -234,8 +332,11 @@ extern class Gui {
         
         Get node flipbook animation.
         
-        @param node node to get flipbook animation from (node)
-        @return animation animation id (hash)
+        @param node 
+        <span class="type">node</span> node to get flipbook animation from
+        
+        @return animation 
+        <span class="type">hash</span> animation id
     **/
     static function get_flipbook(node:TODO<"node">):TODO;
 
@@ -244,23 +345,32 @@ extern class Gui {
         
         This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
         
-        @param node node from which to get the font (node)
-        @return font id (hash)
+        @param node 
+        <span class="type">node</span> node from which to get the font
+        
+        @return font 
+        <span class="type">hash</span> font id
     **/
     static function get_font(node:TODO<"node">):TODO;
 
     /**
         Gets the scene height.
         
-        @return scene height (number)
+        Returns the scene height.
+        
+        @return height 
+        <span class="type">number</span> scene height
     **/
     static function get_height():TODO;
 
     /**
         Gets the id of the specified node.
         
-        @param node node to retrieve the id from (node)
-        @return id of the node (hash)
+        @param node 
+        <span class="type">node</span> the node to retrieve the id from
+        
+        @return id 
+        <span class="type">hash</span> the id of the node
     **/
     static function get_id(node:TODO<"node">):TODO;
 
@@ -270,16 +380,25 @@ extern class Gui {
         The index defines the order in which a node appear in a gui scene.
         Higher index means the node is drawn above lower indexed nodes.
         
-        @param node node to retrieve the id from (node)
-        @return id of the node (hash)
+        @param node 
+        <span class="type">node</span> the node to retrieve the id from
+        
+        @return index 
+        <span class="type">number</span> the index of the node
     **/
     static function get_index(node:TODO<"node">):TODO;
 
     /**
-        Gets the pie inner radius (defined along the x dimension).
+        Gets the pie inner radius.
         
-        @param node node from where to get the inner radius (node)
-        @return inner radius
+        Returns the inner radius of a pie node.
+        The radius is defined along the x-axis.
+        
+        @param node 
+        <span class="type">node</span> node from where to get the inner radius
+        
+        @return radius 
+        <span class="type">number</span> inner radius
     **/
     static function get_inner_radius(node:TODO<"node">):TODO;
 
@@ -288,84 +407,128 @@ extern class Gui {
         
         The layer must be mapped to the gui scene in the gui editor.
         
-        @param node node from which to get the layer (node)
-        @return layer id (hash)
+        @param node 
+        <span class="type">node</span> node from which to get the layer
+        
+        @return layer 
+        <span class="type">hash</span> layer id
     **/
     static function get_layer(node:TODO<"node">):TODO;
 
     /**
         Gets the scene current layout.
         
-        @return layout id (hash)
+        @return layout 
+        <span class="type">hash</span> layout id
     **/
     static function get_layout():TODO;
 
     /**
         Gets the leading of the text node.
         
-        @param node node from where to get the leading (node)
-        @return scaling number (default=1) (number)
+        Returns the leading value for a text node.
+        
+        @param node 
+        <span class="type">node</span> node from where to get the leading
+        
+        @return leading 
+        <span class="type">number</span> leading scaling value (default=1)
     **/
     static function get_leading(node:TODO<"node">):TODO;
 
     /**
         Get line-break mode.
         
+        Returns whether a text node is in line-break mode or not.
         This is only useful for text nodes.
         
-        @param node node from which to get the line-break for (node)
-        @return line-break (bool)
+        @param node 
+        <span class="type">node</span> node from which to get the line-break for
+        
+        @return line-break 
+        <span class="type">boolean</span> `true` or `false`
     **/
     static function get_line_break(node:TODO<"node">):TODO;
 
     /**
         Gets the node with the specified id.
         
-        @param id id of the node to retrieve (string|hash)
-        @return node instance (node)
+        @param id 
+        id of the node to retrieve <span class="type">string | hash</span>
+        
+        @return instance 
+        <span class="type">node</span> a new node instance
     **/
     static function get_node(id:EitherType<Hash, String>):TODO;
 
     /**
         Gets the pie outer bounds mode.
         
-        @param node node from where to get the outer bounds mode (node)
-        @return gui.PIEBOUNDS_RECTANGLE or gui.PIEBOUNDS_ELLIPSE
+        Returns the outer bounds mode for a pie node.
+        
+        @param node 
+        <span class="type">node</span> node from where to get the outer bounds mode
+        
+        @return bounds_mode 
+        <span class="type">constant</span> the outer bounds mode of the pie node:
+        
+         * `gui.PIEBOUNDS_RECTANGLE`
+         * `gui.PIEBOUNDS_ELLIPSE`
     **/
     static function get_outer_bounds(node:TODO<"node">):TODO;
 
     /**
         Gets the node outline color.
         
-        @param node node to get the outline color from (node)
-        @return node outline color (vector4)
+        Returns the outline color of the supplied node.
+        See `gui.get_color` for info how vectors encode color values.
+        
+        @param node 
+        <span class="type">node</span> node to get the outline color from
+        
+        @return color 
+        <span class="type">vector4</span> outline color
     **/
     static function get_outline(node:TODO<"node">):TODO;
 
     /**
         Gets the parent of the specified node.
         
-        If the specified node does not have a parent, nil is returned.
+        Returns the parent node of the specified node.
+        If the supplied node does not have a parent, `nil` is returned.
         
-        @param node the node from which to retrieve its parent (node)
-        @return parent instance (node)
+        @param node 
+        <span class="type">node</span> the node from which to retrieve its parent
+        
+        @return parent 
+        <span class="type">node</span> parent instance or nil
     **/
     static function get_parent(node:TODO<"node">):TODO;
 
     /**
         Gets the number of generarted vertices around the perimeter.
         
-        @return vertex count (number)
+        Returns the number of generated vertices around the perimeter
+        of a pie node.
+        
+        @param node 
+        <span class="type">node</span> pie node
+        
+        @return vertices 
+        <span class="type">number</span> vertex count
     **/
-    static function get_perimeter_vertices():TODO;
+    static function get_perimeter_vertices(node:TODO<"node">):TODO;
 
     /**
         Gets the pivot of a node.
         
         The pivot specifies how the node is drawn and rotated from its position.
         
-        @param node node to get pivot from (node)
-        @return pivot constant (constant)
+        @param node 
+        <span class="type">node</span> node to get pivot from
+        
+        @return pivot 
+        <span class="type">constant</span> pivot constant
         
            * `gui.PIVOT_CENTER`
            * `gui.PIVOT_N`
@@ -382,71 +545,113 @@ extern class Gui {
     /**
         Gets the node position.
         
-        @param node node to get the position from (node)
-        @return node position (vector3)
+        Returns the position of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to get the position from
+        
+        @return position 
+        <span class="type">vector3</span> node position
     **/
     static function get_position(node:TODO<"node">):TODO;
 
     /**
         Gets the node rotation.
         
-        @param node node to get the rotation from (node)
-        @return node rotation (vector3)
+        Returns the rotation of the supplied node.
+        The rotation is expressed in degree Euler angles.
+        
+        @param node 
+        <span class="type">node</span> node to get the rotation from
+        
+        @return rotation 
+        <span class="type">vector3</span> node rotation
     **/
     static function get_rotation(node:TODO<"node">):TODO;
 
     /**
         Gets the node scale.
         
-        @param node node to get the scale from (node)
-        @return node scale (vector3)
+        Returns the scale of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to get the scale from
+        
+        @return scale 
+        <span class="type">vector3</span> node scale
     **/
     static function get_scale(node:TODO<"node">):TODO;
 
     /**
         Gets the node screen position.
         
-        @param node node to get the screen position from (node)
-        @return node screen position (vector3)
+        Returns the screen position of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to get the screen position from
+        
+        @return position 
+        <span class="type">vector3</span> node screen position
     **/
     static function get_screen_position(node:TODO<"node">):TODO;
 
     /**
         Gets the node shadow color.
         
-        @param node node to get the shadow color from (node)
-        @return node shadow color (vector4)
+        Returns the shadow color of the supplied node.
+        See `gui.get_color` for info how vectors encode color values.
+        
+        @param node 
+        <span class="type">node</span> node to get the shadow color from
+        
+        @return color 
+        <span class="type">vector4</span> node shadow color
     **/
     static function get_shadow(node:TODO<"node">):TODO;
 
     /**
         Gets the node size.
         
-        @param node node to get the size from (node)
-        @return node size (vector3)
+        Returns the size of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to get the size from
+        
+        @return size 
+        <span class="type">vector3</span> node size
     **/
     static function get_size(node:TODO<"node">):TODO;
 
     /**
         Gets the node size mode.
         
-        Size mode defines how the node will adjust itself in size according to mode.
+        Returns the size node of a node.
+        The size mode defines how the node will adjust itself in size. Automatic
+        size mode alters the node size based on the node's content.
         
-        @param node node from which to get the size mode (node)
-        @return node size mode (constant)
+        @param node 
+        <span class="type">node</span> node from which to get the size mode (node)
         
-           * `gui.SIZE_MODE_MANUAL`
-           * `gui.SIZE_MODE_AUTO`
+        @return size_mode 
+        <span class="type">constant</span> the current size mode
+        
+         * `gui.SIZE_MODE_MANUAL`
+         * `gui.SIZE_MODE_AUTO`
     **/
     static function get_size_mode(node:TODO<"node">):TODO;
 
     /**
         Get the slice9 values for the node.
         
-        @param node node to manipulate
-        @return vector4 with configuration values
+        Returns the slice9 configuration values for the node.
+        
+        @param node 
+        <span class="type">node</span> node to manipulate
+        
+        @return values 
+        <span class="type">vector4</span> configuration values
     **/
-    static function get_slice9(node:TODO):TODO;
+    static function get_slice9(node:TODO<"node">):TODO;
 
     /**
         Retrieve the GUI node corresponding to a spine skeleton bone.
@@ -454,9 +659,14 @@ extern class Gui {
         The returned node can be used for parenting and transform queries.
         This function has complexity O(n), where n is the number of bones in the spine model skeleton.
         
-        @param node spine node to query for bone node (node)
-        @param bone_id id of the corresponding bone (string|hash)
-        @return node corresponding to the spine bone (node)
+        @param node 
+        <span class="type">node</span> spine node to query for bone node
+        
+        @param bone_id 
+        <span class="type">string | hash</span> id of the corresponding bone
+        
+        @return bone 
+        <span class="type">node</span> node corresponding to the spine bone
     **/
     static function get_spine_bone(node:TODO<"node">, bone_id:EitherType<Hash, String>):TODO;
 
@@ -465,28 +675,39 @@ extern class Gui {
         
         This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
         
-        @param node spine node to set the cursor for (node)
-        @return cursor value (number)
+        @param node 
+        spine node to set the cursor for (node)
+        
+        @return cursor 
+        value (number)
     **/
-    static function get_spine_cursor(node:TODO<"node">):TODO;
+    static function get_spine_cursor(node:TODO):TODO;
 
     /**
         Gets the playback rate of the animation on a spine node.
         
         This is only useful for spine nodes. Gets the playback rate of the animation on a spine node.
         
-        @param node spine node to set the cursor for (node)
-        @return playack rate (number)
+        @param node 
+        <span class="type">node</span> spine node to set the cursor for
+        
+        @return rate 
+        <span class="type">number</span> playback rate
     **/
     static function get_spine_playback_rate(node:TODO<"node">):TODO;
 
     /**
         Gets the spine scene of a node.
         
-        This is currently only useful for spine nodes. The spine scene must be mapped to the gui scene in the gui editor.
+        Returns the spine scene id of the supplied node.
+        This is currently only useful for spine nodes.
+        The returned spine scene must be mapped to the gui scene in the gui editor.
         
-        @param node node to get spine scene from (node)
-        @return spine scene id (hash)
+        @param node 
+        <span class="type">node</span> node to get texture from
+        
+        @return spine_scene 
+        <span class="type">hash</span> spine scene id
     **/
     static function get_spine_scene(node:TODO<"node">):TODO;
 
@@ -495,68 +716,113 @@ extern class Gui {
         
         Gets the spine skin of a spine node
         
-        @param node node to get spine skin from (node)
-        @return spine skin id, 0 if no explicit skin is set (hash)
+        @param node 
+        <span class="type">node</span> node to get spine skin from
+        
+        @return id 
+        <span class="type">hash</span> spine skin id, 0 if no explicit skin is set
     **/
     static function get_spine_skin(node:TODO<"node">):TODO;
 
     /**
         Gets the node text.
         
-        This is only useful for text nodes.
+        Returns the text value of a text node. This is only useful for text nodes.
         
-        @param node node from which to get the text (node)
-        @return text value (string)
+        @param node 
+        <span class="type">node</span> node from which to get the text
+        
+        @return text 
+        <span class="type">string</span> text value
     **/
     static function get_text(node:TODO<"node">):TODO;
 
     /**
         Get text metrics.
         
-        Get text metrics
+        Get text metrics given the provided font, text and parameters.
         
-        @param font font id. (hash|string)
-        @param text text to measure
-        @param width max-width. use for line-breaks (default=FLT_MAX)
-        @param line_breaks true to break lines accordingly to width (default=false)
-        @param leading scale value for line spacing (default=1)
-        @param tracking scale value for letter spacing (default=0)
-        @return a table with the following fields: width, height, max_ascent, max_descent
+        @param font 
+        <span class="type">string | hash</span> font id
+        
+        @param text 
+        <span class="type">string</span> text to measure
+        
+        @param width 
+        <span class="type">number</span> max-width. Use for line-breaks (default=FLT_MAX)
+        
+        @param line_breaks 
+        <span class="type">boolean</span> true to break lines accordingly to width (default=false)
+        
+        @param leading 
+        <span class="type">number</span> scale value for line spacing (default=1)
+        
+        @param tracking 
+        <span class="type">number</span> scale value for letter spacing (default=0)
+        
+        @return metrics 
+        <span class="type">table</span> a table with the following fields:
+        
+         * width
+         * height
+         * max_ascent
+         * max_descent
     **/
-    static function get_text_metrics(font:EitherType<String, Hash>, text:TODO, width:TODO<"default=FLT_MAX">, line_breaks:TODO<"default=false">, leading:TODO<"default=1">, tracking:TODO<"default=0">):TODO;
+    static function get_text_metrics(font:EitherType<Hash, String>, text:String, width:Float, line_breaks:TODO<"boolean">, leading:Float, tracking:Float):TODO;
 
     /**
         Get text metrics from node.
         
-        Get text metrics
+        Get the text metrics from a text node.
         
-        @param node text node to measure text from
-        @return a table with the following fields: width, height, max_ascent, max_descent
+        @param node 
+        <span class="type">node</span> text node to measure text from
+        
+        @return metrics 
+        <span class="type">table</span> a table with the following fields:
+        
+         * width
+         * height
+         * max_ascent
+         * max_descent
     **/
-    static function get_text_metrics_from_node(node:TODO):TODO;
+    static function get_text_metrics_from_node(node:TODO<"node">):TODO;
 
     /**
-        Gets the node texture.
+        Gets node texture.
         
-        This is currently only useful for box or pie nodes. The texture must be mapped to the gui scene in the gui editor.
+        Returns the texture of a node.
+        This is currently only useful for box or pie nodes.
+        The texture must be mapped to the gui scene in the gui editor.
         
-        @param node node to get texture from (node)
-        @return texture id (hash)
+        @param node 
+        <span class="type">node</span> node to get texture from
+        
+        @return texture 
+        <span class="type">hash</span> texture id
     **/
     static function get_texture(node:TODO<"node">):TODO;
 
     /**
         Gets the tracking of the text node.
         
-        @param node node from where to get the tracking (node)
-        @return scaling number (default=0) (number)
+        Returns the tracking value of a text node.
+        
+        @param node 
+        <span class="type">node</span> node from where to get the tracking
+        
+        @return tracking 
+        <span class="type">number</span> tracking scaling number (default=0)
     **/
     static function get_tracking(node:TODO<"node">):TODO;
 
     /**
         Gets the scene width.
         
-        @return scene width (number)
+        Returns the scene width.
+        
+        @return width 
+        <span class="type">number</span> scene width
     **/
     static function get_width():TODO;
 
@@ -565,12 +831,15 @@ extern class Gui {
         
         The x-anchor specifies how the node is moved when the game is run in a different resolution.
         
-        @param node node to get x-anchor from (node)
-        @return anchor anchor constant (constant)
+        @param node 
+        <span class="type">node</span> node to get x-anchor from
         
-           * `gui.ANCHOR_NONE`
-           * `gui.ANCHOR_LEFT`
-           * `gui.ANCHOR_RIGHT`
+        @return anchor 
+        <span class="type">constant</span> anchor constant
+        
+         * `gui.ANCHOR_NONE`
+         * `gui.ANCHOR_LEFT`
+         * `gui.ANCHOR_RIGHT`
     **/
     static function get_xanchor(node:TODO<"node">):TODO;
 
@@ -579,85 +848,130 @@ extern class Gui {
         
         The y-anchor specifies how the node is moved when the game is run in a different resolution.
         
-        @param node node to get y-anchor from (node)
-        @return anchor anchor constant (constant)
+        @param node 
+        <span class="type">node</span> node to get y-anchor from
         
-           * `gui.ANCHOR_NONE`
-           * `gui.ANCHOR_TOP`
-           * `gui.ANCHOR_BOTTOM`
+        @return anchor 
+        <span class="type">constant</span> anchor constant
+        
+         * `gui.ANCHOR_NONE`
+         * `gui.ANCHOR_TOP`
+         * `gui.ANCHOR_BOTTOM`
     **/
     static function get_yanchor(node:TODO<"node">):TODO;
 
     /**
-        Hide on-display keyboard if available.
+        Hides on-display keyboard if available.
         
-        Hide the on-display keyboard on the device.
+        Hides the on-display touch keyboard on the device.
     **/
     static function hide_keyboard():Void;
 
     /**
-        Retrieves if a node is enabled or not.
+        Returns if a node is enabled or not.
         
+        Returns `true` if a node is enabled and `false` if it's not.
         Disabled nodes are not rendered and animations acting on them are not evaluated.
         
-        @param node node to query (node)
-        @return whether the node is enabled or not (boolean)
+        @param node 
+        <span class="type">node</span> node to query
+        
+        @return enabled 
+        <span class="type">boolean</span> whether the node is enabled or not
     **/
     static function is_enabled(node:TODO<"node">):TODO;
 
     /**
         Moves the first node above the second.
         
-        Supply nil as the second argument to move the first node to the top.
+        Alters the ordering of the two supplied nodes by moving the first node
+        above the second.
+        If the second argument is `nil` the first node is moved to the top.
         
-        @param node to move (node)
-        @param ref reference node above which the first node should be moved (node)
+        @param node 
+        <span class="type">node</span> to move
+        
+        @param node 
+        <span class="type">node | nil</span> reference node above which the first node should be moved
     **/
-    static function move_above(node:TODO<"node">, ref:TODO<"node">):Void;
+    static function move_above(node:TODO<"node">, node:EitherType<TODO<"nil">, TODO<"node">>):Void;
 
     /**
         Moves the first node below the second.
         
-        Supply nil as the second argument to move the first node to the bottom.
+        Alters the ordering of the two supplied nodes by moving the first node
+        below the second.
+        If the second argument is `nil` the first node is moved to the bottom.
         
-        @param node to move (node)
-        @param ref reference node below which the first node should be moved (node)
+        @param node 
+        <span class="type">node</span> to move
+        
+        @param node 
+        <span class="type">node | nil</span> reference node below which the first node should be moved
     **/
-    static function move_below(node:TODO<"node">, ref:TODO<"node">):Void;
+    static function move_below(node:TODO<"node">, node:EitherType<TODO<"nil">, TODO<"node">>):Void;
 
     /**
         Creates a new box node.
         
-        @param pos node position (vector3|vector4)
-        @param size node size (vector3)
-        @return new box node (node)
+        Dynamically create a new box node.
+        
+        @param pos 
+        <span class="type">vector3 | vector4</span> node position
+        
+        @param size 
+        <span class="type">vector3</span> node size
+        
+        @return node 
+        <span class="type">node</span> new box node
     **/
     static function new_box_node(pos:EitherType<Vector4, Vector3>, size:Vector3):TODO;
 
     /**
         Creates a new pie node.
         
-        @param pos node position (vector3|vector4)
-        @param size node size (vector3)
-        @return new box node (node)
+        Dynamically create a new pie node.
+        
+        @param pos 
+        <span class="type">vector3 | vector4</span> node position
+        
+        @param size 
+        <span class="type">vector3</span> node size
+        
+        @return node 
+        <span class="type">node</span> new box node
     **/
     static function new_pie_node(pos:EitherType<Vector4, Vector3>, size:Vector3):TODO;
 
     /**
         Creates a new spine node.
         
-        @param pos node position (vector3|vector4)
-        @param spine_scene spine scene id (string|hash)
-        @return new spine node (node)
+        Dynamically create a new spine node.
+        
+        @param pos 
+        <span class="type">vector3 | vector4</span> node position
+        
+        @param spine_scene 
+        <span class="type">string | hash</span> spine scene id
+        
+        @return node 
+        <span class="type">node</span> new spine node
     **/
     static function new_spine_node(pos:EitherType<Vector4, Vector3>, spine_scene:EitherType<Hash, String>):TODO;
 
     /**
         Creates a new text node.
         
-        @param pos node position (vector3|vector4)
-        @param text node text (string)
-        @return new text node (node)
+        Dynamically create a new text node.
+        
+        @param pos 
+        <span class="type">vector3 | vector4</span> node position
+        
+        @param text 
+        <span class="type">string</span> node text
+        
+        @return node 
+        <span class="type">node</span> new text node
     **/
     static function new_text_node(pos:EitherType<Vector4, Vector3>, text:String):TODO;
 
@@ -666,260 +980,433 @@ extern class Gui {
         
         Dynamically create a new texture.
         
-        @param texture texture id (string|hash)
-        @param width texture width (number)
-        @param height texture height (number)
-        @param type texture type (string|constant)
+        @param texture 
+        <span class="type">string | hash</span> texture id
         
-           * `"rgb"` - RGB
-           * `"rgba"` - RGBA
-           * `"l"` - LUMINANCE
+        @param width 
+        <span class="type">number</span> texture width
         
-        @param buffer texture data (string)
-        @param flip flip texture vertically (boolean)
-        @return texture creation was successful (boolean)
+        @param height 
+        <span class="type">number</span> texture height
+        
+        @param type 
+        <span class="type">string | constant</span> texture type
+        
+         * `"rgb"` - RGB
+         * `"rgba"` - RGBA
+         * `"l"` - LUMINANCE
+        
+        @param buffer 
+        <span class="type">string</span> texture data
+        
+        @param flip 
+        <span class="type">boolean</span> flip texture vertically
+        
+        @return success 
+        <span class="type">boolean</span> texture creation was successful
     **/
-    static function new_texture(texture:EitherType<Hash, String>, width:Float, height:Float, type:TODO, buffer:String, flip:TODO<"boolean">):TODO;
+    static function new_texture(texture:EitherType<Hash, String>, width:Float, height:Float, type:EitherType<TODO<"constant">, String>, buffer:String, flip:TODO<"boolean">):TODO;
 
     /**
         Determines if the node is pickable by the supplied coordinates.
         
-        @param node node to be tested for picking (node)
-        @param x x-coordinate (see <a href="#on_input">on_input</a> )
-        @param y y-coordinate (see <a href="#on_input">on_input</a> )
-        @return pick result (boolean)
+        Tests whether a coordinate is within the bounding box of a
+        node.
+        
+        @param node 
+        <span class="type">node</span> node to be tested for picking
+        
+        @param x 
+        <span class="type">number</span> x-coordinate (see `on_input` )
+        
+        @param y 
+        <span class="type">number</span> y-coordinate (see `on_input` )
+        
+        @return pickable 
+        <span class="type">boolean</span> pick result
     **/
-    static function pick_node(node:TODO<"node">, x:TODO<"see <a href=\"#on_input\">on_input</a>">, y:TODO<"see <a href=\"#on_input\">on_input</a>">):TODO;
+    static function pick_node(node:TODO<"node">, x:Float, y:Float):TODO;
 
     /**
         Play node flipbook animation.
         
-        Play flipbook animation on a box or pie node. The current node texture must contain the animation.
+        Play flipbook animation on a box or pie node.
+        The current node texture must contain the animation.
+        Use this function to set one-frame still images on the node.
         
-        @param node node to set animation for (node)
-        @param animation animation id (string|hash)
-        @param complete_function function to call when the animation has completed (function)
+        @param node 
+        <span class="type">node</span> node to set animation for
+        
+        @param animation 
+        <span class="type">string | hash</span> animation id
+        
+        @param complete_function 
+        <span class="type">function(self, node)</span> optional function to call when the animation has completed
+        
+        <dl>
+        <dt>`self`</dt>
+        <dd>
+        
+        <span class="type">object</span> The current object.
+        
+        </dd>
+        <dt>`node`</dt>
+        <dd>
+        
+        <span class="type">node</span> The node that is animated.
+        
+        </dd>
+        </dl>
     **/
-    static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function">):Void;
+    static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function(self, node)">):Void;
 
     /**
         Play a spine animation.
         
-        @param node spine node that should play the animation (node)
-        @param animation_id id of the animation to play (string|hash)
-        @param playback playback mode (constant)
+        Starts a spine animation.
         
-           * `gui.PLAYBACK_ONCE_FORWARD`
-           * `gui.PLAYBACK_ONCE_BACKWARD`
-           * `gui.PLAYBACK_ONCE_PINGPONG`
-           * `gui.PLAYBACK_LOOP_FORWARD`
-           * `gui.PLAYBACK_LOOP_BACKWARD`
-           * `gui.PLAYBACK_LOOP_PINGPONG`
+        @param node 
+        <span class="type">node</span> spine node that should play the animation
         
-        @param play_properties optional table with properties (table)
+        @param animation_id 
+        <span class="type">string | hash</span> id of the animation to play
         
-           * `blend_duration` duration of a linear blend between the current and new animation (number)
-           * `offset` the normalized initial value of the animation cursor when the animation starts playing (number)
-           * `playback_rate` the rate with which the animation will be played. Must be positive (number)
+        @param playback 
+        <span class="type">constant</span> playback mode
         
-        @param complete_function function to call when the animation has completed (function)
+         * `gui.PLAYBACK_ONCE_FORWARD`
+         * `gui.PLAYBACK_ONCE_BACKWARD`
+         * `gui.PLAYBACK_ONCE_PINGPONG`
+         * `gui.PLAYBACK_LOOP_FORWARD`
+         * `gui.PLAYBACK_LOOP_BACKWARD`
+         * `gui.PLAYBACK_LOOP_PINGPONG`
+        
+        @param play_properties 
+        <span class="type">table</span> optional table with properties
+        
+        <dl>
+        <dt>`blend_duration`</dt>
+        <dd><span class="type">number</span> The duration of a linear blend between the current and new animation</dd>
+        <dt>`offset`</dt>
+        <dd><span class="type">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>
+        <dt>`playback_rate`</dt>
+        <dd><span class="type">number</span> The rate with which the animation will be played. Must be positive</dd>
+        </dl>
+        @param complete_function 
+        <span class="type">function(self, node)</span> function to call when the animation has completed
     **/
-    static function play_spine_anim(node:TODO<"node">, animation_id:EitherType<Hash, String>, playback:TODO, ?play_properties:TODO, ?complete_function:TODO<"function">):Void;
+    static function play_spine_anim(node:TODO<"node">, animation_id:EitherType<Hash, String>, playback:TODO<"constant">, ?play_properties:TODO<"table">, ?complete_function:TODO<"function(self, node)">):Void;
 
     /**
-        Reset on-display keyboard if available.
+        Resets on-display keyboard if available.
         
-        Reset input context of keyboard. This will clear marked text.
+        Resets the input context of keyboard. This will clear marked text.
     **/
     static function reset_keyboard():Void;
 
     /**
-        Reset all nodes to initial state.
+        Resets all nodes to initial state.
         
-        reset only applies to static node loaded from the scene. Nodes created dynamically from script are not affected
+        Resets all nodes in the current GUI scene to their initial state.
+        The reset only applies to static node loaded from the scene.
+        Nodes that are created dynamically from script are not affected.
     **/
     static function reset_nodes():Void;
 
     /**
         Sets node adjust mode.
         
-        Adjust mode defines how the node will adjust itself to a screen resolution which differs from the project settings.
+        Sets the adjust mode on a node.
+        The adjust mode defines how the node will adjust itself to screen
+        resolutions that differs from the one in the project settings.
         
-        @param node node to set adjust mode for (node)
-        @param adjust_mode adjust mode to set (constant)
+        @param node 
+        <span class="type">node</span> node to set adjust mode for
         
-           * `gui.ADJUST_FIT`
-           * `gui.ADJUST_ZOOM`
-           * `gui.ADJUST_STRETCH`
+        @param adjust_mode 
+        <span class="type">constant</span> adjust mode to set
+        
+         * `gui.ADJUST_FIT`
+         * `gui.ADJUST_ZOOM`
+         * `gui.ADJUST_STRETCH`
     **/
-    static function set_adjust_mode(node:TODO<"node">, adjust_mode:TODO):Void;
+    static function set_adjust_mode(node:TODO<"node">, adjust_mode:TODO<"constant">):Void;
 
     /**
         Sets node blend mode.
         
+        Set the blend mode of a node.
         Blend mode defines how the node will be blended with the background.
         
-        @param node node to set blend mode for (node)
-        @param blend_mode blend mode to set (constant)
+        @param node 
+        <span class="type">node</span> node to set blend mode for
         
-           * `gui.BLEND_ALPHA`
-           * `gui.BLEND_ADD`
-           * `gui.BLEND_ADD_ALPHA`
-           * `gui.BLEND_MULT`
+        @param blend_mode 
+        <span class="type">constant</span> blend mode to set
+        
+         * `gui.BLEND_ALPHA`
+         * `gui.BLEND_ADD`
+         * `gui.BLEND_ADD_ALPHA`
+         * `gui.BLEND_MULT`
     **/
-    static function set_blend_mode(node:TODO<"node">, blend_mode:TODO):Void;
+    static function set_blend_mode(node:TODO<"node">, blend_mode:TODO<"constant">):Void;
 
     /**
-        Sets node clipping visibility.
+        Sets node clipping inversion.
         
         If node is set as an inverted clipping node, it will clip anything inside as opposed to outside.
         
-        @param node node to set clipping inverted state for (node)
-        @param visible true or false
+        @param node 
+        <span class="type">node</span> node to set clipping inverted state for
+        
+        @param inverted 
+        <span class="type">boolean</span> true or false
     **/
-    static function set_clipping_inverted(node:TODO<"node">, visible:TODO):Void;
+    static function set_clipping_inverted(node:TODO<"node">, inverted:TODO<"boolean">):Void;
 
     /**
         Sets node clipping mode state.
         
         Clipping mode defines how the node will clipping it's children nodes
         
-        @param node node to set clipping mode for (node)
-        @param clipping_mode clipping mode to set (constant)
+        @param node 
+        <span class="type">node</span> node to set clipping mode for
+        
+        @param clipping_mode 
+        <span class="type">constant</span> clipping mode to set
         
            * `gui.CLIPPING_MODE_NONE`
            * `gui.CLIPPING_MODE_STENCIL`
     **/
-    static function set_clipping_mode(node:TODO<"node">, clipping_mode:TODO):Void;
+    static function set_clipping_mode(node:TODO<"node">, clipping_mode:TODO<"constant">):Void;
 
     /**
         Sets node clipping visibility.
         
         If node is set as an visible clipping node, it will be shown as well as clipping. Otherwise, it will only clip but not show visually.
         
-        @param node node to set clipping visibility for (node)
-        @param visible true or false
+        @param node 
+        <span class="type">node</span> node to set clipping visibility for
+        
+        @param visible 
+        <span class="type">boolean</span> true or false
     **/
-    static function set_clipping_visible(node:TODO<"node">, visible:TODO):Void;
+    static function set_clipping_visible(node:TODO<"node">, visible:TODO<"boolean">):Void;
 
     /**
         Sets the node color.
         
-        @param node node to set the color for (node)
-        @param color new color (vector3|vector4)
+        Sets the color of the supplied node. The components
+        of the supplied vector3 or vector4 should contain the color channel values:
+        
+        <table>
+        <thead>
+        <tr>
+        <th>Component</th>
+        <th>Color value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>x</td>
+        <td>Red value</td>
+        </tr>
+        <tr>
+        <td>y</td>
+        <td>Green value</td>
+        </tr>
+        <tr>
+        <td>z</td>
+        <td>Blue value</td>
+        </tr>
+        <tr>
+        <td>w <span class="type">vector4</span></td>
+        <td>Alpha value</td>
+        </tr>
+        </tbody>
+        </table>
+        
+        @param node 
+        <span class="type">node</span> node to set the color for
+        
+        @param color 
+        <span class="type">vector3 | vector4</span> new color
     **/
     static function set_color(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 
     /**
         Enables/disables a node.
         
+        Sets a node to the disabled or enabled state.
         Disabled nodes are not rendered and animations acting on them are not evaluated.
         
-        @param node node to be enabled/disabled (node)
-        @param enabled whether the node should be enabled or not (boolean)
+        @param node 
+        <span class="type">node</span> node to be enabled/disabled
+        
+        @param enabled 
+        <span class="type">boolean</span> whether the node should be enabled or not
     **/
     static function set_enabled(node:TODO<"node">, enabled:TODO<"boolean">):Void;
 
     /**
         Sets the angle for the filled pie sector.
         
-        @param node node to set the fill angle for (node)
-        @param sector angle
+        Set the sector angle of a pie node.
+        
+        @param node 
+        <span class="type">node</span> node to set the fill angle for
+        
+        @param angle 
+        <span class="type">number</span> sector angle
     **/
-    static function set_fill_angle(node:TODO<"node">, sector:TODO):Void;
+    static function set_fill_angle(node:TODO<"node">, angle:Float):Void;
 
     /**
         Sets the node font.
         
-        This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
+        This is only useful for text nodes.
+        The font must be mapped to the gui scene in the gui editor.
         
-        @param node node for which to set the font (node)
-        @param font font id (string|hash)
+        @param node 
+        <span class="type">node</span> node for which to set the font
+        
+        @param font 
+        <span class="type">string | hash</span> font id
     **/
     static function set_font(node:TODO<"node">, font:EitherType<Hash, String>):Void;
 
     /**
         Sets the id of the specified node.
         
-        @param node node to set the id for (node)
-        @param id id to set (string|hash)
+        @param node 
+        <span class="type">node</span> node to set the id for
+        
+        @param id 
+        <span class="type">string | hash</span> id to set
     **/
     static function set_id(node:TODO<"node">, id:EitherType<Hash, String>):Void;
 
     /**
-        Sets the pie inner radius (defined along the x dimension).
+        Sets the pie inner radius.
         
-        @param node node to set the inner radius for (node)
-        @param inner radius
+        Sets the inner radius of a pie node.
+        The radius is defined along the x-axis.
+        
+        @param node 
+        <span class="type">node</span> node to set the inner radius for
+        
+        @param radius 
+        <span class="type">number</span> inner radius
     **/
-    static function set_inner_radius(node:TODO<"node">, inner:TODO):Void;
+    static function set_inner_radius(node:TODO<"node">, radius:Float):Void;
 
     /**
         Sets the node layer.
         
         The layer must be mapped to the gui scene in the gui editor.
         
-        @param node node for which to set the layer (node)
-        @param layer layer id (string|hash)
+        @param node 
+        <span class="type">node</span> node for which to set the layer
+        
+        @param layer 
+        <span class="type">string | hash</span> layer id
     **/
     static function set_layer(node:TODO<"node">, layer:EitherType<Hash, String>):Void;
 
     /**
         Sets the leading of the text node.
         
-        @param node node for which to set the leading (node)
-        @param leading a scaling number for the line spacing (default=1) (number)
+        Sets the leading value for a text node. This value is used to
+        scale the line spacing of text.
+        
+        @param node 
+        <span class="type">node</span> node for which to set the leading
+        
+        @param leading 
+        <span class="type">number</span> a scaling value for the line spacing (default=1)
     **/
-    static function set_leading(node:TODO<"node">, leading:TODO<"default=1) (number">):Void;
+    static function set_leading(node:TODO<"node">, leading:Float):Void;
 
     /**
         Set line-break mode.
         
+        Sets the line-break mode on a text node.
         This is only useful for text nodes.
         
-        @param node node to set line-break for (node)
-        @param text text to set (string)
+        @param node 
+        <span class="type">node</span> node to set line-break for
+        
+        @param line_break 
+        <span class="type">boolean</span> true of false
     **/
-    static function set_line_break(node:TODO<"node">, text:String):Void;
+    static function set_line_break(node:TODO<"node">, line_break:TODO<"boolean">):Void;
 
     /**
-        Sets the pie outer bounds mode.
+        Sets the pie node outer bounds mode.
         
-        @param node node for which to set the outer bounds mode (node)
-        @param bounds gui.PIEBOUNDS_RECTANGLE or gui.PIEBOUNDS_ELLIPSE
+        Sets the outer bounds mode for a pie node.
+        
+        @param node 
+        <span class="type">node</span> node for which to set the outer bounds mode
+        
+        @param bounds_mode 
+        <span class="type">constant</span> the outer bounds mode of the pie node:
+        
+         * `gui.PIEBOUNDS_RECTANGLE`
+         * `gui.PIEBOUNDS_ELLIPSE`
     **/
-    static function set_outer_bounds(node:TODO<"node">, bounds:TODO):Void;
+    static function set_outer_bounds(node:TODO<"node">, bounds_mode:TODO<"constant">):Void;
 
     /**
         Sets the node outline color.
         
-        @param node node to set the outline color for (node)
-        @param color new outline color (vector3|vector4)
+        Sets the outline color of the supplied node.
+        See `gui.set_color` for info how vectors encode color values.
+        
+        @param node 
+        <span class="type">node</span> node to set the outline color for
+        
+        @param color 
+        <span class="type">vector3 | vector4</span> new outline color
     **/
     static function set_outline(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 
     /**
-        Set the parent of the node.
+        Sets the parent of the node.
         
-        @param node node for which to set its parent (node)
-        @param parent parent node to set (node)
+        Sets the parent node of the specified node.
+        
+        @param node 
+        <span class="type">node</span> node for which to set its parent
+        
+        @param parent 
+        <span class="type">node</span> parent node to set
     **/
     static function set_parent(node:TODO<"node">, parent:TODO<"node">):Void;
 
     /**
-        Sets the number of generarted vertices around the perimeter.
+        Sets the number of generated vertices around the perimeter.
         
-        @param vertex count (number)
+        Sets the number of generated vertices around the perimeter of a pie node.
+        
+        @param node 
+        <span class="type">node</span> pie node
+        
+        @param vertices 
+        <span class="type">number</span> vertex count
     **/
-    static function set_perimeter_vertices(vertex:Float):Void;
+    static function set_perimeter_vertices(node:TODO<"node">, vertices:Float):Void;
 
     /**
         Sets the pivot of a node.
         
         The pivot specifies how the node is drawn and rotated from its position.
         
-        @param node node to set pivot for (node)
-        @param pivot pivot constant (constant)
+        @param node 
+        <span class="type">node</span> node to set pivot for
+        
+        @param pivot 
+        <span class="type">constant</span> pivot constant
         
            * `gui.PIVOT_CENTER`
            * `gui.PIVOT_N`
@@ -931,90 +1418,133 @@ extern class Gui {
            * `gui.PIVOT_W`
            * `gui.PIVOT_NW`
     **/
-    static function set_pivot(node:TODO<"node">, pivot:TODO):Void;
+    static function set_pivot(node:TODO<"node">, pivot:TODO<"constant">):Void;
 
     /**
         Sets the node position.
         
-        @param node node to set the position for (node)
-        @param position new position (vector3|vector4)
+        Sets the position of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to set the position for
+        
+        @param position 
+        <span class="type">vector3 | vector4</span> new position
     **/
     static function set_position(node:TODO<"node">, position:EitherType<Vector4, Vector3>):Void;
 
     /**
-        Set the render ordering for the current GUI scene.
+        Sets the render ordering for the current GUI scene.
         
-        Set the order number for the current GUI scene. The number dictates the sorting of the "gui" render predicate, in other words
-        in which order the scene will be rendered in relation to other currently rendered GUI scenes.
+        Set the order number for the current GUI scene.
+        The number dictates the sorting of the "gui" render predicate,
+        in other words in which order the scene will be rendered in relation
+        to other currently rendered GUI scenes.
         
         The number must be in the range 0 to 15.
         
-        @param order rendering order (number)
+        @param order 
+        <span class="type">number</span> rendering order (0-15)
     **/
     static function set_render_order(order:Float):Void;
 
     /**
         Sets the node rotation.
         
-        @param node node to set the rotation for (node)
-        @param rotation new rotation (vector3|vector4)
+        Sets the rotation of the supplied node.
+        The rotation is expressed in degree Euler angles.
+        
+        @param node 
+        <span class="type">node</span> node to set the rotation for
+        
+        @param rotation 
+        <span class="type">vector3 | vector4</span> new rotation
     **/
     static function set_rotation(node:TODO<"node">, rotation:EitherType<Vector4, Vector3>):Void;
 
     /**
         Sets the node scale.
         
-        @param node node to set the scale for (node)
-        @param scale new scale (vector3|vector4)
+        Sets the scaling of the supplied node.
+        
+        @param node 
+        <span class="type">node</span> node to set the scale for
+        
+        @param scale 
+        <span class="type">vector3 | vector4</span> new scale
     **/
     static function set_scale(node:TODO<"node">, scale:EitherType<Vector4, Vector3>):Void;
 
     /**
         Sets the node shadow color.
         
-        @param node node to set the shadow color for (node)
-        @param color new shadow color (vector3|vector4)
+        Sets the shadow color of the supplied node.
+        See `gui.set_color` for info how vectors encode color values.
+        
+        @param node 
+        <span class="type">node</span> node to set the shadow color for
+        
+        @param color 
+        <span class="type">vector3 | vector4</span> new shadow color
     **/
     static function set_shadow(node:TODO<"node">, color:EitherType<Vector4, Vector3>):Void;
 
     /**
         Sets the node size.
         
-        *NOTE!* You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
+        Sets the size of the supplied node.
         
-        @param node node to set the size for (node)
-        @param size new size (vector3|vector4)
+        You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
+        
+        @param node 
+        <span class="type">node</span> node to set the size for
+        
+        @param size 
+        <span class="type">vector3 | vector4</span> new size
     **/
     static function set_size(node:TODO<"node">, size:EitherType<Vector4, Vector3>):Void;
 
     /**
         Sets node size mode.
         
-        Size mode defines how the node will adjust itself in size according to mode.
+        Sets the size mode of a node.
+        The size mode defines how the node will adjust itself in size. Automatic
+        size mode alters the node size based on the node's content.
         
-        @param node node to set size mode for (node)
-        @param size_mode size mode to set (constant)
+        @param node 
+        <span class="type">node</span> node to set size mode for
         
-           * `gui.SIZE_MODE_MANUAL`
-           * `gui.SIZE_MODE_AUTO`
+        @param size_mode 
+        <span class="type">constant</span> size mode to set
+        
+         * `gui.SIZE_MODE_MANUAL`
+         * `gui.SIZE_MODE_AUTO`
     **/
-    static function set_size_mode(node:TODO<"node">, size_mode:TODO):Void;
+    static function set_size_mode(node:TODO<"node">, size_mode:TODO<"constant">):Void;
 
     /**
         Set the slice9 configuration for the node.
         
-        @param node node to manipulate
-        @param params new value (vector4)
+        Set the slice9 configuration values for the node.
+        
+        @param node 
+        <span class="type">node</span> node to manipulate
+        
+        @param values 
+        <span class="type">vector4</span> new values
     **/
-    static function set_slice9(node:TODO, params:Vector4):Void;
+    static function set_slice9(node:TODO<"node">, values:Vector4):Void;
 
     /**
         Sets the normalized cursor of the animation on a spine node.
         
         This is only useful for spine nodes. The cursor is normalized.
         
-        @param node spine node to set the cursor for (node)
-        @param cursor cursor value (number)
+        @param node 
+        <span class="type">node</span> spine node to set the cursor for
+        
+        @param cursor 
+        <span class="type">number</span> cursor value
     **/
     static function set_spine_cursor(node:TODO<"node">, cursor:Float):Void;
 
@@ -1023,8 +1553,11 @@ extern class Gui {
         
         This is only useful for spine nodes. Sets the playback rate of the animation on a spine node. Must be positive.
         
-        @param node spine node to set the cursor for (node)
-        @param playback_rate playback rate (number)
+        @param node 
+        <span class="type">node</span> spine node to set the cursor for
+        
+        @param playback_rate 
+        <span class="type">number</span> playback rate
     **/
     static function set_spine_playback_rate(node:TODO<"node">, playback_rate:Float):Void;
 
@@ -1033,8 +1566,11 @@ extern class Gui {
         
         Set the spine scene on a spine node. The spine scene must be mapped to the gui scene in the gui editor.
         
-        @param node node to set spine scene for (node)
-        @param spine_scene spine scene id (string|hash)
+        @param node 
+        <span class="type">node</span> node to set spine scene for
+        
+        @param spine_scene 
+        <span class="type">string | hash</span> spine scene id
     **/
     static function set_spine_scene(node:TODO<"node">, spine_scene:EitherType<Hash, String>):Void;
 
@@ -1043,28 +1579,42 @@ extern class Gui {
         
         Sets the spine skin on a spine node.
         
-        @param node node to set the spine skin on (node)
-        @param spine_skin spine skin id (string|hash)
+        @param node 
+        <span class="type">node</span> node to set the spine skin on
+        
+        @param spine_skin 
+        <span class="type">string | hash</span> spine skin id
     **/
     static function set_spine_skin(node:TODO<"node">, spine_skin:EitherType<Hash, String>):Void;
 
     /**
         Sets the node text.
         
-        This is only useful for text nodes.
+        Set the text value of a text node. This is only useful for text nodes.
         
-        @param node node to set text for (node)
-        @param text text to set (string)
+        @param node 
+        <span class="type">node</span> node to set text for
+        
+        @param text 
+        <span class="type">string</span> text to set
     **/
     static function set_text(node:TODO<"node">, text:String):Void;
 
     /**
         Sets the node texture.
         
-        Set the texture on a box or pie node. The texture must be mapped to the gui scene in the gui editor.
+        Set the texture on a box or pie node. The texture must be mapped to
+        the gui scene in the gui editor. The function points out which texture
+        the node should render from. If the texture is an atlas, further
+        information is needed to select which image/animation in the atlas
+        to render. In such cases, use `gui.play_flipbook()` in
+        addition to this function.
         
-        @param node node to set texture for (node)
-        @param texture texture id (string|hash)
+        @param node 
+        <span class="type">node</span> node to set texture for
+        
+        @param texture 
+        <span class="type">string | hash</span> texture id
     **/
     static function set_texture(node:TODO<"node">, texture:EitherType<Hash, String>):Void;
 
@@ -1073,73 +1623,100 @@ extern class Gui {
         
         Set the texture buffer data for a dynamically created texture.
         
-        @param texture texture id (string|hash)
-        @param width texture width (number)
-        @param height texture height (number)
-        @param type texture type (string|constant)
+        @param texture 
+        <span class="type">string | hash</span> texture id
+        
+        @param width 
+        <span class="type">number</span> texture width
+        
+        @param height 
+        <span class="type">number</span> texture height
+        
+        @param type 
+        <span class="type">string | constant</span> texture type
         
            * `"rgb"` - RGB
            * `"rgba"` - RGBA
            * `"l"` - LUMINANCE
         
-        @param buffer texture data (string)
-        @param flip flip texture vertically (boolean)
-        @return setting the data was successful (boolean)
+        @param buffer 
+        <span class="type">string</span> texture data
+        
+        @param flip 
+        <span class="type">boolean</span> flip texture vertically
+        
+        @return success 
+        <span class="type">boolean</span> setting the data was successful
     **/
-    static function set_texture_data(texture:EitherType<Hash, String>, width:Float, height:Float, type:TODO, buffer:String, flip:TODO<"boolean">):TODO;
+    static function set_texture_data(texture:EitherType<Hash, String>, width:Float, height:Float, type:EitherType<TODO<"constant">, String>, buffer:String, flip:TODO<"boolean">):TODO;
 
     /**
         Sets the tracking of the text node.
         
-        @param node node for which to set the tracking (node)
-        @param tracking a scaling number for the letter spacing (default=0) (number)
+        Sets the tracking value of a text node. This value is used to
+        adjust the vertical spacing of characters in the text.
+        
+        @param node 
+        <span class="type">node</span> node for which to set the tracking
+        
+        @param tracking 
+        <span class="type">number</span> a scaling number for the letter spacing (default=0)
     **/
-    static function set_tracking(node:TODO<"node">, tracking:TODO<"default=0) (number">):Void;
+    static function set_tracking(node:TODO<"node">, tracking:Float):Void;
 
     /**
         Sets the x-anchor of a node.
         
         The x-anchor specifies how the node is moved when the game is run in a different resolution.
         
-        @param node node to set x-anchor for (node)
-        @param anchor anchor constant (constant)
+        @param node 
+        <span class="type">node</span> node to set x-anchor for
         
-           * `gui.ANCHOR_NONE`
-           * `gui.ANCHOR_LEFT`
-           * `gui.ANCHOR_RIGHT`
+        @param anchor 
+        <span class="type">constant</span> anchor constant
+        
+         * `gui.ANCHOR_NONE`
+         * `gui.ANCHOR_LEFT`
+         * `gui.ANCHOR_RIGHT`
     **/
-    static function set_xanchor(node:TODO<"node">, anchor:TODO):Void;
+    static function set_xanchor(node:TODO<"node">, anchor:TODO<"constant">):Void;
 
     /**
         Sets the y-anchor of a node.
         
         The y-anchor specifies how the node is moved when the game is run in a different resolution.
         
-        @param node node to set y-anchor for (node)
-        @param anchor anchor constant (constant)
+        @param node 
+        <span class="type">node</span> node to set y-anchor for
         
-           * `gui.ANCHOR_NONE`
-           * `gui.ANCHOR_TOP`
-           * `gui.ANCHOR_BOTTOM`
+        @param anchor 
+        <span class="type">constant</span> anchor constant
+        
+         * `gui.ANCHOR_NONE`
+         * `gui.ANCHOR_TOP`
+         * `gui.ANCHOR_BOTTOM`
     **/
-    static function set_yanchor(node:TODO<"node">, anchor:TODO):Void;
+    static function set_yanchor(node:TODO<"node">, anchor:TODO<"constant">):Void;
 
     /**
-        Display on-display keyboard if available.
+        Shows the on-display keyboard if available.
         
-        The specified type of keyboard is displayed, if it is available on
+        Shows the on-display touch keyboard.
+        The specified type of keyboard is displayed if it is available on
         the device.
         
-        @param type keyboard type (constant)
+        @param type 
+        <span class="type">constant</span> keyboard type
         
-           * `gui.KEYBOARD_TYPE_DEFAULT`
-           * `gui.KEYBOARD_TYPE_EMAIL`
-           * `gui.KEYBOARD_TYPE_NUMBER_PAD`
-           * `gui.KEYBOARD_TYPE_PASSWORD`
+         * `gui.KEYBOARD_TYPE_DEFAULT`
+         * `gui.KEYBOARD_TYPE_EMAIL`
+         * `gui.KEYBOARD_TYPE_NUMBER_PAD`
+         * `gui.KEYBOARD_TYPE_PASSWORD`
         
-        @param autoclose close keyboard automatically when clicking outside
+        @param autoclose 
+        <span class="type">boolean</span> if the keyboard should automatically close when clicking outside
     **/
-    static function show_keyboard(type:TODO, autoclose:TODO):Void;
+    static function show_keyboard(type:TODO<"constant">, autoclose:TODO<"boolean">):Void;
 
     /**
         Called when a gui component is initialized.
@@ -1147,9 +1724,10 @@ extern class Gui {
         This is a callback-function, which is called by the engine when a gui component is initialized. It can be used
         to set the initial state of the script and gui scene.
         
-        @param self reference to the script state to be used for storing data (script_ref)
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
     **/
-    static function init(self:TODO<"script_ref">):Void;
+    static function init(self:TODO<"object">):Void;
 
     /**
         Called when user input is received.
@@ -1157,10 +1735,19 @@ extern class Gui {
         This is a callback-function, which is called by the engine when user input is sent to the instance of the gui component.
         It can be used to take action on the input, e.g. modify the gui according to the input.
         
-        For an instance to obtain user input, it must first acquire input focuse through the message `acquire_input_focus`.
-        See the documentation of that message for more information.
+        For an instance to obtain user input, it must first acquire input
+        focus through the message `acquire_input_focus`.
         
-        The `action` parameter is a table containing data about the input mapped to the `action_id`.
+        Any instance that has obtained input will be put on top of an
+        input stack. Input is sent to all listeners on the stack until the
+        end of stack is reached, or a listener returns `true`
+        to signal that it wants input to be consumed.
+        
+        See the documentation of `acquire_input_focus` for more
+        information.
+        
+        The `action` parameter is a table containing data about the input mapped to the
+        `action_id`.
         For mapped actions it specifies the value of the input and if it was just pressed or released.
         Actions are mapped to input in an input_binding-file.
         
@@ -1170,45 +1757,138 @@ extern class Gui {
         Here is a brief description of the available table fields:
         
         <table>
-          <th>Field</th>
-          <th>Description</th>
-          <tr><td>`value`</td><td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td></tr>
-          <tr><td>`pressed`</td><td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-          <tr><td>`released`</td><td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td></tr>
-          <tr><td>`repeated`</td><td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td></tr>
-          <tr><td>`x`</td><td>The x value of a pointer device, if present.</td></tr>
-          <tr><td>`y`</td><td>The y value of a pointer device, if present.</td></tr>
-          <tr><td>`screen_x`</td><td>The screen space x value of a pointer device, if present.</td></tr>
-          <tr><td>`screen_y`</td><td>The screen space y value of a pointer device, if present.</td></tr>
-          <tr><td>`dx`</td><td>The change in x value of a pointer device, if present.</td></tr>
-          <tr><td>`dy`</td><td>The change in y value of a pointer device, if present.</td></tr>
-          <tr><td>`screen_dx`</td><td>The change in screen space x value of a pointer device, if present.</td></tr>
-          <tr><td>`screen_dy`</td><td>The change in screen space y value of a pointer device, if present.</td></tr>
-          <tr><td>`touch`</td><td>List of touch input, one element per finger, if present. See table below about touch input</td></tr>
+        <thead>
+        <tr>
+        <th>Field</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>`value`</td>
+        <td>The amount of input given by the user. This is usually 1 for buttons and 0-1 for analogue inputs. This is not present for mouse movement.</td>
+        </tr>
+        <tr>
+        <td>`pressed`</td>
+        <td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>
+        </tr>
+        <tr>
+        <td>`released`</td>
+        <td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>
+        </tr>
+        <tr>
+        <td>`repeated`</td>
+        <td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td>
+        </tr>
+        <tr>
+        <td>`x`</td>
+        <td>The x value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`y`</td>
+        <td>The y value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`screen_x`</td>
+        <td>The screen space x value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`screen_y`</td>
+        <td>The screen space y value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`dx`</td>
+        <td>The change in x value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`dy`</td>
+        <td>The change in y value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`screen_dx`</td>
+        <td>The change in screen space x value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`screen_dy`</td>
+        <td>The change in screen space y value of a pointer device, if present.</td>
+        </tr>
+        <tr>
+        <td>`gamepad`</td>
+        <td>The index of the gamepad device that provided the input.</td>
+        </tr>
+        <tr>
+        <td>`touch`</td>
+        <td>List of touch input, one element per finger, if present. See table below about touch input</td>
+        </tr>
+        </tbody>
         </table>
         
         Touch input table:
         
         <table>
-          <th>Field</th>
-          <th>Description</th>
-          <tr><td>`pressed`</td><td>True if the finger was pressed this frame.</td></tr>
-          <tr><td>`released`</td><td>True if the finger was released this frame.</td></tr>
-          <tr><td>`tap_count`</td><td>Number of taps, one for single, two for double-tap, etc</td></tr>
-          <tr><td>`x`</td><td>The x touch location.</td></tr>
-          <tr><td>`y`</td><td>The y touch location.</td></tr>
-          <tr><td>`dx`</td><td>The change in x value.</td></tr>
-          <tr><td>`dy`</td><td>The change in y value.</td></tr>
-          <tr><td>`acc_x`</td><td>Accelerometer x value (if present).</td></tr>
-          <tr><td>`acc_y`</td><td>Accelerometer y value (if present).</td></tr>
-          <tr><td>`acc_z`</td><td>Accelerometer z value (if present).</td></tr>
+        <thead>
+        <tr>
+        <th>Field</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>`pressed`</td>
+        <td>True if the finger was pressed this frame.</td>
+        </tr>
+        <tr>
+        <td>`released`</td>
+        <td>True if the finger was released this frame.</td>
+        </tr>
+        <tr>
+        <td>`tap_count`</td>
+        <td>Number of taps, one for single, two for double-tap, etc</td>
+        </tr>
+        <tr>
+        <td>`x`</td>
+        <td>The x touch location.</td>
+        </tr>
+        <tr>
+        <td>`y`</td>
+        <td>The y touch location.</td>
+        </tr>
+        <tr>
+        <td>`dx`</td>
+        <td>The change in x value.</td>
+        </tr>
+        <tr>
+        <td>`dy`</td>
+        <td>The change in y value.</td>
+        </tr>
+        <tr>
+        <td>`acc_x`</td>
+        <td>Accelerometer x value (if present).</td>
+        </tr>
+        <tr>
+        <td>`acc_y`</td>
+        <td>Accelerometer y value (if present).</td>
+        </tr>
+        <tr>
+        <td>`acc_z`</td>
+        <td>Accelerometer z value (if present).</td>
+        </tr>
+        </tbody>
         </table>
         
-        @param self reference to the script state to be used for storing data (script_ref)
-        @param action_id id of the received input action, as mapped in the input_binding-file (hash)
-        @param action a table containing the input data, see above for a description (table)
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
+        
+        @param action_id 
+        <span class="type">hash</span> id of the received input action, as mapped in the input_binding-file
+        
+        @param action 
+        <span class="type">table</span> a table containing the input data, see above for a description
+        
+        @return [consume] 
+        <span class="type">boolean</span> optional boolean to signal if the input should be consumed (not passed on to others) or not, default is false
     **/
-    static function on_input(self:TODO<"script_ref">, action_id:Hash, action:TODO<"table">):Void;
+    static function on_input(self:TODO<"object">, action_id:Hash, action:TODO<"table">):TODO;
 
     /**
         Called when a message has been sent to the gui component.
@@ -1221,11 +1901,16 @@ extern class Gui {
         
         See the `update` function for examples on how to use this callback-function.
         
-        @param self reference to the script state to be used for storing data (script_ref)
-        @param message_id id of the received message (hash)
-        @param message a table containing the message data (table)
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
+        
+        @param message_id 
+        <span class="type">hash</span> id of the received message
+        
+        @param message 
+        <span class="type">table</span> a table containing the message data
     **/
-    static function on_message(self:TODO<"script_ref">, message_id:Hash, message:TODO<"table">):Void;
+    static function on_message(self:TODO<"object">, message_id:Hash, message:TODO<"table">):Void;
 
     /**
         Called when the gui script is reloaded.
@@ -1233,9 +1918,10 @@ extern class Gui {
         This is a callback-function, which is called by the engine when the gui script is reloaded, e.g. from the editor.
         It can be used for live development, e.g. to tweak constants or set up the state properly for the script.
         
-        @param self reference to the script state to be used for storing data (script_ref)
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
     **/
-    static function on_reload(self:TODO<"script_ref">):Void;
+    static function on_reload(self:TODO<"object">):Void;
 
     /**
         Called every frame to update the gui component.
@@ -1243,10 +1929,46 @@ extern class Gui {
         This is a callback-function, which is called by the engine every frame to update the state of a gui component.
         It can be used to perform any kind of gui related tasks, e.g. animating nodes.
         
-        @param self reference to the script state to be used for storing data (script_ref)
-        @param dt the time-step of the frame update
+        @param self 
+        <span class="type">object</span> reference to the script state to be used for storing data
+        
+        @param dt 
+        <span class="type">number</span> the time-step of the frame update
     **/
-    static function update(self:TODO<"script_ref">, dt:TODO):Void;
+    static function update(self:TODO<"object">, dt:Float):Void;
+}
+
+/**
+    Messages related to the `Gui` module.
+**/
+@:publicFields
+class GuiMessages {
+    /**
+        Reports a layout change.
+        
+        This message is broadcast to every GUI component when a layout change has been initiated
+        on device.
+    **/
+    static var layout_changed(default, never) = new Message<GuiMessageLayoutChanged>("layout_changed");
+}
+
+/**
+    Data for the `GuiMessages.layout_changed` message.
+**/
+typedef GuiMessageLayoutChanged = {
+    /**
+        
+        <span class="type">hash</span> the id of the layout the engine is changing to
+        
+    **/
+    var id:Hash;
+
+    /**
+        
+        <span class="type">hash</span> the id of the layout the engine is changing from
+        
+    **/
+    var previous_id:Hash;
 }
 
 @:native("_G.gui")

@@ -1,7 +1,7 @@
 package defold;
 
 /**
-    Functions for performing HTTP and HTTPS requests.
+    <p>Functions for performing HTTP and HTTPS requests.</p>
 **/
 @:native("_G.http")
 extern class Http {
@@ -10,14 +10,40 @@ extern class Http {
         
         Perform a HTTP/HTTPS request.
         
-        If no timeout value is passed, the configuration value "network.http_timeout" is used. If that is not set, the timeout value is 0. (0 == blocks indefinitely)
+        <span class="icon-attention"></span> If no timeout value is passed, the configuration value "network.http_timeout" is used. If that is not set, the timeout value is `0` (which blocks indefinitely).
         
-        @param url target url
-        @param method HTTP/HTTPS method, e.g. GET/PUT/POST/DELETE/...
-        @param callback response callback
-        @param headers optional lua-table with custom headers
-        @param post_data optional data to send
-        @param options optional lua-table with request parameters. Supported entries: 'timeout'=<number> (in seconds)
+        @param url 
+        <span class="type">string</span> target url
+        
+        @param method 
+        <span class="type">string</span> HTTP/HTTPS method, e.g. "GET", "PUT", "POST" etc.
+        
+        @param callback 
+        <span class="type">function(self, id, response)</span> response callback function
+        
+        <dl>
+        <dt>`self`</dt>
+        <dd><span class="type">object</span> The current object</dd>
+        <dt>`id`</dt>
+        <dd><span class="type">hash</span> Internal message identifier. Do not use!</dd>
+        <dt>`response`</dt>
+        <dd><span class="type">table</span> The response data. Contains the fields:</dd>
+        </dl>
+        
+         * <span class="type">number</span> `status`: the status of the response
+         * <span class="type">string</span> `response`: the response data
+         * <span class="type">table</span> `headers`: all the returned headers
+        
+        @param headers 
+        <span class="type">table</span> optional table with custom headers
+        
+        @param post_data 
+        <span class="type">string</span> optional data to send
+        
+        @param options 
+        <span class="type">table</span> optional table with request parameters. Supported entries:
+        
+         * <span class="type">number</span> `timeout`: timeout in seconds
     **/
-    static function request(url:TODO, method:TODO, callback:TODO, ?headers:TODO, ?post_data:TODO, ?options:TODO<"in seconds">):Void;
+    static function request(url:String, method:String, callback:TODO<"function(self, id, response)">, ?headers:TODO<"table">, ?post_data:String, ?options:TODO<"table">):Void;
 }

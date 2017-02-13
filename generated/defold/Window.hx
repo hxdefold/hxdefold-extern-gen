@@ -1,8 +1,8 @@
 package defold;
 
 /**
-    Functions and constants to access the window, window event listeners
-    and screen dimming.
+    <p>Functions and constants to access the window, window event listeners
+    and screen dimming.</p>
 
     See `WindowVariables` for related variables.
 **/
@@ -13,11 +13,12 @@ extern class Window {
         
         The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction.
         
-        @return mode (constant) The mode for screen dimming
+        @return mode 
+        <span class="type">constant</span> The mode for screen dimming
         
-             * `window.DIMMING_UNKNOWN`
-             * `window.DIMMING_ON`
-             * `window.DIMMING_OFF`
+         * `window.DIMMING_UNKNOWN`
+         * `window.DIMMING_ON`
+         * `window.DIMMING_OFF`
     **/
     static function get_dim_mode():TODO;
 
@@ -26,36 +27,42 @@ extern class Window {
         
         The dimming mode specifies whether or not a mobile device should dim the screen after a period without user interaction. The dimming mode will only affect the mobile device while the game is in focus on the device, but not when the game is running in the background.
         
-        @param mode (constant) The mode for screen dimming
+        @param mode 
+        <span class="type">constant</span> The mode for screen dimming
         
-             * `window.DIMMING_ON`
-             * `window.DIMMING_OFF`
+         * `window.DIMMING_ON`
+         * `window.DIMMING_OFF`
     **/
-    static function set_dim_mode(mode:TODO):Void;
+    static function set_dim_mode(mode:TODO<"constant">):Void;
 
     /**
         Sets a window event listener.
         
         Sets a window event listener.
         
-        @param callback (function) A callback which receives info about window events. Can be nil.
+        @param callback 
+        <span class="type">function(self, event, data)</span> A callback which receives info about window events. Pass an empty function if you no longer wish to receive callbacks.
         
-             * self (object) The calling script
-             * event (number) The type of event. Can be one of these:
-            
+        <dl>
+        <dt>`self`</dt>
+        <dd><span class="type">object</span> The calling script</dd>
+        <dt>`event`</dt>
+        <dd><span class="type">constant</span> The type of event. Can be one of these:</dd>
+        </dl>
         
-                 * window.WINDOW_EVENT_FOCUS_LOST
-                 * window.WINDOW_EVENT_FOCUS_GAINED
-                 * window.WINDOW_EVENT_RESIZED
-            
+         * `window.WINDOW_EVENT_FOCUS_LOST`
+         * `window.WINDOW_EVENT_FOCUS_GAINED`
+         * `window.WINDOW_EVENT_RESIZED`
         
-             * data (table) The callback value ''data'' is a table which currently holds these values
-            
+        <dl>
+        <dt>`data`</dt>
+        <dd><span class="type">table</span> The callback value `data` is a table which currently holds these values</dd>
+        </dl>
         
-                 * width (number) The width of a resize event. nil otherwise.
-                 * height (number) The height of a resize event. nil otherwise.
+         * <span class="type">number</span> `width`: The width of a resize event. nil otherwise.
+         * <span class="type">number</span> `height`: The height of a resize event. nil otherwise.
     **/
-    static function set_listener(callback:TODO):Void;
+    static function set_listener(callback:TODO<"function(self, event, data)">):Void;
 }
 
 @:native("_G.window")

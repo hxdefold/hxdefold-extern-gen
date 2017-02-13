@@ -64,7 +64,7 @@ class Main {
     static var reModuleName = ~/^(\w+)_doc$/;
     static var reElementName = ~/^((\w+)\.)?(\w+)$/;
     static var reParameterName = ~/^(\[)?(\w+)\]?$/;
-    static var reArgumentDoc = ~/\((.*)\)\s*$/;
+    static var reArgumentDoc = ~/<span class="type">\s*(.*)\s*<\/span>/;
     static var reEitherType = ~/\|| or /gi;
     static var pos = {file: "", min: 0, max: 0};
 
@@ -74,6 +74,10 @@ class Main {
 
     static function underscoreToCamelCase(s:String):String {
         return s.split("_").map(capitalize).join("");
+    }
+
+    static inline function stripP(s) {
+        return ~/<p>(.*)<\/p>/.replace(s, "$1");
     }
 
     static inline function mkType(s:String):ComplexType
@@ -222,6 +226,7 @@ class Main {
                                 .replace("<li>", " * ")
                                 .replace("</li>", "")
                                 ;
+                            s = ~/<a href=".*">(.*)<\/a>/g.replace(s, "`$1`");
                             return s;
                         }
 
@@ -230,7 +235,7 @@ class Main {
                             if (s != null && s != "") fieldDoc.push(s);
                         }
 
-                        addDoc(prepareDoc(capitalize(element.brief) + "."));
+                        addDoc(prepareDoc(capitalize(stripP(element.brief)) + "."));
                         addDoc(prepareDoc(element.description));
                         addDoc(prepareDoc(element.note));
 
@@ -296,10 +301,11 @@ class Main {
                                     if (!reParameterName.match(param.name))
                                         throw 'Non-conventional parameter name: ${param.name}';
                                     var name = reParameterName.matched(2);
+                                    var argType = parseArgType(param.doc);
                                     messageFields.push({
                                         name: name,
                                         pos: pos,
-                                        kind: FVar(ctTODO),
+                                        kind: FVar(argType),
                                         doc: prepareDoc(param.doc),
                                         meta: if (reParameterName.matched(1) != null) [{name: ":optional", pos: pos}] else null
                                     });

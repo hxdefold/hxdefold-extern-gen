@@ -1,7 +1,7 @@
 package defold;
 
 /**
-    Functions for creating image objects.
+    <p>Functions for creating image objects.</p>
 
     See `ImageVariables` for related variables.
 **/
@@ -12,11 +12,26 @@ extern class Image {
         
         Load image (PNG or JPEG) from buffer.
         
-        @param buffer image data buffer
-        @param premult premultiply alpha. optional and defaults to false
-        @return object with the following fields: width, height, type and buffer (raw data). nil is returned if loading fails.
+        @param buffer 
+        <span class="type">string</span> image data buffer
+        
+        @param premult 
+        <span class="type">boolean</span> optional flag if alpha should be premultiplied. Defaults to `false`
+        
+        @return image 
+        <span class="type">table</span> object or `nil` if loading fails. The object is a table with the following fields:
+        
+         * <span class="type">number</span> `width`: image width
+         * <span class="type">number</span> `height`: image height
+         * <span class="type">constant</span> `type`: image type
+        
+         * `image.TYPE_RGB`
+         * `image.TYPE_RGBA`
+         * `image.TYPE_LUMINANCE`
+        
+         * <span class="type">string</span> `buffer`: the raw image data
     **/
-    static function load(buffer:TODO, ?premult:TODO):TODO;
+    static function load(buffer:String, ?premult:TODO<"boolean">):TODO;
 }
 
 @:native("_G.image")
