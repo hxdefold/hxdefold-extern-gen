@@ -4,13 +4,29 @@ package defold;
     <p>Messages for controlling and interacting with collection proxies
     which are used to dynamically load collections into the runtime.</p>
 
-    This module currently has no functions.
-
     See `CollectionproxyMessages` for related messages.
 **/
-@:native("_G")
+@:native("_G.collectionproxy")
 extern class Collectionproxy {
-
+    /**
+        Return an indexed table of missing resources for a collection proxy.
+        
+        return an indexed table of missing resources for a collection proxy. Each
+        entry is a hexadecimal string that represents the data of the specific
+        resource. This representation corresponds with the filename for each
+        individual resource that is exported when you bundle an application with
+        LiveUpdate functionality. It should be considered good practise to always
+        check whether or not there are any missing resources in a collection proxy
+        before attempting to load the collection proxy.
+        
+        @param collectionproxy 
+        <span class="type">url</span> the collectionproxy to check for missing
+        resources.
+        
+        @return resources 
+        <span class="type">table</span> the missing resources
+    **/
+    static function missing_resources(collectionproxy:Url):TODO;
 }
 
 /**

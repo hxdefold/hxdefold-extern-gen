@@ -255,13 +255,13 @@ extern class Go {
         The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
         Note that you can only use this function outside any callback-functions like init and update.
         
-        @param property 
+        @param name 
         <span class="type">string</span> the id of the property
         
         @param value 
         <span class="type">number | hash | url | vector3 | vector4 | quaternion</span> default value of the property. In the case of a url, only the empty constructor msg.url() is allowed
     **/
-    static function property(property:String, value:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, EitherType<Url, EitherType<Hash, Float>>>>>):Void;
+    static function property(name:String, value:EitherType<TODO<"quaternion">, EitherType<Vector4, EitherType<Vector3, EitherType<Url, EitherType<Hash, Float>>>>>):Void;
 
     /**
         Sets a named property of the specified game object or component.
@@ -613,6 +613,7 @@ class GoMessages {
          * Collection Proxy
          * Collision Object
          * Gui
+         * Label
          * Spine Model
          * Sprite
          * Tile Grid
