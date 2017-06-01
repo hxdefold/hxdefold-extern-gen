@@ -50,7 +50,7 @@ class PhysicsProperties {
     /**
         <span class="type">vector3</span> collision object angular velocity.
         
-        <span class="mark">READ ONLY</span> Returns the current linear velocity of the collision object component as a <span class="type">vector3</span>.
+        <span class="mark">READ ONLY</span> Returns the current angular velocity of the collision object component as a <span class="type">vector3</span>.
         The velocity is measured as a rotation around the vector with a speed equivalent to the vector length
         in radians/s.
     **/

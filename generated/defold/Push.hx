@@ -190,4 +190,44 @@ extern class PushVariables {
         Remote push origin.
     **/
     static var ORIGIN_REMOTE(default, never):TODO;
+
+    /**
+        Remote push origin.
+    **/
+    static var ORIGIN_REMOTE(default, never):TODO;
+
+    /**
+        Default notification priority <span class="icon-android"></span>.
+        
+        The default notification priority. Only available on Android. <span class="icon-android"></span>
+    **/
+    static var PRIORITY_DEFAULT(default, never):TODO;
+
+    /**
+        Higher notification priority <span class="icon-android"></span>.
+        
+        Priority for more important notifications or alerts. Only available on Android. <span class="icon-android"></span>
+    **/
+    static var PRIORITY_HIGH(default, never):TODO;
+
+    /**
+        Lower notification priority <span class="icon-android"></span>.
+        
+        Priority for items that are less important. Only available on Android. <span class="icon-android"></span>
+    **/
+    static var PRIORITY_LOW(default, never):TODO;
+
+    /**
+        Highest notification priority <span class="icon-android"></span>.
+        
+        Set this priority for your application's most important items that require the user's prompt attention or input. Only available on Android. <span class="icon-android"></span>
+    **/
+    static var PRIORITY_MAX(default, never):TODO;
+
+    /**
+        Lowest notification priority <span class="icon-android"></span>.
+        
+        This priority is for items might not be shown to the user except under special circumstances, such as detailed notification logs. Only available on Android. <span class="icon-android"></span>
+    **/
+    static var PRIORITY_MIN(default, never):TODO;
 }

@@ -1,7 +1,10 @@
 package defold;
 
 /**
-        See `SysMessages` for related messages.
+    <p>Functions and messages for using system resources, controlling the engine,
+    error handling and debugging.</p>
+
+    See `SysMessages` for related messages.
 **/
 @:native("_G.sys")
 extern class Sys {
@@ -286,6 +289,9 @@ class SysMessages {
         Reboots the game engine with a specified set of arguments.
         Arguments will be translated into command line arguments. Sending the reboot
         command is equivalent to starting the engine with the same arguments.
+        
+        On startup the engine reads configuration from "game.project" in the
+        project root.
         
         This message can only be sent to the designated `@system` socket.
     **/

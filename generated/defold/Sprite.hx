@@ -62,7 +62,7 @@ extern class Sprite {
     /**
         Set vertical flipping on a sprite's animations.
         
-        Sets horizontal flipping of the provided sprite's animations.
+        Sets vertical flipping of the provided sprite's animations.
         The sprite is identified by its URL.
         If the currently playing animation is flipped by default, flipping it again will make it appear like the original texture.
         

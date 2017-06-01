@@ -70,7 +70,7 @@ extern class Msg {
         Creates a new URL from separate arguments.
         
         @param socket 
-        <span class="type">string | number</span> socket of the URL
+        <span class="type">string | hash</span> socket of the URL
         
         @param path 
         <span class="type">string | hash</span> path of the URL
@@ -81,5 +81,5 @@ extern class Msg {
         @return url 
         <span class="type">url</span> a new URL
     **/
-    static function url(?socket:EitherType<Float, String>, ?path:EitherType<Hash, String>, ?fragment:EitherType<Hash, String>):TODO;
+    static function url(?socket:EitherType<Hash, String>, ?path:EitherType<Hash, String>, ?fragment:EitherType<Hash, String>):TODO;
 }

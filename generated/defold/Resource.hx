@@ -85,7 +85,7 @@ extern class Resource {
         Add a resource to the data archive and runtime index.
         
         add a resource to the data archive and runtime index. The resource that
-        is added must already exist in the manifest, and can be verified using
+        is added must already exist in the manifest and can be verified using
         verify_resource. The resource will also be verified internally before being
         added to the data archive.
         

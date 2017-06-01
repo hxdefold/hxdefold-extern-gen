@@ -83,10 +83,10 @@ extern class Gui {
              <span class="type">vector</span> with a custom curve.
         
         @param duration 
-        <span class="type">number</span> duration of the animation
+        <span class="type">number</span> duration of the animation in seconds.
         
         @param delay 
-        <span class="type">number</span> delay before the animation starts
+        <span class="type">number</span> delay before the animation starts in seconds.
         
         @param complete_function 
         <span class="type">function(self, node)</span> function to call when the
@@ -177,6 +177,9 @@ extern class Gui {
 
     /**
         Deletes a node.
+        
+        Deletes the specified node. Any child nodes of the specified node will be
+        recursively deleted.
         
         @param node 
         <span class="type">node</span> node to delete
@@ -366,6 +369,8 @@ extern class Gui {
     /**
         Gets the id of the specified node.
         
+        Retrieves the id of the specified node.
+        
         @param node 
         <span class="type">node</span> the node to retrieve the id from
         
@@ -377,8 +382,9 @@ extern class Gui {
     /**
         Gets the index of the specified node.
         
-        The index defines the order in which a node appear in a gui scene.
-        Higher index means the node is drawn above lower indexed nodes.
+        Retrieve the index of the specified node.
+        The index defines the order in which a node appear in a GUI scene.
+        Higher index means the node is drawn on top of lower indexed nodes.
         
         @param node 
         <span class="type">node</span> the node to retrieve the id from
@@ -453,8 +459,10 @@ extern class Gui {
     /**
         Gets the node with the specified id.
         
+        Retrieves the node with the specified id.
+        
         @param id 
-        id of the node to retrieve <span class="type">string | hash</span>
+        <span class="type">string | hash</span> id of the node to retrieve
         
         @return instance 
         <span class="type">node</span> a new node instance
@@ -625,7 +633,7 @@ extern class Gui {
     /**
         Gets the node size mode.
         
-        Returns the size node of a node.
+        Returns the size of a node.
         The size mode defines how the node will adjust itself in size. Automatic
         size mode alters the node size based on the node's content.
         
@@ -1278,6 +1286,14 @@ extern class Gui {
     /**
         Sets the id of the specified node.
         
+        Set the id of the specicied node to a new value.
+        Nodes created with the gui.new_*_node() functions get
+        an empty id. This function allows you to give dynamically
+        created nodes an id.
+        
+        <span class="icon-attention"></span> No checking is done on the uniqueness of supplied ids.
+        It is up to you to make sure you use unique ids.
+        
         @param node 
         <span class="type">node</span> node to set the id for
         
@@ -1699,11 +1715,13 @@ extern class Gui {
     static function set_yanchor(node:TODO<"node">, anchor:TODO<"constant">):Void;
 
     /**
-        Shows the on-display keyboard if available.
+        Shows the on-display keyboard if available <span class="icon-ios"></span> <span class="icon-android"></span>.
         
         Shows the on-display touch keyboard.
         The specified type of keyboard is displayed if it is available on
         the device.
+        
+        This function is only available on iOS and Android. <span class="icon-ios"></span> <span class="icon-android"></span>.
         
         @param type 
         <span class="type">constant</span> keyboard type

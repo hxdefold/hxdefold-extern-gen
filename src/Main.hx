@@ -55,7 +55,9 @@ class Main {
     }
 
     static function loadDoc(sha1:String, cb:String->Void) {
-        var r = new haxe.Http('http://d.defold.com/archive/$sha1/engine/share/ref-doc.zip');
+        var url = 'http://d.defold.com/archive/$sha1/engine/share/ref-doc.zip';
+        Sys.println('Loading $url');
+        var r = new haxe.Http(url);
         r.onData = cb;
         r.request();
     }
@@ -144,6 +146,12 @@ class Main {
                     var path = new haxe.io.Path(entry.fileName);
                     if (path.ext != "json")
                         continue;
+
+                    if (path.file.startsWith("dm") || path.file == "sharedlibrary_doc") {
+                        print('Skipping C API description ${entry.fileName}');
+                        continue;
+                    }
+
                     if (!reModuleName.match(path.file))
                         throw 'Non-conventional module json name: ${path.file}';
 

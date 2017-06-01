@@ -144,10 +144,11 @@ extern class Go {
     /**
         Gets the id of an instance.
         
-        The instance id is a hash of the absolute path.
+        Returns or constructs a game object instance identifier. The instance id is a hash
+        of the absolute path to the instance.
         
          * If `path` is specified, it can either be absolute or relative to the instance of the calling script.
-         * If `path` is not specified, the id of the instance of the calling script will be returned. See the examples below for more information.
+         * If `path` is not specified, the id of the instance the script is attached to will be returned.
         
         @param path 
         <span class="type">string</span> path of the instance for which to return the id
@@ -184,30 +185,30 @@ extern class Go {
     static function get_rotation(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the uniform scale factor of the instance.
+        Gets the 3D scale factor of the instance.
         
-        The uniform scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
+        The scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world 3D scale factor.
         
         @param id 
         <span class="type">string | hash | url</span> optional id of the instance to get the scale for, by default the instance of the calling script
         
         @return scale 
-        <span class="type">number</span> uniform instance scale factor
+        <span class="type">vector3</span> instance scale factor
     **/
     static function get_scale(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the 3D scale factor of the instance.
+        Gets the uniform scale factor of the instance.
         
-        The scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world scale factor.
+        The uniform scale is relative the parent (if any). If the underlying scale vector is non-uniform the min element of the vector is returned as the uniform scale factor.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the instance to get the uniform scale for, by default the instance of the calling script
         
         @return scale 
-        <span class="type">vector3</span> scale factor
+        <span class="type">number</span> uniform instance scale factor
     **/
-    static function get_scale_vector(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
+    static function get_scale_uniform(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
         Gets the instance world position.
@@ -236,17 +237,32 @@ extern class Go {
     static function get_world_rotation(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the instance world scale factor.
+        Gets the instance world 3D scale factor.
         
-        Use `go.get_scale` to retrieve the scale factor relative to the parent.
+        Use `go.get_scale` to retrieve the 3D scale factor relative to the parent.
+        This vector is derived by decomposing the transformation matrix and should be used with care.
+        For most cases it should be fine to use `go.get_world_scale_uniform` instead.
         
         @param id 
         <span class="type">string | hash | url</span> optional id of the instance to get the world scale for, by default the instance of the calling script
         
         @return scale 
-        <span class="type">number</span> uniform instance world scale factor
+        <span class="type">vector3</span> instance world 3D scale factor
     **/
     static function get_world_scale(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
+
+    /**
+        Gets the instance world scale factor.
+        
+        Use `go.get_scale_uniform` to retrieve the scale factor relative to the parent.
+        
+        @param id 
+        <span class="type">string | hash | url</span> optional id of the instance to get the world scale for, by default the instance of the calling script
+        
+        @return scale 
+        <span class="type">number</span> instance world scale factor
+    **/
+    static function get_world_scale_uniform(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
         Define a property to be used throughout the script.
