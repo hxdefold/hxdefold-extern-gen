@@ -19,7 +19,7 @@ extern class Profiler {
         @return percent 
         <span class="type">number</span> of CPU used by the application
     **/
-    static function cpu_usage():TODO;
+    static function get_cpu_usage():TODO;
 
     /**
         Get current memory usage for app reported by OS.
@@ -54,5 +54,5 @@ extern class Profiler {
         @return bytes 
         <span class="type">number</span> used by the application
     **/
-    static function memory_usage():TODO;
+    static function get_memory_usage():TODO;
 }
