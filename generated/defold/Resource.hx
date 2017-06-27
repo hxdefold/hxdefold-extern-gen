@@ -2,16 +2,15 @@ package defold;
 
 /**
     <p>Functions and constants to access resources.</p>
+
+    See `ResourceVariables` for related variables.
 **/
 @:native("_G.resource")
 extern class Resource {
     /**
         Return a reference to the Manifest that is currently loaded.
         
-        Return a reference to the Manifest that is currently loaded. This
-        reference should be passed on to the `verify_resource` function when
-        downloading content that was selected for LiveUpdate during the build
-        process.
+        Return a reference to the Manifest that is currently loaded.
         
         @return manifest_reference 
         <span class="type">number</span> reference to the Manifest that is currently loaded
@@ -71,6 +70,7 @@ extern class Resource {
         <dd><span class="type">number</span> The texture format. Supported values:</dd>
         </dl>
         
+         * `resource.TEXTURE_FORMAT_LUMINANCE`
          * `resource.TEXTURE_FORMAT_RGB`
          * `resource.TEXTURE_FORMAT_RGBA`
         
@@ -84,10 +84,8 @@ extern class Resource {
     /**
         Add a resource to the data archive and runtime index.
         
-        add a resource to the data archive and runtime index. The resource that
-        is added must already exist in the manifest and can be verified using
-        verify_resource. The resource will also be verified internally before being
-        added to the data archive.
+        add a resource to the data archive and runtime index. The resource will be verified
+        internally before being added to the data archive.
         
         @param manifest_reference 
         <span class="type">number</span> The manifest to check against.
@@ -114,4 +112,27 @@ extern class Resource {
         </dl>
     **/
     static function store_resource(manifest_reference:Float, data:String, hexdigest:String, callback:TODO<"function(self, hexdigest, status)">):Void;
+}
+
+@:native("_G.resource")
+extern class ResourceVariables {
+    /**
+        Luminance type texture format.
+    **/
+    static var TEXTURE_FORMAT_LUMINANCE(default, never):TODO;
+
+    /**
+        RGB type texture format.
+    **/
+    static var TEXTURE_FORMAT_RGB(default, never):TODO;
+
+    /**
+        RGBA type texture format.
+    **/
+    static var TEXTURE_FORMAT_RGBA(default, never):TODO;
+
+    /**
+        2D texture type.
+    **/
+    static var TEXTURE_TYPE_2D(default, never):TODO;
 }

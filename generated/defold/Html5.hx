@@ -1,8 +1,8 @@
 package defold;
 
 /**
-    <p>HTML5 platform specific functions.
-    (The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.)</p>
+    <p>HTML5 platform specific functions.</p>
+    <p><span class="icon-html5"></span> The following functions are only available on HTML5 builds, the <code>html5.*</code> Lua namespace will not be available on other platforms.</p>
 **/
 @:native("_G.html5")
 extern class Html5 {

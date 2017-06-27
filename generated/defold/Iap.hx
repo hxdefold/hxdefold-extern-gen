@@ -11,7 +11,9 @@ extern class Iap {
     /**
         Buy product.
         
-        Calling iap.finish is required on a successful transaction if auto_finish_transactions is disabled in project settings.
+        Perform a product purchase.
+        
+        <span class="icon-attention"></span> Calling `iap.finish` is required on a successful transaction if auto_finish_transactions is disabled in project settings.
         
         @param id 
         <span class="type">string</span> product to buy
@@ -131,6 +133,26 @@ extern class Iap {
 
 @:native("_G.iap")
 extern class IapVariables {
+    /**
+        Provider id for Amazon.
+    **/
+    static var PROVIDER_ID_AMAZON(default, never):TODO;
+
+    /**
+        Provider id for Apple.
+    **/
+    static var PROVIDER_ID_APPLE(default, never):TODO;
+
+    /**
+        Provider id for Facebook.
+    **/
+    static var PROVIDER_ID_FACEBOOK(default, never):TODO;
+
+    /**
+        Iap provider id for Google.
+    **/
+    static var PROVIDER_ID_GOOGLE(default, never):TODO;
+
     /**
         Unspecified error reason.
     **/

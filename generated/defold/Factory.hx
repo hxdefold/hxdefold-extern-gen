@@ -16,16 +16,16 @@ extern class Factory {
         See go.property for more information on script properties.
         
         @param url 
-        <span class="type">string | hash | url</span> the factory that should create a game object
+        <span class="type">string | hash | url</span> the factory that should create a game object.
         
         @param position 
-        <span class="type">vector3</span> the position of the new game object, the position of the game object containing the factory is used by default
+        <span class="type">vector3</span> the position of the new game object, the position of the game object calling `factory.create()` is used by default.
         
         @param rotation 
-        <span class="type">quaternion</span> the rotation of the new game object, the rotation of the game object containing the factory is used by default
+        <span class="type">quaternion</span> the rotation of the new game object, the rotation of the game object calling `factory.create()` is is used by default.
         
         @param properties 
-        <span class="type">table</span> the properties defined in a script attached to the new game object
+        <span class="type">table</span> the properties defined in a script attached to the new game object.
         
         @param scale 
         <span class="type">number | vector3</span> the scale of the new game object (must be greater than 0), the scale of the game object containing the factory is used by default

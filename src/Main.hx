@@ -160,6 +160,9 @@ class Main {
                         case "coroutine" | "bit" | "math" | "string" | "io" | "base" | "table" | "debug" | "os" | "package":
                             // skip lua std lib
                             continue;
+                        case "socket":
+                            print("TODO: LuaSocket");
+                            continue;
                         default:
                     }
 
@@ -245,7 +248,8 @@ class Main {
 
                         addDoc(prepareDoc(capitalize(stripP(element.brief)) + "."));
                         addDoc(prepareDoc(element.description));
-                        addDoc(prepareDoc(element.note));
+                        if (element.note != null)
+                            addDoc(prepareDoc(element.note));
 
                         var signatureDoc = [];
 

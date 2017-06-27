@@ -1510,7 +1510,7 @@ extern class Gui {
         
         Sets the size of the supplied node.
         
-        You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
+        <span class="icon-attention"></span> You can only set size on nodes with size mode set to SIZE_MODE_MANUAL
         
         @param node 
         <span class="type">node</span> node to set the size for
