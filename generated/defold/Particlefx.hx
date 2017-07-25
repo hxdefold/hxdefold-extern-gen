@@ -32,10 +32,10 @@ extern class Particlefx {
         <dd><span class="type">constant</span> the new state of the emitter:</dd>
         </dl>
         
-         * `particlefx.EMITTER_STATE_POSTSPAWN`
-         * `particlefx.EMITTER_STATE_PRESPAWN`
          * `particlefx.EMITTER_STATE_SLEEPING`
+         * `particlefx.EMITTER_STATE_PRESPAWN`
          * `particlefx.EMITTER_STATE_SPAWNING`
+         * `particlefx.EMITTER_STATE_POSTSPAWN`
     **/
     static function play(url:EitherType<Url, EitherType<Hash, String>>, ?emitter_state_function:TODO<"function(self, id, emitter, state)">):Void;
 

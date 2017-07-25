@@ -514,6 +514,19 @@ extern class Gui {
     static function get_parent(node:TODO<"node">):TODO;
 
     /**
+        Gets a particle fx.
+        
+        Get the paricle fx for a gui node
+        
+        @param node 
+        <span class="type">node</span> node to get particle fx for
+        
+        @return [type:hash] 
+        particle fx id
+    **/
+    static function get_particlefx(node:TODO<"node">):TODO;
+
+    /**
         Gets the number of generarted vertices around the perimeter.
         
         Returns the number of generated vertices around the perimeter
@@ -687,7 +700,7 @@ extern class Gui {
         spine node to set the cursor for (node)
         
         @return cursor 
-        value (number)
+        value <span class="type">number</span> cursor value
     **/
     static function get_spine_cursor(node:TODO):TODO;
 
@@ -936,6 +949,22 @@ extern class Gui {
     static function new_box_node(pos:EitherType<Vector4, Vector3>, size:Vector3):TODO;
 
     /**
+        Creates a new particle fx node.
+        
+        Dynamically create a particle fx node.
+        
+        @param pos 
+        <span class="type">vector3 | vector4</span> node position
+        
+        @param particlefx 
+        <span class="type">hash | string</span> particle fx resource name
+        
+        @return node 
+        <span class="type">node</span> new particle fx node
+    **/
+    static function new_particlefx_node(pos:EitherType<Vector4, Vector3>, particlefx:EitherType<String, Hash>):TODO;
+
+    /**
         Creates a new pie node.
         
         Dynamically create a new pie node.
@@ -1067,6 +1096,35 @@ extern class Gui {
         </dl>
     **/
     static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function(self, node)">):Void;
+
+    /**
+        Plays a particle fx.
+        
+        Plays the paricle fx for a gui node
+        
+        @param node 
+        <span class="type">node</span> node to play particle fx for
+        
+        @param emitter_state_function 
+        <span class="type">function(self, node, emitter, state)</span> optional callback function that will be called when an emitter attached to this particlefx changes state.
+        
+        <dl>
+        <dt>`self`</dt>
+        <dd><span class="type">object</span> The current object</dd>
+        <dt>`id`</dt>
+        <dd><span class="type">hash</span> The id of the particle fx component</dd>
+        <dt>`emitter`</dt>
+        <dd><span class="type">hash</span> The id of the emitter</dd>
+        <dt>`state`</dt>
+        <dd><span class="type">constant</span> the new state of the emitter:</dd>
+        </dl>
+        
+         * `gui.EMITTER_STATE_SLEEPING`
+         * `gui.EMITTER_STATE_PRESPAWN`
+         * `gui.EMITTER_STATE_SPAWNING`
+         * `gui.EMITTER_STATE_POSTSPAWN`
+    **/
+    static function play_particlefx(node:TODO<"node">, ?emitter_state_function:TODO<"function(self, node, emitter, state)">):Void;
 
     /**
         Play a spine animation.
@@ -1399,6 +1457,19 @@ extern class Gui {
         <span class="type">node</span> parent node to set
     **/
     static function set_parent(node:TODO<"node">, parent:TODO<"node">):Void;
+
+    /**
+        Sets a particle fx.
+        
+        Set the paricle fx for a gui node
+        
+        @param node 
+        <span class="type">node</span> node to set particle fx for
+        
+        @param particlefx 
+        <span class="type">hash | string</span> particle fx id
+    **/
+    static function set_particlefx(node:TODO<"node">, particlefx:EitherType<String, Hash>):Void;
 
     /**
         Sets the number of generated vertices around the perimeter.
@@ -1737,6 +1808,16 @@ extern class Gui {
     static function show_keyboard(type:TODO<"constant">, autoclose:TODO<"boolean">):Void;
 
     /**
+        Stops a particle fx.
+        
+        Stops the paricle fx for a gui node
+        
+        @param node 
+        <span class="type">node</span> node to stop particle fx for
+    **/
+    static function stop_particlefx(node:TODO<"node">):Void;
+
+    /**
         Called when a gui component is initialized.
         
         This is a callback-function, which is called by the engine when a gui component is initialized. It can be used
@@ -1851,6 +1932,10 @@ extern class Gui {
         </tr>
         </thead>
         <tbody>
+        <tr>
+        <td>`id`</td>
+        <td>A number identifying the touch input during its duration.</td>
+        </tr>
         <tr>
         <td>`pressed`</td>
         <td>True if the finger was pressed this frame.</td>

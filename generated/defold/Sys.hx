@@ -5,6 +5,7 @@ package defold;
     error handling and debugging.</p>
 
     See `SysMessages` for related messages.
+    See `SysVariables` for related variables.
 **/
 @:native("_G.sys")
 extern class Sys {
@@ -64,14 +65,17 @@ extern class Sys {
     /**
         Get current network connectivity status.
         
-        Returns the current network connectivity status.
+        <span class="icon-ios"></span> <span class="icon-android"></span> Returns the current network connectivity status
+        on mobile platforms.
+        
+        On desktop, this function always return `sys.NETWORK_CONNECTED`.
         
         @return status 
         <span class="type">constant</span> network connectivity status:
         
          * `sys.NETWORK_DISCONNECTED` (no network connection is found)
          * `sys.NETWORK_CONNECTED_CELLULAR` (connected through mobile cellular)
-         * `sys.NETWORK_CONNECTED` (otherwise)
+         * `sys.NETWORK_CONNECTED` (otherwise, Wifi)
     **/
     static function get_connectivity():TODO;
 
@@ -86,7 +90,7 @@ extern class Sys {
         <dl>
         <dt>`version`</dt>
         <dd><span class="type">string</span> The current Defold engine version, i.e. "1.2.96"</dd>
-        <dt>`engine_sha1`</dt>
+        <dt>`version_sha1`</dt>
         <dd><span class="type">string</span> The SHA1 for the current engine build, i.e. "0060183cce2e29dbd09c85ece83cbb72068ee050"</dd>
         </dl>
     **/
@@ -457,4 +461,22 @@ typedef SysMessageStartRecord = {
         
     **/
     var fps:Float;
+}
+
+@:native("_G.sys")
+extern class SysVariables {
+    /**
+        Network connected through other, non cellular, connection.
+    **/
+    static var NETWORK_CONNECTED(default, never):TODO;
+
+    /**
+        Network connected through mobile cellular.
+    **/
+    static var NETWORK_CONNECTED_CELLULAR(default, never):TODO;
+
+    /**
+        No network connection found.
+    **/
+    static var NETWORK_DISCONNECTED(default, never):TODO;
 }

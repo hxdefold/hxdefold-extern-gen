@@ -450,6 +450,10 @@ extern class Go {
         </thead>
         <tbody>
         <tr>
+        <td>`id`</td>
+        <td>A number identifying the touch input during its duration.</td>
+        </tr>
+        <tr>
         <td>`pressed`</td>
         <td>True if the finger was pressed this frame.</td>
         </tr>

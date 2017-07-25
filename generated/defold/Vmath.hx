@@ -2,6 +2,13 @@ package defold;
 
 /**
     <p>Functions for mathematical operations on vectors, matrices and quaternions.</p>
+    <ul>
+    <li>The vector types (<code>vmath.vector3</code> and vmath.vector4`) supports addition, subtraction,
+    negation and multiplication with numbers and other vectors of the same type.</li>
+    <li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>
+    <li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices and <code>vmath.vector4</code> values.</li>
+    <li>All types performs equality comparison by each component value.</li>
+    </ul>
 **/
 @:native("_G.vmath")
 extern class Vmath {
