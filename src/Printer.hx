@@ -68,6 +68,9 @@ class Printer {
 		case OpMod: "%";
 		case OpInterval: "...";
 		case OpArrow: "=>";
+		#if (haxe_ver > "4.0")
+		case OpIn: " in ";
+		#end
 		case OpAssignOp(op):
 			printBinop(op)
 			+ "=";
@@ -194,7 +197,9 @@ class Printer {
 			tabs = old;
 			s + ';\n$tabs}';
 		case EFor(e1, e2): 'for (${printExpr(e1)}) ${printExpr(e2)}';
+		#if (haxe_ver < "4.0")
 		case EIn(e1, e2): '${printExpr(e1)} in ${printExpr(e2)}';
+		#end
 		case EIf(econd, eif, null): 'if (${printExpr(econd)}) ${printExpr(eif)}';
 		case EIf(econd, eif, eelse): 'if (${printExpr(econd)}) ${printExpr(eif)} else ${printExpr(eelse)}';
 		case EWhile(econd, e1, true): 'while (${printExpr(econd)}) ${printExpr(e1)}';
