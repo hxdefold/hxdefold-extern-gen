@@ -107,25 +107,17 @@ extern class Go {
     static function cancel_animations(url:EitherType<Url, EitherType<Hash, String>>, property:EitherType<Hash, String>):Void;
 
     /**
-        Deletes a game object instance.
+        Delete one or more game object instances.
         
-        Delete a game object identified by its id.
+        Delete one or more game objects identified by id.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to delete, the instance of the calling script is deleted by default
-    **/
-    static function delete(?id:EitherType<Url, EitherType<Hash, String>>):Void;
-
-    /**
-        Deletes a set of game object instance.
+        <span class="type">string | hash | url | table</span> optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
         
-        Delete all game objects simultaneously as listed in table.
-        The table values (not keys) should be game object ids (hashes).
-        
-        @param ids 
-        <span class="type">table</span> table with values of instance ids (hashes) to be deleted
+        @param recursive 
+        <span class="type">boolean</span> optional boolean, set to true to recursively delete child hiearchy in child to parent order
     **/
-    static function delete_all(?ids:TODO<"table">):Void;
+    static function delete(?id:EitherType<TODO<"table">, EitherType<Url, EitherType<Hash, String>>>, ?recursive:TODO<"boolean">):Void;
 
     /**
         Gets a named property of the specified game object or component.

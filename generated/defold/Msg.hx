@@ -16,7 +16,6 @@ extern class Msg {
         
          * `"."` the current game object
          * `"#"` the current component
-         * `nil` the current component
         
         <span class="icon-attention"></span> There is a 2 kilobyte limit to the message parameter table size.
         
@@ -56,7 +55,6 @@ extern class Msg {
         
          * `"."` the current game object
          * `"#"` the current component
-         * `nil` the current component
         
         @param urlstring 
         <span class="type">string</span> string to create the url from

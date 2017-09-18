@@ -103,7 +103,7 @@ extern class Render {
     /**
         Draws all objects matching a predicate.
         
-        Draws all objects that match a specified predicate. An optional constants buffer can be
+        Draws all objects that match a specified predicate. An optional constant buffer can be
         provided to override the default constants. If no constants buffer is provided, a default
         system constants buffer is used containing constants as defined in materials and set through
         `*.set_constant()` and `*.reset_constant()` on visual components.
@@ -112,9 +112,9 @@ extern class Render {
         <span class="type">predicate</span> predicate to draw for
         
         @param constants 
-        <span class="type">constants_buffer</span> optional constants to use while rendering
+        <span class="type">constant_buffer</span> optional constants to use while rendering
     **/
-    static function draw(predicate:TODO<"predicate">, ?constants:TODO<"constants_buffer">):Void;
+    static function draw(predicate:TODO<"predicate">, ?constants:TODO<"constant_buffer">):Void;
 
     /**
         Draws all 3d debug graphics.

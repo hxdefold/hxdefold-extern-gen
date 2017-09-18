@@ -102,7 +102,7 @@ extern class Sys {
         Returns an array of tables with information on network interfaces.
         
         @return ifaddrs 
-        <span class="type">table</span> an array of tables. Each table entry contain the followind fields:
+        <span class="type">table</span> an array of tables. Each table entry contain the following fields:
         
         <dl>
         <dt>`name`</dt>
