@@ -114,6 +114,19 @@ extern class Sound {
         <span class="icon-macos"></span><span class="icon-windows"></span><span class="icon-linux"></span><span class="icon-html5"></span> On non mobile platforms,
         this function always return `false`.
         
+        <span class="icon-attention"></span><span class="icon-android"></span> On Android you can only get a correct reading
+        of this state if your game is not playing any sounds itself. This is a limitation
+        in the Android SDK. If your game is playing any sounds, <em>even with a gain of zero</em>, this
+        function will return `false`.
+        
+        The best time to call this function is:
+        
+         * In the `init` function of your main collection script before any sounds are triggered
+         * In a window listener callback when the window.WINDOW_EVENT_FOCUS_GAINED event is received
+        
+        Both those times will give you a correct reading of the state even when your application is
+        swapped out and in while playing sounds and it works equally well on Android and iOS.
+        
         @return playing 
         <span class="type">boolean</span> `true` if music is playing, otherwise `false`.
     **/
@@ -134,6 +147,47 @@ extern class Sound {
     static function is_phone_call_active():TODO;
 
     /**
+        Plays a sound.
+        
+        Make the sound component play its sound. Multiple voices is supported. The limit is set to 32 voices per sound component.
+        
+        <span class="icon-attention"></span> Note that gain is in linear scale, between 0 and 1.
+        To get the dB value from the gain, use the formula `20 * log(gain)`.
+        Inversely, to find the linear value from a dB value, use the formula
+        `10<sup>db/20</sup>`.
+        
+        @param url 
+        <span class="type">string | hash | url</span> the sound that should play
+        
+        @param play_properties <dl>
+        <dt><span class="type">table</span> optional table with properties:</dt>
+        <dt>`delay`</dt>
+        <dd><span class="type">number</span> delay in seconds before the sound starts playing, default is 0.</dd>
+        <dt>`gain`</dt>
+        <dd><span class="type">number</span> sound gain between 0 and 1, default is 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.</dd>
+        </dl>
+    **/
+    static function play(url:EitherType<Url, EitherType<Hash, String>>, ?play_properties:TODO<"table">):Void;
+
+    /**
+        Set sound gain.
+        
+        Set gain on all active playing voices of a sound.
+        
+        <span class="icon-attention"></span> Note that gain is in linear scale, between 0 and 1.
+        To get the dB value from the gain, use the formula `20 * log(gain)`.
+        Inversely, to find the linear value from a dB value, use the formula
+        `10<sup>db/20</sup>`.
+        
+        @param url 
+        <span class="type">string | hash | url</span> the sound to set the gain of
+        
+        @param gain 
+        <span class="type">number</span> sound gain between 0 and 1. The final gain of the sound will be a combination of this gain, the group gain and the master gain.
+    **/
+    static function set_gain(url:EitherType<Url, EitherType<Hash, String>>, ?gain:Float):Void;
+
+    /**
         Set mixer group gain.
         
         Set mixer group gain
@@ -150,6 +204,16 @@ extern class Sound {
         <span class="type">number</span> gain in linear scale
     **/
     static function set_group_gain(group:EitherType<Hash, String>, gain:Float):Void;
+
+    /**
+        Stop a playing a sound(s).
+        
+        Stop playing all active voices
+        
+        @param url 
+        <span class="type">string | hash | url</span> the sound that should stop
+    **/
+    static function stop(url:EitherType<Url, EitherType<Hash, String>>):Void;
 }
 
 /**

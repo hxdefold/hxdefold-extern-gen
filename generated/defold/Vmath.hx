@@ -3,12 +3,29 @@ package defold;
 /**
     <p>Functions for mathematical operations on vectors, matrices and quaternions.</p>
     <ul>
-    <li>The vector types (<code>vmath.vector3</code> and vmath.vector4`) supports addition, subtraction,
-    negation and multiplication with numbers and other vectors of the same type.</li>
+    <li>The vector types (<code>vmath.vector3</code> and <code>vmath.vector4</code>) supports addition and subtraction
+      with vectors of the same type. Vectors can be negated and multiplied with numbers
+      (scaled).</li>
     <li>The quaternion type (<code>vmath.quat</code>) supports multiplication with other quaternions.</li>
-    <li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices and <code>vmath.vector4</code> values.</li>
+    <li>The matrix type (<code>vmath.matrix4</code>) can be multiplied with numbers, other matrices
+      and <code>vmath.vector4</code> values.</li>
     <li>All types performs equality comparison by each component value.</li>
     </ul>
+    <p>The following components are available for the various types:</p>
+    <dl>
+    <dt>vector3</dt>
+    <dd><code>x</code>, <code>y</code> and <code>z</code>. Example: <code>v.y</code></dd>
+    <dt>vector4</dt>
+    <dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>v.w</code></dd>
+    <dt>quaternion</dt>
+    <dd><code>x</code>, <code>y</code>, <code>z</code>, and <code>w</code>. Example: <code>q.w</code></dd>
+    <dt>matrix4</dt>
+    <dd><code>m00</code> to <code>m33</code> where the first number is the row (starting from 0) and the second
+    number is the column. Columns can be accessed with <code>c0</code> to <code>c3</code>, returning a <code>vector4</code>.
+    Example: <code>m.m21</code> which is equal to <code>m.c1.z</code></dd>
+    <dt>vector</dt>
+    <dd>indexed by number 1 to the vector length. Example: <code>v[3]</code></dd>
+    </dl>
 **/
 @:native("_G.vmath")
 extern class Vmath {
@@ -94,30 +111,34 @@ extern class Vmath {
     static function inv(m1:TODO<"matrix4">):TODO;
 
     /**
-        Calculates the vector length.
+        Calculates the length of a vector or quaternion.
         
-        Returns the length of the supplied vector.
+        Returns the length of the supplied vector or quaternion.
+        
+        If you are comparing the lengths of vectors or quaternions, you should compare
+        the length squared instead as it is slightly more efficient to calculate
+        (it eliminates a square root calculation).
         
         @param v 
-        <span class="type">vector3 | vector4</span> vector of which to calculate the length
+        <span class="type">vector3 | vector4 | quat</span> value of which to calculate the length
         
         @return n 
-        <span class="type">number</span> vector length
+        <span class="type">number</span> length
     **/
-    static function length(v:EitherType<Vector4, Vector3>):TODO;
+    static function length(v:EitherType<TODO<"quat">, EitherType<Vector4, Vector3>>):TODO;
 
     /**
-        Calculates the squared vector length.
+        Calculates the squared length of a vector or quaternion.
         
-        Returns the squared length of the supplied vector.
+        Returns the squared length of the supplied vector or quaternion.
         
         @param v 
-        <span class="type">vector3 | vector4</span> vector of which to calculate the squared length
+        <span class="type">vector3 | vector4 | quat</span> value of which to calculate the squared length
         
         @return n 
-        <span class="type">number</span> squared vector length
+        <span class="type">number</span> squared length
     **/
-    static function length_sqr(v:EitherType<Vector4, Vector3>):TODO;
+    static function length_sqr(v:EitherType<TODO<"quat">, EitherType<Vector4, Vector3>>):TODO;
 
     /**
         Lerps between two vectors.
@@ -391,6 +412,25 @@ extern class Vmath {
     static function matrix4_rotation_z(angle:Float):TODO;
 
     /**
+        Performs an element wise multiplication of two vectors.
+        
+        Performs an element wise multiplication between two vectors of the same type
+        The returned value is a vector defined as (e.g. for a vector3):
+        
+        `v = vmath.mul_per_elem(a, b) = vmath.vector3(a.x * b.x, a.y * b.y, a.z * b.z)`
+        
+        @param v1 
+        <span class="type">vector3 | vector4</span> first vector
+        
+        @param v2 
+        <span class="type">vector3 | vector4</span> second vector
+        
+        @return v 
+        <span class="type">vector3 | vector4</span> multiplied vector
+    **/
+    static function mul_per_elem(v1:EitherType<Vector4, Vector3>, v2:EitherType<Vector4, Vector3>):TODO;
+
+    /**
         Normalizes a vector.
         
         Normalizes a vector, i.e. returns a new vector with the same
@@ -400,12 +440,12 @@ extern class Vmath {
         division-by-zero will occur.
         
         @param v1 
-        <span class="type">vector3 | vector4</span> vector to normalize
+        <span class="type">vector3 | vector4 | quat</span> vector to normalize
         
         @return v 
-        <span class="type">vector3 | vector4</span> new normalized vector
+        <span class="type">vector3 | vector4 | quat</span> new normalized vector
     **/
-    static function normalize(v1:EitherType<Vector4, Vector3>):TODO;
+    static function normalize(v1:EitherType<TODO<"quat">, EitherType<Vector4, Vector3>>):TODO;
 
     /**
         Calculates the inverse of an ortho-normal matrix..

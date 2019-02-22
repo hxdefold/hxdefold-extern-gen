@@ -109,7 +109,10 @@ extern class Go {
     /**
         Delete one or more game object instances.
         
-        Delete one or more game objects identified by id.
+        Delete one or more game objects identified by id. Deletion is asynchronous meaning that
+        the game object(s) are scheduled for deletion which will happen at the end of the current
+        frame. Note that game objects scheduled for deletion will be counted against
+        `max_instances` in "game.project" until they are actually removed.
         
         @param id 
         <span class="type">string | hash | url | table</span> optional id or table of id's of the instance(s) to delete, the instance of the calling script is deleted by default
@@ -136,11 +139,11 @@ extern class Go {
     /**
         Gets the id of an instance.
         
-        Returns or constructs a game object instance identifier. The instance id is a hash
+        Returns or constructs an instance identifier. The instance id is a hash
         of the absolute path to the instance.
         
          * If `path` is specified, it can either be absolute or relative to the instance of the calling script.
-         * If `path` is not specified, the id of the instance the script is attached to will be returned.
+         * If `path` is not specified, the id of the game object instance the script is attached to will be returned.
         
         @param path 
         <span class="type">string</span> path of the instance for which to return the id
@@ -151,12 +154,12 @@ extern class Go {
     static function get_id(?path:String):TODO;
 
     /**
-        Gets the position of the instance.
+        Gets the position of a game object instance.
         
         The position is relative the parent (if any). Use `go.get_world_position` to retrieve the global world position.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the position for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the position for, by default the instance of the calling script
         
         @return position 
         <span class="type">vector3</span> instance position
@@ -164,12 +167,12 @@ extern class Go {
     static function get_position(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the rotation of the instance.
+        Gets the rotation of the game object instance.
         
         The rotation is relative to the parent (if any). Use `go.get_world_rotation` to retrieve the global world position.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the rotation for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the rotation for, by default the instance of the calling script
         
         @return rotation 
         <span class="type">quaternion</span> instance rotation
@@ -177,12 +180,12 @@ extern class Go {
     static function get_rotation(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the 3D scale factor of the instance.
+        Gets the 3D scale factor of the game object instance.
         
         The scale is relative the parent (if any). Use `go.get_world_scale` to retrieve the global world 3D scale factor.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the scale for, by default the instance of the calling script
         
         @return scale 
         <span class="type">vector3</span> instance scale factor
@@ -190,12 +193,12 @@ extern class Go {
     static function get_scale(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the uniform scale factor of the instance.
+        Gets the uniform scale factor of the game object instance.
         
         The uniform scale is relative the parent (if any). If the underlying scale vector is non-uniform the min element of the vector is returned as the uniform scale factor.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the uniform scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the uniform scale for, by default the instance of the calling script
         
         @return scale 
         <span class="type">number</span> uniform instance scale factor
@@ -203,12 +206,12 @@ extern class Go {
     static function get_scale_uniform(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the instance world position.
+        Gets the game object instance world position.
         
         Use `go.get_position` to retrieve the position relative to the parent.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the world position for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the world position for, by default the instance of the calling script
         
         @return position 
         <span class="type">vector3</span> instance world position
@@ -216,12 +219,12 @@ extern class Go {
     static function get_world_position(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the instance world rotation.
+        Gets the game object instance world rotation.
         
         Use `go.get_rotation` to retrieve the rotation relative to the parent.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the world rotation for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the world rotation for, by default the instance of the calling script
         
         @return rotation 
         <span class="type">quaternion</span> instance world rotation
@@ -229,14 +232,14 @@ extern class Go {
     static function get_world_rotation(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the instance world 3D scale factor.
+        Gets the game object instance world 3D scale factor.
         
         Use `go.get_scale` to retrieve the 3D scale factor relative to the parent.
         This vector is derived by decomposing the transformation matrix and should be used with care.
         For most cases it should be fine to use `go.get_world_scale_uniform` instead.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the world scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the world scale for, by default the instance of the calling script
         
         @return scale 
         <span class="type">vector3</span> instance world 3D scale factor
@@ -244,12 +247,12 @@ extern class Go {
     static function get_world_scale(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Gets the instance world scale factor.
+        Gets the uniform game object instance world scale factor.
         
         Use `go.get_scale_uniform` to retrieve the scale factor relative to the parent.
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the world scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the world scale for, by default the instance of the calling script
         
         @return scale 
         <span class="type">number</span> instance world scale factor
@@ -257,7 +260,7 @@ extern class Go {
     static function get_world_scale_uniform(?id:EitherType<Url, EitherType<Hash, String>>):TODO;
 
     /**
-        Define a property to be used throughout the script.
+        Define a property for the script.
         
         This function defines a property which can then be used in the script through the self-reference.
         The properties defined this way are automatically exposed in the editor in game objects and collections which use the script.
@@ -286,7 +289,7 @@ extern class Go {
     static function set(url:EitherType<Url, EitherType<Hash, String>>, property:EitherType<Hash, String>, value:TODO<"any">):Void;
 
     /**
-        Sets the position of the instance.
+        Sets the position of the game object instance.
         
         The position is relative to the parent (if any). The global world position cannot be manually set.
         
@@ -294,12 +297,12 @@ extern class Go {
         <span class="type">vector3</span> position to set
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to set the position for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to set the position for, by default the instance of the calling script
     **/
     static function set_position(position:Vector3, ?id:EitherType<Url, EitherType<Hash, String>>):Void;
 
     /**
-        Sets the rotation of the instance.
+        Sets the rotation of the game object instance.
         
         The rotation is relative to the parent (if any). The global world rotation cannot be manually set.
         
@@ -307,12 +310,12 @@ extern class Go {
         <span class="type">quaternion</span> rotation to set
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the rotation for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the rotation for, by default the instance of the calling script
     **/
     static function set_rotation(rotation:TODO<"quaternion">, ?id:EitherType<Url, EitherType<Hash, String>>):Void;
 
     /**
-        Sets the scale factor of the instance.
+        Sets the scale factor of the game object instance.
         
         The scale factor is relative to the parent (if any). The global world scale factor cannot be manually set.
         
@@ -322,7 +325,7 @@ extern class Go {
         <span class="type">number | vector3</span> vector or uniform scale factor, must be greater than 0
         
         @param id 
-        <span class="type">string | hash | url</span> optional id of the instance to get the scale for, by default the instance of the calling script
+        <span class="type">string | hash | url</span> optional id of the game object instance to get the scale for, by default the instance of the calling script
     **/
     static function set_scale(scale:EitherType<Vector3, Float>, ?id:EitherType<Url, EitherType<Hash, String>>):Void;
 
@@ -560,7 +563,7 @@ class GoProperties {
         <span class="type">vector3</span> game object euler rotation.
         
         The rotation of the game object expressed in Euler angles.
-        Euler angles are specified in degrees.
+        Euler angles are specified in degrees in the interval (-360, 360).
         The type of the property is vector3.
     **/
     static var euler(default, never) = new Property<TODO>("euler");
@@ -685,7 +688,7 @@ typedef GoMessageSetParent = {
 
     /**
         
-        <span class="type">number</span> if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true
+        <span class="type">number</span> if the world transform of the instance should be preserved when changing spaces, 0 for false and 1 for true. The default value is 1.
         
     **/
     var keep_world_transform:Float;

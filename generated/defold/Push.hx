@@ -153,7 +153,7 @@ extern class Push {
         <dt>`self`</dt>
         <dd><span class="type">object</span> The current object</dd>
         <dt>`payload`</dt>
-        <dd><span class="type">function</span> the push payload</dd>
+        <dd><span class="type">table</span> the push payload</dd>
         <dt>`origin`</dt>
         <dd><span class="type">constant</span> push.ORIGIN_LOCAL or push.ORIGIN_REMOTE</dd>
         <dt>`activated`</dt>
@@ -185,11 +185,6 @@ extern class PushVariables {
         Local push origin.
     **/
     static var ORIGIN_LOCAL(default, never):TODO;
-
-    /**
-        Remote push origin.
-    **/
-    static var ORIGIN_REMOTE(default, never):TODO;
 
     /**
         Remote push origin.

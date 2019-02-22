@@ -59,18 +59,6 @@ extern class Render {
     static function disable_material():Void;
 
     /**
-        Disables a render target.
-        
-        Disables a previously enabled render target. Subsequent draw operations
-        will be drawn to the frame buffer unless another render target is
-        enabled.
-        
-        @param render_target 
-        <span class="type">render_target</span> render target to disable
-    **/
-    static function disable_render_target(render_target:TODO<"render_target">):Void;
-
-    /**
         Disables a render state.
         
         Disables a render state.
@@ -94,11 +82,8 @@ extern class Render {
         
         @param unit 
         <span class="type">number</span> texture unit to disable
-        
-        @param render_target 
-        <span class="type">render_target</span> render target for which to disable the specified texture unit
     **/
-    static function disable_texture(unit:Float, render_target:TODO<"render_target">):Void;
+    static function disable_texture(unit:Float):Void;
 
     /**
         Draws all objects matching a predicate.
@@ -136,17 +121,6 @@ extern class Render {
         <span class="type">string | hash</span> material id to enable
     **/
     static function enable_material(material_id:EitherType<Hash, String>):Void;
-
-    /**
-        Enables a render target.
-        
-        Enables a render target. Subsequent draw operations will be to the
-        enabled render target until it is disabled.
-        
-        @param render_target 
-        <span class="type">render_target</span> render target to enable
-    **/
-    static function enable_render_target(render_target:TODO<"render_target">):Void;
 
     /**
         Enables a render state.
@@ -283,7 +257,7 @@ extern class Render {
         for the predicate. If multiple tags are provided, the predicate matches materials
         with all tags ANDed together.
         
-        The current limit to the number of tags that can be defined is `32`.
+        The current limit to the number of tags that can be defined is `64`.
         
         @param tags 
         <span class="type">table</span> table of tags that the predicate should match. The tags can be of either hash or string type
@@ -450,9 +424,9 @@ extern class Render {
         The blended RGBA values of a pixel comes from the following equations:
         
          * R<sub>d</sub> = min(k<sub>R</sub>, R<sub>s</sub> * s<sub>R</sub> + R<sub>d</sub> * d<sub>R</sub>)
-         * G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>R</sub>)
+         * G<sub>d</sub> = min(k<sub>G</sub>, G<sub>s</sub> * s<sub>G</sub> + G<sub>d</sub> * d<sub>G</sub>)
          * B<sub>d</sub> = min(k<sub>B</sub>, B<sub>s</sub> * s<sub>B</sub> + B<sub>d</sub> * d<sub>B</sub>)
-         * A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>B</sub> + A<sub>d</sub> * d<sub>A</sub>)
+         * A<sub>d</sub> = min(k<sub>A</sub>, A<sub>s</sub> * s<sub>A</sub> + A<sub>d</sub> * d<sub>A</sub>)
         
         Blend function `(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)` is useful for
         drawing with transparency when the drawn objects are sorted from farthest to nearest.
@@ -518,11 +492,11 @@ extern class Render {
         
          * `render.COMPARE_FUNC_NEVER` (never passes)
          * `render.COMPARE_FUNC_LESS` (passes if the incoming depth value is less than the stored value)
-         * `render.COMPARE_FUNC_LEQUAL` (passes if the incoming depth value is less than or equal to )the stored value
-        `render.COMPARE_FUNC_GREATER` (passes if the incoming depth value is greater than the stored )v- alue
-        `render.COMPARE_FUNC_GEQUAL` (passes if the incoming depth value is greater than or equal to )t- he stored value
+         * `render.COMPARE_FUNC_LEQUAL` (passes if the incoming depth value is less than or equal to the stored value)
+         * `render.COMPARE_FUNC_GREATER` (passes if the incoming depth value is greater than the stored value)
+         * `render.COMPARE_FUNC_GEQUAL` (passes if the incoming depth value is greater than or equal to the stored value)
          * `render.COMPARE_FUNC_EQUAL` (passes if the incoming depth value is equal to the stored value)
-         * `render.COMPARE_FUNC_NOTEQUAL` (passes if the incoming depth value is not equal to the )stored value
+         * `render.COMPARE_FUNC_NOTEQUAL` (passes if the incoming depth value is not equal to the stored value)
          * `render.COMPARE_FUNC_ALWAYS` (always passes)
         
         The depth function is initially set to `render.COMPARE_FUNC_LESS`.
@@ -589,6 +563,31 @@ extern class Render {
         <span class="type">matrix4</span> projection matrix
     **/
     static function set_projection(matrix:TODO<"matrix4">):Void;
+
+    /**
+        Sets a render target.
+        
+        Sets a render target. Subsequent draw operations will be to the
+        render target until it is replaced by a subsequent call to set_render_target.
+        
+        @param render_target 
+        <span class="type">render_target</span> render target to set. render.RENDER_TARGET_DEFAULT to set the default render target
+        
+        @param options 
+        <span class="type">table</span> optional table with behaviour parameters
+        
+        <dl>
+        <dt>`transient`</dt>
+        <dd><span class="type">number</span> Transient frame buffer types are only valid while the render target is active, i.e becomes undefined when a new target is set by a subsequent call to set_render_target.
+         Default is all non-transient. Be aware that some hardware uses a combined depth stencil buffer and when this is the case both are considered non-transient if exclusively selected!
+         A buffer type defined that doesn't exist in the render target is silently ignored.</dd>
+        </dl>
+        
+         * `render.BUFFER_COLOR_BIT`
+         * `render.BUFFER_DEPTH_BIT`
+         * `render.BUFFER_STENCIL_BIT`
+    **/
+    static function set_render_target(render_target:TODO<"render_target">, ?options:TODO<"table">):Void;
 
     /**
         Sets the render target size.
@@ -1046,6 +1045,11 @@ extern class RenderVariables {
         .
     **/
     static var FORMAT_STENCIL(default, never):TODO;
+
+    /**
+        .
+    **/
+    static var RENDER_TARGET_DEFAULT(default, never):TODO;
 
     /**
         .

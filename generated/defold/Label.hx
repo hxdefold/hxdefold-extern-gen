@@ -8,6 +8,30 @@ package defold;
 @:native("_G.label")
 extern class Label {
     /**
+        Gets the text metrics for a label.
+        
+        Gets the text metrics from a label component
+        
+        @param url 
+        <span class="type">string | hash | url</span> the label to get the (unscaled) metrics from
+        
+        @return metrics 
+        <span class="type">table</span> a table with the following fields:
+        
+         * width
+         * height
+         * max_ascent
+         * max_descent
+        
+        <div class="codehilite"><pre><span></span><span class="k">function</span> <span class="nf">init</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+            <span class="kd">local</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">label</span><span class="p">.</span><span class="n">get_text_metrics</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">#label&quot;</span><span class="p">)</span>
+            <span class="n">pprint</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+        <span class="k">end</span>
+        </pre></div>
+    **/
+    static function get_text_metrics(url:EitherType<Url, EitherType<Hash, String>>):TODO;
+
+    /**
         Set the text for a label.
         
         Sets the text of a label component

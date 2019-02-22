@@ -80,7 +80,7 @@ extern class Gui {
         @param easing 
         <span class="type">constant | vector</span> easing to use during animation.
              Either specify one of the `gui.EASING_*` constants or provide a
-             <span class="type">vector</span> with a custom curve.
+             <span class="type">vector</span> with a custom curve. See the `animation guide` for more information.
         
         @param duration 
         <span class="type">number</span> duration of the animation in seconds.
@@ -395,6 +395,14 @@ extern class Gui {
     static function get_index(node:TODO<"node">):TODO;
 
     /**
+        Gets the node inherit alpha state.
+        
+        @param node 
+        <span class="type">node</span> node from which to get the inherit alpha state
+    **/
+    static function get_inherit_alpha(node:TODO<"node">):Void;
+
+    /**
         Gets the pie inner radius.
         
         Returns the inner radius of a pie node.
@@ -451,7 +459,7 @@ extern class Gui {
         @param node 
         <span class="type">node</span> node from which to get the line-break for
         
-        @return line-break 
+        @return line_break 
         <span class="type">boolean</span> `true` or `false`
     **/
     static function get_line_break(node:TODO<"node">):TODO;
@@ -527,7 +535,7 @@ extern class Gui {
     static function get_particlefx(node:TODO<"node">):TODO;
 
     /**
-        Gets the number of generarted vertices around the perimeter.
+        Gets the number of generated vertices around the perimeter.
         
         Returns the number of generated vertices around the perimeter
         of a pie node.
@@ -606,7 +614,9 @@ extern class Gui {
     /**
         Gets the node screen position.
         
-        Returns the screen position of the supplied node.
+        Returns the screen position of the supplied node. This function returns the
+        calculated transformed position of the node, taking into account any parent node
+        transforms.
         
         @param node 
         <span class="type">node</span> node to get the screen position from
@@ -673,6 +683,19 @@ extern class Gui {
         <span class="type">vector4</span> configuration values
     **/
     static function get_slice9(node:TODO<"node">):TODO;
+
+    /**
+        Gets the playing animation on a spine node.
+        
+        Gets the playing animation on a spine node
+        
+        @param node 
+        <span class="type">node</span> node to get spine skin from
+        
+        @return id 
+        <span class="type">hash</span> spine animation id, 0 if no animation is playing
+    **/
+    static function get_spine_animation(node:TODO<"node">):TODO;
 
     /**
         Retrieve the GUI node corresponding to a spine skeleton bone.
@@ -772,7 +795,7 @@ extern class Gui {
         @param width 
         <span class="type">number</span> max-width. Use for line-breaks (default=FLT_MAX)
         
-        @param line_breaks 
+        @param line_break 
         <span class="type">boolean</span> true to break lines accordingly to width (default=false)
         
         @param leading 
@@ -789,7 +812,7 @@ extern class Gui {
          * max_ascent
          * max_descent
     **/
-    static function get_text_metrics(font:EitherType<Hash, String>, text:String, width:Float, line_breaks:TODO<"boolean">, leading:Float, tracking:Float):TODO;
+    static function get_text_metrics(font:EitherType<Hash, String>, text:String, width:Float, line_break:TODO<"boolean">, leading:Float, tracking:Float):TODO;
 
     /**
         Get text metrics from node.
@@ -1361,6 +1384,17 @@ extern class Gui {
     static function set_id(node:TODO<"node">, id:EitherType<Hash, String>):Void;
 
     /**
+        Sets the node inherit alpha state.
+        
+        @param node 
+        <span class="type">node</span> node from which to set the inherit alpha state
+        
+        @param inherit_alpha 
+        <span class="type">boolean</span> true or false
+    **/
+    static function set_inherit_alpha(node:TODO<"node">, inherit_alpha:TODO<"boolean">):Void;
+
+    /**
         Sets the pie inner radius.
         
         Sets the inner radius of a pie node.
@@ -1411,7 +1445,7 @@ extern class Gui {
         <span class="type">node</span> node to set line-break for
         
         @param line_break 
-        <span class="type">boolean</span> true of false
+        <span class="type">boolean</span> true or false
     **/
     static function set_line_break(node:TODO<"node">, line_break:TODO<"boolean">):Void;
 
@@ -1455,8 +1489,11 @@ extern class Gui {
         
         @param parent 
         <span class="type">node</span> parent node to set
+        
+        @param keep_scene_transform 
+        <span class="type">boolean</span> optional flag to make the scene position being perserved
     **/
-    static function set_parent(node:TODO<"node">, parent:TODO<"node">):Void;
+    static function set_parent(node:TODO<"node">, parent:TODO<"node">, keep_scene_transform:TODO<"boolean">):Void;
 
     /**
         Sets a particle fx.
@@ -1671,8 +1708,11 @@ extern class Gui {
         
         @param spine_skin 
         <span class="type">string | hash</span> spine skin id
+        
+        @param spine_slot 
+        <span class="type">string | hash</span> optional slot id to only change a specific slot
     **/
-    static function set_spine_skin(node:TODO<"node">, spine_skin:EitherType<Hash, String>):Void;
+    static function set_spine_skin(node:TODO<"node">, spine_skin:EitherType<Hash, String>, ?spine_slot:EitherType<Hash, String>):Void;
 
     /**
         Sets the node text.
@@ -1810,7 +1850,7 @@ extern class Gui {
     /**
         Stops a particle fx.
         
-        Stops the paricle fx for a gui node
+        Stops the particle fx for a gui node
         
         @param node 
         <span class="type">node</span> node to stop particle fx for

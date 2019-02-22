@@ -9,6 +9,43 @@ package defold;
 @:native("_G.sprite")
 extern class Sprite {
     /**
+        Play an animation on a sprite component.
+        
+        Play an animation on a sprite component from its tile set
+        
+        An optional completion callback function can be provided that will be called when
+        the animation has completed playing. If no function is provided,
+        a `animation_done` message is sent to the script that started the animation.
+        
+        @param url 
+        <span class="type">string | hash | url</span> the sprite that should play the animation
+        
+        @param id 
+        hash name hash of the animation to play
+        
+        @param complete_function 
+        <span class="type">function(self, message_id, message, sender))</span> function to call when the animation has completed.
+        
+        <dl>
+        <dt>`self`</dt>
+        <dd><span class="type">object</span> The current object.</dd>
+        <dt>`message_id`</dt>
+        <dd><span class="type">hash</span> The name of the completion message, `"animation_done"`.</dd>
+        <dt>`message`</dt>
+        <dd><span class="type">table</span> Information about the completion:</dd>
+        </dl>
+        
+         * <span class="type">number</span> `current_tile` - the current tile of the sprite.
+         * <span class="type">hash</span> `id` - id of the animation that was completed.
+        
+        <dl>
+        <dt>`sender`</dt>
+        <dd><span class="type">url</span> The invoker of the callback: the sprite component.</dd>
+        </dl>
+    **/
+    static function play_flipbook(url:EitherType<Url, EitherType<Hash, String>>, id:TODO, ?complete_function:TODO<"function(self, message_id, message, sender))">):Void;
+
+    /**
         Reset a shader constant for a sprite.
         
         Resets a shader constant for a sprite component.

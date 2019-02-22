@@ -67,10 +67,10 @@ extern class Crash {
         <span class="type">number</span> crash dump handle
         
         @param index 
-        <span class="type">number</span> system field enum
+        <span class="type">number</span> system field enum. Must be less than ` crash.SYSFIELD_MAX`
         
         @return value 
-        <span class="type">string</span> value recorded in the crash dump
+        <span class="type">string</span> value recorded in the crash dump, or nil if it didn't exist
     **/
     static function get_sys_field(handle:Float, index:Float):TODO;
 
@@ -155,11 +155,6 @@ extern class CrashVariables {
     static var SYSFIELD_DEVICE_LANGUAGE(default, never):TODO;
 
     /**
-        Device manufacturer as reported by sys.get_sys_info.
-    **/
-    static var SYSFIELD_DEVICE_MANUFACTURER(default, never):TODO;
-
-    /**
         Device model as reported by sys.get_sys_info.
     **/
     static var SYSFIELD_DEVICE_MODEL(default, never):TODO;
@@ -180,6 +175,16 @@ extern class CrashVariables {
     static var SYSFIELD_LANGUAGE(default, never):TODO;
 
     /**
+        Device manufacturer as reported by sys.get_sys_info.
+    **/
+    static var SYSFIELD_MANUFACTURER(default, never):TODO;
+
+    /**
+        The max number of sysfields..
+    **/
+    static var SYSFIELD_MAX(default, never):TODO;
+
+    /**
         System name as reported by sys.get_sys_info.
     **/
     static var SYSFIELD_SYSTEM_NAME(default, never):TODO;
@@ -193,4 +198,14 @@ extern class CrashVariables {
         System territory as reported by sys.get_sys_info.
     **/
     static var SYSFIELD_TERRITORY(default, never):TODO;
+
+    /**
+        The max number of user fields..
+    **/
+    static var USERFIELD_MAX(default, never):TODO;
+
+    /**
+        The max size of a single user field..
+    **/
+    static var USERFIELD_SIZE(default, never):TODO;
 }

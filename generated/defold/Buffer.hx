@@ -38,23 +38,23 @@ extern class Buffer {
         
         Copy a specified amount of data from one stream to another.
         
-        <span class="icon-attention"></span> The value type must match between source and destination streams.
+        <span class="icon-attention"></span> The value type and size must match between source and destination streams.
         The source and destination streams can be the same.
         
         @param dst 
         <span class="type">bufferstream</span> the destination stream
         
         @param dstoffset 
-        <span class="type">number</span> the offset to start copying data to
+        <span class="type">number</span> the offset to start copying data to (measured in value type)
         
         @param src 
         <span class="type">bufferstream</span> the source data stream
         
         @param srcoffset 
-        <span class="type">number</span> the offset to start copying data from
+        <span class="type">number</span> the offset to start copying data from (measured in value type)
         
         @param count 
-        <span class="type">number</span> the number of values to copy
+        <span class="type">number</span> the number of values to copy (measured in value type)
     **/
     static function copy_stream(dst:TODO<"bufferstream">, dstoffset:Float, src:TODO<"bufferstream">, srcoffset:Float, count:Float):Void;
 
@@ -81,7 +81,7 @@ extern class Buffer {
     /**
         Gets data from a stream.
         
-        Get all the bytes from a specified stream as a Lua string.
+        Get a copy of all the bytes from a specified stream as a Lua string.
         
         @param buffer 
         <span class="type">buffer</span> the source buffer
@@ -119,13 +119,6 @@ extern class BufferVariables {
         Float, single precision, 4 bytes
     **/
     static var VALUE_TYPE_FLOAT32(default, never):TODO;
-
-    /**
-        Float64.
-        
-        Float, double precision, 8 bytes
-    **/
-    static var VALUE_TYPE_FLOAT64(default, never):TODO;
 
     /**
         Int16.

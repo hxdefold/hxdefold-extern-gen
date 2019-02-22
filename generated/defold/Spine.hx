@@ -122,6 +122,20 @@ extern class Spine {
     static function reset_constant(url:EitherType<Url, EitherType<Hash, String>>, constant:EitherType<Hash, String>):Void;
 
     /**
+        Reset the IK constraint target position to default of a spinemodel.
+        
+        Resets any previously set IK target of a spine model, the position will be reset
+        to the original position from the spine scene.
+        
+        @param url 
+        <span class="type">string | hash | url</span> the spine model containing the object
+        
+        @param ik_constraint_id 
+        <span class="type">string | hash</span> id of the corresponding IK constraint object
+    **/
+    static function reset_ik_target(url:EitherType<Url, EitherType<Hash, String>>, ik_constraint_id:EitherType<Hash, String>):Void;
+
+    /**
         Set a shader constant for a spine model.
         
         Sets a shader constant for a spine model component.
@@ -174,6 +188,22 @@ extern class Spine {
         <span class="type">vector3</span> target position
     **/
     static function set_ik_target_position(url:EitherType<Url, EitherType<Hash, String>>, ik_constraint_id:EitherType<Hash, String>, position:Vector3):Void;
+
+    /**
+        Sets the spine skin.
+        
+        Sets the spine skin on a spine model.
+        
+        @param url 
+        <span class="type">string | hash | url</span> the spine model for which to set skin
+        
+        @param spine_skin 
+        <span class="type">string | hash</span> spine skin id
+        
+        @param spine_slot 
+        <span class="type">string | hash</span> optional slot id to only change a specific slot
+    **/
+    static function set_skin(url:EitherType<Url, EitherType<Hash, String>>, spine_skin:EitherType<Hash, String>, ?spine_slot:EitherType<Hash, String>):Void;
 }
 
 /**
@@ -184,7 +214,8 @@ class SpineProperties {
     /**
         <span class="type">hash</span> spine animation.
         
-        The current animation set on the component. The type of the property is hash.
+        <span class="mark">READ ONLY</span> The current animation set on the component.
+        The type of the property is <span class="type">hash</span>.
     **/
     static var animation(default, never) = new Property<TODO>("animation");
 
@@ -200,7 +231,7 @@ class SpineProperties {
     /**
         <span class="type">number</span> spine playback_rate.
         
-        The animation playback rate. A multiplier to the animation playback rate. The type of the property is number.
+        The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class="type">number</span>.
         
         The playback_rate is a non-negative number, a negative value will be clamped to 0.
     **/
@@ -319,4 +350,11 @@ typedef SpineMessageSpineEvent = {
         
     **/
     var string:Hash;
+
+    /**
+        
+        <span class="type">node</span> the source spine gui node if the event originated from gui, otherwise nil
+        
+    **/
+    var node:TODO<"node">;
 }

@@ -38,6 +38,9 @@ extern class Sys {
         
         Get config value from the game.project configuration file.
         
+        In addition to the project file, configuration values can also be passed
+        to the runtime as command line arguments with the `--config` argument.
+        
         @param key 
         <span class="type">string</span> key to get value for. The syntax is SECTION.KEY
         
@@ -92,6 +95,8 @@ extern class Sys {
         <dd><span class="type">string</span> The current Defold engine version, i.e. "1.2.96"</dd>
         <dt>`version_sha1`</dt>
         <dd><span class="type">string</span> The SHA1 for the current engine build, i.e. "0060183cce2e29dbd09c85ece83cbb72068ee050"</dd>
+        <dt>`is_debug`</dt>
+        <dd><span class="type">boolean</span> If the engine is a debug or release version</dd>
         </dl>
     **/
     static function get_engine_info():TODO;
@@ -163,7 +168,7 @@ extern class Sys {
         <dt>`gmt_offset`</dt>
         <dd><span class="type">number</span> The current offset from GMT (Greenwich Mean Time), in minutes.</dd>
         <dt>`device_ident`</dt>
-        <dd><span class="type">string</span> <span class="icon-ios"></span> "identifierForVendor" on iOS. <span class="icon-andriod"></span> "android_id" on Android.</dd>
+        <dd><span class="type">string</span> <span class="icon-ios"></span> "identifierForVendor" on iOS. <span class="icon-android"></span> "android_id" on Android.</dd>
         <dt>`ad_ident`</dt>
         <dd><span class="type">string</span> <span class="icon-ios"></span> "advertisingIdentifier" on iOS. <span class="icon-android"></span> advertising ID provided by Google Play on Android.</dd>
         <dt>`ad_tracking_enabled`</dt>
@@ -196,7 +201,7 @@ extern class Sys {
         
         In order for the engine to include custom resources in the build process, you need
         to specify them in the "custom_resources" key in your "game.project" settings file.
-        You can specify single resource files or directories. If a directory is is included
+        You can specify single resource files or directories. If a directory is included
         in the resource list, all files and directories in that directory is recursively
         included:
         
@@ -228,9 +233,12 @@ extern class Sys {
         
         The table can later be loaded by `sys.load`.
         Use `sys.get_save_file` to obtain a valid location for the file.
-        Internally, this function uses a workspace buffer sized output file sized 128kb. This size reflects the output file size which must not exceed this limit.
-        Additionally, the total number of rows that any one table may contain is limited to 65536 (i.e. a 16 bit range). When tables are used to represent arrays, the values of
-        keys are permitted to fall within a 32 bit range, supporting sparse arrays, however the limit on the total number of rows remains in effect.
+        Internally, this function uses a workspace buffer sized output file sized 512kb.
+        This size reflects the output file size which must not exceed this limit.
+        Additionally, the total number of rows that any one table may contain is limited to 65536
+        (i.e. a 16 bit range). When tables are used to represent arrays, the values of
+        keys are permitted to fall within a 32 bit range, supporting sparse arrays, however
+        the limit on the total number of rows remains in effect.
         
         @param filename 
         <span class="type">string</span> file to write to
@@ -304,12 +312,34 @@ class SysMessages {
     /**
         Set update frequency.
         
-        Set game update-frequency. This option is equivalent to `display.update_frequency` in
-        the "game.project" settings but set in run-time.
+        Set game update-frequency (frame cap). This option is equivalent to `display.update_frequency` in
+        the "game.project" settings but set in run-time. If `Vsync` checked in "game.project", the rate will
+        be clamped to a swap interval that matches any detected main monitor refresh rate. If `Vsync` is
+        unchecked the engine will try to respect the rate in software using timers. There is no
+        guarantee that the frame cap will be achieved depending on platform specifics and hardware settings.
         
         This message can only be sent to the designated `@system` socket.
     **/
     static var set_update_frequency(default, never) = new Message<SysMessageSetUpdateFrequency>("set_update_frequency");
+
+    /**
+        Set vsync swap interval.
+        
+        Set the vsync swap interval. The interval with which to swap the front and back buffers
+        in sync with vertical blanks (v-blank), the hardware event where the screen image is updated
+        with data from the front buffer. A value of 1 swaps the buffers at every v-blank, a value of
+        2 swaps the buffers every other v-blank and so on. A value of 0 disables waiting for v-blank
+        before swapping the buffers. Default value is 1.
+        
+        When setting the swap interval to 0 and having `vsync` disabled in
+        "game.project", the engine will try to respect the set frame cap value from
+        "game.project" in software instead.
+        
+        This setting may be overridden by driver settings.
+        
+        This message can only be sent to the designated `@system` socket.
+    **/
+    static var set_vsync(default, never) = new Message<SysMessageSetVsync>("set_vsync");
 
     /**
         Starts video recording.
@@ -317,8 +347,10 @@ class SysMessages {
         Starts video recording of the game frame-buffer to file. Current video format is the
         open vp8 codec in the ivf container. It's possible to upload this format directly
         to YouTube. The VLC video player has native support but with the known issue that
-        not the entirely files is played back. It's probably an issue with VLC.
+        not the entire file is played back. It's probably an issue with VLC.
         The Miro Video Converter has support for vp8/ivf.
+        
+        <span class="icon-macos"></span> <span class="icon-windows"></span> <span class="icon-linux"></span> Video recording is only supported on desktop platforms.
         
         <span class="icon-attention"></span> Audio is currently not supported
         
@@ -330,6 +362,8 @@ class SysMessages {
         Stop current video recording.
         
         Stops the currently active video recording.
+        
+        <span class="icon-macos"></span> <span class="icon-windows"></span> <span class="icon-linux"></span> Video recording is only supported on desktop platforms.
         
         This message can only be sent to the designated `@system` socket.
     **/
@@ -435,6 +469,18 @@ typedef SysMessageSetUpdateFrequency = {
         
     **/
     var frequency:TODO;
+}
+
+/**
+    Data for the `SysMessages.set_vsync` message.
+**/
+typedef SysMessageSetVsync = {
+    /**
+        
+        target swap interval.
+        
+    **/
+    var swap_interval:TODO;
 }
 
 /**
