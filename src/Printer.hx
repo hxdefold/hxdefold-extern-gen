@@ -120,6 +120,8 @@ class Printer {
 		case TAnonymous(fields): "{ " + [for (f in fields) printField(f) + "; "].join("") + "}";
 		case TParent(ct): "(" + printComplexType(ct) + ")";
 		case TOptional(ct): "?" + printComplexType(ct);
+		case TIntersection(cts): cts.map(printComplexType).join(" & ");
+		case TNamed(name, ct): name + ":" + printComplexType(ct);
 		case TExtend(tpl, fields): '{> ${tpl.map(printTypePath).join(" >, ")}, ${fields.map(printField).join(", ")} }';
 	}
 
@@ -135,6 +137,8 @@ class Printer {
 		case AInline: "inline";
 		case ADynamic: "dynamic";
 		case AMacro: "macro";
+		case AFinal: "final";
+		case AExtern: "extern";
 	}
 
 	public function printField(field:Field) return

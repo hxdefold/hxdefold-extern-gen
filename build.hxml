@@ -1,3 +1,4 @@
 -cp src
 -main Main
--neko main.n
+--interp
+

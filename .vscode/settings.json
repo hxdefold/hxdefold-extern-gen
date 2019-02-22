@@ -1,9 +1,3 @@
 {
-    "haxe.enableDiagnostics": false,
-    "haxe.displayConfigurations": [
-        ["build.hxml"]
-    ],
-    "haxe.displayServer": {
-        "arguments": ["-v"]
-    }
+    "haxe.enableCompilationServer": false
 }
