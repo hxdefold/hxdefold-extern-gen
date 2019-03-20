@@ -143,18 +143,15 @@ extern class Facebook {
         registered with Facebook Analytics.
         
          * `facebook.EVENT_ACHIEVED_LEVEL`
-         * `facebook.EVENT_ACTIVATED_APP`
          * `facebook.EVENT_ADDED_PAYMENT_INFO`
          * `facebook.EVENT_ADDED_TO_CART`
          * `facebook.EVENT_ADDED_TO_WISHLIST`
          * `facebook.EVENT_COMPLETED_REGISTRATION`
          * `facebook.EVENT_COMPLETED_TUTORIAL`
-         * `facebook.EVENT_DEACTIVATED_APP`
          * `facebook.EVENT_INITIATED_CHECKOUT`
          * `facebook.EVENT_PURCHASED`
          * `facebook.EVENT_RATED`
          * `facebook.EVENT_SEARCHED`
-         * `facebook.EVENT_SESSION_INTERRUPTIONS`
          * `facebook.EVENT_SPENT_CREDITS`
          * `facebook.EVENT_TIME_BETWEEN_SESSIONS`
          * `facebook.EVENT_UNLOCKED_ACHIEVEMENT`
@@ -289,6 +286,11 @@ extern class FacebookVariables {
         Publish permission to reach only me (private to current user).
     **/
     static var AUDIENCE_ONLYME(default, never):TODO;
+
+    /**
+        Log this event when a person achieves specific levels you define within your application, business, or organization.
+    **/
+    static var EVENT_ACHIEVED_LEVEL(default, never):TODO;
 
     /**
         Log this event when the user has entered their payment info.

@@ -398,15 +398,15 @@ extern class Go {
         </tr>
         <tr>
         <td>`pressed`</td>
-        <td>If the input was pressed this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>
+        <td>If the input was pressed this frame. This is not present for mouse movement.</td>
         </tr>
         <tr>
         <td>`released`</td>
-        <td>If the input was released this frame, 0 for false and 1 for true. This is not present for mouse movement.</td>
+        <td>If the input was released this frame. This is not present for mouse movement.</td>
         </tr>
         <tr>
         <td>`repeated`</td>
-        <td>If the input was repeated this frame, 0 for false and 1 for true. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td>
+        <td>If the input was repeated this frame. This is similar to how a key on a keyboard is repeated when you hold it down. This is not present for mouse movement.</td>
         </tr>
         <tr>
         <td>`x`</td>
