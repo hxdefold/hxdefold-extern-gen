@@ -3,6 +3,8 @@ package defold;
 /**
     <p>Functions for getting profiling data in runtime.
     More detailed profiling and debugging information can be found under the <a href="http://www.defold.com/manuals/debugging/">Debugging</a> section in the manuals.</p>
+
+    See `ProfilerVariables` for related variables.
 **/
 @:native("_G.profiler")
 extern class Profiler {
@@ -79,8 +81,8 @@ extern class Profiler {
         
         Get the number of recorded frames in the on-screen profiler ui recording buffer
         
-        @return [type:number] 
-        the number of recorded frames, zero if on-screen profiler is disabled
+        @return frame_count 
+        <span class="type">number</span> the number of recorded frames, zero if on-screen profiler is disabled
     **/
     static function recorded_frame_count():TODO;
 
@@ -155,4 +157,37 @@ extern class Profiler {
          * `frame` The frame index in the recording buffer (1 is first recorded frame)
     **/
     static function view_recorded_frame(frame_index:TODO<"table">):Void;
+}
+
+@:native("_G.profiler")
+extern class ProfilerVariables {
+    /**
+        Pause on current frame.
+    **/
+    static var MODE_PAUSE(default, never):TODO;
+
+    /**
+        Start recording.
+    **/
+    static var MODE_RECORD(default, never):TODO;
+
+    /**
+        Continously show latest frame.
+    **/
+    static var MODE_RUN(default, never):TODO;
+
+    /**
+        Pause at peak frame.
+    **/
+    static var MODE_SHOW_PEAK_FRAME(default, never):TODO;
+
+    /**
+        Show full profiler ui.
+    **/
+    static var VIEW_MODE_FULL(default, never):TODO;
+
+    /**
+        Show mimimal profiler ui.
+    **/
+    static var VIEW_MODE_MINIMIZED(default, never):TODO;
 }

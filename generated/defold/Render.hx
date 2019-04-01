@@ -760,6 +760,13 @@ class RenderMessages {
     static var draw_text(default, never) = new Message<RenderMessageDrawText>("draw_text");
 
     /**
+        Resizes the window.
+        
+        Set the size of the game window. Only works on desktop platforms.
+    **/
+    static var resize(default, never) = new Message<RenderMessageResize>("resize");
+
+    /**
         Reports a window size change.
         
         Reports a change in window size. This is initiated on window resize on desktop or by orientation changes
@@ -823,6 +830,25 @@ typedef RenderMessageDrawText = {
         
     **/
     var text:String;
+}
+
+/**
+    Data for the `RenderMessages.resize` message.
+**/
+typedef RenderMessageResize = {
+    /**
+        
+        <span class="type">number</span> the new window height
+        
+    **/
+    var height:Float;
+
+    /**
+        
+        <span class="type">number</span> the new window width
+        
+    **/
+    var width:Float;
 }
 
 /**
