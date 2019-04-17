@@ -67,7 +67,7 @@ extern class Crash {
         <span class="type">number</span> crash dump handle
         
         @param index 
-        <span class="type">number</span> system field enum. Must be less than ` crash.SYSFIELD_MAX`
+        <span class="type">number</span> system field enum. Must be less than `crash.SYSFIELD_MAX`
         
         @return value 
         <span class="type">string</span> value recorded in the crash dump, or nil if it didn't exist

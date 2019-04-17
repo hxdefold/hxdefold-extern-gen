@@ -42,8 +42,17 @@ extern class Sprite {
         <dt>`sender`</dt>
         <dd><span class="type">url</span> The invoker of the callback: the sprite component.</dd>
         </dl>
+        @param play_properties 
+        <span class="type">table</span> optional table with properties:
+        
+        <dl>
+        <dt>`offset`</dt>
+        <dd><span class="type">number</span> the normalized initial value of the animation cursor when the animation starts playing.</dd>
+        <dt>`playback_rate`</dt>
+        <dd><span class="type">number</span> the rate with which the animation will be played. Must be positive.</dd>
+        </dl>
     **/
-    static function play_flipbook(url:EitherType<Url, EitherType<Hash, String>>, id:TODO, ?complete_function:TODO<"function(self, message_id, message, sender))">):Void;
+    static function play_flipbook(url:EitherType<Url, EitherType<Hash, String>>, id:TODO, ?complete_function:TODO<"function(self, message_id, message, sender))">, ?play_properties:TODO<"table">):Void;
 
     /**
         Reset a shader constant for a sprite.
@@ -117,6 +126,22 @@ extern class Sprite {
 **/
 @:publicFields
 class SpriteProperties {
+    /**
+        <span class="type">number</span> sprite cursor.
+        
+        The normalized animation cursor. The type of the property is number.
+    **/
+    static var cursor(default, never) = new Property<TODO>("cursor");
+
+    /**
+        <span class="type">number</span> sprite playback_rate.
+        
+        The animation playback rate. A multiplier to the animation playback rate. The type of the property is <span class="type">number</span>.
+        
+        The playback_rate is a non-negative number, a negative value will be clamped to 0.
+    **/
+    static var playback_rate(default, never) = new Property<TODO>("playback_rate");
+
     /**
         <span class="type">vector3</span> sprite scale.
         

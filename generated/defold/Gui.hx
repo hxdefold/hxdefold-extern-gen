@@ -344,6 +344,32 @@ extern class Gui {
     static function get_flipbook(node:TODO<"node">):TODO;
 
     /**
+        Gets the normalized cursor of the animation on a node with flipbook animation.
+        
+        This is only useful nodes with flipbook animations. Gets the normalized cursor of the flipbook animation on a node.
+        
+        @param node 
+        node to get the cursor for (node)
+        
+        @return cursor 
+        value <span class="type">number</span> cursor value
+    **/
+    static function get_flipbook_cursor(node:TODO):TODO;
+
+    /**
+        Gets the playback rate of the flipbook animation on a node.
+        
+        This is only useful nodes with flipbook animations. Gets the playback rate of the flipbook animation on a node.
+        
+        @param node 
+        <span class="type">node</span> node to set the cursor for
+        
+        @return rate 
+        <span class="type">number</span> playback rate
+    **/
+    static function get_flipbook_playback_rate(node:TODO<"node">):TODO;
+
+    /**
         Gets the node font.
         
         This is only useful for text nodes. The font must be mapped to the gui scene in the gui editor.
@@ -720,7 +746,7 @@ extern class Gui {
         This is only useful for spine nodes. Gets the normalized cursor of the animation on a spine node.
         
         @param node 
-        spine node to set the cursor for (node)
+        spine node to get the cursor for (node)
         
         @return cursor 
         value <span class="type">number</span> cursor value
@@ -1117,8 +1143,17 @@ extern class Gui {
         
         </dd>
         </dl>
+        @param play_properties 
+        <span class="type">table</span> optional table with properties
+        
+        <dl>
+        <dt>`offset`</dt>
+        <dd><span class="type">number</span> The normalized initial value of the animation cursor when the animation starts playing</dd>
+        <dt>`playback_rate`</dt>
+        <dd><span class="type">number</span> The rate with which the animation will be played. Must be positive</dd>
+        </dl>
     **/
-    static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function(self, node)">):Void;
+    static function play_flipbook(node:TODO<"node">, animation:EitherType<Hash, String>, ?complete_function:TODO<"function(self, node)">, ?play_properties:TODO<"table">):Void;
 
     /**
         Plays a particle fx.
@@ -1349,6 +1384,32 @@ extern class Gui {
         <span class="type">number</span> sector angle
     **/
     static function set_fill_angle(node:TODO<"node">, angle:Float):Void;
+
+    /**
+        Sets the normalized cursor of the animation on a node with flipbook animation.
+        
+        This is only useful nodes with flipbook animations. The cursor is normalized.
+        
+        @param node 
+        <span class="type">node</span> node to set the cursor for
+        
+        @param cursor 
+        <span class="type">number</span> cursor value
+    **/
+    static function set_flipbook_cursor(node:TODO<"node">, cursor:Float):Void;
+
+    /**
+        Sets the playback rate of the flipbook animation on a node.
+        
+        This is only useful nodes with flipbook animations. Sets the playback rate of the flipbook animation on a node. Must be positive.
+        
+        @param node 
+        <span class="type">node</span> node to set the cursor for
+        
+        @param playback_rate 
+        <span class="type">number</span> playback rate
+    **/
+    static function set_flipbook_playback_rate(node:TODO<"node">, playback_rate:Float):Void;
 
     /**
         Sets the node font.
