@@ -36,12 +36,13 @@ typedef ApiElement = {
     var PROPERTY = "PROPERTY";
     var VARIABLE = "VARIABLE";
     var PACKAGE = "PACKAGE";
+    var MACRO = "MACRO";
 
     inline function new(s) this = s;
 
     public static function fromString(s:String):ApiElementType {
         return switch (s) {
-            case "FUNCTION" | "MESSAGE" | "PROPERTY" | "VARIABLE" | "PACKAGE": new ApiElementType(s);
+            case "FUNCTION" | "MESSAGE" | "PROPERTY" | "VARIABLE" | "PACKAGE" | "MACRO": new ApiElementType(s);
             default: throw 'Invalid API element type: $s';
         }
     }
@@ -191,8 +192,13 @@ class Main {
                             continue;
                         }
 
+                        if (element.type == MACRO) {
+                            print("Skipping macro element");
+                            continue;
+                        }
+
                         if (!reElementName.match(element.name))
-                            throw 'Non-conventional element name';
+                            throw 'Non-conventional element name: ${element.name}';
 
                         var elementName = reElementName.matched(3);
                         if (reElementName.matched(1) != null) {
@@ -358,7 +364,7 @@ class Main {
                                 fields = vars;
                                 fieldKind = FProp("default", "never", ctTODO);
 
-                            case PACKAGE:
+                            case PACKAGE | MACRO:
                                 throw false;
                         }
 
