@@ -7,9 +7,131 @@ package defold;
 
     See `PhysicsProperties` for related properties.
     See `PhysicsMessages` for related messages.
+    See `PhysicsVariables` for related variables.
 **/
 @:native("_G.physics")
 extern class Physics {
+    /**
+        Create a physics joint.
+        
+        Create a physics joint between two collision object components.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param joint_type 
+        <span class="type">number</span> the joint type
+        
+        @param collisionobject_a 
+        <span class="type">string | hash | url</span> first collision object
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+        
+        @param position_a 
+        <span class="type">vector3</span> local position where to attach the joint on the first collision object
+        
+        @param collisionobject_b 
+        <span class="type">string | hash | url</span> second collision object
+        
+        @param position_b 
+        <span class="type">vector3</span> local position where to attach the joint on the second collision object
+        
+        @param properties 
+        <span class="type">table</span> optional joint specific properties table
+        
+        See each joint type for possible properties field. The one field that is accepted for all joint types is:
+        - <span class="type">boolean</span> `collide_connected`: Set this flag to true if the attached bodies should collide.
+    **/
+    static function create_joint(joint_type:Float, collisionobject_a:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>, position_a:Vector3, collisionobject_b:EitherType<Url, EitherType<Hash, String>>, position_b:Vector3, ?properties:TODO<"table">):Void;
+
+    /**
+        Destroy a physics joint.
+        
+        Destroy an already physics joint. The joint has to be created before a
+        destroy can be issued.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param collisionobject 
+        <span class="type">string | hash | url</span> collision object where the joint exist
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+    **/
+    static function destroy_joint(collisionobject:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>):Void;
+
+    /**
+        Get the gravity for collection.
+        
+        Get the gravity in runtime. The gravity returned is not global, it will return
+        the gravity for the collection that the function is called from.
+        
+        Note: For 2D physics the z component will always be zero.
+        
+        @return [type:vector3] 
+        gravity vector of collection
+    **/
+    static function get_gravity():TODO;
+
+    /**
+        Get properties for a joint.
+        
+        Get a table for properties for a connected joint. The joint has to be created before
+        properties can be retrieved.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param collisionobject 
+        <span class="type">string | hash | url</span> collision object where the joint exist
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+        
+        @return [type:table] 
+        properties table. See the joint types for what fields are available, the only field available for all types is:
+        
+         * <span class="type">boolean</span> `collide_connected`: Set this flag to true if the attached bodies should collide.
+    **/
+    static function get_joint_properties(collisionobject:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>):TODO;
+
+    /**
+        Get the reaction force for a joint.
+        
+        Get the reaction force for a joint. The joint has to be created before
+        the reaction force can be calculated.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param collisionobject 
+        <span class="type">string | hash | url</span> collision object where the joint exist
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+        
+        @return force 
+        <span class="type">vector3</span> reaction force for the joint
+    **/
+    static function get_joint_reaction_force(collisionobject:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>):TODO;
+
+    /**
+        Get the reaction torque for a joint.
+        
+        Get the reaction torque for a joint. The joint has to be created before
+        the reaction torque can be calculated.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param collisionobject 
+        <span class="type">string | hash | url</span> collision object where the joint exist
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+        
+        @return torque 
+        <span class="type">float</span> the reaction torque on bodyB in N*m.
+    **/
+    static function get_joint_reaction_torque(collisionobject:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>):TODO;
+
     /**
         Requests a ray cast to be performed.
         
@@ -18,7 +140,6 @@ extern class Physics {
         do not intersect with ray casts.
         Which collision objects to hit is filtered by their collision groups and can be configured
         through `groups`.
-        The actual ray cast will be performed during the physics-update.
         
         @param from 
         <span class="type">vector3</span> the world position of the start of the ray
@@ -29,8 +150,8 @@ extern class Physics {
         @param groups 
         <span class="type">table</span> a lua table containing the hashed groups for which to test collisions against
         
-        @return [type:table] 
-        It returns a table. If asynchronous it returns nil. See `ray_cast_response` for details on the returned values.
+        @return result 
+        <span class="type">table</span> It returns a table. If missed it returns nil. See `ray_cast_response` for details on the returned values.
     **/
     static function raycast(from:Vector3, to:Vector3, groups:TODO<"table">):TODO;
 
@@ -60,6 +181,40 @@ extern class Physics {
         <span class="type">number</span> a number between [0,-255]. It will be sent back in the response for identification, 0 by default
     **/
     static function raycast_async(from:Vector3, to:Vector3, groups:TODO<"table">, ?request_id:Float):Void;
+
+    /**
+        Set the gravity for collection.
+        
+        Set the gravity in runtime. The gravity change is not global, it will only affect
+        the collection that the function is called from.
+        
+        Note: For 2D physics the z component of the gravity vector will be ignored.
+        
+        @param gravity 
+        <span class="type">vector3</span> the new gravity vector
+    **/
+    static function set_gravity(gravity:Vector3):Void;
+
+    /**
+        Set properties for a joint.
+        
+        Updates the properties for an already connected joint. The joint has to be created before
+        properties can be changed.
+        
+        Note: Currently only supported in 2D physics.
+        
+        @param collisionobject 
+        <span class="type">string | hash | url</span> collision object where the joint exist
+        
+        @param joint_id 
+        <span class="type">string | hash</span> id of the joint
+        
+        @param properties 
+        <span class="type">table</span> joint specific properties table
+        
+        Note: The `collide_connected` field cannot be updated/changed after a connection has been made.
+    **/
+    static function set_joint_properties(collisionobject:EitherType<Url, EitherType<Hash, String>>, joint_id:EitherType<Hash, String>, properties:TODO<"table">):Void;
 }
 
 /**
@@ -411,4 +566,62 @@ typedef PhysicsMessageTriggerResponse = {
         
     **/
     var own_group:Hash;
+}
+
+@:native("_G.physics")
+extern class PhysicsVariables {
+    /**
+        Fixed joint type.
+        
+        The following properties are available when connecting a joint of `JOINT_TYPE_FIXED` type:
+        - <span class="type">number</span> `max_length`: The maximum length of the rope.
+    **/
+    static var JOINT_TYPE_FIXED(default, never):TODO;
+
+    /**
+        Hinge joint type.
+        
+        The following properties are available when connecting a joint of `JOINT_TYPE_HINGE` type:
+        - <span class="type">number</span> `reference_angle`: The bodyB angle minus bodyA angle in the reference state (radians).
+        - <span class="type">number</span> `lower_angle`: The lower angle for the joint limit (radians).
+        - <span class="type">number</span> `upper_angle`: The upper angle for the joint limit (radians).
+        - <span class="type">number</span> `max_motor_torque`: The maximum motor torque used to achieve the desired motor speed. Usually in N-m.
+        - <span class="type">number</span> `motor_speed`: The desired motor speed. Usually in radians per second.
+        - <span class="type">boolean</span> `enable_limit`: A flag to enable joint limits.
+        - <span class="type">boolean</span> `enable_motor`: A flag to enable the joint motor.
+        
+        Read only fields, available from `physics.get_joint_properties()`:
+        - <span class="type">number</span> `joint_angle`: Current joint angle in radians.
+        - <span class="type">number</span> `joint_speed`: Current joint angle speed in radians per second.
+    **/
+    static var JOINT_TYPE_HINGE(default, never):TODO;
+
+    /**
+        Hinge joint type.
+        
+        The following properties are available when connecting a joint of `JOINT_TYPE_SLIDER` type:
+        - <span class="type">vector3</span> `local_axis_a`: The local translation unit axis in bodyA.
+        - <span class="type">number</span> `reference_angle`: The constrained angle between the bodies: bodyB_angle - bodyA_angle.
+        - <span class="type">boolean</span> `enable_limit`: Enable/disable the joint limit.
+        - <span class="type">number</span> `lower_translation`: The lower translation limit, usually in meters.
+        - <span class="type">number</span> `upper_translation`: The upper translation limit, usually in meters.
+        - <span class="type">boolean</span> `enable_motor`: Enable/disable the joint motor.
+        - <span class="type">number</span> `max_motor_force`: The maximum motor torque, usually in N-m.
+        - <span class="type">number</span> `motor_speed`: The desired motor speed in radians per second.
+        
+        Read only fields, available from `physics.get_joint_properties()`:
+        - <span class="type">number</span> `joint_translation`: Current joint translation, usually in meters.
+        - <span class="type">number</span> `joint_speed`: Current joint translation speed, usually in meters per second.
+    **/
+    static var JOINT_TYPE_SLIDER(default, never):TODO;
+
+    /**
+        Spring joint type.
+        
+        The following properties are available when connecting a joint of `JOINT_TYPE_SPRING` type:
+        - <span class="type">number</span> `length`: The natural length between the anchor points.
+        - <span class="type">number</span> `frequency`: The mass-spring-damper frequency in Hertz. A value of 0 disables softness.
+        - <span class="type">number</span> `damping`: The damping ratio. 0 = no damping, 1 = critical damping.
+    **/
+    static var JOINT_TYPE_SPRING(default, never):TODO;
 }
