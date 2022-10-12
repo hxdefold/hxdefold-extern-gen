@@ -7,4 +7,5 @@ typedef Function =
     var description: String;
     var returnType: String;
     var parameters: Array<Parameter>;
+    var generic: Bool;
 }
