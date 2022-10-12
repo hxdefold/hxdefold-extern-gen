@@ -1,4 +1,9 @@
--cp src
--main Main
---interp
+--class-path src
+--main Main
+
+-D no-deprecation-warnings
+--library HtmlParser
+
+--hl bin/main.hl
+--cmd hl bin/main.hl https://defold.com/extension-admob/api/ gen/Admob.hx
 
