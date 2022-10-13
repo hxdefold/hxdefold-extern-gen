@@ -5,5 +5,5 @@
 --library HtmlParser
 
 --hl bin/main.hl
---cmd hl bin/main.hl https://defold.com/extension-admob/api/ gen/Admob.hx
+--cmd hl bin/main.hl https://defold.com/extension-firebase-analytics/api/ gen/Firebase.hx
 
