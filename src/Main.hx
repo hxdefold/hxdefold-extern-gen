@@ -1,6 +1,8 @@
 
 package;
 
+import types.ExternClass;
+import types.GeneratedFile;
 import haxe.Http;
 import sys.FileSystem;
 import sys.io.File;
@@ -38,7 +40,13 @@ class Main
 
         // parse
         var parser: DocParser = new DocParser();
-        parser.parse(docHtml);
+        var cls: ExternClass = parser.parse(docHtml);
+
+        // print
+        var printer: ExternClassPrinter = new ExternClassPrinter(className);
+        var genFiles: Array<GeneratedFile> = printer.print(cls);
+
+        println(genFiles);
     }
 
 
