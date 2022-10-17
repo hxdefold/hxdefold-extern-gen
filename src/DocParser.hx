@@ -221,7 +221,7 @@ class DocParser
         if (table.name == "table" || table.children[0].name == "table")
         {
             luaType = table.children[0].find('td')[0].innerText;
-            description = table.children[0].find('td')[1].innerText;
+            description = table.children[0].find('td')[2].innerText;
         }
 
         return {

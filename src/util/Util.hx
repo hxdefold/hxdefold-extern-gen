@@ -26,4 +26,10 @@ class Util
         }
         return null;
     }
+
+
+    public static inline function isNullOrEmpty(s: String): Bool
+    {
+        return s == null || s.trim() == '';
+    }
 }

@@ -1,0 +1,4 @@
+    /**
+     * {{description}} {{params_descriptions}} {{return_description}}
+     */
+    function {{name}}({{params}}): {{return}};

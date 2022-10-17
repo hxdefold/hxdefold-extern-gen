@@ -4,7 +4,8 @@
 -D no-deprecation-warnings
 --library HtmlParser
 
---resource templates/Class.hx.template@Class.hx.template
+--resource templates/Class.hx.template@ClassTemplate
+--resource templates/Function.hx.template@FunctionTemplate
 
 --hl bin/main.hl
 --cmd hl bin/main.hl https://defold.com/extension-facebook/api/ gen/Facebook.hx

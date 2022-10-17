@@ -1,4 +1,8 @@
 package defold.extensions.{{package}};
 
 
-
+@:native("{{package}}")
+extern class {{class_name}}
+{
+{{functions}}
+}
