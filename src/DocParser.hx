@@ -1,5 +1,8 @@
 package;
 
+import types.ExternEnumValue;
+import types.ExternEnum;
+import types.ExternClass;
 import types.ReturnType;
 import Sys.println;
 import types.Parameter;
@@ -7,6 +10,7 @@ import types.Function;
 import htmlparser.HtmlNodeElement;
 import htmlparser.HtmlDocument;
 using StringTools;
+using util.Util;
 
 
 class DocParser
@@ -17,18 +21,24 @@ class DocParser
     }
 
 
-    public function parse(html: String)
+    /**
+     * Parses the given HTML string of a Defold API reference page.
+     *
+     * @param html
+     */
+    public function parse(html: String): ExternClass
     {
         var doc: HtmlDocument = new HtmlDocument(html, true);
 
         var apiContent: Array<HtmlNodeElement> = doc.find('.apicontent')[0].children;
         var i: Int = 0;
 
+        // get native name
+        while (apiContent[i].name != "h1") i++;
+        var native: String = apiContent[i].innerText;
+
         // skip to functions
-        while (apiContent[i].innerText != "Functions")
-        {
-            i++;
-        }
+        while (apiContent[i].innerText != "Functions") i++;
         i++;
 
         // parse functions
@@ -85,6 +95,63 @@ class DocParser
             });
         }
         while (i < apiContent.length && apiContent[i].innerText != "Constants");
+        i++;
+
+
+        // parse enum constant
+        var enums: Array<ExternEnum> = [];
+        do
+        {
+            var name: String = apiContent[i++].getAttribute("name");
+            i++; // skip h4
+            var description: String = apiContent[i++].innerText;
+            i++;
+
+            var enumValue: ExternEnumValue = {
+                value: name,
+                description: description
+            };
+
+            var enumName: String = name.split('_')[0].capitalize();
+            if (enums.length == 0 || enums[enums.length - 1].name != enumName)
+            {
+                enums.push({
+                    name: enumName,
+                    values: [enumValue]
+                });
+            }
+            else
+            {
+                enums[enums.length - 1].values.push(enumValue);
+            }
+        }
+        while (i < apiContent.length);
+
+        // parse existing function parameters and return types, to replace types with enums
+        for (func in functions)
+        {
+            for (param in func.parameters)
+            {
+                var matchingEnum: ExternEnum = Util.getEnumMatchingDescription(param.description, enums);
+                if (matchingEnum != null)
+                {
+                    param.type = matchingEnum.name;
+                }
+            }
+
+            var matchingEnum: ExternEnum = Util.getEnumMatchingDescription(func.returnType.type, enums);
+            if (matchingEnum != null)
+            {
+                func.returnType.type = matchingEnum.name;
+            }
+        }
+
+        return
+        {
+            native: native,
+            functions: functions,
+            enums: enums
+        };
     }
 
 
@@ -155,7 +222,6 @@ class DocParser
         {
             luaType = table.children[0].find('td')[0].innerText;
             description = table.children[0].find('td')[1].innerText;
-            trace('$luaType $description');
         }
 
         return {
