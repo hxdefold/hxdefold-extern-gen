@@ -20,20 +20,20 @@ class Main
     {
         // parse command line arguments
         var args: Array<String> = Sys.args();
-        if (args.length < 2)
+        if (args.length < 3)
         {
-            println('Usage: hxdefold-extern-gen [doc url] [output haxe file]');
+            println('Usage: hxdefold-extern-gen [doc url] [class name] [output dir]');
             println('');
             println('Example: hxdefold-extern-gen https://defold.com/ref/stable/buffer/ gen/Buffer.hx');
             Sys.exit(1);
         }
 
         var docUrl: String = args[0];
-        var outFile: String = args[1];
-        var className: String = Path.withoutExtension(Path.withoutDirectory(outFile));
+        var className: String = args[1];
+        var outDir: String = args[2];
 
         // ensure that output directory exists
-        FileSystem.createDirectory(Path.directory(outFile));
+        FileSystem.createDirectory(outDir);
 
         // fetch the documentation html
         var docHtml: String = Http.requestUrl(docUrl);
@@ -42,11 +42,16 @@ class Main
         var parser: DocParser = new DocParser();
         var cls: ExternClass = parser.parse(docHtml);
 
-        // print
+        // generate files
         var printer: ExternClassPrinter = new ExternClassPrinter(className);
         var genFiles: Array<GeneratedFile> = printer.print(cls);
 
-        println(genFiles);
+        // store files in the output directory
+        for (file in genFiles)
+        {
+            var filePath: String = Path.join([outDir, file.name]);
+            File.saveContent(filePath, file.content);
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package;
 
+import types.ExternEnum;
 import types.Parameter;
 import types.Function;
 import haxe.Resource;
@@ -14,6 +15,8 @@ enum abstract TemplateName(Int)
 {
     var Class;
     var Function;
+    var Enum;
+    var EnumValue;
 }
 
 
@@ -27,8 +30,10 @@ class ExternClassPrinter
     {
         this.className = className;
         templates = [
-            Class => Resource.getString('ClassTemplate'),
-            Function => Resource.getString('FunctionTemplate')
+            Class       => Resource.getString('ClassTemplate'),
+            Function    => Resource.getString('FunctionTemplate'),
+            Enum        => Resource.getString('EnumTemplate'),
+            EnumValue   => Resource.getString('EnumValueTemplate')
         ];
     }
 
@@ -42,6 +47,15 @@ class ExternClassPrinter
             name: '$className.hx',
             content: printClass(cls)
         });
+
+        // add enums
+        for (enm in cls.enums)
+        {
+            files.push({
+                name: '${enm.name}.hx',
+                content: printEnum(enm, cls.native)
+            });
+        }
 
         return files;
     }
@@ -91,7 +105,7 @@ class ExternClassPrinter
                  .replace('{{params_descriptions}}', paramsDescr)
                  .replace('{{return_description}}', returnDescr)
                  .replace('{{name}}', func.name + (func.generic ? '<T>' : ''))
-                 .replace('{{params}}', func.parameters.map(printFunctionParam).join(' '))
+                 .replace('{{params}}', func.parameters.map(printFunctionParam).join(', '))
                  .replace('{{return}}', func.returnType.type);
 
         return gen;
@@ -101,5 +115,26 @@ class ExternClassPrinter
     function printFunctionParam(param: Parameter): String
     {
         return '${param.name}: ${param.type}';
+    }
+
+
+    function printEnum(enm: ExternEnum, pkg: String): String
+    {
+        var gen: String = templates[Enum];
+
+        var enumValues: Array<String> = [];
+        for (value in enm.values)
+        {
+            enumValues.push(
+                templates[EnumValue].replace('{{description}}', value.description.replace('\n', '\n     * '))
+                                    .replace('{{value}}', value.value)
+            );
+        }
+
+        gen = gen.replace('{{package}}', pkg)
+                 .replace('{{enum_name}}', enm.name)
+                 .replace('{{enum_values}}', enumValues.join('\n\n'));
+
+        return gen;
     }
 }

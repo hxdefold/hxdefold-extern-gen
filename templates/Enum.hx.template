@@ -1,0 +1,8 @@
+package defold.extensions.{{package}};
+
+
+@:native("{{package}}")
+@:enum extern abstract {{enum_name}}(Int)
+{
+{{enum_values}}
+}

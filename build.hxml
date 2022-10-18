@@ -6,7 +6,9 @@
 
 --resource templates/Class.hx.template@ClassTemplate
 --resource templates/Function.hx.template@FunctionTemplate
+--resource templates/Enum.hx.template@EnumTemplate
+--resource templates/EnumValue.hx.template@EnumValueTemplate
 
 --hl bin/main.hl
---cmd hl bin/main.hl https://defold.com/extension-facebook/api/ gen/Facebook.hx
+--cmd hl bin/main.hl https://defold.com/extension-facebook/api/ Facebook gen/
 
