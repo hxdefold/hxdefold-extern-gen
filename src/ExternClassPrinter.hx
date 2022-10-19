@@ -90,7 +90,7 @@ class ExternClassPrinter
                 paramsDescr += '\n     * ';
             }
             paramsDescr += '\n     * ';
-            paramsDescr += '@param ${parameter.name} ${parameter.description}';
+            paramsDescr += '@param ${parameter.name} ${parameter.description.replace('\n', '\n     * ')}';
         }
 
         var returnDescr: String = '';
