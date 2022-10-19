@@ -76,7 +76,7 @@ class DocParser
             // check if the function should be generic
             for (parameter in parameters)
             {
-                if (parameter.type == "T")
+                if (parameter.type == "T" || parameter.type.contains(": T"))
                 {
                     generic = true;
                 }
@@ -181,13 +181,15 @@ class DocParser
                     for (funcRow in funcTable.find('tr'))
                     {
                         var argName: String = funcRow.find('td')[0].innerText;
-                        var argType: String = funcRow.find('td')[1].innerText;
+                        var argLuaType: String = funcRow.find('td')[1].innerText;
                         var argDescription: String = funcRow.find('td')[2].innerText;
 
-                        funcArgs.push('$argName: ${parseLuaType(argType)}');
+                        var argType: String = parseLuaType(argLuaType, argName);
+
+                        funcArgs.push('$argName: $argType');
                         callbackParameters.push({
                             name: argName,
-                            type: parseLuaType(argType),
+                            type: argType,
                             description: argDescription,
                             callbackParameters: null
                         });
@@ -198,7 +200,7 @@ class DocParser
             }
             else
             {
-                type = parseLuaType(luaType);
+                type = parseLuaType(luaType, name);
             }
 
             parameters.push({
@@ -230,7 +232,7 @@ class DocParser
     }
 
 
-    function parseLuaType(luaType: String)
+    function parseLuaType(luaType: String, ?ctx: String)
     {
         return switch luaType.trim()
         {
@@ -240,7 +242,6 @@ class DocParser
             case "float": "Float";
             case "vector3": "Vector3";
             case "boolean": "Bool";
-            case "object": "T";
             case "table": "AnyTable";
             case "buffer": "defold.types.Buffer";
             case "constant": "Int";
@@ -249,9 +250,11 @@ class DocParser
             case "string, hash": "HashOrString";
             case "string, hash, url": "HashOrStringOrUrl";
 
-            case "":
+            case "object" if (ctx == "self"): "T";
+
+            case "" | "object":
             {
-                println('WARNING: type ${luaType.trim()} has been filled with placeholder and should be corrected');
+                println('WARNING: type "${luaType.trim()}" has been filled with placeholder and should be corrected');
                 return "UNKNOWN";
             }
 
