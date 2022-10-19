@@ -20,19 +20,20 @@ class Main
     {
         // parse command line arguments
         var args: Array<String> = Sys.args();
-        if (args.length < 3)
+        if (args.length < 4)
         {
-            println('Usage: hxdefold-extern-gen [doc url] [class name] [output dir]');
+            println('Usage: hxdefold-extern-gen [doc url] [package] [class name] [output dir]');
             println('');
-            println('Example: hxdefold-extern-gen https://defold.com/ref/stable/buffer/ gen/Buffer.hx');
+            println('Example: hxdefold-extern-gen https://defold.com/ref/stable/buffer/ defold.types Buffer gen/');
             Sys.exit(1);
         }
 
         var docUrl: String = args[0];
-        var className: String = args[1];
-        var outDir: String = args[2];
+        var pkg: String = args[1];
+        var className: String = args[2];
+        var outDir: String = args[3];
 
-        println('generating $className');
+        println('generating $pkg');
 
         // ensure that output directory exists
         FileSystem.createDirectory(outDir);
@@ -45,7 +46,7 @@ class Main
         var cls: ExternClass = parser.parse(docHtml);
 
         // generate files
-        var printer: ExternClassPrinter = new ExternClassPrinter(className);
+        var printer: ExternClassPrinter = new ExternClassPrinter(pkg, className);
         var genFiles: Array<GeneratedFile> = printer.print(cls);
 
         // store files in the output directory

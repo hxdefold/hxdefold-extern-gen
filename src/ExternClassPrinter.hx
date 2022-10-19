@@ -22,12 +22,14 @@ enum abstract TemplateName(Int)
 
 class ExternClassPrinter
 {
+    final pkg: String;
     final className: String;
     final templates: Map<TemplateName, String>;
 
 
-    public inline function new(className: String)
+    public inline function new(pkg: String, className: String)
     {
+        this.pkg = pkg;
         this.className = className;
         templates = [
             Class       => Resource.getString('ClassTemplate'),
@@ -53,7 +55,7 @@ class ExternClassPrinter
         {
             files.push({
                 name: '${enm.name}.hx',
-                content: printEnum(enm, cls.native)
+                content: printEnum(enm, pkg, cls.native)
             });
         }
 
@@ -67,7 +69,8 @@ class ExternClassPrinter
 
         var functionsStr: Array<String> = cls.functions.map(printFunction);
 
-        gen = gen.replace('{{package}}', cls.native)
+        gen = gen.replace('{{package}}', pkg)
+                 .replace('{{native}}', cls.native)
                  .replace('{{class_name}}', className)
                  .replace('{{functions}}', functionsStr.join('\n\n'));
 
@@ -118,7 +121,7 @@ class ExternClassPrinter
     }
 
 
-    function printEnum(enm: ExternEnum, pkg: String): String
+    function printEnum(enm: ExternEnum, pkg: String, native: String): String
     {
         var gen: String = templates[Enum];
 
@@ -132,6 +135,7 @@ class ExternClassPrinter
         }
 
         gen = gen.replace('{{package}}', pkg)
+                 .replace('{{native}}', native)
                  .replace('{{enum_name}}', enm.name)
                  .replace('{{enum_values}}', enumValues.join('\n\n'));
 
