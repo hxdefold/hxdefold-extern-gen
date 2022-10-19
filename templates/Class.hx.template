@@ -1,5 +1,8 @@
 package defold.extensions.{{package}};
 
+import lua.AnyTable;
+import defold.types.*;
+
 
 @:native("{{package}}")
 extern class {{class_name}}

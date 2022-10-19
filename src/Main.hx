@@ -32,6 +32,8 @@ class Main
         var className: String = args[1];
         var outDir: String = args[2];
 
+        println('generating $className');
+
         // ensure that output directory exists
         FileSystem.createDirectory(outDir);
 

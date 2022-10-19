@@ -97,10 +97,9 @@ class DocParser
         while (i < apiContent.length && apiContent[i].innerText != "Constants");
         i++;
 
-
-        // parse enum constant
+        // parse enum constants
         var enums: Array<ExternEnum> = [];
-        do
+        while (i < apiContent.length)
         {
             var name: String = apiContent[i++].getAttribute("name");
             i++; // skip h4
@@ -125,7 +124,7 @@ class DocParser
                 enums[enums.length - 1].values.push(enumValue);
             }
         }
-        while (i < apiContent.length);
+
 
         // parse existing function parameters and return types, to replace types with enums
         for (func in functions)
@@ -237,10 +236,18 @@ class DocParser
         {
             case "string": "String";
             case "number": "Int";
+            case "int": "Int";
+            case "float": "Float";
+            case "vector3": "Vector3";
             case "boolean": "Bool";
             case "object": "T";
-            case "table": "lua.AnyTable";
+            case "table": "AnyTable";
             case "buffer": "defold.types.Buffer";
+            case "constant": "Int";
+            case "url": "Url";
+            case "hash": "Hash";
+            case "string, hash": "HashOrString";
+            case "string, hash, url": "HashOrStringOrUrl";
 
             case "":
             {

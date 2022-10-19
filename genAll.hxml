@@ -1,0 +1,23 @@
+build.hxml
+
+--cmd rm -rf gen/
+--cmd hl bin/main.hl https://defold.com/extension-adinfo/api/                   AdInfo                  gen/defold/extensions/adinfo
+--cmd hl bin/main.hl https://defold.com/extension-admob/api/                    AdMob                   gen/defold/extensions/admob
+--cmd hl bin/main.hl https://defold.com/extension-camera/api/                   Camera                  gen/defold/extensions/camera
+--cmd hl bin/main.hl https://defold.com/extension-crypt/api/                    Crypt                   gen/defold/extensions/crypt
+--cmd hl bin/main.hl https://defold.com/extension-facebook/api/                 Facebook                gen/defold/extensions/facebook
+--cmd hl bin/main.hl https://defold.com/extension-firebase/api/                 Firebase                gen/defold/extensions/firebase
+--cmd hl bin/main.hl https://defold.com/extension-firebase-analytics/api/       FirebaseAnalytics       gen/defold/extensions/firebase_analytics
+--cmd hl bin/main.hl https://defold.com/extension-firebase-remoteconfig/api/    FirebaseRemoteConfig    gen/defold/extensions/firebase_remoteconfig
+--cmd hl bin/main.hl https://defold.com/extension-googleplayinstant/api/        GooglePlayInstant       gen/defold/extensions/googleplayinstant
+--cmd hl bin/main.hl https://defold.com/extension-gpgs/api/                     Gpgs                    gen/defold/extensions/gpgs
+--cmd hl bin/main.hl https://defold.com/extension-iap/api/                      Iap                     gen/defold/extensions/iap
+--cmd hl bin/main.hl https://defold.com/extension-push/api/                     Push                    gen/defold/extensions/push
+--cmd hl bin/main.hl https://defold.com/extension-review/api/                   Review                  gen/defold/extensions/review
+--cmd hl bin/main.hl https://defold.com/extension-rive/api/                     Rive                    gen/defold/extensions/rive
+--cmd hl bin/main.hl https://defold.com/extension-safearea/api/                 SafeArea                gen/defold/extensions/safearea
+--cmd hl bin/main.hl https://defold.com/extension-siwa/api/                     Siwa                    gen/defold/extensions/siwa
+--cmd hl bin/main.hl https://defold.com/extension-spine/api/                    Spine                   gen/defold/extensions/spine
+--cmd hl bin/main.hl https://defold.com/extension-websocket/api/                WebSocket               gen/defold/extensions/websocket
+--cmd hl bin/main.hl https://defold.com/extension-webview/api/                  WebView                 gen/defold/extensions/webview
+

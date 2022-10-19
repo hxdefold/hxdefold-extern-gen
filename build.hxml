@@ -10,5 +10,3 @@
 --resource templates/EnumValue.hx.template@EnumValueTemplate
 
 --hl bin/main.hl
---cmd hl bin/main.hl https://defold.com/extension-facebook/api/ Facebook gen/
-
