@@ -1,6 +1,6 @@
 package {{package}};
 
-import lua.AnyTable;
+import lua.Table.AnyTable;
 import defold.types.*;
 
 

@@ -104,10 +104,20 @@ class ExternClassPrinter
             returnDescr += '@return ${func.returnType.description}';
         }
 
+        var funcName: String = func.name;
+        if (funcName.contains('.'))
+        {
+            funcName = funcName.split('.')[1];
+        }
+        if (func.generic)
+        {
+            funcName += '<T>';
+        }
+
         gen = gen.replace('{{description}}', func.description.replace('\n', '\n     * '))
                  .replace('{{params_descriptions}}', paramsDescr)
                  .replace('{{return_description}}', returnDescr)
-                 .replace('{{name}}', func.name + (func.generic ? '<T>' : ''))
+                 .replace('{{name}}', funcName)
                  .replace('{{params}}', func.parameters.map(printFunctionParam).join(', '))
                  .replace('{{return}}', func.returnType.type);
 
